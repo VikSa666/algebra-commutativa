@@ -1,0 +1,138 @@
+\documentclass[../../../main.tex]{subfiles}
+
+
+
+\begin{document}
+
+
+\section{Anells de fraccions}
+
+\begin{defi}
+[Multiplicativament tancat]\label{def:multiplicativamentTancat}\index{Conjunt multiplicativament tancat}\index{Multiplicativament tancat}\index{Sistema multiplicativament tancat} Sigui $A$ un anell commutatiu i $S\subseteq A$ un conjunt. Direm que $S$ és un \textit{conjunt} o \textit{sistema multiplicativament tancat} si compleix
+\begin{enumerate}[(1)]
+    \item $1\in S$ i
+    \item per tot $s_1,s_2\in S$ també $s_1\cdotp s_2\in S$.
+\end{enumerate}
+\end{defi}
+
+\begin{nota}
+Per estalviar temps i espai, sovint ho denotaré com SMT\index{SMT}.
+\end{nota}
+
+\begin{ej}
+Per exemple, per qualsevol anell commutatiu $A$, $A\setminus\mathcal{Z}(A)$ és un sistema multiplicativament tancat. Un altre exemple és $A\setminus\mathfrak{p}$ per qualsevol $\mathfrak{p}\in \spec A$.
+\end{ej}
+
+
+
+El que farem a continuació és construir l'anell de fraccions d'un anell commutatiu $A$.
+
+\begin{defi}
+Donat un SMT $S\subseteq A$, introduïm en $A\times S$ la següent relació:
+\begin{equation}
+    \notag
+    (a,s)\sim (b,t)\Longleftrightarrow \exists u\in S\;:\;(at-bs)u = 0
+\end{equation}
+\end{defi}
+
+\begin{prop}
+La relació definida és d'equivalència.
+\end{prop}
+\begin{proof}
+Les propietats reflexiva i simètrica són immediates de comprovar. Anem a veure la transitiva. Siguin $(a,s)\sim (b,t)$ i $(b,t)\sim (c,v)$, és a dir, que existeixen $u,w\in S$ tals que $u(at-bs) = 0$ i $w(bv-tc) = 0$. Aleshores
+\begin{equation}
+    \notag
+    \begin{array}{rl}
+        utw(av-sc) &= utwav-utwsc = wvuat-wvubs+uswbv-uswtc = \\
+        & = wvu(at-bs)+usw(bv-tc) = 0
+    \end{array}
+\end{equation}
+i com que $S$ és multiplicativament tancat, $utw\in S$ i aleshores $(a,s)\sim(c,v)$ com volíem.
+\end{proof}
+
+\begin{defi}
+[Anell de fraccions]\label{def:anellDeFraccions}\index{Anell de fraccions d'un anell} Sigui $A$ un anell i $S$ un SMT. Denotem per $S^{-1}A:=A/\sim$, el conjunt de les classes. Definim les següents operacions:
+\begin{equation}
+    \notag
+    \overline{(a,s)}+\overline{(b,t)} = \overline{(at+bs,ts)}
+\end{equation}
+\begin{equation}
+    \notag
+    \overline{(a,s)}\cdotp\overline{(b,t)} = \overline{(ab,st)}
+\end{equation}
+Aquest anell s'anomena \textit{anell de fraccions} de $A$ respecte el SMT $S$. A les classes $\overline{(a,s)}\in S^{-1}A$ les denotarem. per $\frac{a}{s}$ i per tant
+\begin{equation}
+    \notag
+    \frac{a}{s} = \frac{b}{t}\Longleftrightarrow \exists u\in S\;:\;u(at-bs) = 0
+\end{equation}
+\end{defi}\index{$S^{-1}A$}
+
+En aquest context, és fàcil veure que les operacions estan ben definides en $S^{-1}A$ i donen l'estructura d'anell commutatiu i unitari.
+
+\begin{nota}
+\label{nota:operacionsEnAnellFraccions}\index{Operacions en $S^{-1}A$} Ara podem transcriure les operacions amb la nova notació, de la següent manera.
+\begin{multicols}{2}
+\begin{enumerate}[(i)]
+    \item $\frac{a}{s}+\frac{b}{t} = \frac{at+bs}{ts}$
+    \item $\frac{a}{s}\cdotp\frac{b}{t} = \frac{ab}{st}$
+    \item $1_{S^{-1}A} = \frac{1}{1} = \frac{s}{s}$ per tot $s\in S$
+    \item $0_{S^{-1}A} = \frac{0}{s}$ per tot $s\in S$
+    \item $\frac{a}{s} = 0\Longleftrightarrow \frac{a}{s} = \frac{0}{1}\Longleftrightarrow \exists t\in S$ tal que $ta=0$
+    \item $\frac{a}{s}=1\Longleftrightarrow \frac{a}{s}=\frac{1}{1}\Longleftrightarrow \exists t\in S$ tal que $t(a-s) = 0\Longleftrightarrow \exists t\in S$ tal que $ta=ts$.
+\end{enumerate}
+\end{multicols}
+\end{nota}
+
+\begin{ej}
+Vegem alguns exemples
+\begin{enumerate}[(i)]
+    \item Si $S = A\setminus\mathcal{Z}(A)$, aleshores $S^{-1}A$ és l'anell total de fraccions de $A$. Podem observar que si $A$ és un domini d'integritat, aleshores $S = A\setminus\{0\}$ i per tant $S^{-1}A$ és el cos total de fraccions.
+    \item Si $S = A\setminus\mathfrak{p}$ on $\mathfrak{p} \in \spec A$, aleshores $S^{-1}A = A_\mathfrak{p}$ s'anomena localitzat de l'anell $A$ en l'ideal primer $\mathfrak{p}$. Parlarem més endavant d'aquest.
+\end{enumerate}
+\end{ej}
+
+\begin{nota}
+El morfisme canònic $\iota:A\to S^{-1}A$ que envia $\iota(a) = \frac{a}{1}$ és un morfisme d'anells i podem observar que per tota $s\in S$ aleshores $\iota(s) = \frac{s}{1}$ i a més $\frac{s}{1}\cdotp\frac{1}{s} = \frac{s}{s} = 1$ de forma que mitjançant aquest morfisme podem aconseguir que tots els elements de $S$ siguin invertibles. També podem notar que en general $\iota$ no serà injectiva, ja que
+\begin{equation}
+    \notag
+    \ker\iota = \{a\in A\;:\;\exists t\in S\;:\;t\cdotp a = 0\}
+\end{equation}
+\end{nota}
+
+
+\begin{prop}
+[Propietat universal de l'anell de fraccions]\label{prop:propietatUniversalAnellDeFraccions}\index{Propietat universal de l'anell de fraccions} Sigui $f:A\to B$ un morfisme d'anells tal que $f(S)\subseteq B^*$. Aleshores, existeix un únic morfisme $\overline{f}:S^{-1}A\to B$ tal que $\overline{f}\circ\iota = f$, és a dir, tal que $\overline{f}(\frac{a}{1}) = f(a)$ per tota $a\in A$. En altres paraules, el següent diagrama és commutatiu:
+\begin{equation}
+    \notag
+    \xymatrix{
+    A\ar[r]^f\ar[d]^\iota & B\\
+    S^{-1}A\ar@{-->}[ur]_{\exists!\overline{f}} & 
+    }
+\end{equation}
+\end{prop}
+\begin{proof}
+Definim $\overline{f}(\frac{a}{s}) = \frac{f(a)}{f(s)}$ i veiem que està ben definida ja que suposem que $f(S)\subseteq B^*$ i el denominador en realitat vol dir multiplicar per l'invers. Llavors, és fàcil veure que és morfisme d'anells i que fa commutatiu el diagrama. Falta veure la unicitat.
+
+Suposem que $g(\frac{a}{1}) = f(a)$ per un a altra $g$. Aleshores, per tot $\frac{a}{s}\in S^{-1}A$,
+\begin{equation}
+    \notag
+    g\left(\frac{a}{s}\right) = g\left(\frac{a}{1}\right)g\left(\frac{1}{s}\right) = f(a)g\left(\frac{s}{1}\right)^{-1} = f(a)f(s)^{-1} = \overline{f}\left(\frac{a}{s}\right)
+\end{equation}
+per tant $g = \overline{f}$.
+\end{proof}
+
+L'aplicació $\overline{f}$ aquí descrita la denotarem per $S^{-1}f$\index{$S^{-1}f$}. La següent proposició és conseqüència immediata de la propietat universal.
+
+\begin{prop}
+Sigui $g:A\to B$ un morfisme d'anells tal que
+\begin{enumerate}[(i)]
+    \item Per tot $s\in S$ aleshores $g(s)\in B^*$
+    \item $g(a) = 0$ si i només si existeix un $s\in S$ tal que $sa = 0$
+    \item Per tot $b\in B$ existeix un $a\in A$ i $s\in S$ tal que $b = g(a)g(s)^{-1}$
+\end{enumerate}
+Aleshores existeix $h:B\to S^{-1}A$ isomorfisme tal que $h^{-1}\circ \iota = g$ i $h\circ g = \iota$.
+\end{prop}
+
+
+
+\end{document}

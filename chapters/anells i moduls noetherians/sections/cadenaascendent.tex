@@ -1,0 +1,109 @@
+\documentclass[../../../main.tex]{subfiles}
+
+
+
+\begin{document}
+
+
+\section{La condició de cadena ascendent}
+
+\begin{defi}
+[Condició de cadena ascendent]\label{def:cadenaAscendent}\index{Condició de cadena ascendent} Sigui $\Sigma$ un conjunt parcialment ordenat. Aleshores diem que satisfà la \textit{condició de cadena ascendent} si compleix que tota successió creixent d'elements de $\Sigma$, $x_1\leq x_2\leq\cdots$ estabilitza, és a dir, existeix un $n_0\in \mathbb{N}$ tal que $x_n = x_{n+1}$ per tota $n\geq 0$.
+\end{defi}
+
+\begin{prop}
+\label{prop:cadenaAscendent} Sigui $\Sigma$ un conjunt parcialment ordenat. Aleshores, són equivalents
+\begin{enumerate}[(a)]
+    \item $\Sigma$ satisfà la condició de cadena ascendent.
+    \item Tot subconjunt no buit de $\Sigma$ té un element maximal.
+\end{enumerate}
+\end{prop}
+\begin{proof}
+Fem la implicació de (a) a (b). Suposem que no es verifica (b) i sigui $T\subseteq\Sigma$ un subconjunt no buit tal que no existeix un element maximal. Aleshores, per inducció i prenent un element primer qualsevol $x_i\in T$ podem construir la successió creixent
+\begin{equation}
+    \notag
+    x_1\leq x_2\leq x_3\leq \cdots\leq x_n\leq \cdots
+\end{equation}
+que no estaciona. Per l'altra implicació, sigui $x_1\leq x_2\leq \cdots$ una successió creixent. Aleshores, premen el conjunt $T = \{x_n\}_{n\geq 1}\subseteq\Sigma$ que per hipòtesi sabem que té un element maximal $x_{n_0}$, per tant per tot $n\geq n_0$ tindrem $x_n = x_{n+1}$.
+\end{proof}
+
+\begin{defi}
+[Mòdul noetherià]\label{def:modulNoetheria}\index{Mòdul noetherià} Sigui $M$ un $A$-mòdul i sigui $\Sigma$ el conjunt de tots els $A$-submòduls de $M$. Si $\Sigma$ verifica la condició de cadena ascendent, aleshores diem que $M$ és un $A$-mòdul \textit{noetherià}.
+\end{defi}
+
+\begin{ej}
+\begin{enumerate}[(i)]
+    \item Sigui $G$ un grup abelià finit. Aleshores, si prenem $G$ com un $\mathbb{Z}$-mòdul, tenim que $G$ és noetherià.
+    \item $\mathbb{Z}$ com a $\mathbb{Z}$-mòdul és noetherià. Més en general, si $A$ és un domini d'ideals principals, aleshores $A$ és noetherià com a $A$-mòdul ja que $I_1\subseteq I_2$ si i només si $a_2\mid a_1$ i tot element té únicament un nombre finit de divisors.
+    \item Sigui $k$ un cos i $k[X_n]_{n\geq 1}$ l'anell de polinomis en infinites variables. Aleshores no és un mòdul noetherià ja que tenim la següent successió ascendent
+    \begin{equation}
+        \notag
+        (X_1)\varsubsetneq(X_1,X_2)\varsubsetneq (X_1,X_2,X_3)\varsubsetneq\cdots 
+    \end{equation}
+\end{enumerate}
+\end{ej}
+
+
+\begin{prop}
+\label{prop:noetheriaFinitamentGenerat} $M$ és un $A$-mòdul noetherià si i només si tot submòdul és finitament generat. En particular, $M$ és un $A$-mòdul finitament general.
+\end{prop}
+\begin{proof}
+Sigui $N\subseteq M$ un $A$-submòdul i considerem $\Sigma$ el conjunt de $A$-submòduls finitament generats. Com que $\Sigma\not=\emptyset$ ja que $(0)\in\Sigma$, aleshores sabem que existeix un element maximal $N_0\subseteq N$ finitament generat. Si $N_0\not=N$ aleshores podem agafar $x\in N\setminus N_0$ i tindrem que $N_0\varsubsetneq N_0+\langle x\rangle$ però $N_0+\langle x\rangle\subseteq N$ i és finitament generat per tant contradicció, és a dir que $N = N_0$.
+
+Recíprocament, si tenim una cadena ascendent $M_1\subseteq \cdots\subseteq M_n\subseteq \cdots$ de $A$-submòduls de $M$, considerem $N = \bigcup_{n\geq 1}M_n\subseteq M$ que és un $A$-submòdul i per tant ha de ser finitament generat. Per tant, $N$ està generat per $x_1,\ldots,x_r$ és a dir, existeixen $n_i$ tals que $x_i\in M_{n_i}$ i només cal considerar $n = \max_i\{n_i\}$ i tindrem $x_i\in M_n$ per tot $i\leq r$, és a dir, que $N = M_n$ i per tant la cadena és estacionària.
+\end{proof}
+
+
+
+
+
+
+\begin{prop}
+\label{prop:noetheriaSuccessioExacta} Siguin $M_1,M_2,M_3$ tres $A$-mòduls tals que la següent successió és exacta
+\begin{equation}
+    \notag
+    0\to M_1\app{f}M_2\app{g}M_3\to 0.
+\end{equation}
+Aleshores $M_2$ és noetherià si i només si $M_1$ i $M_3$ ho són.
+\end{prop}
+\begin{proof}
+La implicació d'esquerra a dreta és només observar que si tenim una cadena en $M_1$ aleshores a través del morfisme $f$ la tenim a $M_2$ i com que $f$ és injectiva i la cadena de $M_2$ és estacionària, tenim que la inicial també ho és. El mateix podem fer per les cadenes de $M_3$, com que $g$ és exhaustiva: podem considerar la cadena antiimatge que es troba a $M_2$ i per tant és estacionària cosa que implica que la cadena inicial també ho és.
+
+La implicació recíproca costa una mica més. Sigui $\{L_i\}_{i\geq 1}$ una cadena de $A$-submòduls de $M$. Aleshores $\{f^{-1}(L_i)\}$ és una cadena en $M_1$ i $\{g(L_i)\}$ és una cadena en $M_2$. Per hipòtesis aquestes cadenes són estacionàries i per tant podem considerar un $n_0$ suficientment gran tal que les dues cadenes siguin estacionàries a partir d'aquest $n_0$. Aleshores, per tot $n\geq n_0$, obtenim el següent diagrama commutatiu amb les files exactes:
+\begin{equation}
+    \notag
+    \xymatrix{
+    0\ar[r]\ar[d] & f^{-1}(L_n)\ar[r]^f\ar[d] & L_n\ar[r]^g\ar[d]^{i} & g(L_n)\ar[d]\ar[r] & 0 \ar[d] \\
+    0\ar[r] & f^{-1}(L_{n+1})\ar[r]^f & L_{n+1}\ar[r]^g & g(L_{n+1})\ar[r] & 0
+    }
+\end{equation}
+on els morfismes verticals són sempre la inclusió que en aquest cas són tots isomorfismes excepte $i:L_n\hookrightarrow L_{n+1}$. Ara bé, aplicant el lema dels cinc obtenim que aleshores $i$ és isomorfisme i per tant $L_n = L_{n+1}$.
+\end{proof}
+
+
+\begin{coro}
+\label{coro:noetheriaSumaDirecta} Siguin $M_i$ $A$-mòduls. Aleshores $\bigoplus_{i=1}^nM_i$ és noetherià si, i només si, $M_i$ és noetherià.
+\end{coro}
+\begin{proof}
+Hem de fer inducció sobre $n$. Per $n = 2$ és immediat ja que tenim la successió exacta següent
+\begin{equation}
+    \notag
+    0\longrightarrow M_1\longrightarrow M_1\oplus M_2\longrightarrow M_2\longrightarrow 0
+\end{equation}
+i per tant $M_1\oplus M_2$ és noetherià si i només si $M_1$ i $M_2$ ho són pel lema anterior.
+
+Suposem cert ara per $n$ i provem-ho per $n+1$. Observem que tenim la següent successió exacta
+\begin{equation}
+    \notag
+    0\longrightarrow M_{n+1}\longrightarrow \bigoplus_{i=1}^{n+1}M_i\longrightarrow \bigoplus_{i=1}^nM_i\longrightarrow 0
+\end{equation}
+Per tant, $\bigoplus_{i=1}^{n+1}M_i$ és noetherià si, i només si, $M_{n+1}$ i $\bigoplus_{i=1}^nM_i$ ho són, que per hipòtesi d'inducció equival a dir que $M_i$ per $i=1,\ldots,n+1$ ho són.
+\end{proof}
+
+
+
+
+
+
+
+\end{document}

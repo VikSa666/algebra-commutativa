@@ -1,0 +1,237 @@
+\documentclass[../../../main.tex]{subfiles}
+
+
+
+\begin{document}
+
+
+\section{Primers associats a un mòdul}
+
+
+
+
+\begin{defi}
+[Primer associat]\label{def:primerAssociat}\index{Primer associat} Sigui $A$ un anell commutatiu i $M$ un $A$-mòdul. Aleshores, un ideal primer $\mathfrak{p}\in\spec{A}$ s'anomena \textit{associat} a $M$ si existeix un $m\in M$ tal que $\mathfrak{p} = (0:_Am)$. Al conjunt d'ideals primers associats a un mòdul $M$ el denotem per $\ass_A(M)$. Si $M = A/I$ amb $I\subseteq A$ ideal, aleshores $\ass_A(A/I)$ l'anomenem associat de $I$ o bé divisors primers de $I$\index{Divisor primer de $I$}.
+\end{defi}
+
+
+\begin{nota}
+Sigui $\p$ un primer associat a $M$, és a dir, que $\p = (0:_Am)$ per algun $m\in M$. Aleshores, si $a\in A$ tal que $am\neq 0$ tindrem $(0:_Aam) = \p$. En efecte,
+\begin{equation}
+    \notag
+    x\in (0:_Aam)\Longleftrightarrow xam=0\Longleftrightarrow (xa)m=0\Longleftrightarrow xa\in\p\Longleftrightarrow x\in \p
+\end{equation}
+ja que $a\not\in\p$.
+\end{nota}
+
+\begin{ter}
+\label{ter:noetheriaAssociats} Sigui $A$ noetherià, $M$ un $A$-mòdul, $M\not=0$. Aleshores
+\begin{enumerate}[(1)]
+    \item Si $F = \{(0:_Am)\;:\;m\in M\setminus\{0\}\}$ aleshores tot ideal maximal de $F$ és un associat. En particular, $\ass_A(M)\not=\emptyset$.
+    \item $\mathcal{Z}_A(M) = \bigcup_{\p\in\ass_A(M)}\p$.
+\end{enumerate}
+\end{ter}
+\begin{proof}
+\begin{enumerate}[(1)]
+    \item Sigui $J\in F$ un element maximal, veurem que és primer. Suposem que $xy\in J = (0:_Am)$, aleshores $xym = 0$, si $y\not\in J$ tenim que 
+    \begin{equation}
+        \notag
+        (0:_Am)\subseteq(0:_Aym)
+    \end{equation}
+    però com hem suposat que $J$ és maximal, aleshores $(0:_Am) = (0:_Aym)$ i per tant $xm = 0$ cosa que implica $x\in J$.
+    \item Sigui $m\not=0$ tal que $xm = 0$, aleshores $x\in (0:_Am)\subseteq\p$ per algun $\p\in\ass_A(M)$.
+\end{enumerate}
+\end{proof}
+
+\begin{prop}
+\label{prop:associatsSistemaMultiplicativamentTancat} Sigui $S\subseteq A$ un sistema multiplicativament tancat i $N$ un $S^{-1}A$-mòdul. Aleshores
+\begin{equation}
+    \notag
+    \ass_{S^{-1}A}(S^{-1}M) = S^{-1}(\ass_A(N))
+\end{equation}
+A més, si $A$ és noetherià i $M$ és un $A$-mòdul, aleshores
+\begin{equation}
+    \notag
+    \ass_{S^{-1}A}(S^{-1}M) = S^{-1}(\ass_A(M))\cap\spec{S^{-1}A}
+\end{equation}
+\end{prop}
+\begin{proof}
+Sigui $\p\in\ass_A(N)$ aleshores tenim una aplicació injectiva $A/\p\to N$ ja que $\p = (0:_An)$ per alguna $n\in N$ diferent de zero (es defineix per $x\mapsto xn$). Aleshores $S\cap\p = \emptyset$ ja que si $s\in\p\cap S$ tindríem $sn = 0$ que implica $\frac{s}{1}n = 0$ i per tant $n = 0$. Per tant, $S^{-1}\p\not=S^{-1}A$ i obtenim una aplicació
+\begin{equation}
+    \notag
+    S^{-1}(A/\p)\longrightarrow S^{-1}N=N
+\end{equation}
+injectiva, però com que $S^{-1}(A/\p)\cong S^{-1}A/S^{-1}\p$ aleshores observem que $S^{-1}\p\in\ass_{S^{-1}A}(N)$.
+
+Inversament, sigui $S^{-1}\p\in \ass_{S^{-1}A}(N)$, aleshores $\p\in\spec{A}$ tal que $\p\cap S\not=\emptyset$ per tant $A/\p\longrightarrow S^{-1}(A/\p)$ és injectiva ja que $S\cap\mathcal{Z}_A(A/\p) = \emptyset$. Per tant, podem considerar
+\begin{equation}
+    \notag
+    A/\p\longrightarrow S^{-1}(A/\p) = S^{-1}A/S^{-1}\p\longrightarrow N
+\end{equation}
+on tots els morfismes son injectius i per tant $\p\in\ass_A(N)$.
+
+La inclusió de dreta a esquerra és força immediata ja que si $\p\in\ass_A(M)$ tal que $S\cap \p = \emptyset$ aleshores podem construir $A/\p\longrightarrow M$ injectiva i per tant $S^{-1}\p\in\ass_{S^{-1}A}(S^{-1}M)$. 
+
+Veiem l'altra inclusió, sigui $S^{-1}\p\in\ass_{S^{-1}A}(S^{-1}M)$, aleshores $S^{-1}\p = (0:_{S^{-1}A}\frac{n}{s})$ amb $\frac{n}{s}\not=0$. Podem suposar que $\frac{n}{s} = \frac{n}{1}$ per tant per tota $x\in \p$ tindrem que $\frac{x}{1}\frac{n}{1} = 0$, és a dir, que existeix un $t_x\in S$ tal que $t_xxn = 0$. Com que $\p$ és finitament generat (el genera $x_1,\ldots,x_n$), agafant el producte dels $t_{x_i}$ obtenim que existeix un $t\in S$ tal que $txn=0$ per tot $x\in\p$, és a dir, $\p\subseteq(0:_Atn)$. Observem que si $ytn = 0$, aleshores $\frac{y}{1}\frac{tn}{1}\frac{1}{t}=0$ i per tant $\frac{y}{1}\frac{n}{1}=0$, és a dir, que $\frac{y}{1}\in S^{-1}\p$ i per tant $y\in\p$. Concloem que $\p = (0:_Atn)\in\ass_A(M)$.
+\end{proof}
+
+\begin{coro}
+Sigui $A$ un anell noetherià, $M$ un $A$-mòdul i $\p\in\spec{A}$. Aleshores
+\begin{equation}
+    \notag
+    \p\in\ass_A(M)\Longleftrightarrow \p A_\p\in\ass_{A_\p}(M_\p)
+\end{equation}
+\end{coro}
+\begin{proof}
+Gràcies a la segona part de la proposició anterior, tenim que
+\begin{equation}
+    \notag
+    S^{-1}(\ass_A(M))=\ass_{A_\p}(M_\p)
+\end{equation}
+per tant $\p\in\ass_A(M)\Leftrightarrow S^{-1}\p\in S^{-1}(\ass_A(M))\Leftrightarrow \p A_\p\in \ass_{A_\p}(M_\p)$.
+\end{proof}
+
+
+
+
+\begin{prop}
+\label{prop:associatsSuccessioExacta} Sigui la següent successió exacta de $A$-mòduls:
+\begin{equation}
+    \notag
+    0\longrightarrow M_1\longapp{f}M\longapp{g}M_2\longrightarrow 0
+\end{equation}
+aleshores $\ass_A(M)\subseteq \ass_A(M_1)\cup \ass_A(M_2)$.
+\end{prop}
+\begin{proof}
+Sigui $\p\in\ass_A(M)$, aleshores sabem que existeix una aplicació injectiva $h:(A/\p)\longrightarrow M$ tal que si $h(A/\p)\cap f(M_1)\not=0$ aleshores existeix un $m_1\in M_1$ tal que $f(m_1) = h(\overline{a})$, és a dir
+\begin{equation}
+    \notag
+    \p = (0:_A\overline{a})=(0:_Af(m_1)) = (0:_Am_1)
+\end{equation}
+ja que $f$ és injectiva i per tant $af(m_1) = 0$ si i només si $f(am_1) = 0$ si i només si $am_1 = 0$. Podem concloure aleshores que $\p\in \ass_A(M_1)$.
+
+Si suposem que $h(A/\p)\cap f(M_1) = 0$ aleshores considerem l'aplicació $\overline{h}:A/\p\longrightarrow M_2$ definida per $\overline{h} = g\circ h$ i observem que és injectiva, ja que la successió és exacta
+\begin{equation}
+    \notag
+    0 = \im(h)\cap\im(f) = \im(h)\cap\ker(g)
+\end{equation}
+per tant pel mateix argument tenim $\p\in\ass_A(M_2)$.
+\end{proof}
+
+\begin{prop}
+\label{prop:noetheriaCadenaSubmoduls} Sigui $A$ noetherià i $M$ un $A$-mòdul finitament generat. Aleshores existeix una cadena de $A$-submòduls
+\begin{equation}
+    \notag
+    0 = M_0\subseteq M_1\subseteq M_2\subseteq \cdots\subseteq M_n = M
+\end{equation}
+tal que $M_i/M_{i-1}\cong A/\p_i$ amb $\p_i\in\spec{A}$.
+\end{prop}
+\begin{proof}
+Com que $A$ és noetherià i $M$ $A$-mòdul finitament generat, aleshores $M$ és noetherià i $\ass_A(M)\neq\emptyset$. Sigui $\p_1\in\ass_A(M)$ i $M_1 = A/\p$, aleshores tenim
+\begin{equation}
+    \notag
+    0 = M_0\subseteq M_1\subseteq M
+\end{equation}
+de forma que $M_1/M_0\cong A/\p_1$. Si $M_1\neq M$ escollim $\p_2\in \ass_A(M/M_1)$ de forma que tenim la següent injecció $A/\p_2\hookrightarrow M/M_1$, per tant sabem que existeix un $M_2\subseteq M$ tal que $M_1\subseteq M_2$ i $M_2/M_1\cong A/\p_2$ i per tant obtenim 
+\begin{equation}
+    \notag
+    0 = M_0\subseteq M_1\subseteq M_2\subseteq M
+\end{equation}
+amb $M_1/M_0\cong A/\p_1$ i $M_2/M_1\cong A/\p_2$. Podem continuar d'aquesta forma i com que $M$ és noetherià aquesta cadena s'estabilitza òbviament en $M$.
+\end{proof}
+
+
+\begin{coro}
+\label{coro:associatsConjuntFinit} Sigui $A$ un anell noetherià i $M$ un $A$-mòdul finitament generat. Aleshores $\ass_A(M)$ és un conjunt finit.
+\end{coro}
+\begin{proof}
+Gràcies a la proposició anterior podem agafar una cadena de submòduls que compleixi l'enunciat anterior i aleshores la següent successió és exacta:
+\begin{equation}
+    \notag
+    0\longrightarrow M_{n-1}\longapp{i}M_n\longapp{\pi}M_n/M_{n-1}\longrightarrow 0
+\end{equation}
+Sabem que $M_n/M_{n-1}\cong A/\p_n$ i $M_n = M$ aplicant la proposició \ref{prop:associatsSuccessioExacta} tenim
+\begin{equation}
+    \notag
+    \ass_A(M)\subseteq \ass_A(M_{n-1})\cup\{\p_1\}
+\end{equation}
+Iterant aquest procés obtenim que $\ass_A(M)\subseteq \{\p_1,\ldots,\p_n\}$.
+\end{proof}
+
+
+
+\begin{defi}
+[Suport]\label{def:suport}\index{Suport d'un mòdul} Sigui $M$ un $A$-mòdul, aleshores es defineix el \textit{suport de $M$} com
+\begin{equation}
+    \notag
+    \supp_A(M) = \{\p\in\spec{A}\;:\;M_\p\not=0\}
+\end{equation}
+\end{defi}
+
+Donat que ser zero és una propietat local, aleshores per tot $A$-mòdul diferent de zero, tindrem $\supp_A(M)\neq \emptyset$.
+
+\begin{prop}
+\label{prop:suport} Sigui $M$ un $A$-mòdul finitament generat, aleshores
+\begin{equation}
+    \notag
+    \supp_A(M) = \{\p\in\spec{A}\;:\;(0:_AM)\subseteq\p\}
+\end{equation}
+\end{prop}
+\begin{proof}
+Sigui $\p\in\spec{A}$ tal que $M_\p\neq 0$, aleshores $x\not\in A\setminus\p$ per tant $x\in\p$.
+
+Inversament, per ser $M$ un $A$-mòdul finitament generat, aleshores $M = \langle m_1,\ldots,m_n\rangle$ i
+\begin{equation}
+    \notag
+    (0:_AM)=(0:_A\langle m_1\rangle)\cap\cdots\cap(0:_A\langle m_n\rangle)
+\end{equation}
+per \ref{prop:propietatsAnuladorModul} i com que $(0:_AM)\subseteq\p$ ara pel lema d'evitació de primers \ref{lema:evitacioPrimersInterseccio} i \ref{lema:evitacioPrimersUnio} existeix un $i$ tal que $(0:_A\langle m_i\rangle)\subseteq\p$ per tant $\frac{m_i}{1}\not=0$ en $M_\p$ i per tant $M_p\neq 0$, e´s a dir $\p\in\supp_A(M)$.
+\end{proof}
+
+
+\begin{nota}
+Gràcies a aquesta proposició última tenim que $\supp_A(M)$ i $\spec{A/(0:_AM)}$ estan en correspondència bijectiva que respecta les inclusions. Per tant, $\supp_A(M)$ té elements minimals, és a dir, per tot $\mathfrak{q}\in\supp_A(M)$ existeix un $\p\in\supp_A(M)$ tal que $\p\subseteq\mathfrak{q}$ i $\p$ minimal en $\supp_A(M)$.
+\end{nota}
+
+\begin{nota}
+Ara observem que $\ass_A(M)\subseteq \supp_A(M)$ ja que per tot $\p\in\ass_A(M)$ tenim un morfisme injectiu $h:A/\p\longrightarrow M$ i aleshores $h_\p:(A/\p)_\p\longrightarrow M_\p$ també és injectiu, ara bé $(A/\p)_\p = A_\p/\p A_\p\neq 0$ i per tant $M_\p\neq 0$.
+\end{nota}
+
+
+\begin{prop}
+\label{prop:supportAssociatsMateixNombreMinimals} Sigui $A$ un anell noetherià i $M$ un $A$-mòdul finitament generat. Aleshores $\supp_A(M)$ i $\ass_A(M)$ tenen el mateix número de primers maximals. En particular, és un conjunt finit.
+\end{prop}
+\begin{proof}
+Sigui $\mathfrak{q}\in\supp_A(M)$ minimal, aleshores $M_\mathfrak{q}\neq 0$. Sigui $\p\in\spec{A_\mathfrak{q}}$ aleshores $\p = \p_\mathfrak{q}'$ per algun $\p'\in\spec{A}$ tal que $\p'\cap (A\setminus \mathfrak{q}) = \emptyset$ és a dir $\p'\subseteq \mathfrak{q}$. Si $\p\varsubsetneq \mathfrak{q}A_\mathfrak{q}$ aleshores $\p'\varsubsetneq \mathfrak{q}$ i per la minimalitat de $\mathfrak{q}$ tenim $(M_\mathfrak{q})_\p = M_{\p'} = 0$ per tant $\p\not\in\supp_{A_\mathfrak{q}}(M_\mathfrak{q})$ aleshores $\supp_{A_\mathfrak{q}}(M_\mathfrak{q}) = \{\mathfrak{q}A_\mathfrak{q}\}$.
+
+Per una banda tenim que $\ass_{A_\mathfrak{q}}(M_\mathfrak{q})\neq 0$ i per tant, gràcies a l'observació anterior, tenim $\supp_{A_\mathfrak{q}}(M_\mathfrak{q}) = \{\mathfrak{q}A_\mathfrak{q}\}$. Ara aplicant el corol·lari \ref{coro:associatsConjuntFinit} obtenim $\mathfrak{q}\in\ass_A(M)$. Ja que $\ass_A(M)\subseteq \supp_A(M)$ és clar que $\mathfrak{q}$ és minimal en $\ass_A(M)$ i per tant els dos conjunts tenen els mateixos ideals primers minimals.
+\end{proof}
+
+
+\begin{prop}
+\label{prop:radicalInterseccioPrimersMinimals} Sigui $A$ un anell noetherià i $I$ un ideal qualsevol. Aleshores
+\begin{equation}
+    \notag
+    \rad(I) = \bigcap_{\p\in\min(A/I)}\p 
+\end{equation}
+on $\min(A/I)$ és el conjunt d'ideals minimals que contenen $I$. A més a més, la intersecció és finita.
+\end{prop}
+\begin{proof}
+És simplement aplicar la proposició anterior per $M = A/I$ i obtenim que $\supp_A(A/I)$ i $\spec{A/(0:_AM)} = \spec{A/I}$ estan en correspondència bijectiva, per tant sabem que té un nombre finit d'ideals minimals i per tant
+\begin{equation}
+    \notag
+    \rad(I) = \bigcap_{I\subseteq\mathfrak{q}} \mathfrak{q} = \bigcap_{\p\in\min(A/I)}\p 
+\end{equation}
+és una intersecció finita.
+\end{proof}
+
+En general no és certa la igualtat de $\min_A(A/I)\subseteq \ass_A(A/I)$. Per exemple, si considerem $A = k[X,Y]$ i $I = (X^2,XY)$ aleshores $\min_A(A/I) = (X)$ però $\ass_A(A/I) = \{(X),(X,Y)\}$ ja que $(X) = (0:_AY)$ i $(X,Y) = (0:_AX)$.
+
+
+\begin{defi}[Immersos]
+\label{def:immersos}\index{Immersos} Els primers associats que no són minimals s'anomenen immersos.
+\end{defi}
+
+
+
+\end{document}

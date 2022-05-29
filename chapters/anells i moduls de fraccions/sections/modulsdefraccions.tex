@@ -1,0 +1,239 @@
+\documentclass[../../../main.tex]{subfiles}
+
+
+
+\begin{document}
+
+
+\section{Mòduls de fraccions}
+
+Ara estendrem la definició d'anell de fraccions als mòduls.
+
+\begin{defi}
+[Mòdul de fraccions]\label{def:modulsDeFraccions}\index{Mòdul de fraccions}\index{$S^{-1}M$} Sigui $A$ un anell, $S$ un SMT de $A$ i $M$ un $A$-mòdul. Aleshores, considerem en $M\times S$ la següent relació
+\begin{equation}
+    \notag
+    (m,s)\sim (n,t)\Longleftrightarrow \exists u\in S\;:\;u(mt-ns) = 0
+\end{equation}
+Es comprova que és d'equivalència igual que abans, i aleshores definim el conjunt $S^{-1}M:=M\times S/\sim$ que anomenarem \textit{mòdul de fraccions de $M$ respecte $S$}. Aquest conjunt té definides les operacions de la següent manera:
+\begin{enumerate}[(1)]
+    \item Una operació interna, de $S^{-1}M\times S^{-1}M$ en $S^{-1}M$ definida per 
+    \begin{equation}
+    \notag
+    \overline{(m,s)}+\overline{(n,t)} = \overline{(mt+ns,st)} 
+    \end{equation}
+    
+    \item Una operació externa, de $S^{-1}A\times S^{-1}M$ en $S^{-1}M$ definida per
+    \begin{equation}
+    \notag
+    \overline{(a,s)}\cdotp\overline{(m,t)} = \overline{(am,st)}
+    \end{equation}
+\end{enumerate}
+\end{defi}
+
+\begin{prop}
+Les operacions abans definides estan ben definides i doten a $S^{-1}M$ d'estructura de $S^{-1}A$-mòdul.
+\end{prop}
+
+\begin{nota}
+\label{nota:operacionsModulFraccions} Utilitzem la mateixa notació que abans, és a dir, per $\overline{(m,s)}\in S^{-1}M$ denotem $\frac{m}{s}:=\overline{(m,s)}$ i les operacions es comporten de manera anàloga a les fraccions dels anells d'abans:
+\begin{equation}
+    \notag
+    \frac{m}{s}+\frac{n}{t} = \frac{mt+ns}{st}\qquad \frac{a}{s}\cdotp\frac{m}{t} = \frac{am}{st}
+\end{equation}
+\end{nota}
+
+\begin{defi}
+[Morfisme de $S^{-1}f$]\index{$S^{-1}f$} Siguin $M$ i $N$ dos $A$-mòduls i $S$ un SMT de $A$. Si tenim un morfisme $f:A\to B$ de $A$-mòduls, podem definir el morfisme $S^{-1}f:S^{-1}M\to S^{-1}N$ de la següent forma
+\begin{equation}
+    \notag
+    S^{-1}f\left(\frac{m}{s}\right) = \frac{f(m)}{s}
+\end{equation}
+\end{defi}
+
+Es pot comprovar que està ben definit i és un morfisme de $S^{-1}A$-mòduls.
+
+\begin{nota}
+Si considerem l'aplicació tal que per tot $A$-mòdul $M$ l'envia a $S^{-1}M$ i per tot morfisme $f$ l'envia a $S^{-1}f$ aleshores és un functor entre les categories dels $A$-mòduls i dels $S^{-1}A$-mòduls.
+\end{nota}
+
+\begin{prop}
+\label{prop:exactitudModulFraccions}\index{Exactitud de les cadenes de mòduls de fraccions} Siguin $M_1,M_2$ i $M_3$ $A$-mòduls i $S$ un SMT de $A$. Llavors, si tenim la successió $M_1\app{f}M_2\app{g}M_3$ exacta, aleshores
+\begin{equation}
+    \notag
+    S^{-1}M_1\longapp{S^{-1}f}S^{-1}M_2\longapp{S^{-1}g}S^{-1}M_3
+\end{equation}
+també és una successió exacta.
+\end{prop}
+\begin{proof}
+Donat que $g\circ f = 0$ aleshores $(S^{-1}g)\circ(S^{-1}f) = S^{-1}(g\circ f) = 0$ i per tant $\im(S^{-1}f)\subseteq \ker(S^{-1}g)$. Ara hem de veure la inclusió contrària.
+
+Suposem que $(S^{-1}g)\left(\frac{m_2}{s}\right) = 0$, aleshores $\frac{g(m_2)}{s} = 0$ és a dir, existeix un $t\in S$ tal que $tg(m_2) = 0$, i.e., $g(tm_2) = 0$ i com que la successió inicial sí que és exacta, tenim que $tm_2\in\im(f)$. Aleshores, existeix $m_1\in M_1$ tal que $f(m_1) = tm_2$ i ara només cal observar que
+\begin{equation}
+    \notag
+    S^{-1}f\left(\frac{m_1}{st}\right) = \frac{f(m_1)}{st} = \frac{tm_2}{st} = \frac{m_2}{s}\Longrightarrow \frac{m_2}{s}\in\im(S^{-1}f)
+\end{equation}
+i per tant $\ker(S^{-1}g)\subseteq\im(S^{-1}f)$.
+\end{proof}
+
+Algunes propietats les exposo en forma d'exericic, aprofitant que el vaig haver d'entregar.
+
+\setcounter{exercici}{64}
+\begin{exercici}
+Dados submódulos $N_1, N_2$ de un $A$-módulo $M$ y $S$ un sistema multiplicativamente cerrado de $A$, demostrar que (algunas igualdades ya están demostradas en clase):
+\begin{enumerate}[(i)]
+    \item $\localized (N_1+N_2) = \localized N_1+\localized N_2$.
+    \item $\localized (N_1\cap N_2) = \localized N_1\cap \localized N_2$.
+    \item $\localized (N_1/N_2) \cong (\localized N_1)/(\localized N_2)$, como $\localized A$-módulos.
+    \item Si $M$ es $A$-módulo finito generado, $\localized\colonideal{0}{A}{M} = \colonideal{0}{\localized A}{\localized M}$.
+    \item Si $N_2$ es un $A$-módulo finito generado, $\localized\colonideal{N_1}{A}{N_2} = \colonideal{\localized N_1}{\localized A}{\localized N_2}$.
+    
+    Finalmente, probar que, dado un morfismo de $A$-módulos $f:M\to N$, se verifica
+    \item $\localized\ker(f) = \ker(\localized f)$.
+    \item $\localized\mathrm{Im}(f) = \mathrm{Im}(\localized f)$.
+\end{enumerate}
+\end{exercici}
+\begin{sol}
+\begin{enumerate}[(i)]
+    \item Es trivial dado que
+    \begin{equation}
+        \notag
+        \frac{a}{s}+\frac{b}{t} = \frac{at+bs}{st}
+    \end{equation}
+    por definición y, por lo tanto, podemos hacer $\frac{a_1+a_2}{s} = \frac{a_1}{s}+\frac{a_2}{s}$ con lo que tenemos la igualdad.
+    
+    \item Sabemos que $N_1\cap N_2\subseteq N_1,N_2$ y por tanto $\localized(N_1\cap N_2)\subseteq \localized N_1,\localized N_2$ y por tanto tenemos la primera inclusión. Hacia el otro lado, tomamos $x\in \localized N_1\cap \localized N_2$ que es de la forma $x = \frac{n_1}{s} = \frac{n_2}{t}$ por estar en $\localized N_1$ y en $\localized N_2$ al mismo tiempo. Entonces, por la definición de igualdad de clases, existe $u\in S$ tal que
+    \begin{equation}
+        \notag
+        u(n_1t-n_2s) = 0\Longrightarrow un_1t = un_2s\in N_1\cap N_2
+    \end{equation}
+    porque $n_1\in N_1$ y $n_2\in N_2$. Así pues
+    \begin{equation}
+        \notag
+        x = \frac{n_1}{s} = \frac{u}{u}\frac{n_1}{s}\frac{t}{t} = \frac{un_1t}{ust}\in \localized (N_1\cap N_2)
+    \end{equation}
+    ya que $S$ es un sistema multiplicativamente cerrado y por ende $ust\in S$.
+    \item Tenemos la sucesión exacta
+    \begin{equation}
+        \notag
+        0\longrightarrow N\overset{i}{\longrightarrow}M\overset{\pi}{\longrightarrow} M/N\longrightarrow 0
+    \end{equation}
+    donde $i:N\hookrightarrow M$ es la inclusión (inyectiva) y $\pi:M\to M/N$ el paso al cociente (exhaustiva). Entonces, se vio que pasando a $\localized$ la sucesión seguía siendo exacta, con lo que la sucesión
+    \begin{equation}
+        \notag
+        0\longrightarrow \localized N\overset{\localized i}{\longrightarrow}\localized M\overset{\localized \pi}{\longrightarrow} \localized (M/N)\longrightarrow 0
+    \end{equation}
+    es exacta. Aplico el primer teorema de isomorfía:
+    \begin{equation}
+        \notag`
+        \xymatrix{
+        \localized M \ar[r]^{\localized \pi}\ar[d]^{\pi'} & \localized(M/N)\\
+        \localized M/\ker(\localized \pi)\ar@{-->}[ur]_\cong & 
+        }
+    \end{equation}
+    y por tanto obtengo $\localized (M/N)\cong \localized M/\ker(\localized \pi)$. Ahora vemos que por exactitud, $\ker(\localized \pi) = \mathrm{Im}(\localized i)$ y por ser $\localized i$ inyectiva, tenemos el isomorfismo $\mathrm{M}(\localized i)\cong\localized N$. Así pues, obtenemos el isomorfismo que queríamos.
+    
+    \item Podemos hacer primero el siguiente apartado y este será un caso particular. En efecto, pues poniendo $N_1 = 0$ y $N_2 = M$ obtenemos justo la igualdad, ya que $\localized 0 = 0$.
+    
+    \item Si $N_2$ es finito generado, existe un sistema de generadores $\{e_1,\ldots,e_n\}$ de $N_2$. Así pues, todo elemento será del estilo $\lambda_1e_1+\cdots+\lambda_ne_n$ en $N_2$. De esta forma, tenemos la igualdad siguiente:
+    \begin{equation}
+        \notag
+        \colonideal{N_1}{A}{N_2} = \{x\in A\;:\;xe_i\in N_1\;\forall i=1,\ldots,n\}
+    \end{equation}
+    En efecto, pues basta con ver que cada ``componente'' pertenece a $N_1$ para ver que la multiplicación $xn_2$ pertenece, para cada $n_2\in N_2$. Así pues, $\forall e_i$ del sistema de generadores de $N_2$, $xe_i\in 
+    N_1$ significa que $\forall t\in S$, $\frac{x}{s}\frac{e_i}{t}\in \localized N_1$, pero por otra parte $\frac{e_i}{t}\in \localized N_2$, ergo $\frac{x}{s}\in\colonideal{\localized N_1}{\localized A}{\localized N_2}$.
+    
+    Para ver la inclusión contraria, tomamos $\frac{x}{s}\in\colonideal{\localized N_1}{\localized A}{\localized N_2}$ y observamos que $\frac{x}{s}\in \localized A$ y $\frac{x}{s}\frac{e_i}{t}\in \localized N_1$. De esta forma $\frac{x}{s}\frac{e_i}{t} = \frac{xe_i}{st}\in \localized N_1$ cosa que implica $xe_i\in N_1$ $\forall i$. Esto implica que $\colonideal{N_1}{A}{N_2}$ y así $\frac{x}{s}\in\localized\colonideal{N_1}{A}{N_2}$.
+    
+    \item Los dos últimos apartados los voy a hacer juntos aquí. Sale directamente del hecho de que la siguiente sucesión es exacta siempre
+    \begin{equation}
+        \notag
+        0\longrightarrow\ker f\longrightarrow M\overset{f}{\longrightarrow }\mathrm{Im}f\longrightarrow 0
+    \end{equation}
+    y por tanto, ``localizando'' obtenemos la siguiente sucesión exacta.
+    \begin{equation}
+        \notag
+        0\longrightarrow \localized \ker f\longrightarrow \localized M\overset{\localized f}{\longrightarrow}\localized\mathrm{Im}f\longrightarrow 0
+    \end{equation}
+    Con esto tenemos suficiente para determinar que $\localized \ker f = \ker(\localized f)$ y análogo para la imagen.
+\end{enumerate}
+\end{sol}
+
+Com a exemple interessant, posaré el cas de $\mathbb{Z}$ que vaig haver d'entregar com a exercici.
+
+\setcounter{exercici}{68}
+\begin{exercici}
+Sea $A\subset\mathbb{Q}$ un subanillo. Sea $S:=\mathbb{Z}\cap A^*$, donde $A^*$ denota las unidades de $A$. Probar:
+\begin{enumerate}[(i)]
+    \item $S$ es un sistema multiplicativamente cerrado de $\mathbb{Z}$.
+    \item $\localized\mathbb{Z}\subseteq A$.
+    \item $A\subset\localized \mathbb{Z}$ i deducid que todo subanillo de $\mathbb{Q}$ es un anillo de fracciones de $\mathbb{Z}$.
+    
+    (Indicación: se puede usar que si $\frac{m}{n}\in A$ y $\gcd(m,n) = 1$, entonces $\frac{1}{n}\in A$.
+\end{enumerate}
+\end{exercici}
+\begin{sol}
+\begin{enumerate}[(i)]
+    \item $x,y\in A^*\cap \mathbb{Z}$. Quiero ver que $xy\in A^*\cap \mathbb{Z}$. Por un lado, $x,y\in \mathbb{Z}$ y entonces $xy\in\mathbb{Z}$ obviamente. Por otro lado, $x,y\in A^*$, lo que significa que existen $x',y'\in A^*$ tales que $xx' = 1$ y $yy' = 1$. Entonces, $xy\in A^*$ evidentemente, pues $(xy)(y'x') = 1$. Así pues $xy\in A^*\cap \mathbb Z$ y $S$ es un sistema multiplicativamente cerrado.
+    \item Sea $x\in\localized \mathbb{Z}$. Entonces $x = \frac{a}{s}$, con $a\in\mathbb{Z}$ y $s\in \mathbb Z\cap A^*$. $s\in \mathbb Z$ no nos aporta gran cosa, pero $s\in A^*$ significa que $\exists s'\in A^*$ tal que $ss' = 1$ y así $x = \frac{a}{s} = \frac{a}{s}\frac{s'}{s'} = \frac{as'}{1} = a\cdotp \frac{s'}{1}$, pero $\frac{s'}{1} = \frac{w_1}{w_2}\in A^*\subseteq A$ y por tanto $x\in A$.
+    \item Sea $a\in A$, entonces $a\in\mathbb Q$ y podemos poner $a = \frac{x}{y}$ con $y\not=0$. Entonces, podemos suponer que $\gcd(x,y) = 1$ y sino podemos reducir. Así tenemos, por la indicación, que $\frac{1}{y}\in A$ cosa que implica que $y\in A^*$. Así pues, como $y\in\mathbb Z$ por la construcción de $\mathbb Q$, tenemos $y\in S$ u de esta manera $a = \frac{x}{y}\in\localized \mathbb Z$.
+\end{enumerate}
+\end{sol}
+
+Veiem ara la relació entre $S^{-1}M$ i el producte tensorial.
+
+\begin{prop}
+\label{prop:modulFraccionsProducteTensorial} Sigui $M$ un $A$-mòdul i $S$ un SMT de $A$. Aleshores, $S^{-1}M\cong S^{-1}A\otimes_AM$.
+\end{prop}
+\begin{proof}
+Ho farem utilitzant la propietat universal de l'extensió d'escalars \ref{propietatUniversalExtensioEscalars}. Sigui $N$ un $S^{-1}A$-mòdul qualsevol i $f:M\to N$ un morfisme $A$-lineal. Per la restricció d'escalars hem de veure que existeix un únic $\overline{f}:S^{-1}M\to N$ tal que $\overline{f}\circ\iota = f$. 
+
+Definim primer de tot $\overline{f}(\frac{m}{s}) = \frac{f(m)}{s}$ que té sentit ja que $N$ és un $S^{-1}A$-mòdul. És immediat veure que està ben definida i que és un morfisme de $S^{-1}A$-mòduls, també està clar que $\overline{f}\circ \iota = f$ de la pròpia definició. Per veure la unicitat suposo que hi ha una $g$ que compleix també $g\circ\iota = f$ i arribo a que $g = \overline{f}$.
+\end{proof}
+
+
+
+
+\begin{coro}
+Per tot $A$-mòdul $M$ i $N$ i per tot morfisme $f:M\to N$ el següent diagrama és commutatiu
+\begin{equation}
+    \notag
+    \xymatrix{
+    M\ar[r]^\iota\ar[d]^f & S^{-1}M\ar[d]^{S^{-1}f}\ar[r]^{\pi_M} & S^{-1}A\otimes_AM\ar[d]^{\id_{S^{-1}A}\times f} \\
+    N\ar[r]^\iota & S^{-1}N\ar[r]^{\pi_N} & S^{-1}A\otimes_AN
+    }
+\end{equation}
+on $\pi_M:S^{-1}M\to S^{-1}A\otimes_AM$ es defineix $\pi_M(\frac{m}{s}) = \frac{1}{s}\otimes m$.
+\end{coro}
+\begin{proof}
+És simplement posar noms als isomorfismes de la proposició anterior i la commutativitat surt quasi sola.
+\end{proof}
+
+
+
+
+\begin{coro}
+Per tot $S\subseteq A$ sistema multiplicativament tancat, $S^{-1}A$ és un $A$-mòdul pla.
+\end{coro}
+\begin{proof}
+Apliquem primer de tot l'isomorfisme $S^{-1}A\otimes_AM\cong S^{-1}M$ de la proposició \ref{prop:modulFraccionsProducteTensorial} i ara només cal aplicar que si passem a mòdul de fracció la successió continua essent exacta, proposició \ref{prop:exactitudModulFraccions}.
+\end{proof}
+
+\begin{coro}
+Sigui $M$ i $N$ dos $A$-mòduls i $S$ un SMT. Aleshores
+\begin{equation}
+    \notag
+    S^{-1}M\otimes_{S^{-1}A}S^{-1}N\cong S^{-1}(M\otimes_AN)
+\end{equation}
+\end{coro}
+\begin{proof}
+Utilitzant la proposició \ref{prop:modulFraccionsProducteTensorial} i les propietats del producte tensorial \ref{prop:propietatUniversalProducteDirecte} és fàcil veure-ho.
+\end{proof}
+
+
+
+
+
+
+
+\end{document}

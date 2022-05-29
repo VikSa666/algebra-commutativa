@@ -1,0 +1,183 @@
+\documentclass[../../../main.tex]{subfiles}
+
+
+
+\begin{document}
+
+
+
+
+\section{Topologia de Zariski}
+
+
+Recordem que hem definit $\spec{A} = \{\mathfrak{p}\subseteq A\;:\;\mathfrak{p} \text{ primer }\}$. És un PoSet\footnote{Partially ordered set, un conjunt parcialment ordenat} per les inclusions. Clarament $\max\spec{A}$ és el conjunt de maximals de $A$ i el mateix amb els mínims. Existeix una correspondència bijectiva entre l'espectre de $A/I$ i el conjunt d'ideals primers d'$A$ que contenen $I$:
+\begin{equation}
+    \label{eq:correspondenciaBijectivaSpec}
+    \{\mathfrak{p}\in\spec{A/I}\}\longleftrightarrow \{\mathfrak{p}\in\spec{A}\;:\;I\subseteq\mathfrak{p}\}
+\end{equation}
+
+A continuació introduirem la topologia de Zariski en $\spec{A}$. El que passa és que els ideals de $\spec{A}$ s'organitzen en cadenes, per estar parcialment ordenat. Aleshores volem estudiar aquestes cadenes de forma més enllà que conjuntística. 
+
+\begin{defi}
+[Varietat algebraica afí]\label{def:varietatAlgebraicaAfi} Si prenem $k[X_1,\ldots,X_n]$, on $k$ és un cos, l'anell de polinomis sobre $k$, i prenem un ideal $I$ d'aquest anell, llavors es defineix $\mathbb{V}(I)$ com el conjunt de punts de $k^n$ que anul·len tot polinomi $f\in I$. Se'n diu \textit{varietat algebraica afí}\index{Varietat algebraica afí}.
+\end{defi}
+
+Llavors, considerem $\{f_1,\ldots,f_n\}\subseteq k[X_1,\ldots,X_n]$ i aleshores el conjunt $\{p\in k^n\;:\;f_i(p) = 0,\;\forall i\}$ és un conjunt també de l'espai afí. Si $k = \overline{k}$, aleshores existeix una bijecció entre els conjunts aquests i els ideals $I$ que són radicals. Tot això està als apunts d'``Anells de Polinomis en Diverses Variables''.
+
+Aleshores, la idea de Zariski va ser introduir una topologia en la família de varietats afins. La topologia que descriu és la que ve definida pels tancats que són les varietats afins.
+
+Veiem una sèrie de propietats d'aquestes varietats. És clar que si $E\subseteq F$, aleshores $\mathbb{V}(F) = \mathbb{V}(E)$.
+
+\begin{prop}
+Vegem algunes propietats.
+\begin{enumerate}[(i)]
+    \item Si $I = \langle E\rangle$, aleshores $\mathbb{V}(E) = \mathbb{V}(I) = \mathbb{V}(r(I))$.
+    \item $\mathbb{V}(\emptyset) = \spec{A}$, $\mathbb{V}(A) = \emptyset$.
+    \item $\{E_i\}_{i\in I}$, llavors
+    \begin{equation}
+        \notag
+        \mathbb{V}\left(\bigcup_{i\in I}E_i\right) = \bigcap_{i\in I}\mathbb{V}(E_i)
+    \end{equation}
+    \item $\mathbb{V}(I\cap J) = \mathbb{V}(I)\cup\mathbb{V}(J) = \mathbb{V}(IJ)$, on $I$ i $J$ són ideals.
+\end{enumerate}
+\end{prop}
+\begin{proof}
+\begin{enumerate}[(i)]
+    \item $E\subseteq I$ implica $\mathbb{V}(I)\subseteq \mathbb{V}(E)$. $\mathfrak{p}\supseteq E\Rightarrow I\subseteq \mathfrak{p}\Rightarrow \mathfrak{p}\subseteq\mathbb{V}(I)\Rightarrow \mathbb{V}(E)\subseteq \mathbb{V}(I)$
+    $I\subseteq \mathbb{V}(I)\Rightarrow \mathbb{V}(r(I))\subseteq \mathbb{V}(I)$. $\mathfrak{p}\supseteq I\Rightarrow r(I)\Rightarrow \mathfrak{p}$
+    \item Ok
+    \item $\mathbb{V}(\bigcup_{i\in I} E_i)=\bigcap_{i\in I}\mathbb{V}(E_i)$. $E_i\subseteq\bigcup_i E_i\Rightarrow \mathbb{V}(\bigcup_i E_i)\subseteq \mathbb{V}(E_i)$ per tota $i$, y llavors $\mathbb{V}(\bigcup_i E_i)\subseteq\bigcap_i\mathbb{V}(E_i)$.
+    \item $I\cap J\subseteq I$ y $I\cap J\subseteq J$ implica $\mathbb{V}(I\cap J)\supseteq \mathbb{V}(I),\mathbb{V}(J)$ que implica $\mathbb{V}(I)\cup\mathbb{V}(J)\subseteq\mathbb{V}(I\cap J)$. D'altra banda, $IJ\subseteq I\cap J$ implica $\mathbb{V}(I\cap J)\subseteq \mathbb{V}(IJ)$.
+    
+    Ara si $\mathfrak{p}\supseteq IJ$, llavors $I\subseteq \mathfrak{p}$ o bé $J\subseteq \mathfrak{p}$ por el lema de contenció de primers \ref{lema:evitacioPrimersInterseccio}, i.e. $\mathfrak{p}\in \mathbb{V}(I)$ o bé $\mathfrak{p}\in \mathbb{V}(J)$ és a dir que pertanyen a la unió, com volíem.
+\end{enumerate}
+\end{proof}
+
+\begin{defi}
+[Topologia de Zariski]\label{def:topologiazariski}\index{Topologia de Zariski} Definim la \textit{topologia de Zariski} en $\spec{A}$ com la topologia en la qual els tancats són de la forma
+\begin{equation}
+    \notag
+    \mathbb{V}(E),\qquad \forall E\subseteq A
+\end{equation}
+i equivalentment $\mathbb{V}(I)$ per a $I$ ideal d'$A$ tal que és radical.
+\end{defi}
+
+Ara hem de veure que això és una topologia, però podem veure les propietats de la definició utilitzant la proposició que tot just hem demostrat.
+
+Com a observació, els tancats, és a dir, $\mathbb{V}(E) = \mathbb{V}(\langle E\rangle)$ s'equivalen amb $\spec{A/I}$ i per tant aquests també són tancats de la topologia de Zariski. És a dir, existeix un homeomorfisme entre l'espai topològic de Zariski y l'espai topològic que té per tancats a $\spec{A/I}$, per a qualsevol $I$ ideal.
+
+Els oberts d'aquesta topologia de Zariski són molt grans, en canvi els tancats molt petits. Per exemple, si tinc $\mathfrak{m}\in\max A$, és a dir, un ideal maximal,, aleshores $\spec{A}\setminus\{\mathfrak{m}\}$ és un obert. El mateix $\mathfrak{m}$ és un tancat, perquè és $\{\mathfrak{m}\} = \mathbb{V}(\mathfrak{m})$.
+
+Aleshores, el que farem a continuació és trobar una base per poder caracteritzar millor aquesta topologia, que és una mica rara. Per tot $a\in A$, denotarem $X = \spec{A}$ i $X_a = \{\mathfrak{p}\in\spec{A}\;:\;a\not\in\mathfrak{p}\}$ que es pot escriure com $X_a = \spec{A}\setminus\mathbb{V}(A)$. Aquest $X_a$ és un obert i aleshores veiem que $\{X_a\}_{a\in A}$ és una base d'oberts. A vegades $X_a$ s'escriu $D(a)$. Si $\mathcal{M} = \spec{A}\setminus\mathbb{V}(E) = \bigcup_{a\in E}X_a$. Aquests $X_a$ són els \textit{oberts bàsic}\index{Oberts bàsics}.
+
+\begin{prop}
+\label{prop:obertsbasics} \begin{enumerate}[(1)]
+    \item $X_a\cap X_b = X_{ab}$.
+    \item $X_a = \emptyset$ si, i només si, $a$ és nilpotent.
+    \item $X_a = \spec{A}$ si, i només si, $a$ és unitat, i.e. $a\in A^*$.
+    \item $X_a = X_b$ si, i només si, $\mathrm{rad}((a)) = \mathrm{rad}((b))$.
+    \item $X$ és quasi-compacte.
+    \item $X_a$ són quasi-compactes per tot $a$.
+    \item Si $\mathcal{U}\subseteq X$ obert, aleshores és quasi-compacte si, i només si $\mathcal{U}$ és unió finita d'oberts bàsics.
+\end{enumerate}
+\end{prop}
+\begin{proof}
+\begin{enumerate}[(1)]
+    \item $a,b\not\in\mathfrak{p}$ si, i només si, $ab\not\in\mathfrak{p}$, per la definició d'ideal primer.
+    \item $a$ és nilpotent si, i només si,  $a\in\eta(A) = \bigcap_{\mathfrak{p}\in\spec{A}}\mathfrak{p}$.
+    \item Trivial.
+    \item $X_a\subseteq X_b$ si i només si per tot ideal primer $\mathfrak{p}$, si $a\not\in\mathfrak{p}$ implica $b\not\in\mathfrak{p}$ i això és si i només si per tot primer $\mathfrak{p}$, si $b\in\mathfrak{p}$ aleshores $a\in\mathfrak{p}$ cosa que implica $a\in\mathrm{rad}((b))$. Això és equivalent a veure que $\mathrm{rad}((a))\subseteq \mathrm{rad}((b))$. La inclusió contrària és anàloga.
+    \item Si $X = \bigcup_{i\in I} X_{a_i}$ aleshores prenem l'ideal generat per tots els $a_i$, és a dir, $I = (a_i)_{i\in I}$. Llavors,
+    \begin{equation}
+        \notag
+        \mathbb{V}(I) = \bigcap_{i\in I} \mathbb{V}((a_i)) = \spec{A}\setminus\left(\bigcup_{i\in I}(\spec{A}\setminus\mathbb{V}((a_i)))\right)
+    \end{equation}
+    cosa que implica que $I = A$, ergo $1 = \sum_{j=1}^r \lambda_{i_j} a_{i_j}$ és a dir $\spec{A} = \bigcup_{j=1}^r X_{a_{i_j}}$.
+\end{enumerate}
+\end{proof}
+
+
+\begin{defi}
+[Aplicació entre espectres]\label{def:aplicacioEspectres}\index{$f^*$}\index{Aplicació entre espectres} Suposem que tenim $f:A\to B$ un morfisme d'anells. Aleshores definim $f^*:\spec{A}\to\spec{B}$ com l'aplicació $f^*(\mathfrak{q}) = f^{-1}(\mathfrak{q}) = \mathfrak{q}^c$.
+\end{defi}
+
+
+\begin{prop}
+\label{prop:propietatsAplicacioEspectre} Sigui $f:A\to B$ un morfisme d'anells i $f^*$ l'aplicació de la definició anterior. Aleshores es compleix que
+\begin{enumerate}[(i)]
+    \item Per a tot $a\in A$, $(f^*)^{-1}(X_a) = X_{f(a)}$. En particular, $f^*$ és contínua.
+    \item Per a tot $I\subseteq A$ ideal $(f^*)^{-1}(\mathbb{V}(I)) = \mathbb{V}(I^{e})$ on $I^{e} = \langle f(I)\rangle$.
+    \item Per tot $J\subseteq B$ ideal $\overline{f^*(\mathbb{V}(J))} = \mathbb{V}(J^c)$.
+    \item Sigui $g:B\to C$ un morfisme d'anells aleshores $(g\circ f)^* = f^*\circ g^*$.
+    \item Si $f$ és un epimorfisme aleshores $f^*$ és un homeomorfisme de $\spec{B}$ en $\mathbb{V}(\ker f)$.
+    \item $f^*(\spec{B})$ és dens en $\spec{A}$ si i només si $\ker f\subseteq \eta(A)$, en particular si $f$ és monomorfisme, aleshores $f^*(\spec{B})$ és dens en $\spec{ A}$.
+\end{enumerate}
+\end{prop}
+\begin{proof}
+\begin{enumerate}
+    \item El que farem és calcular directament $(f^*)^{-1}(X_a)$ per tot $a\in A$.
+    \begin{equation}
+        \notag
+        \begin{array}{rl}
+            (f^*)^{-1}(X_a) & = \{\mathfrak{q}\in\spec{B}\;:\;f^*(\mathfrak{q})\in X_a\} = \{\mathfrak{q}\in\spec{B}\;:\;f^{-1}(\mathfrak{q})\in X_a\} =  \\
+             & = \{\mathfrak{q}\in\spec{B}\;:\;a\not\in f^{-1}(\mathfrak{q})\} = \{\mathfrak{q}\in\spec{B}\;:\;f(a)\not\in\mathfrak{q}\} = X_{f(a)}
+        \end{array}
+    \end{equation}
+    La penúltima igualtat és certa ja que $f(a)\not\in \mathfrak{q}$ si i només si $a\not\in f^{-1}(\mathfrak{q})$.
+    
+    \item En aquest apartat farem el mateix, calcularem $(f^*)^{-1}(\mathbb{V}(I))$ per tot $I\subseteq A$ ideal.
+    \begin{equation}
+        \notag\begin{array}{rl}
+            (f^*)^{-1}(\mathbb{V}(I)) &  = \{\mathfrak{q}\in\spec{B}\;:\;f^*(\mathfrak{q})\in\mathbb{V}(I)\} = \{\mathfrak{q}\in\spec{B}\;:\;f^{-1}(\mathfrak{q})\in\mathbb{V}(I)\} = \\
+             &  = \{\mathfrak{q}\in\spec{B}\;:\;I\subseteq f^{—1}(\mathfrak{q})\} = \{\mathfrak{q}\in\spec{B}\;:\;f(I)\subseteq \mathfrak{q}\} = \\
+             & = \mathbb{V}(f(I)) = \mathbb{V}(I^{e})
+        \end{array}
+    \end{equation}
+    
+    \item Aquest apartat el demostrarem per inclusions. Primer veiem la inclusió d'esquerra a dreta. Sigui $J\subseteq B$ un ideal qualsevol, aleshores
+    \begin{equation}
+        \notag
+        \begin{array}{rl}
+            f^*(\mathbb{V}(J)) & = f^*(\{\mathfrak{q}\in\spec{B}\;:\;J\subseteq\mathfrak{q}\}) = \{f^*(\mathfrak{q})\;:\;J\subseteq \mathfrak{q}\} =  \\
+             & = \{f^{-1}(\mathfrak{q})\;:\;J\subseteq\mathfrak{q}\subseteq\{f^{-1}(\mathfrak{q})\;:\;f^{-1}(J)\subseteq f^{-1}(\mathfrak{q})\}\subseteq \\
+             & = \subseteq \{\mathfrak{p}\in\spec{A}\;:\;J^c\subseteq\mathfrak{p}\} = \mathbb{V}(J^c)
+        \end{array} 
+    \end{equation}
+    Per tant $f^*(\mathbb{V}(J))\subseteq \mathbb{V}(J^c)$ i per tant $\overline{f^*(\mathbb{V}(J))}\subseteq\mathbb{V}(J^c)$.
+    
+    Anem a eure l'altra inclusó, primer sabem que $\overline{f^*(\mathbb{V}(J))}\bigcap_{f^*(\mathbb{V}(J))\subseteq\mathbb{V}(L)}\mathbb{V}(L)$ per tant hem de provar que $\mathbb{V}(J^c)\subseteq \bigcap_{f^*(\mathbb{V}(J))\subseteq\mathbb{V}(L)}\mathbb{V}(L)$, és a dir que per tot $\mathbb{V}(L)$ tal que $f^*(\mathbb{V}(J))\subseteq \mathbb{V}(L)$ hem de veure que $\mathbb{V}(J*c)\subseteq\mathbb{V}(L)$. Primer de tot notem que 
+    \begin{equation}
+        \notag
+        f^*(\mathbb{V}(J))\subseteq \mathbb{V}(L)\Longleftrightarrow f^{-1}(\mathbb{V}(J))\subseteq \mathbb{V}(L)\Longleftrightarrow \{f^{-1}(\mathfrak{p})\;:\;J\subseteq \mathfrak{p}\}\subseteq\mathbb{V}(J)
+    \end{equation}
+    Per tant, $f^*(\mathbb{V}(J))\subseteq\mathbb{V}(L)$ és equivalent a que si $J\subseteq \mathfrak{p}$ on $\mathfrak{p}$ és primer, aleshores $L\subseteq f^{-1}(\mathfrak{p})$, que això és equivalent a si $J\subseteq\mathfrak{p}$ aleshores $f(L)\subseteq\mathfrak{p}$ per tant obtenim que si $f^*(\mathbb{V}(J))\subseteq \mathbb{V}(L)$ aleshores $\mathbb{V}(J)\subseteq \mathbb{V}(f(L))$ i aplicant la proposició anterior i la observació podem obtenir que $f(L)\subseteq J\Longleftrightarrow L\subseteq f^{-1}(J) = J^c$ això implica que $\mathbb{V}(J^c)\subseteq\mathbb{V}(L)$, en resum hem vist que
+    \begin{equation}
+        \notag
+        f^*(\mathbb{V}(J))\subseteq \mathbb{V}(L)\Rightarrow \mathbb{V}(J)\subseteq \mathbb{V}(f(L))\Rightarrow f(L)\subseteq\rad(J)\Rightarrow
+    \end{equation}
+    \begin{equation}
+        \notag
+        \Rightarrow L\subseteq \rad(J)^c = \rad(J^c)\Rightarrow \mathbb{V}(J^c) = \mathbb{V}(\rad(J^c))\subseteq\mathbb{V}(L)
+    \end{equation}
+    Per tant $\mathbb{V}(J^c)\subseteq\overline{f^*(\mathbb{V}(J))}$.
+    
+    \item És força immediat ja que $(g\circ f)^* = (g\circ f)^{-1} = f^{-1}\circ g^{-1} = f^*\circ g^*$.
+\end{enumerate}
+\end{proof}
+
+\begin{nota}
+Sigui $A$ domini d'integritat amb un únic ideal primer $\mathfrak{p}$ diferent de $0$. Aleshores, si $B = (A/\mathfrak{p})\times K$, on $K = \mathrm{Frac}(A)$ (el cos de fraccions de $A$) i sigui $f:A\to B$ tal que $f(a) = (\overline{a},a/1)$, aleshores $f^*$ és bijectiva però no és homeomorfisme.
+\end{nota}
+
+\begin{nota}
+Tenim un functor contravariant que va de la categoria dels anells a la categoria d'espais topològics i envia cada anell al seu espectre i cada morfisme $f$ a $f^*$.
+\end{nota}
+
+
+
+
+
+
+
+
+\end{document}

@@ -1,0 +1,305 @@
+\documentclass[../../../main.tex]{subfiles}
+
+
+\begin{document}
+
+
+
+
+\section{Factorització en producte de primers i grup de classes d'ideals}
+
+
+Veurem la definició de domini de Dedekind, així com la prova del teorema de Dedekind i el grup de classes d'ideals.
+
+Per provar el teorema, necessitarem quatre lemes previs.
+
+
+\begin{lema}
+\label{lema:dedekind1} Tot ideal fraccionari d'un domini noetherià és finitament generat.
+\end{lema}
+\begin{proof}
+Sabem que si $M$ és fraccionari, aleshores existeix un $a\in A\setminus\{0\}$ tal que $aM\subseteq A$, és a dir, $M\subseteq a^{-1}A$ i com que $a^{-1}A$ és $A$-mòdul finitament generat i $A$ és noetherià, aleshores és $A$-mòdul noetherià i per tant $M$ és finitament generat.
+\end{proof}
+
+\begin{lema}
+\label{lema:dedekind2} Tot ideal no nul d'un domini noetherià conté un producte d'ideals primers no nuls.
+\end{lema}
+\begin{proof}
+Sigui $\Omega$ el conjunt d'ideals no nuls que no verifiquin la propietat. Suposem que $\Omega\neq\emptyset$ i aleshores per la propietat de noetherianitat, sabem que existeix un $I\in \Omega$ maximal en $\Omega$. Per tant $I$ no és primer (perquè està en $\Omega$). Aleshores, prenem $a_1,a_2\not\in I$ tals que $a_1a_2\in I$ i tindrem que $I\varsubsetneq I_1 = I+(a_1)$ i $I\varsubsetneq I_2 = I+(a_2)$ i que $I_1I_2\subseteq I$. Sabem que $I$ és maximal en $\Omega$ i aleshores $I_1$ i $I_2$ no poden estar en $\Omega$, ergo contenen un producte d'ideals primers no nuls i aleshores $I$ també.
+\end{proof}
+
+
+\begin{lema}
+\label{lema:dedekind3} Sigui $A$ un domini noetherià íntegrament tancat i sigui $K$ el seu cos de fraccions i $M\subseteq K$ un ideal fraccionari. Aleshores
+\begin{equation}
+    \notag
+    S = \{b\in K\;:\;bM\subseteq M\} = A = (M:_KM)
+\end{equation}
+\end{lema}
+\begin{proof}
+Anem a veure que aquest $S$ és exactament $A$. Sabem que $M$ és un $A$-mòdul finitament generat pel lema \ref{lema:dedekind1} i també és fidel, ja que $M\subseteq K$. Llavors, si $b\in S$, per la caracterització dels elements enters, $b$ és enter sobre $A$. Però com que $A$ és íntegrament tancat, aleshores $b\in A$ i per tant $S\subseteq A$. Com que $A\subseteq S$ per la definició d'ideal fraccionari, concloem la igualtat.
+\end{proof}
+
+
+\begin{lema}
+\label{lema:dedekind4} Sigui $A$ un domini noetherià de dimensió 1 i $0\not=I\varsubsetneq A$ un ideal. Aleshores $A\varsubsetneq I^{-1}$.
+\end{lema}
+\begin{proof}
+Sigui $a\in I\subseteq \{0\}$. Aleshores $(a)\subseteq I\varsubsetneq A$. Pel lema \ref{lema:dedekind2}, conté un producte de primers no nuls, sigui $\mathfrak{p_1}\cdots\mathfrak{p}_m\subseteq (a)$. Agafem $m$ el nombre mínim possible. Sigui $\mathfrak{m}\in \max A$ tal que $I\subseteq\mathfrak{m}$ i aleshores $\mathfrak{p}_1\cdots\mathfrak{p}_m\subseteq \mathfrak{m}$. Aleshores, pel lema d'evitació de primers \ref{lema:evitacioPrimersUnio} tenim que $\exists i\;:\;\mathfrak{p}_i\subseteq\mathfrak{m}$. i com que $\dim A = 1$, tenim $\mathfrak{p}_i = \mathfrak{m}$. Podem reordenar per tal que $i = 1$ i així $\mathfrak{p}_1 = \mathfrak{m}$.
+
+Suposem ara que $m = 1$, aleshores $\mathfrak{p}_1 = (a)$ i per tant $I = \mathfrak{m} = (a)$ i aleshores $a^{-1}\in I^{-1}$ cosa que, com $a$ no és invertible, tenim que $a^{-1}\not\in A$.
+
+Suposem ara que $m>1$. Aleshores, per ser el nombre més petit amb aquesta propietat, tindrem $\mathfrak{p}_2\cdots\mathfrak{p}_m\not\subseteq (a)$ i per tant sigui $b\in\mathfrak{p}_2\cdots\mathfrak{p}_m$ tal que $b\not\in (a)$. Aleshores $ba^{-1}\not\in A$. Llavors,
+\begin{equation}
+    \notag
+    I(ba^{-1}) \subseteq\mathfrak{m}(ba^{-1})\subseteq\mathfrak{p}_1\cdots\mathfrak{p}_m(a^{-1})\subseteq (a)(a^{-1})\subseteq A
+\end{equation}
+ja que $I\subseteq\mathfrak{m} = \mathfrak{p}_1$, $b\in\mathfrak{p}_2\cdots\mathfrak{p}_m$ i $\mathfrak{m}b\subseteq \mathfrak{p}_1\cdots\mathfrak{p}_m\subseteq (a)$. En conclusió, $ba^{-1}\in I^{-1}\setminus A$.
+\end{proof}
+
+\begin{ter}
+[Teorema de Dedekind]\label{ter:dedekind}\index{Teorema de Dedekind} Sigui $A$ un domini de Dedekind. Aleshores tot ideal fraccionari és invertible.
+\end{ter}
+\begin{proof}
+Gràcies als lemes anteriors serà ràpida. Sigui $M$ un ideal fraccionari i considerem $MM^{-1}$ i observem que
+\begin{equation}
+    \notag
+    (MM^{-1})(MM^{-1})^{-1}\subseteq A \Longrightarrow M^{-1}(MM^{-1})^{-1}\subseteq M^{-1}
+\end{equation}
+i pel lema \ref{lema:dedekind3} tenim $(MM^{-1})^{-1}\subseteq A$ i pel lema \ref{lema:dedekind4} el fet que $MM^{-1}\subseteq A$ ara implica igualtat.
+\end{proof}
+
+\begin{nota}
+Si $A$ és un anell de Dedekind, aleshores el conjunt d'ideals fraccionaris és un grup $G$ abelià amb la multiplicació. Amb aquest grup, podem introduir una relació d'equivalència així:
+\begin{equation}
+    \notag
+    M\sim N\Longleftrightarrow \text{$\exists J$ ideal principal tal que $M=JN$}
+\end{equation}
+Anomenem $H$ al conjunt dels ideals fraccionaris principals i aleshores podem prendre el grup quocient $G/H$ que s'anomena \textit{grup de classes d'ideals} \index{Grup de classes d'ideals} i d'alguna manera mesura la distància del domini de Dedekind de ser principal.
+\end{nota}
+
+
+
+
+
+
+
+\begin{ter}
+\label{ter:lastTeorem} Sigui $A$ un domini d'integritat tal que tot ideal fraccionari és invertible, aleshores per tot $I\subseteq A$ ideal no trivial tindrem que $I$ és producte d'un nombre finit d'ideals primers de forma única.
+\end{ter}
+\begin{proof}
+Observem primer de tot que tot ideal invertible és finitament general (proposició \ref{prop:fraccionarisInvertibleDivisors}) i per tant $A$ és noetherià. Primer de tot provem l'existència de la descomposició. Suposem que no és el cas i considerem 
+\begin{equation}
+    \notag
+    \Omega = \{ I\subseteq A\;:\;\text{$I$ no és producte d'un nombre finit d'ideals primers}\}\neq \emptyset
+\end{equation}
+Llavors, existeix un maximal en $\Omega$, sigui $I$. Per tant, $I$ no és producte d'ideals primers i per tant $I$ no és maximal. Sigui $I\varsubsetneq \mathfrak{m}\varsubsetneq A$ com que $\mathfrak{m}$ és invertible, aleshores $I = \mathfrak{m}J$ amb $J = \mathfrak{m}^{-1}I$. Com que $\mathfrak{m}\subseteq A$, aleshores $A\subseteq \mathfrak{m}^{-1}$ i per tant $I\subseteq J$. Si $I = J$ aleshores $A = II^{-1} = \mathfrak{m}JJ^{-1} = \mathfrak{m}$ que és una contradicció. Altrament, si $I\varsubsetneq J$ com que $I$ és maximal en $\Omega$, tindrem que $J$ descompon en producte d'ideals primers i per tant $I = \mathfrak{m}J$ també descompon. 
+
+Provem ara la unicitat. Provarem una mena de sub-lema. Suposem $I\varsubsetneq A$ invertible tal que $I = \mathfrak{p}_1\cdots\mathfrak{p}_m$, $\mathfrak{p}_i\in\spec A$. Aleshores aquesta descomposició és única. Suposem que
+\begin{equation}
+    \notag
+    I = \mathfrak{p}_1\cdots\mathfrak{p}_m = \mathfrak{q}_1\cdots\mathfrak{q}_s
+\end{equation}
+amb $\mathfrak{p}_i,\mathfrak{q}_j$ ideals primers i aleshores com que $\mathfrak{q}_1\cdots\mathfrak{q}_s\subseteq \mathfrak{p}_1$ ja que $\mathfrak{p}_1\cdots\mathfrak{p}_m\subseteq\mathfrak{p}_1$ i per tant existeix un $j$ tal que $\mathfrak{q}_j\subseteq\mathfrak{p}_1$ (podem suposar que $\mathfrak{q}_1\subseteq\mathfrak{p}_1$). Com que $\mathfrak{p}_1$ és invertible tindrem $\mathfrak{q}_1 = \mathfrak{p}_1J$ és a dir, o bé $\mathfrak{p}_1 = \mathfrak{q}_1$ o bé $J = \mathfrak{q}_1$. Si $J = \mathfrak{q}_1$ arribem a una contraducció, ja que 
+\begin{equation}
+    \notag
+    A = J^{-1}J = J\mathfrak{q}_1 = J^{-1}J\mathfrak{p}_1 = \mathfrak{p}_1
+\end{equation}
+per tant ha de ser $\mathfrak{p}_1 = \mathfrak{q}_1$ i tenim
+\begin{equation}
+    \notag
+    \mathfrak{p}_1\cdots\mathfrak{p}_m = \mathfrak{q}_1\cdots\mathfrak{q}_s = \mathfrak{p}_1\mathfrak{q}_2\cdots\mathfrak{q}_s
+\end{equation}
+Si $m = 1$, aleshores multiplicant per $\mathfrak{p}_1^{-1}$ obtenim
+\begin{equation}
+    \notag
+    A = \mathfrak{q}_2\cdots\mathfrak{q}_s
+\end{equation}
+i per tant $s = 1$ i tenim la mateixa descomposició. Si $m>1$, aleshores obtindríem la igualtat
+\begin{equation}
+    \notag
+    \mathfrak{p}_2\cdots\mathfrak{p}_m = \mathfrak{q}_2\cdots\mathfrak{q}_s
+\end{equation}
+que és la descomposició d'un ideal invertible i podem aplicar un altre cop aquest argument de forma inductiva i veurem que $\mathfrak{p}_i = \mathfrak{q}_i$ i $m = s$.
+\end{proof}
+
+
+Com a conclusió podem posar el següent teorema
+\begin{ter}
+[R. Dedekind]\label{ter:teoremaDeDedekind} $A$ anell de Dedekind i $I\varsubsetneq A$, $I\not=0,A$. Aleshores descomposa de forma única com
+\begin{equation}
+    \notag
+    \mathfrak{p}_1^{r_1}\cdots\mathfrak{p}_s^{r_s}
+\end{equation}
+amb $\mathfrak{p}_i$ primers diferents i $r_i>0$ per tota $i$.
+\end{ter}
+
+Una altra conseqüència és que la propietat de Dedekind és local. És a dir, un anell és Dedekind si i només si és localment Dedekind. Els locals de Dedekind són dominis locals de dimensió 1 i amb un primer principal. No sé, ja no entenc res. Cas particular impostant, si $Q\subseteq K$ extensó finita, aleshores $\overline{\mathbb{Z}}^K$ és l'anell d'enters algebraics. Aleshores és un anell de Dedekind. Un teorema molt difícil que utilitza mètodes anal·lítics, és el que diu que ekl grup de les classes d'ideals de $\overline{\mathbb{Z}}^K$ és finit. Tot això és ``pre-noether'', però hem utilitzat tècniques de Noether per provar-ho.
+
+$A$ commutatiu i $I\subseteq A$. Diem que $I$ és \textit{primari} si $xy\in I$ implica $x\in I$ o bé $y^n\in I$ per $n\geq1$. Això equival a dir que els $\mathcal{Z}_A(A/I) = \eta(A/I)$. Por la propia definición, primo implica primario y no a la inversa. 
+
+$\rad(I)=\mathfrak{m}\in\max(A)$ implica que $I$ es $\mathfrak{m}$-primario. En particular, $\mathfrak{m}^n$ lo es. No si $\mathfrak{m}$ no es maximal.
+
+\begin{defi}
+Una descomposició primària de $I$
+\begin{equation}
+    \notag
+    I = \bigcap_{i=1}^nq_i
+\end{equation}
+amb $q_i$ primari per tota $i$. Serà \textit{reduïda} o \textit{minimal} si $\rad(q_i)$m són diferents per tota $i$.
+\end{defi}
+
+\begin{ter}
+$I = \bigcap_{i=1}^nq_i$ descomposició primària minimal implica que $\rad(q_i)$ està univocaments determinats
+\end{ter}
+Veurem la definició de domini de Dedekind, així com la prova del teorema de Dedekind i el grup de classes d'ideals.
+
+Per provar el teorema, necessitarem quatre lemes previs.
+
+
+\begin{lema}
+\label{lema:dedekind1} Tot ideal fraccionari d'un domini noetherià és finitament generat.
+\end{lema}
+\begin{proof}
+Sabem que si $M$ és fraccionari, aleshores existeix un $a\in A\setminus\{0\}$ tal que $aM\subseteq A$, és a dir, $M\subseteq a^{-1}A$ i com que $a^{-1}A$ és $A$-mòdul finitament generat i $A$ és noetherià, aleshores és $A$-mòdul noetherià i per tant $M$ és finitament generat.
+\end{proof}
+
+\begin{lema}
+\label{lema:dedekind2} Tot ideal no nul d'un domini noetherià conté un producte d'ideals primers no nuls.
+\end{lema}
+\begin{proof}
+Sigui $\Omega$ el conjunt d'ideals no nuls que no verifiquin la propietat. Suposem que $\Omega\neq\emptyset$ i aleshores per la propietat de noetherianitat, sabem que existeix un $I\in \Omega$ maximal en $\Omega$. Per tant $I$ no és primer (perquè està en $\Omega$). Aleshores, prenem $a_1,a_2\not\in I$ tals que $a_1a_2\in I$ i tindrem que $I\varsubsetneq I_1 = I+(a_1)$ i $I\varsubsetneq I_2 = I+(a_2)$ i que $I_1I_2\subseteq I$. Sabem que $I$ és maximal en $\Omega$ i aleshores $I_1$ i $I_2$ no poden estar en $\Omega$, ergo contenen un producte d'ideals primers no nuls i aleshores $I$ també.
+\end{proof}
+
+
+\begin{lema}
+\label{lema:dedekind3} Sigui $A$ un domini noetherià íntegrament tancat i sigui $K$ el seu cos de fraccions i $M\subseteq K$ un ideal fraccionari. Aleshores
+\begin{equation}
+    \notag
+    S = \{b\in K\;:\;bM\subseteq M\} = A = (M:_KM)
+\end{equation}
+\end{lema}
+\begin{proof}
+Anem a veure que aquest $S$ és exactament $A$. Sabem que $M$ és un $A$-mòdul finitament generat pel lema \ref{lema:dedekind1} i també és fidel, ja que $M\subseteq K$. Llavors, si $b\in S$, per la caracterització dels elements enters, $b$ és enter sobre $A$. Però com que $A$ és íntegrament tancat, aleshores $b\in A$ i per tant $S\subseteq A$. Com que $A\subseteq S$ per la definició d'ideal fraccionari, concloem la igualtat.
+\end{proof}
+
+
+\begin{lema}
+\label{lema:dedekind4} Sigui $A$ un domini noetherià de dimensió 1 i $0\not=I\varsubsetneq A$ un ideal. Aleshores $A\varsubsetneq I^{-1}$.
+\end{lema}
+\begin{proof}
+Sigui $a\in I\subseteq \{0\}$. Aleshores $(a)\subseteq I\varsubsetneq A$. Pel lema \ref{lema:dedekind2}, conté un producte de primers no nuls, sigui $\mathfrak{p_1}\cdots\mathfrak{p}_m\subseteq (a)$. Agafem $m$ el nombre mínim possible. Sigui $\mathfrak{m}\in \max A$ tal que $I\subseteq\mathfrak{m}$ i aleshores $\mathfrak{p}_1\cdots\mathfrak{p}_m\subseteq \mathfrak{m}$. Aleshores, pel lema d'evitació de primers \ref{lema:evitacioPrimersUnio} tenim que $\exists i\;:\;\mathfrak{p}_i\subseteq\mathfrak{m}$. i com que $\dim A = 1$, tenim $\mathfrak{p}_i = \mathfrak{m}$. Podem reordenar per tal que $i = 1$ i així $\mathfrak{p}_1 = \mathfrak{m}$.
+
+Suposem ara que $m = 1$, aleshores $\mathfrak{p}_1 = (a)$ i per tant $I = \mathfrak{m} = (a)$ i aleshores $a^{-1}\in I^{-1}$ cosa que, com $a$ no és invertible, tenim que $a^{-1}\not\in A$.
+
+Suposem ara que $m>1$. Aleshores, per ser el nombre més petit amb aquesta propietat, tindrem $\mathfrak{p}_2\cdots\mathfrak{p}_m\not\subseteq (a)$ i per tant sigui $b\in\mathfrak{p}_2\cdots\mathfrak{p}_m$ tal que $b\not\in (a)$. Aleshores $ba^{-1}\not\in A$. Llavors,
+\begin{equation}
+    \notag
+    I(ba^{-1}) \subseteq\mathfrak{m}(ba^{-1})\subseteq\mathfrak{p}_1\cdots\mathfrak{p}_m(a^{-1})\subseteq (a)(a^{-1})\subseteq A
+\end{equation}
+ja que $I\subseteq\mathfrak{m} = \mathfrak{p}_1$, $b\in\mathfrak{p}_2\cdots\mathfrak{p}_m$ i $\mathfrak{m}b\subseteq \mathfrak{p}_1\cdots\mathfrak{p}_m\subseteq (a)$. En conclusió, $ba^{-1}\in I^{-1}\setminus A$.
+\end{proof}
+
+\begin{ter}
+[Teorema de Dedekind]\label{ter:dedekind}\index{Teorema de Dedekind} Sigui $A$ un domini de Dedekind. Aleshores tot ideal fraccionari és invertible.
+\end{ter}
+\begin{proof}
+Gràcies als lemes anteriors serà ràpida. Sigui $M$ un ideal fraccionari i considerem $MM^{-1}$ i observem que
+\begin{equation}
+    \notag
+    (MM^{-1})(MM^{-1})^{-1}\subseteq A \Longrightarrow M^{-1}(MM^{-1})^{-1}\subseteq M^{-1}
+\end{equation}
+i pel lema \ref{lema:dedekind3} tenim $(MM^{-1})^{-1}\subseteq A$ i pel lema \ref{lema:dedekind4} el fet que $MM^{-1}\subseteq A$ ara implica igualtat.
+\end{proof}
+
+\begin{nota}
+Si $A$ és un anell de Dedekind, aleshores el conjunt d'ideals fraccionaris és un grup $G$ abelià amb la multiplicació. Amb aquest grup, podem introduir una relació d'equivalència així:
+\begin{equation}
+    \notag
+    M\sim N\Longleftrightarrow \text{$\exists J$ ideal principal tal que $M=JN$}
+\end{equation}
+Anomenem $H$ al conjunt dels ideals fraccionaris principals i aleshores podem prendre el grup quocient $G/H$ que s'anomena \textit{grup de classes d'ideals} \index{Grup de classes d'ideals} i d'alguna manera mesura la distància del domini de Dedekind de ser principal.
+\end{nota}
+
+
+
+
+
+
+
+\begin{ter}
+\label{ter:lastTeorem} Sigui $A$ un domini d'integritat tal que tot ideal fraccionari és invertible, aleshores per tot $I\subseteq A$ ideal no trivial tindrem que $I$ és producte d'un nombre finit d'ideals primers de forma única.
+\end{ter}
+\begin{proof}
+Observem primer de tot que tot ideal invertible és finitament general (proposició \ref{prop:fraccionarisInvertibleDivisors}) i per tant $A$ és noetherià. Primer de tot provem l'existència de la descomposició. Suposem que no és el cas i considerem 
+\begin{equation}
+    \notag
+    \Omega = \{ I\subseteq A\;:\;\text{$I$ no és producte d'un nombre finit d'ideals primers}\}\neq \emptyset
+\end{equation}
+Llavors, existeix un maximal en $\Omega$, sigui $I$. Per tant, $I$ no és producte d'ideals primers i per tant $I$ no és maximal. Sigui $I\varsubsetneq \mathfrak{m}\varsubsetneq A$ com que $\mathfrak{m}$ és invertible, aleshores $I = \mathfrak{m}J$ amb $J = \mathfrak{m}^{-1}I$. Com que $\mathfrak{m}\subseteq A$, aleshores $A\subseteq \mathfrak{m}^{-1}$ i per tant $I\subseteq J$. Si $I = J$ aleshores $A = II^{-1} = \mathfrak{m}JJ^{-1} = \mathfrak{m}$ que és una contradicció. Altrament, si $I\varsubsetneq J$ com que $I$ és maximal en $\Omega$, tindrem que $J$ descompon en producte d'ideals primers i per tant $I = \mathfrak{m}J$ també descompon. 
+
+Provem ara la unicitat. Provarem una mena de sub-lema. Suposem $I\varsubsetneq A$ invertible tal que $I = \mathfrak{p}_1\cdots\mathfrak{p}_m$, $\mathfrak{p}_i\in\spec A$. Aleshores aquesta descomposició és única. Suposem que
+\begin{equation}
+    \notag
+    I = \mathfrak{p}_1\cdots\mathfrak{p}_m = \mathfrak{q}_1\cdots\mathfrak{q}_s
+\end{equation}
+amb $\mathfrak{p}_i,\mathfrak{q}_j$ ideals primers i aleshores com que $\mathfrak{q}_1\cdots\mathfrak{q}_s\subseteq \mathfrak{p}_1$ ja que $\mathfrak{p}_1\cdots\mathfrak{p}_m\subseteq\mathfrak{p}_1$ i per tant existeix un $j$ tal que $\mathfrak{q}_j\subseteq\mathfrak{p}_1$ (podem suposar que $\mathfrak{q}_1\subseteq\mathfrak{p}_1$). Com que $\mathfrak{p}_1$ és invertible tindrem $\mathfrak{q}_1 = \mathfrak{p}_1J$ és a dir, o bé $\mathfrak{p}_1 = \mathfrak{q}_1$ o bé $J = \mathfrak{q}_1$. Si $J = \mathfrak{q}_1$ arribem a una contraducció, ja que 
+\begin{equation}
+    \notag
+    A = J^{-1}J = J\mathfrak{q}_1 = J^{-1}J\mathfrak{p}_1 = \mathfrak{p}_1
+\end{equation}
+per tant ha de ser $\mathfrak{p}_1 = \mathfrak{q}_1$ i tenim
+\begin{equation}
+    \notag
+    \mathfrak{p}_1\cdots\mathfrak{p}_m = \mathfrak{q}_1\cdots\mathfrak{q}_s = \mathfrak{p}_1\mathfrak{q}_2\cdots\mathfrak{q}_s
+\end{equation}
+Si $m = 1$, aleshores multiplicant per $\mathfrak{p}_1^{-1}$ obtenim
+\begin{equation}
+    \notag
+    A = \mathfrak{q}_2\cdots\mathfrak{q}_s
+\end{equation}
+i per tant $s = 1$ i tenim la mateixa descomposició. Si $m>1$, aleshores obtindríem la igualtat
+\begin{equation}
+    \notag
+    \mathfrak{p}_2\cdots\mathfrak{p}_m = \mathfrak{q}_2\cdots\mathfrak{q}_s
+\end{equation}
+que és la descomposició d'un ideal invertible i podem aplicar un altre cop aquest argument de forma inductiva i veurem que $\mathfrak{p}_i = \mathfrak{q}_i$ i $m = s$.
+\end{proof}
+
+
+Com a conclusió podem posar el següent teorema
+\begin{ter}
+[R. Dedekind]\label{ter:teoremaDeDedekind} $A$ anell de Dedekind i $I\varsubsetneq A$, $I\not=0,A$. Aleshores descompon de forma única com
+\begin{equation}
+    \notag
+    \mathfrak{p}_1^{r_1}\cdots\mathfrak{p}_s^{r_s}
+\end{equation}
+amb $\mathfrak{p}_i$ primers diferents i $r_i>0$ per tota $i$.
+\end{ter}
+
+Una altra conseqüència és que la propietat de Dedekind és local. És a dir, un anell és Dedekind si i només si és localment Dedekind. Els locals de Dedekind són dominis locals de dimensió 1 i amb un primer principal. No sé, ja no entenc res. Cas particular impostant, si $Q\subseteq K$ extensió finita, aleshores $\overline{\mathbb{Z}}^K$ és l'anell d'enters algebraics. Aleshores és un anell de Dedekind. Un teorema molt difícil que utilitza mètodes anal·lítics, és el que diu que ekl grup de les classes d'ideals de $\overline{\mathbb{Z}}^K$ és finit. Tot això és ``pre-noether'', però hem utilitzat tècniques de Noether per provar-ho.
+
+$A$ commutatiu i $I\subseteq A$. Diem que $I$ és \textit{primari} si $xy\in I$ implica $x\in I$ o bé $y^n\in I$ per $n\geq1$. Això equival a dir que els $\mathcal{Z}_A(A/I) = \eta(A/I)$. Por la pròpia definició, primo implica primari y no a la inversa. 
+
+$\rad(I)=\mathfrak{m}\in\max(A)$ implica que $I$ es $\mathfrak{m}$-primari. En particular, $\mathfrak{m}^n$ lo es. No si $\mathfrak{m}$ no es maximal.
+
+\begin{defi}
+Una descomposició primària de $I$
+\begin{equation}
+    \notag
+    I = \bigcap_{i=1}^nq_i
+\end{equation}
+amb $q_i$ primari per tota $i$. Serà \textit{reduïda} o \textit{minimal} si $\rad(q_i)$m són diferents per tota $i$.
+\end{defi}
+
+\begin{ter}
+$I = \bigcap_{i=1}^nq_i$ descomposició primària minimal implica que $\rad(q_i)$ està unívocament determinats
+\end{ter}
+
+
+
+
+
+
+
+\end{document}

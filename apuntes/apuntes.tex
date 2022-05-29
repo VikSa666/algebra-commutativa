@@ -1,0 +1,263 @@
+\documentclass[../main.tex]{subfiles}
+
+
+
+
+
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{21 febrero}
+
+
+\section{28 febrer}
+
+
+\section{2 març}
+
+
+\section{7 març}
+
+
+
+
+\section{9 març}
+
+
+
+
+
+
+\section{14 març}
+
+
+
+
+\section{16 març} 
+
+
+
+
+
+
+
+\section{21 març}
+
+
+
+\section{28 març}
+
+
+
+\section{30 març}
+
+
+
+
+
+\section{20 abril}
+
+
+
+Suposem ara que tenim $M_1\subseteq M$ i $N_1\subseteq N$, $m\in M$ i $n\in N$. Aleshores, no és el mateix $m\otimes n$ en $M\otimes N$ que en $M_1\otimes N_1$, donat que no és cert en general que $M_1\otimes N_1\subseteq M\otimes N$. Per exemple, $2\mathbb{Z}\otimes_\mathbb{Z}\mathbb{Z}/(2)\cong \mathbb{Z}\otimes_\mathbb{Z}\mathbb{Z}/(2)\not=0$ però aleshores existeix $2a\otimes\overline{b}\not=0$ en $\mathbb{Z}\otimes_\mathbb{Z}\mathbb{Z}/(2)$. Però si prenem $2\otimes\overline{b}$ això pot ser zero, perquè $2\otimes \overline{b} = 2\cdotp1\otimes\overline{b} = 1\otimes 2\overline{b} = 1\otimes 0 = 0$. \textcolor{red}{Me he perdido bastante}. 
+
+\textcolor{red}{M $A$-plano} \textcolor{red}{Diagrama chungo ese.}
+
+\textcolor{red}{Mirar móvil foto}
+
+\begin{lema}
+$M,N$ $A$-mod.~, $\alpha = \sum_{i\in I}m_i\otimes n_i\in M\otimes_AN$. $\exists M_0\subseteq M$, $N_0\subseteq N$, $f,g$, $\alpha'\in M_0\otimes N_0$ de forma que $i:M_0\hookrightarrow M$, $j:N_0\hookrightarrow N$, $i\otimes j:M_0\otimes_AN_0\to M\otimes_AN$, $(i\otimes j)(\alpha') = \alpha$, 
+\end{lema}
+
+
+\section{2 maig}
+
+$A$, $S\subseteq A$ sistema m. c., $M$ un $A$-mòdul. Aleshores $S^{-1}A$, $S^{-1}M$ $\frac{a}{s}\cdotp\frac{m}{t} = \frac{am}{st}$.
+
+$M$, $N$, $A$-mòdul, $f: M \to N$, $A$-lineal.
+\begin{equation}
+    \notag
+    S^{-1}f:S^{-1}M\to S^{-1}N,\quad (S^{-1}f)(m/s) = f(m)/s
+\end{equation}
+ben definit, $S^{-1}f$ és $S^{-1}A$-lineal. $S^{-1}\mathrm{Id}_M = \mathrm{Id}_{S^{-1}M}$ i $S^{-1}(f\circ g) = S^{-1}f\circ S^{-1}g$.
+
+\begin{prop}
+$M_1\overset{f}{\to}M_2\overset{g}{\to}M_3$ és una successió exacta, aleshores la successió
+\begin{equation}
+    \notag
+    S^{-1}M\overset{S^{-1}f}{\longrightarrow}S^{-1}M\overset{S^{-1}g}{\longrightarrow} S^{-1}M_3
+\end{equation}
+també ho és.
+\end{prop}
+\begin{proof}
+\textcolor{red}{Guillem Sedó}.
+\end{proof}
+
+\begin{coro}
+Sigui $M$ un $A$-mòdul i $N,P\subseteq M$ $A$-submòduls. Aleshores
+\begin{enumerate}[(0)]
+    \item $N\subseteq M\Longrightarrow S^{-1}N\subseteq S^{-1}M$.
+    \item $S^{-1}(N+P) = S^{-1}N+S^{-1}P\subseteq S^{-1}M$.
+    \item $S^{-1}(N\cap P) = S^{-1}N\cap S^{-1}P\subseteq S^{-1}M$.
+    \item $S^{-1}(M/N)\cong S^{-1}M/S^{-1}N$.
+\end{enumerate}
+\end{coro}
+\begin{proof}
+Pel punt primer, té sentit pensar que $S^{-1}N+S^{-1}P$ i $S^{-1}N\cap S^{-1}P$ està contingut en $S^{-1}M$. Ara veiem que es compleixen les igualtats.
+\begin{enumerate}[(1)]
+    \item $\frac{n+p}{s} = \frac{n}{s}+\frac{p}{s}$. D'altra banda, $\frac{n}{s}+\frac{p}{t} = \frac{tn+sp}{st} \in S^{-1}(N+P)$ que ens dona l'altra inclusió.
+    \item Sabem que $N\cap P\subseteq N,P$ i per tant $S^{-1}(N\cap P)\subseteq S^{-1}N,S^{-1}P$ i aleshores està en la intersecció. Això ens dona $S^{-1}(N\cap P)\subseteq S^{-1}N\cap S^{-1}P$.
+    
+    Inversament, si tenim $\frac{n}{s} = \frac{p}{t}$ en $S^{-1}M$, aleshores existeix $u\in S$ tal que $u(nt-sp) = 0$. Aleshores $unt = ust$ i per una banda això pertany a $N$ i per l'altra a $P$. Aleshores, pertany a $N\cap P$. Per tant,
+    \begin{equation}
+        \notag
+        \frac{n}{s} = \frac{unt}{ust}\in S^{-1}(N\cap P).
+    \end{equation}
+    
+    \item Observem que tenim la següent successió exacta
+    \begin{equation}
+        \notag
+        0\longrightarrow N\overset{i}{\longrightarrow} M\overset{\pi}{\longrightarrow} M/N\longrightarrow 0
+    \end{equation}
+    Gràcies a la proposició anterior tenim que la següent successió també és exacta
+    \begin{equation}
+        \notag
+        0\longrightarrow S^{-1}N\overset{S^{-1}i}{\longrightarrow} S^{-1}M\overset{S^{-1}\pi}{\longrightarrow} S^{-1}(M/N)\longrightarrow 0
+    \end{equation}
+    per tant tenim que $S^{-1}\pi$ és exhaustiva i aleshores utilitzem el primer teorema d'isomorfia i obtenim
+    \begin{equation}
+        \notag
+        S^{-1}(M/N)\cong S^{-1}M/\ker(S^{-1}\pi) = S^{-1}M/\mathrm{Im}S^{-1}i\cong S^{-1}M/S^{-1}N
+    \end{equation}
+    ja que l'aplicació $S^{-1}i$ és injectiva, també per la proposició anterior.
+\end{enumerate}
+\end{proof}
+
+
+\begin{prop}
+Sigui $A$ un anell, $M$ un $A$-mòdul i $S$ un sistema multiplicativament tancat. Aleshores
+\begin{enumerate}[(1)]
+    \item $S^{-1}M$ és $S^{-1}A$-mòdul.
+    \item $i:A\to S^{-1}A$, $i(a) = a/1$, és morfisme d'anells
+\end{enumerate}
+\end{prop}
+
+
+\begin{prop}
+$i_M:M\to S^{-1}M$, $m\mapsto m/1$. $S^{-1}M$ $A$-mod. $a\frac{m}{s} = \frac{a}{1}\frac{m}{s} = \frac{am}{s}$ $i_M$ és morfisme de $A$-mod. \textcolor{red}{Se hace el lío un poco}
+\end{prop}
+
+Aleshores: $S^{-1}M\cong M\otimes_AS^{-1}A$
+\begin{equation}
+    \notag
+    \xymatrix{
+    S^{-1}M\ar[r]^\cong & M\otimes_AS^{-1}A\\
+    M\ar[u]^{i_M} \ar[ur]_{j_M} & 
+    }
+\end{equation}
+on $j_M(m) = m\otimes \frac{1}{1}$. Aleshores anem a demostrar que $(S^{-1}M,i_M)$ verifica la propietat universal de l'extensió d'escalars.
+
+\begin{proof}
+$M\overset{f}{\to}N$. $N$ $S^{-1}A$-mòdul. $N$ $A$-mòdul per restricció d'escalars. $a\cdotp n = j_A(a)n = \frac{a}{1}\cdotp n$. $f$ $A$-lineal. \textcolor{red}{No entenc res}. Volem demostrar que existeix un únic $\overline{f}$ que fa commutatiu el diagrama
+\begin{equation}
+    \notag
+    \xymatrix{
+    M\ar[r]^f\ar[d]_{i_M} & N\\
+    S^{-1}M\ar@{-->}[ur]_{\exists!\overline{f}}
+    }
+\end{equation}
+$\overline{f}(m/s) = \frac{1}{s}\cdotp f(m)$ està ben definida ja que $N$ és un $S^{-1}A$-mòdul. És immediat veure que està ben definida i que és un morfisme de $S^{-1}A$ mòduls. Si $m/s = n/t$ aleshores existeix $u\in S$ tal que $u(tm-sn) = 0$ i aleshores $f(u(tm-sn)) = 0$ que implica, per ser $f$ un morfisme, $utf(m) = usf(n)$ i com $u\in (S^{-1}A)^*$ podem treure'l i obtenim $tf(m) = sf(n)$, que implica $f(m)/s = f(n)/t$ que és el que volíem. Que és $S^{-1}A$-lineal és trivial donat que $f$ és $A$-lineal:
+\begin{equation}
+    \notag
+    (\overline{f}\circ i_M)(m) = \overline{f}(m/1) = f(m)/1 = f(m)
+\end{equation}
+També és clar que $\overline{f}\circ i = f$ de la pròpia definició. Per veure la unicitat, $\overline{f}$ està necessàriament definida a partir del numerador. Però ho provem igualment. 
+\begin{equation}
+    \notag
+    g(m/s) = \frac{1}{s}g(m/1) = \frac{1}{s}(g\circ i)(m) = \frac{1}{s}f(m) = \overline{f}(m/s)
+\end{equation}
+\end{proof}
+
+
+\begin{coro}
+Per tot $A$-mòdul $M,N$ i morfisme $f:M\to N$, el següent diagrama commuta
+\begin{equation}
+    \notag
+    \xymatrix{
+    S^{-1}M\ar[d]^\cong\ar[r]^{S^{-1}f} & S^{-1}N\ar[d]^\cong \\
+    M\otimes_AS^{-1}A\ar[r]_{f\otimes\mathrm{Id}_{S^{-1}A}} & N\otimes_AS^{-1}A
+    }
+\end{equation}
+Si anomenem $\psi_M:S^{-1}M\to M\otimes_AS^{-1}A$ i $\psi_N$ al respectiu de la dreta, aleshores tenim 
+\begin{equation}
+    \notag
+    \psi_N(S^{-1}f(m/s)) = \psi_N(f(m)/s) = f(m)\otimes 1/s = (f\otimes\mathrm{id}_{S^{-1}A})(m\otimes 1/s) = (f\otimes_A\mathrm{id}_S^{-1}A)(\psi_M(m/s))
+\end{equation}
+\end{coro}
+
+\begin{coro}
+Per tot $S\subseteq A$ sistema multiplicativament tancat, aleshores $S^{-1}A$ és un $A$-mòdul pla.
+\end{coro}
+\begin{proof}
+\textcolor{red}{NO EM DONA TEMPS DE COPIAR-HO però la idea és aplicar la proposició que diu que si la successió $M_1\to M_2\to M_3$ és exacta, també ho és amb les $S^{-1}$ i després apliquem no sé quin teorema que diu que $S^{-1}M_i\cong M_i\otimes_AS^{-1}A$ i ja ho tenim.}
+\end{proof}
+
+\begin{nota}
+Ara tenim molts exemples de $A$-mòduls plans que no són lliures. Per exemple, sigui $A$ un domini i suposem que existeix un $s\in A\setminus A^*$, aleshores, $A_s$ no és $A$-lliure, amb $S = \{s^n\}_{n\geq 0}$. En primer lloc, $A_s\not\cong A$ perquè sinó tindríem $\frac{1}{s} = b$ per un $b\in A$ i per tant $bs = 1$, però hem dit que $s\not\in A^*$ \textcolor{red}{Aquí se ha hecho el lío y dice que ya lo pensará...}. Per una altra banda, dos elements diferents sempre són $A$-linealment dependents, ja que si $\frac{a}{s^r},\frac{b}{s^t}\in A_s$ i suposem que $t\geq r$, aleshores
+\begin{equation}
+    \notag
+    b\cdotp\frac{a}{s^r} = b\cdotp\frac{s^{t-r}a}{s^t} = as^{t-r}\frac{b}{s^t}
+\end{equation}
+Per tat $A_s$ no pot ser $A$-lliure ja que no és isomorf a $A$ i no té dos elements independents.
+\end{nota}
+
+\begin{coro}
+Siguin $M$ i $N$ $A$-mòduls i $S$ un sistema multiplicativament tancat, aleshores
+\begin{equation}
+    \notag
+    S^{-1}M\otimes_{S^{-1}A}S^{-1}N\cong S^{-1}(M\otimes_AN)
+\end{equation}
+\end{coro}
+\begin{proof}
+$S^{-1}M\otimes_S^{-1}AS^{-1}N\cong (M\otimes_AS^{-1}A)\otimes_{S^{-1}A}(S^{-1}A\otimes_AN)\cong M\otimes_A(S^{-1}A\otimes_{S^{-1}A}S^{-1}A)\otimes_AN\cong M\otimes_AS^{-1}A\otimes_AN\cong (M\otimes_AN)\otimes_AS^{-1}A\cong S^{-1}(M\otimes_AN)$.
+\end{proof}
+
+
+
+
+
+
+\section{23 maig}
+
+
+\textcolor{blue}{Nos quedamos en la definición 5.2.11 que es la siguiente}
+
+
+
+\textcolor{blue}{5.3. Factorització en producte de primers i grup de classes d'ideals}
+
+
+\textcolor{red}{cosas raras}
+
+\begin{ter}
+[E. Noether]\label{ter:emmyNoether} $A$ noetherià implica que per tot $I\subseteq A$, $I\not=0,A$ existeix una descomposició primària minimal.
+\end{ter}
+
+
+привет, как дела? всё хорошо, спасибо. Девочка ест наше яблока
+
+
+
+
+\section{Random}
+
+
+
+
+
+
+\end{document}
+

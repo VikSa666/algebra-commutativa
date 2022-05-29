@@ -1,0 +1,84 @@
+\documentclass[../../../main.tex]{subfiles}
+
+
+
+\begin{document}
+
+
+\section{Propietats locals}
+
+
+Aquí definim localització i què vol dir que un mòdul tingui una propietat local, o bé que és localment tal cosa.
+
+\begin{defi}
+[Localitzat]\label{def:localitzat}\index{Localitzat}\index{$M_\mathfrak{p}$} Sigui $M$ un $A$-mòdul i $\mathfrak{p}\in\spec A$. Definim $S:=A\setminus \{\mathfrak{p}\}$ (s'ha de veure que és un SMT) i aleshores definim $M_\mathfrak{p}:=S^{-1}M$. S'anomena \textit{localitzat} de $M$ per $\mathfrak{p}$.
+\end{defi}
+
+\begin{defi}
+[Propietat local]\label{def:propietatLocal}\index{Propietat local d'un mòdul}\index{Mòdul localment ``$P$''} Sigui $P$ una propietat de $A$-mòdul. Diem que $P$ és una \textit{propietat local d'un $A$-mòdul $M$}, o bé que \textit{$M$ és localment $P$} si es satisfà
+\begin{equation}
+    \notag
+    \text{$M$ verifica $P$} \Longleftrightarrow \text{$M_\mathfrak{p}$ verifica $P$ per tot $\mathfrak{p}\in\spec A$}
+\end{equation}
+\end{defi}
+
+\begin{prop}
+\label{prop:propietatLocal} Sigui $M$ un $A$-mòdul, aleshores els següents enunciats són equivalents
+\begin{enumerate}[(i)]
+    \item $M = 0$
+    \item $M_\mathfrak{p} = 0$ per tot $\mathfrak{p}\in\spec A$
+    \item $M_\mathfrak{m} = 0$ per tot $\mathfrak{m}\in\max A$.
+\end{enumerate}
+\end{prop}
+\begin{proof}
+Les implicacions (i) a (ii) i (ii) a (iii) són trivials. Anem a veure (iii) implica (i).
+
+Si $m\in M$ aleshores $\frac{m}{1} = 0$ $\forall \mathfrak{m}\in\max M$ si i només si $\exists s\in A\setminus\{\mathfrak{m}\}$ tal que $sm = 0$ si, i només si, $\ann_A(m)\not\subseteq\mathfrak{m}$. Això vol dir que $\forall m\in M$, $\forall \mathfrak{m}\in\max A$, $\ann_A(m)\not\subseteq \mathfrak{m}$ però $\ann_A(m) = A$ i per tant $m = 0$.
+\end{proof}
+
+\begin{coro}
+\label{coro:morfismesPropietatsLocalsInjectivitat} Sigui $f:M\to N$ un morfisme de $A$-mòduls. Aleshores, són equivalents
+\begin{enumerate}[(1)]
+    \item $f$ és monomorfisme
+    \item $f_\mathfrak{p}:M_\mathfrak{p}\to N_\mathfrak{p}$ és monomorfisme per tot $\mathfrak{p}\in\spec A$
+    \item $f_\mathfrak{m}:M_\mathfrak{m}\to N_\mathfrak{m}$ és monomorfisme per tot $\mathfrak{m}\in\max A$.
+\end{enumerate}
+\end{coro}
+\begin{proof}
+Primer de tot, notem que $M_\mathfrak{p} = S^{-1}M$ on $S^{-1} = A\setminus\mathfrak{p}$. Com que la següent successió és exacta: $0\to M\app{f}N$, aleshores per l'exactitud dels mòduls de fraccions \ref{prop:exactitudModulFraccions} la successió $0\to M_\mathfrak{p}\app{f_\mathfrak{p}}N_\mathfrak{p}$ també ho és. Per tant, $f_\mathfrak{p}$ és homomorfisme. Com que $\max A\subseteq\spec A$, la implicació (2) implica (3) és immediata. Anem a provar la última.
+
+Sabem que la successió
+\begin{equation}
+    \notag
+    0\to \ker f\app{i}M\app{f}N
+\end{equation}
+és exacta i per tant, per l'exactitud dels mòduls de fraccions \ref{prop:exactitudModulFraccions}, la successió $0\to (\ker f)_\mathfrak{m}\app{i_\mathfrak{m}}M_\mathfrak{m}\app{f_\mathfrak{m}}N_\mathfrak{m}$ també és exacta i per tant tenim $(\ker f)_\mathfrak{m} = \ker(f_\mathfrak{m})$ i aleshores per tot $\mathfrak{m}\in \max A$, tenim que $\ker(f_\mathfrak{m}) = 0$ automàticament tindrem que $(\ker(f))_\mathfrak{m} = 0$ i gràcies a la proposició anterior obtenim $\ker f = 0$ i així $f$ és monomorfisme.
+\end{proof}
+
+El mateix serveix anàlogament per a l'exhaustivitat.
+
+\begin{coro}
+\label{coro:morfismePropietatsLocalsExhaustivitat} Sigui $f:M\to N$ un morfisme de $A$-mòduls. Aleshores són equivalents
+\begin{enumerate}[(1)]
+    \item $f$ és epimorfisme
+    \item $f_\mathfrak{p}:M_\mathfrak{p}\to N_\mathfrak{p}$ és epimorfisme per tot $\mathfrak{p}\in\spec A$.
+    \item $f_\mathfrak{m}:M_\mathfrak{m}\to N_\mathfrak{m}$ és epimorfisme per tot $\mathfrak{m}\in\max A$.
+\end{enumerate}
+\end{coro}
+\begin{proof}
+Les implicacions (1) implica (2) i (2) implica (3) són trivials. Veiem (3) implica (1). Sigui $N\hookrightarrow P$, aleshores $N\otimes_AM\hookrightarrow P\otimes_AM$ si i només si $(N\otimes_AM)_\mathfrak{m}\hookrightarrow (P\otimes_AM)_\mathfrak{m}$. Aleshores, 
+\begin{equation}
+    \notag
+    (M\otimes_AN)_\mathfrak{m}\longrightarrow (P\otimes_AM)_\mathfrak{m}
+\end{equation}
+equival a
+\begin{equation}
+    \notag
+    (M\otimes_AN)\otimes_AA_\mathfrak{m}\longrightarrow (P\otimes_AM)\otimes_AA_\mathfrak{m}
+\end{equation}
+i $(M\otimes_AN)\otimes_AA_\mathfrak{m} = (M\otimes_AA_\mathfrak{m})\otimes_{A_\mathfrak{m}}(N\otimes_AA_\mathfrak{m})$ i el mateix amb l'altre. Per tant, tenim que $N_\mathfrak{m}\otimes_{A_\mathfrak{m}}M_\mathfrak{m}\to P_\mathfrak{m}\otimes_AM_\mathfrak{m}$ implica $N\otimes_AM\hookrightarrow P\otimes_AM$.
+\end{proof}
+
+
+
+\end{document}

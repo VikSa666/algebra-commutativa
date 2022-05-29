@@ -1,0 +1,89 @@
+\documentclass[../../../main.tex]{subfiles}
+
+
+
+\begin{document}
+
+
+
+\section{Mòduls lliures}
+
+\begin{defi}
+[Sistema de generadors]\label{def:sistemaGeneradors}\index{Sistema de generadors} Sigui $M$ un $A$-mòdul. Aleshores diem que $\{m_i\}_{i\in I}\subseteq M$ és un \textit{sistema de generadors de $M$} si per tot $m\in M$ existeixen $\lambda_i\in A$ tals que $\sum_{i\in I}\lambda_im_i = m$.
+\end{defi}
+
+
+\begin{ej}
+Si considerem $\mathbb{Z}[X]$ que és un $\mathbb{Z}$-mòdul, aleshores el conjunt $\{X^n\}_{n\in\mathbb{N}}$ és un sistema de generadors i observem que és infinit.
+\end{ej}
+
+\begin{defi}
+[Sistema minimal de generadors]\label{def:sistemaMinimalGeneradors}\index{Sistema minimal de generadors} Un \textit{sistema minimal de generadors} és un sistema generadors però que si en treus qualsevol element aleshores deixa de ser sistema de generadors.
+\end{defi}
+
+\begin{defi}
+[Linealment independents]\label{def:linealmentIndependents}\index{Linealment independents (elements de mòduls)} Sigui $M$ un $A$-mòdul. Diem que $\{m_i\}_{i\in I}\subseteq M$ són $A$-linealment independents si la combinació lineal $\sum_{i \in J}\lambda_im_i = 0$ implica que $\lambda_i = 0$ per tota $i\in J$, on $J\subseteq I$ és un conjunt finit. A més, diem que $\{m_i\}_{i\in I}$ són \textit{base}\index{Base d'un mòdul} si són un sistema de generadors linealment independents.
+\end{defi}
+
+
+\begin{ej}
+Si agafem $\mathbb{Z}$ com a $\mathbb{Z}$-mòdul, aleshores $\{2,3\}$ és fàcil veure que és un sistema de generadors, ja que per tota $z\in\mathbb{Z}$ podem fer $z = 3z-2z$. Ara bé, no és linealment independent, ja que $3\cdotp 2-2\cdotp 3 = 0$ però $2\not=0$ i $3\not=0$.
+\end{ej}
+
+\begin{defi}
+[Família maximal linealment independent]\index{Família maximal linealment independent} Sigui $M$ un $A$-mòdul. Aleshores $\{m_i\}_{i\in I}\subseteq M$ és una família maximal linealment independent si per qualsevol $m\in M$ aleshores $\{m\}\cup\{m_i\}_{i\in I}$ deixa de ser linealment independent.
+\end{defi}
+
+\begin{prop}
+$\{m_i\}_{i\in I}$ és base si i només si és sistema minimal de generadors i família maximal linealment independent.
+\end{prop}
+
+Sistema minimal de generadors no implica base. Per exemple, $A = \mathbb{Z}$ i $\{2,3\}$ és un sistema de generadors, ja que $1 = -2+3$, i també és minimal, perquè si treus el 2 o el 3 ja no generes tot $\mathbb{Z}$. Ara bé, no és base ja que no són linealment independents perquè $3\cdotp 2 - 2\cdotp 3 = 0$ i els ``escalars'' no són tots zero.
+
+Tampoc família maximal linealment independent implica base. Per exemple en $\mathbb{Z}$, el conjunt $\{2\}$ és un sistema maximal linealment independent però genera $2\mathbb{Z}\varsubsetneq \mathbb{Z}$. Una base de $\mathbb{Z}$ és $\{1\}$ o també $\{-1\}$.
+
+
+\begin{defi}
+[Mòdul lliure]\label{def:modulLliure}\index{Mòdul lliure} Diem que $M$ és un $A$-mòdul lliure si admet una base $\{m_i\}_{i\in I}$, és a dir, que per tot $m\in M$ existeixen uns únics $\lambda_i\in A$ tals que $m = \sum_{i\in I}\lambda_im_i$.
+\end{defi}
+
+\begin{ej}
+Definim $A^{(I)}:=\bigoplus_{i\in I}A_i$, on $A_i = A$ és un $A$-mòdul lliure, on $\{e_i\}_{i\in I}$ és la base canònica, i.e., $e_i = (0,\ldots,1_{A_i},\ldots,0)$.
+\end{ej}
+
+\begin{prop}
+\label{prop:baseModulLliure} Sigui $M$ un $A$-mòdul lliure. Aleshores, $M$ és lliure si i només si $M\cong A^{(I)}$ per un cert ideal $I$.
+\end{prop}
+\begin{proof}
+La implicació d'esquerra a dreta és l'exemple anterior. Suposem que $M$ és lliure i que $\{m_i\}_{i\in I}$ n'és una base. Aleshores tenim isomorfismes $f_i':A\to M$ tals que $f(a) = a\cdotp m_i$ i per tant podem considerar una aplicació $f_i:A\to M$, $a\mapsto a\cdotp m_i$ per cada $i$. Gràcies a la propietat universal de la suma directa \ref{prop:propietatUniversalSumaDirecta} tenim que existeix una única aplicació $f:\bigoplus_{i\in I}A_i\to M$, on $A_i = A$ per tota $i\in I$ tal que $f\circ \delta_i = f_i$, és a dir, $f(e_i) = (f\circ \delta_i)(1) = f_i(1) = m_i$. Com que la imatge de la base de $A^{(I)}$ és la base de $M$, tenim que $f$ és un isomorfisme i per tant $M\cong A^{(I)}$.
+\end{proof}
+
+\begin{prop}
+\label{prop:basesMateixCardinal} Sigui $M$ un $A$-mòdul lliure, aleshores totes les bases tenen el mateix cardinal. En particular,
+\begin{equation}
+    \notag
+    A^{(I)}\cong A^{(J)} \Longleftrightarrow \#I = \#J
+\end{equation}
+\end{prop}
+\begin{proof}
+Agafem $\mathfrak{m}\in\max(A)$ (si no existís cap, aleshores $A$ seria un cos i per tant estaríem parlant d'espais vectorials, la qual cosa implica que el resultat és trivial). Tenim que $M/\mathfrak{m}M$ és un $(A/\mathfrak{m})$-mòdul, però $A/\mathfrak{m}$ és un cos i per tant $M/\mathfrak{m}M$ és un $(A/\mathfrak{m})$-espai vectorial. Ara només cal comprovar que si $\{m_i\}_{i\in I}$ és una $A$-base de $M$, aleshores $\{\overline{m}_i\}_{i\in I}$ és una $(A/\mathfrak{m})$-base de $M/\mathfrak{m}M$. És fàcil veure que $\{\overline{m}_i\}_{i\in I}$ és un sistema de generadors, ja que si $\overline{m}\in M/\mathfrak{m}M   $, aleshores existeix un representant $m\in M$, per tant existeixen $\lambda_i\in A$ tals que
+\begin{equation}
+    \notag
+    \sum_{i\in I}\lambda_im_i = m\Longrightarrow \overline{m} = \overline{\sum_{i\in I}\lambda_im_i}=\sum_{i\in I}\overline{\lambda_im_i} = \sum_{i\in I}\overline{\lambda}_i\overline{m}_i
+\end{equation}
+Ara veiem la independència lineal de $\{\overline{m}_i\}_{i\in I}$. Suposem que $\sum_{i\in I}\overline{\lambda}_i\overline{m}_i = 0$, aleshores
+\begin{equation}
+    \notag
+    \sum_{i\in I}\lambda_im_i\in\mathfrak{m}M\Longrightarrow \sum_{i\in I}\lambda_im_i = \sum_{i\in I}\mu_im_i
+\end{equation}
+on $\mu_i\in\mathfrak{m}$, com que $M$ és un $A$-mòdul lliure tenim que l'expressió de cada element en termes de la base és única, per tant $\lambda_i = \mu_i\in\mathfrak{m}$ i obtenim $\overline{\lambda}_i = 0$ per tota $i\in I$.
+\end{proof}
+
+
+
+Això no serà cert per anells no commutatius. Sí que ho verifiquen els seus mòduls infinits, però no els anells.
+
+
+
+
+\end{document}

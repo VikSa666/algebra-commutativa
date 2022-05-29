@@ -1,0 +1,262 @@
+\documentclass[../../../main.tex]{subfiles}
+
+
+
+\begin{document}
+
+
+\section{Successions exactes}
+
+
+En aquesta secció definirem les successions de mòduls, també anomenades complexos de mòduls, i veurem quan són exactes. Estudiarem conceptes com mòduls projectius o injectius i les seves aplicacions.
+
+
+\begin{defi}
+[Successió de $A$-mòduls]\index{Successió de $A$-mòduls}\index{Successió exacta} Sigui $A$ un anell i $M_i$ $A$-mòduls per $i\in I$. Aleshores, es defineix una successió o seqüència de $A$-mòduls com la cadena de $A$-mòduls i $A$-morfismes de mòduls
+\begin{equation}
+    \notag
+    \cdots \longrightarrow X_{n-1}\overset{f_n}{\longrightarrow} X_n\overset{f_{n+1}}{\longrightarrow} X_{n+1}\longrightarrow\cdots
+\end{equation}
+tal que $\im f_{n}\subseteq \ker f_{n+1}$. Es diu que és exacta si $\im f_{n} =\ker f_{n+1}$.
+\end{defi}
+
+\begin{prop}
+Siguin $A$, $B$ i $C$ tres $A$-mòduls. Aleshores,
+\begin{enumerate}[(1)]
+    \item La successió $0\to A\overset{\psi}{\to}B$ és exacta (en $A$) si, i només si, $\psi$ és injectiva (monomorfisme).
+    \item La successió $B\overset{\varphi}{\to}C\to 0$ és exacta (en $C$) si, i només si, $\varphi$ és exhaustiva.
+    \item La successió $0\to A\overset{\psi}{\to}B\overset{\varphi}{\to}C\to 0$ és exacta si, i només si, $\psi$ és injectiva, $\varphi$ és exhaustiva i $\ker\varphi = \im\psi$. Es diu que aleshores $B$ és una \textit{extensió} de $C$ per $A$. \index{Extensió de mòduls}
+\end{enumerate}
+\end{prop}
+
+
+\begin{defi}
+[Successió exacta curta]\label{def:successioexactacurta}\index{Successió exacta curta} La successió del punt (3) de l'anterior proposició s'anomena \textit{successió exacta curta}.
+\end{defi}
+
+\begin{ej}
+As we saw in groups, we will always find a group extension of a group $K$ by a group $H$ considering $K\times H$. In the case of $R$-modules is analogous: given modules $A$ and $C$ we can always form their direct sum $B = A\oplus C$ and the sequence
+\begin{equation}
+    \notag
+    0\longrightarrow A\overset{\iota}{\longrightarrow} A\oplus C\overset{\pi}{\longrightarrow} C\longrightarrow 0
+\end{equation}
+where $\iota(a) = (a,0)$ and $\pi(a,c) = c$ is a short exact sequence. In particular, it follows that $A\oplus C$ is always an extension of $C$ by $A$.
+\end{ej}
+
+\begin{ej}
+A good example is to consider any homomorphism $\varphi:B\to C$, where $B$ and $C$ are $R$-modules. Then the following is an exact sequence:
+\begin{equation}
+    \notag
+    0\longrightarrow\ker\varphi\overset{\iota}{\longrightarrow}B\overset{\varphi}{\longrightarrow}\im\varphi\longrightarrow 0
+\end{equation}
+where $\iota$ is the inclusion map. In particular, if $\varphi$ is surjective (hence, $\im\varphi = C$), the sequence $\varphi:B\to C$ may be extended to a short exact sequence with $A = \ker\varphi$.
+\end{ej}
+
+\begin{nota}\label{nota:successioKerCoker}
+Sigui $f:M\to N$ un morfisme de $A$-mòduls. Aleshores podem partir la successió de la següent manera:
+\begin{equation}
+    \notag
+    0\to \ker f\to M\to M/\ker f\to 0
+\end{equation}
+i s'empalma, ja que $M/\ker f\cong \im f$ pel Primer Teorema d'Isomorfia, amb
+\begin{equation}
+    \notag
+    0\to \im f\to N\to N/\im f\cong \mathrm{Coker}f\to 0
+\end{equation}
+i aleshores tenim dues successions exactes curtes. Aquest és un truc que pot servir per demostrar resultats o per resoldre exercicis.
+\end{nota}
+
+\begin{defi}
+Siguin $M$ i $N$ dos $A$-mòduls. Definim $\hom_A(M,N)$ com el conjunt de morfismes de $M$ en $N$, és a dir,
+\begin{equation}
+    \notag
+    \hom_A(M,N):=\{f:M\to N\;:\;\text{$f$ morfisme de $A$-mòduls}\}
+\end{equation}
+\end{defi}
+
+A continuació veurem com es construeixen de forma natural les cadenes de $\hom_A(M,\cdotp)$ i $\hom_A(\cdotp,M)$ i això dona pas a les definicions de mòduls projectius i injectius.
+
+\begin{prop}
+\label{prop:successioHomEsquerra} Sigui
+\begin{equation}
+    \label{eq:successioExacta1}
+    0\to M_1\overset{f}{\to}M_2\overset{g}{\to}M_3\to 0
+\end{equation}
+una successió exacta curta de $A$-mòduls. Aleshores,
+\begin{enumerate}
+    \item si $M$ és un $A$-mòdul, la successió
+    \begin{equation}
+        \label{eq:successioExactaHomEsquerra}
+        0\to \hom_A(M,M_1)\overset{\overline{f}}{\longrightarrow}\hom_A(M,M_2)\overset{\overline{g}}{\longrightarrow}\hom_A(M,M_3)
+    \end{equation}
+    és exacta (notem que no acaba en zero per la dreta), i també
+    \item si $N$ és un $A$-mòdul, la successió
+    \begin{equation}
+        \notag
+        0\to \hom_A(M_3,N)\overset{\Tilde{g}}{\longrightarrow}\hom_A(M_2,N)\overset{\Tilde{f}}{\longrightarrow}\hom_A(M_1,N)  
+    \end{equation}
+    és una successió exacta, on $\Tilde{f}$ i $\Tilde{g}$ són els morfismes induïts per $f$ i $g$ respectivament\footnote{Si $f:M_1\to M_2$, aleshores $\Tilde{f}:\hom_A(M_2,N)\to \hom_A(M_1,N)$ funciona així: considerem $h\in \hom_A(M_2,N)$ i tenim $f:M_1\to M_2$. Per tant, $\Tilde{f}(h) = h\circ f$.} (notem que, de nou, no acaba en zero, per tant no és exacta a la dreta).
+\end{enumerate}
+\end{prop}
+
+\begin{defi}
+[Mòdul projectiu i injectiu]\label{def:projectiu}\label{def:injectiu}\index{Mòdul projectiu}\index{Mòdul injectiu} Considerant les successions exactes d'abans,
+\begin{enumerate}[(1)]
+    \item Per $M$ un $A$-mòdul, si $\hom_A(M,\cdotp)$ és sempre exacte a la dreta, direm que $M$ és \textit{projectiu}.
+    \item Per $N$ un $A$-mòdul, si $\hom_A(\cdotp,N)$ és sempre exacte a la dreta, aleshores direm que $N$ és \textit{injectiu}.
+\end{enumerate}
+\end{defi}
+
+A l'appèndix inclouré un pdf generat per Zarzuela en el que es detallen algunes propietats interessants dels mòduls projectius i injectius. Tanmateix no ho reescric perquè sinó no acabo ni demà i per això està en castellà, perquè ell ho va fer així. Posaré només una proposició que pot ser important, i la prova es troba a aquests apunts.
+
+\begin{prop}
+\label{prop:lliureImplicaProjectiu} Tot mòdul lliure és projectiu.
+\end{prop}
+
+\begin{prop}
+\label{prop:projectiuSiiSumandDirecteModulLliure} $P$ és un mòdul projectiu si, i només si, és summand directe d'un mòdul lliure.
+\end{prop}
+
+A continuació es presenten com a exercicis el lema dels cinc i el de la serp. El lema dels cinc el vaig haver d'entregar i com que es feia la classe en castellà el vaig fer en castellà, per això està en castellà. Em fa massa mandra reescriure-ho o sigui que qui tingui un problema doncs que ho reescrigui, a mi em dona igual.
+
+\setcounter{exercici}{35}
+\begin{exercici}
+[Lema de los cinco]\label{exercici:lemaCinc}\index{Lema dels cinc} Dado un diagrama conmutativo de $A$-módulos con filas exactas:
+\begin{equation}
+    \notag
+    \xymatrix{
+    M_1 \ar[d]^{f_1}\ar[r] & M_2\ar[r]\ar[d]^{f_2} & M_3 \ar[r]\ar[d]^{f_3} & M_4\ar[r]\ar[d]^{f_4} & M_5\ar[d]^{f_5}\\
+    N_1\ar[r] & N_2\ar[r] & N_3\ar[r] & N_4\ar[r] & N_5
+    }
+\end{equation}
+demostrar:
+\begin{enumerate}[(i)]
+    \item Si $f_2$ y $f_4$ son epimorfismos, y $f_5$ es monomorfismo, entonces $f_3$ es un epimorfismo.
+    \item Si $f_2$ y $f_4$ son monomorfismos, y $f_1$ es epimorfismo, entonces $f_3$ es un monomorfismo.
+    \item Si $f_1,f_2,f_4$ y $f_5$ son isomorfismos, entonces $f_3$ es un isomorfismo.
+\end{enumerate}
+\end{exercici}
+\begin{sol}
+Antes de empezar, para que sea más sencillo escribirlo, les daré nombre a los morfismos horizontales:
+\begin{equation}
+    \notag
+    \xymatrix{
+    M_1 \ar[d]^{f_1}\ar[r]^{\alpha_1} & M_2\ar[r]^{\alpha_2}\ar[d]^{f_2} & M_3 \ar[r]^{\alpha_3}\ar[d]^{f_3} & M_4\ar[r]^{\alpha_4}\ar[d]^{f_4} & M_5\ar[d]^{f_5} \\
+    N_1\ar[r]^{\beta_1} & N_2\ar[r]^{\beta_2} & N_3\ar[r]^{\beta_3} & N_4\ar[r]^{\beta_4} & N_5
+    }
+\end{equation}
+y para probar tanto (i) como (ii) utilizaré el método conocido como ``\textit{diagram chasing}''.
+\begin{enumerate}[(i)]
+    \item Empezamos con $x\in N_3$. Entonces $\beta_3(x) = f_4(y)$ para alguna $y\in M_4$ por el hecho de que $f_4$ es exhaustiva por hipótesis. 
+    
+    Entonces, por la exactitud, $\beta_4(f_4(y)) = \beta_4(\beta_3(x)) = 0$ y como el diagrama es conmutativo, es lo mismo $\beta_4\circ f_4$ que $f_5\circ\alpha_4$ y por tanto $f_5(\alpha_4(y)) = \beta_4(f_4(y)) = 0$. 
+    
+    Ahora, como $f_5$ es inyectiva por hipótesis, tendrá que ser $\alpha_4(y) = 0$.
+    
+    Por la exactitud de la primera línea, tendremos pues que existe una $z\in M_3$ tal que $\alpha_3(z) = y$. Entonces ahora consideramos $f_3(z)$.
+    
+    Considero el elemento $x-f_3(z)$ de $N_3$ y observamos que $\beta_3(x-f_3(z)) = 0$. En efecto,
+    \begin{align}
+        \notag
+        \beta_3(x-f_3(z)) &= \\ &=\beta_3(x)-\beta_3(f_3(z)) \\&=\beta_3(x)-f_4(\alpha_3(z)) \\&= \beta_3(x)-f_4(y) \\&= \beta_3(x)-\beta_3(x) \\&= 0
+    \end{align}
+    donde (1) es por ser morfismo, (2) es por la conmutatividad del diagrama, (3) es por lo que habíamos dicho anteriormente y (4) es también por lo que hemos dicho al principio.
+    
+    Tenemos pues, por la exactitud de la segunda fila, que tiene que existir un elemento $u\in N_2$ para el cual $\beta_2(u) = x-f_3(z)$.
+    
+    Ahora como $f_2$ es exhaustiva por hipótesis, tiene que existir un elemento $v\in M_2$ tal que $f_2(v) = u$.
+    
+    Por último vamos a considerar el elemento $z+\alpha_3(v)$ de $M_3$ y vamos a ver que su imagen es $x$, viendo así que todos los elementos de $N_3$ tienen antiimagen por $f_3$ y así ``se llena'', es decir que $f_3$ es exhaustiva. Veámoslo.
+    \begin{align}
+        \notag
+        f_3(z+\alpha_2(v)) & = \\
+        &= f_3(z)+f_3(\alpha_2(v)) \\
+        &= f_3(z)+\beta_2(f_2(v)) \\
+        &= f_3(z) + \beta_2(u) \\
+        &= f_3(z)+(x-f_3(z)) \\
+        &= x
+    \end{align}
+    donde (6) pasa por ser $f_3$ morfismo, (7) pasa por la conmutatividad del diagrama, (8) pasa por la definición de $v$ como antiimagen de $u$ por $f_2$ y (9) pasa por la definición de $u$ como antiimagen por $\beta_2$ de $x-f_3(z)$.
+    
+    \item Seguiremos una estrategia muy similar. Empezamos con un $x\in M_3$ tal que $f_3(x) = 0$. Quiero llegar a que $x = 0$.
+    
+    Si $f_3(x) = 0$, entonces $\beta_2(f_3(x)) = \beta_2(0) = 0$ y por ser conmutativo el diagrama tenemos que $f_4(\alpha_3(x)) = 0$ también. Pero es que $f_4$ es inyectiva, ergo $\alpha_3(x) = 0$.
+    
+    Por tanto, por la exactitud de la primera fila, podemos decir que existe $y\in M_2$ tal que $\alpha_2(y) = x$. 
+    
+    Por la conmutatividad del diagrama, $\beta_2(f_2(y)) = f_3(\alpha_2(y))) = f_3(x) = 0$ porque lo hemos supuesto desde un inicio.
+    
+    Por la exactitud de la segunda línea, existe pues $z\in N_1$ tal que $\beta_1(z) = f_2(y)$.
+    
+    Por la exhaustividad de $f_1$ existe pues $u\in M_1$ tal que $f_1(u) = z$.
+    
+    Consideramos ahora el elemento $y-\alpha_1(u)$ de $M_2$ y vemos que
+    \begin{equation}
+        \notag
+        f_2(y-\alpha_1(u)) = f_2(y)-f_2(\alpha_1(u)) = f_2(y)-\beta_1(f_1(u))=f_2(y)-\beta_1(z) = 0
+    \end{equation}
+    usando la conmutatividad del diagrama y las definiciones de los elementos en cuestión.
+    
+    Ahora bien, como $f_2$ es inyectiva por hipótesis, esto quiere decir que $y = \alpha_1(u)$ y por tanto $\alpha_2(y) = \alpha_2(\alpha_1(u))$ que por la exactitud esto es 0.
+    
+    Finalmente vemos que habíamos definido $y$ como elemento de $M_2$ tal que $\alpha_2(y) = x$ y acabamos de ver que $\alpha_2(y) = 0$, ergo $x = 0$ como queríamos.
+    
+    \item Este es directo usando los dos apartados anteriores. Si $f_1,f_2,f_4,f_5$ son isomorfismos, en particular, $f_2$ y $f_4$ son epimorfismos y $f_5$ monomorfismo, con lo que por (i) tenemos $f_3$ epimorfismo. También en particular $f_2$ y $f_4$ son monomorfismos y $f_1$ epimorfismo, con lo que por (ii) tenemos $f_3$ monomorfismo. Así pues $f_3$ es isomorfismo.
+\end{enumerate} 
+\end{sol}
+
+
+\setcounter{exercici}{34}
+\begin{exercici}
+[Lema de la serp]\label{exercici:lemaSerp}\index{Lema de la serp} Suposem que tenim el següent diagrama commutatiu
+\begin{equation}
+    \notag
+    \xymatrix{
+    0 \ar[r] & M_1\ar[d]_\alpha \ar[r]^f & M_2\ar[d]_\beta\ar[r]^g & M_3\ar[d]_\gamma\ar[r] & 0 \\
+    0 \ar[r] & N_1\ar[r]^{f'} & N_2\ar[r]^{g'} & N_3\ar[r] & 0
+    }
+\end{equation}
+i les dues files són exactes, aleshores existeix una successió exacta de la forma
+\begin{equation}
+    \notag
+    \xymatrix{
+    0\ar[r]&\ker\alpha\ar[r]^f & \ker\beta\ar[r]^g & \ker \gamma\ar[dlll]\\
+    \mathrm{coker}\alpha\ar[r]_{f'} & \mathrm{coker}\beta\ar[r]_{g'} & \mathrm{coker}\gamma\ar[r] & 0
+    }
+\end{equation}
+\end{exercici}
+\begin{sol}
+Primer provem que tot això està ben definit. Sigui $x\in\ker\alpha$, aleshores $\alpha(x) = 0$ i per tant $0 = f'(\alpha(x)) = (f'\circ\alpha)(x) = (\beta\circ f)(x) = \beta(f(x))$ és a dir, $f(x)\in \ker\beta$ i per tant $f,g$ estan ben definides. Ara veiem $f',g'$. Si $y\in\im\alpha$ aleshores existeix $x\in M_1$ tal que $y = \alpha(x)$ i per tant $f'(y) = f'(\alpha(x)) = (f'\circ\alpha)(x) = (\beta\circ f)(x)$, és a dir, $f'(y)\in\im\beta$. Observem que si $\overline{x},\overline{x'}\in\mathrm{coker}\alpha$ aleshores $x = x'+y$ on $y\in\mathrm{im}\alpha$ i per tant $f(x) = f(x') + f(y)$ que implica que $\overline{f(x)} = \overline{f(x')}$ ja que $f(y)\in\im\beta$
+\end{sol}
+
+
+
+\begin{defi}
+Sigui $C$ un conjunt de $A$-mòduls. Diem que l'aplicació $\lambda:C\to \mathbb{Z}$ és additiva si per tota successió exacta
+\begin{equation}
+    \notag
+    0\to M_1\to M_2\to M_3\to 0
+\end{equation}
+es verifica que $\lambda(M_2) = \lambda(M_1)+\lambda(M_3)$
+\end{defi}
+
+\begin{ej}
+L'aplicació $\lambda\equiv 0$ és additiva. Si agafem $A = k$ un cos i $C$ és el conjunt de $k$-espais vectorials amb dimensió finita, aleshores podem agafar $\lambda(M):=\rank M$ i és additiva.
+Més en general, si agafem $A$ com un anell i $C$ el conjunt de $A$-mòduls lliures de rang finit, aleshores $\lambda(M):=\rank M$ també és additiva.
+\end{ej}
+
+\begin{prop}
+Siguin $M_n$ $A$-mòduls i $f_i:M_i\to M_{i-1}$ morfismes $A$-lineals tals que
+\begin{equation}
+    \notag
+    0\to M_n\overset{f_n}{\longrightarrow}M_{n-1}\overset{f_{n-1}}{\longrightarrow}\cdots\overset{f_2}{\longrightarrow}M_1\overset{f_1}{\longrightarrow}M_0\to 0
+\end{equation}
+és una successió exacta de $A$-mòduls de $C$ i sigui $\lambda$ una aplicació additiva, aleshores $\sum_{i=0}^n(-1)^{i}\lambda(M_i) = 0$.
+\end{prop}
+
+
+
+
+
+
+\end{document}

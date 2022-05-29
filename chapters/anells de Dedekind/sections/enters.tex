@@ -1,0 +1,210 @@
+\documentclass[../../../main.tex]{subfiles}
+
+
+\begin{document}
+
+
+
+
+
+
+
+\section{Elements enters i extensions enteres} 
+
+\begin{defi}[Enter algebraic]\label{def:enter}\label{def:enterSobreA}\index{Enter sobre $A$}
+Sigui $A$ un anell commutatiu i $A\subseteq B$ una extensió d'anells. Es diu que $b\in B$ és \textit{enter sobre $A$} si és una arrel d'un polinomi mònic amb coeficients en $A$, és a dir, d'una equació com
+\begin{equation}
+    \notag
+    X^n+a_1X^{n-1}+\cdots+a_{n-1}X+a_n
+\end{equation}
+\end{defi}
+
+
+\begin{prop}
+\label{prop:enterSobreA} Sigui $A\subseteq B$ una extensió d'anells i $b\in B$, aleshores són equivalents
+\begin{enumerate}[(i)]
+    \item $b$ és enter sobre $A$.
+    \item $A[b] = \left\{\sum_{i=0}^n a_ib^{i},\;a_i\in A,\;n\in\mathbb{N}\right\}\subseteq B$ és un $A$-mòdul finitament generat.
+    \item $A[b]\subseteq C$ on $C\subseteq B$ és un subanell tal que és $A$-mòdul finitament generat.
+    \item Existeix un $A[b]$-mòdul fidel $M$ tal que $M$ és $A$-mòdul finitament generat.
+\end{enumerate}
+\end{prop}
+\begin{proof}
+La implicació de (i) a (ii) és força senzilla, ja que tenim $b^n = \sum_{i=1}^na_ib^{n-i}$ i aleshores $A[b]\subseteq \bigoplus_{j=1}^{n-1}Ab^j$ i per tant, $A[b]$ és un $A$-mòdul finitament generat.
+
+La implicació de (ii) a (iii) és directa ja que podem agafar $C = A[b]$ que és un anell. La implicació (iii) a (iv) també és ràpida perquè podem observar que $C$ és un $A[b]$-mòdul fidel ja que si $yC = 0$ aleshores $y1 = 0$ cosa que implica $y = 0$.
+
+Provem doncs la implicació de (iv) a (i). Considerem l'aplicació $f:M\to M$ que assigna $f(m) = mb$. Aleshores és $A$-lineal i $M$ és un $A$-mòdul finitament generat i $f(M)= bM\subseteq M$, per tant ara podem aplicar el truc determinantal \ref{prop:trucDeterminantal} i per tant existeixen $a_0,a_1,\ldots,a_{n-1}\in A$ amb $a_0 = 1$ complint
+\begin{equation}
+    \notag
+    \left(\sum_{i=1}^na_{n-i}b^{i}\right)m = 0
+\end{equation}
+per tot $m\in M$ i com que $M$ és fidel, aleshores $\sum_{i=1}^n a_{n-i}b^{i} = 0$ i per tant $b$ és enter sobre $A$.
+\end{proof}
+
+
+\begin{coro}
+\label{coro:entersSobreA} Siguin $b_1,\ldots,b_s\in B$ enters sobre $A$. Aleshores $A[b_1,\ldots,b_s]\subseteq A$ és un $A$-mòdul finitament generat.
+\end{coro}
+
+
+\begin{coro}
+\label{coro:clausuraAEnB}\index{Clausura entera de $A$ en $B$} Definim $\overline{A}^B:=\{b\in B\;:\;b$ és enter sobre $A\}$ com la \textit{clausura de $A$ en $B$}. Aleshores $\overline{A}^B$ és un subanell de $B$.
+\end{coro}
+\begin{proof}
+Hem de provar que si tenim $b_1,b_2\in \overline{A}^B$ aleshores $b_1+b_2$ i $b_1b_2$ també són enters sobre $A$. Com que $A[b_1,b_2]$ és un $A$-mòdul finitament generat tenim
+\begin{equation}
+    \notag
+    \left.
+    \begin{array}{rl}
+        A\subseteq A[b_1+b_2]\subseteq A[b_1,b_2] &  \\
+        A\subseteq A[b_1b_2]\subseteq A[b_1,b_2] & 
+    \end{array}
+    \right\} \Longrightarrow b_1+b_2,b_1b_2\in \overline{A}^B
+\end{equation}
+per la proposició \ref{prop:enterSobreA}. 
+\end{proof}
+
+\begin{nota}
+Si $\overline{A}^B = B$ diem que $B$ és  enter sobre $A$ o bé que l'extensió és entera;\label{def:integramentTancat} i si $A$ és domini d'integritat i $B$ el seu cos de fraccions, aleshores $\overline{A}^B$ se li'n diu \textit{clausura entera}. Si $\overline{A}^B = A$ diem que és \textit{íntegrament tancat}\index{Íntegrament tancat}.
+\end{nota}
+
+
+\begin{defi}
+[Íntegrament tancat]\label{def:integramentTancat2}\index{Íntegrament tancat} Direm que un domini d'integritat $A$ és \textit{íntegrament tancat} si $A$ és íntegrament tancat en el seu cos de fraccions.
+\end{defi}
+
+\begin{ej}
+Si $A$ és un anell factorial aleshores $A$ és íntegrament tancat. 
+
+Sigui $\frac{a}{s}\in K$, on $K$ és el cos de fraccions, tal que
+\begin{equation}
+    \notag
+    \left(\frac{a}{s}\right)^n+\left(\frac{a}{s}\right)^{n-1}a_1+\cdots+\left(\frac{a}{s}\right)a_{n-1}+a_n = 0
+\end{equation}
+amb $a_i\in A$ per tot $i$. Podem suposar que $\gcd(a,s) = 1$ i aleshores
+\begin{equation}
+    \notag
+    a^n+sa^{n-1}+a_1+\cdots+s^{n-1}aa_{n-1}+s^na_n=0
+\end{equation}
+obtenim $a^n = s(-a^{n-1}a_1-\cdots-s^{n-1}a_n)$ per tant teim que $s$ divideix a $a^n$ però $\gcd(s,a) = 1$, per tant $s\in A^*$ i obtenim que $\frac{a}{s}\in A$.
+
+En particular, si $A$ és un domini d'ideals principals, aleshores $A$ és íntegrament tancat.
+\end{ej}
+
+\begin{coro}
+\label{coro:extensioEnteraTriple} Siguin $A\subseteq B\subseteq C$ anells tals que $A\subseteq B$ i $B\subseteq C$ són enters aleshores $A\subseteq C$ és una extensió entera.
+\end{coro}
+\begin{proof}
+Si
+$x\in C$,
+aleshores tenim l'equació 
+$x^n+b_1x^{n-1}+\cdots+b_n = 0$.
+Com que l'anell 
+$B'=A[b_1,\ldots,b_n]$
+és finitament generat com a 
+$A$-mòdul
+i $B'[x]$ és finitament generat com a 
+$B'$-mòdul
+tenim que $B'[x]$
+és finitament generat com a $A$-mòdul,
+que per la proposició \ref{prop:enterSobreA} aleshores $x$ és enter sobre $A$.
+\end{proof}
+
+\begin{ej}
+Sigui $A = k[t^2,t^3]\subseteq k[t]$. Sigui $K$ el cos de fraccions de $A$. Aleshores $k[t]\subseteq K\subseteq k(t)$ però tot és igualtat ja que $t^3/t\in K$. Ara bé, $t\not\in A$.
+\end{ej}
+
+Reformulo el teorema de Krull-Akizuki amb aquests termes.
+
+\begin{ter}
+[Krull-Akizuki]\index{Teorema de Krull-Akizuki} Sigui $A$ un domini d'integritat, noetherià i de dimensió 1 ($\p\in\spec{A},\p\neq 0$ aleshores $\p$ maximal). Aleshores, sigui $K$ el cos de fraccions, $\overline{A}^K$ és domini d'integritat, noetherià i de dimensió 1. Més en general, si tenim una extensió finita $K\subseteq L$ de cossos, aleshores $\overline{A}^L$ satisfà el mateix.
+\end{ter}
+
+Només demostrarem el tema de la $L$, ja que l'altre tema ja ho hem demostrat abans no sé per què.
+
+\begin{ter}
+Suposem que $A$ és domini d'integritat tancat. Suposem que $K$ és el cos de fraccions de $A$. Sigui $L\subseteq K$ una extensió finita de cossos separable. Sigui $B = \overline{A}^L$. Aleshores, existeix una base $\{v_1,\ldots,v_n\}$ de $L$ sobre $K$ tal que $B\subseteq \bigoplus_{i=1}^nAv_i$.
+\end{ter}
+\begin{proof}
+Sigui $v\in L$ algebraic sobre $K$, aleshores existeix $a_rv^r+a_{r-1}v^{r-1}+\cdots+a_1v+a_0 = 0$ amb $a_i\in A$ i ara multiplicant-ho tot per $a_rb_{r-1}$ o no sé, obtenim
+\begin{equation}
+    \notag
+    (a_rv)^r+b_{r-1}(a_rv)^{r-1}+\cdots+a_0 = 0
+\end{equation}
+per tant $a_rv$ enter sobre $A$, $a_r\in A\subseteq K$. Aleshores existeix base de $L$ sobre $K$ amb elements enters. Diguem-li $\{u_1,\ldots,u_n\}$ a aquesta base. Llavors, existeix una base dual $\{v_1,\ldots,v_n\}$ de foram que $\forall x\in B$ tenim $x = \sum_{j=1}^nx_jv_j$ amb $x_j = \mathrm{tr}(u_jx_j)$ per tota $j$. Ara si $x\in B$ també $xu_j\in B$ i així $\mathrm{tr}(xu_j)\in A$ ja que el polinomi mínim d'un element enter té els seus coeficients en $A$. Per tant $x_j\in A$, $\forall j$ i així obtenim el que volíem.
+\end{proof}
+
+Observem el que acabo de dir aquí al final. Si $a\in\overline{A}^L$ i $p(x)$ és el polinomi mínim de $a$ en $K[X]$ i $q(x)$ és un polinomi mònic en $A[X]$ que té $a$ com a arrel, aleshores el fet que $q(a) = 0$ implica que $p\mid q$ per ser $p$ el mínim. Però aleshores $p(b) = 0$ implica $q(b) = 0$ per qualsevol altre $b$ conjugat de $a$ i així $p(b) = 0$ implica que $b$ e´s enter sobre $A$ (i.e., $b\in\overline{A}^L$) i així $p(x)\in \overline{A}^K[X] = A[X]$ perquè $A$ és íntegrament tancat.
+
+
+\begin{coro}
+Amb les mateixes condicions que el teorema, si $A$ és noetherià, $\overline{A}^L$ és noetherià. També si $A$ és domini d'ideals principals, aleshores $\overline{A}^L$ és un $A$-mòdul lliure.
+\end{coro}
+\begin{proof}
+Simplement s'ha de constatar que $\overline{A}^L\subseteq \bigoplus_{j=1}^n Av_j\subseteq L$ pel lema i $Av_j$ és noetherià per tota $j$, per tant la suma directa també és noetherià. 
+\end{proof}
+
+\begin{lema}
+$A\subseteq B$ domini d'integritat, tal que $\dim A = 1$. Si $A\subseteq B$ és una extensió d'anells finita, aleshores $\dim B = 1$.
+\end{lema}
+\begin{proof}
+Sigui $\mathfrak{q}\in\spec{B}$, $\mathfrak{q}\neq 0$, aleshores veurem que $\mathfrak{q}$ és maximal.
+
+$\p=\mathfrak{q}^c\in\spec{A}$, $\p\not=0$ en efecte $b\in\mathfrak{q}$, $b\neq0$ $\exists b^n+a_1b^{n-1}+\cdots a_n = 0$, $a_i\in A$, $\forall i$. Prenem la de grau mínim. Podem suposar $a_n\neq 0$. Llavors, $a_n = -b^n-a_1b^{n-1}-\cdots-a_{n-1}b\in\mathfrak{q}\cap A = \p$. Tenim la inclusió $A/\p\hookrightarrow B/\mathfrak{q}$ on el primer és cos i el segon és domini. Aquesta és una extensió finita perquè per hipòtesis $A\hookrightarrow B$ és finita. Per tant, tenim un cos, adjunto un nombre finit d'elements, i tinc una extensió finita? Ha de ser que $B/\mathfrak{q}$ sigui cos i per tant $\mathfrak{q}$ és maximal com volíem.
+\end{proof}
+
+\begin{coro}
+Si $A$ és domini d'ideals principals i $K$ el seu cos de fraccions, i considerem $A\subseteq L$ una extensió algebraica finita aleshores
+\begin{enumerate}[(1)]
+    \item $\overline{A}^L$ domini noetherià de dimensió 1.
+    \item $\overline{A}^L$ $A$-mòdul lliure de rang finit
+\end{enumerate}
+\end{coro}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

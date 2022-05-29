@@ -1,0 +1,299 @@
+\documentclass[../main.tex]{subfiles}
+
+
+
+\begin{document}
+
+
+\section{Ideals primers i maximals}
+
+En aquesta secció parlarem sobre una caracterització molt important dels ideals: els primers i els maximals. Utilitzant exercicis veurem aplicacions i la importància d'aquests ideals. Més endavant durant el curs, utilitzarem molt sovint aquestes nocions.
+
+
+\begin{defi}[Ideal primer]\index{Ideal primer}\label{def:idealprimer}
+Un ideal $I$ d'un anell $A$ es diu \textit{ideal primer} si és un ideal propi i, per a $a,b\in A$ es compleix que $ab\in I$ si $a\in I$ o bé $b\in I$.
+\end{defi}
+
+\begin{prop}
+\label{prop:primersiidi} Sigui $I$ un ideal propi d'un anell $A$. Aleshores $I$ és primer si i només si $A/I$ és domini d'integritat.
+\end{prop}
+\begin{proof}
+De les definicions d'ideal primer (\ref{def:idealprimer}) i de domini d'integritat (\ref{def:dominidintegritat}) es dedueix immediatament aquest resultat. Encara així ho demostraré:
+\begin{itemize}
+    \item \fbox{$\Rightarrow$} Sigui $a+I,b+I\in A/I$ tal que $(a+I)(b+I) = 0$. Aleshores
+    \begin{equation}
+        \notag
+        (a+I)(b+I) = 0 \Rightarrow ab+I = 0+I \Rightarrow ab\in I
+    \end{equation}
+    que implica que, o bé $a\in I$, o bé $b\in I$, per la definició d'ideal (\ref{def:ideal}). Aleshores, això implica que $a+I = 0+I$ o bé 
+    $b+I = 0+I$, com volíem veure. (Observem que $0+I$ vol dir la classe del 0 en $A/I$).
+    \item \fbox{$\Leftarrow$} Siguin $a,b\in A$ tal que $ab\in I$ (que implica que o bé $a\in I$ o bé $b\in I$ per la definició d'ideal (\ref{def:ideal})). Aleshores
+    \begin{equation}
+        \notag
+        ab+I = 0+I \Rightarrow (a+I)(b+I) = 0+I
+    \end{equation}
+    cosa que implica que o bé $a+I = 0+I$ i, en conseqüència, $a\in I$, o bé $b+I = 0+I$ i, en conseqüència, $b\in I$, com volíem veure.
+\end{itemize}
+observem que en la demostració hem utilitzat la definició del producte de classes que diu que $(a+I)(b+I) = ab+I$, és a dir, el producte de les classes és la classe del producte. Això ho vam veure a la secció de conjunt quocient.
+\end{proof}
+
+\begin{ej}
+Vegem-ne alguns exemples:
+\begin{enumerate}
+    \item Els ideals primers de l'anell $\mathbb{Z}$ són exactament l'ideal (0) i els ideals $(p)$ amb $p$ primer. En efecte, $\mathbb{Z}/(p)\cong \mathbb{Z}/p\mathbb{Z}$ i $\mathbb{Z}/p\mathbb{Z}$ és domini d'integritat només quan $p$ és primer.
+    
+    \item Sigui $A = \mathbb{Z}[X]$, $I = (2,X)$ és un ideal principal. A la llista d'exercicis està treballat aquest ideal. Recomano donar-li un cop d'ull per entendre aquest exemple. Si prenem el següent morfisme
+    \begin{equation}
+        \notag
+        \begin{array}{rl}
+            \phi:\mathbb{Z}[X] & \longrightarrow\mathbb{Z}/2\mathbb{Z} \\
+            p(x) & \longmapsto p(0)
+        \end{array}
+    \end{equation}
+    es pot comprovar que $\phi$ és morfisme exhaustiu d'anells i que $\ker\phi = (2,X)$. Amb això, aplicant el primer teorema d'isomorfia, es pot afirmar que $\mathbb{Z}/(2,X)\cong\mathbb{Z}/2\mathbb{Z}$, i com que $\mathbb{Z}/2\mathbb{Z}$ és un domini d'integritat (perquè 2 és primer), aleshores també ho és $\mathbb{Z}/(2,X)$ i, en conseqüència, per la proposició (\ref{prop:primersiidi}) $(2,X)$ és un ideal primer.
+\end{enumerate}
+\end{ej}
+
+\begin{defi}
+[Ideal maximal]\index{Ideal maximal}\label{def:idealmaximal} Un ideal $I$ d'un anell $A$ es diu \textit{ideal maximal} si és un ideal propi i no existeix cap ideal $J$ de $A$ tal que $I\varsubsetneq J\varsubsetneq A$
+\end{defi}
+
+\begin{prop}
+\label{prop:maximalsiicos} Sigui $A$ un anell i $I$ un ideal de $A$. Aleshores $I$ és maximal si, i només si, $A/I$ és cos.
+\end{prop}
+\begin{proof}
+\begin{itemize}
+    \item \fbox{$\Rightarrow$} Sigui $a+I\in A/I$ tal que $a+I\not=0+I$. Vull veure que $\exists b+I\in A/I$ tal que $(a+I)(b+I) = 1+I$. Com $a+I\not= 0+I \Rightarrow a\not\in I$. Defineixo doncs, $J:=I+(a)\supseteq I$. Però $a\in J\setminus I\Rightarrow J\varsupsetneq I \Rightarrow J = A$. Sabem que $1\in A$, per tant, $1\in J\Rightarrow 1 = x+ba,\;x\in I,b\in a$. $1-ba=x\in I\Rightarrow 1+I = ba+I = (b+I)(a+I)$. Amb això, $A/I$ és cos.
+    \item \fbox{$\Leftarrow$} Sigui $J$ un ideal de $A$ tal que $I\varsubsetneq J$. Vull veure que $J = A$. Com que $I\varsubsetneq J$, $\exists a\in J\setminus I \Rightarrow a+I\not= 0+I$. Com $A/I$ és cos, $\exists(b+I)\in A/I$ tal que $(a+I)(b+I) = 1+I$ ergo, $ab+I = 1+I \Rightarrow ab-1 = x\in I \Rightarrow 1=-x+ab\in J\Rightarrow 1\in J\Rightarrow (1)\subseteq (J) = J$ i com $(1) = A$, ja tenim $A = J$, com volíem.
+\end{itemize}
+\end{proof}
+
+\begin{prop}
+\label{prop:idealsaescos} Sigui $A$ un anell. Aleshores $A$ és cos si, i només si, l'únic ideal maximal és $(0)$.
+\end{prop}
+\begin{proof}
+Doble implicació:
+\begin{itemize}
+    \item \fbox{$\Rightarrow$} Anem a veure que l'únic ideal de $A$ (diferent de $A$) és zero. Sigui $J$ ideal tal que $(0)\varsubsetneq J$. Aleshores $\exists a\in J$, $a\not=0$. Com $A$ és cos, $\exists b\in A: ab=1$. Per tant, $1=ab=ba\in J \Rightarrow 1\in J\Rightarrow (1)\subseteq (J)=J \Rightarrow A\subset J$ i com $J\subseteq A$, aleshores $A=J$. Com que hem partit dient que $J\not=A$, això és una contradicció i només pot ser $A = (0)$.
+    \item \fbox{$\Leftarrow$} Vull veure que $A$ és cos (o sigui, que tot element $a\in A$ té invers en $A$). Sigui $a\not=0$, $a\in A$. Aleshores $J = (a)$ és ideal en $A$, $J\not=(0)$. Com $1\in A$, $\exists b\in A: 1=ab$. Implica que $b=a^{-1}\in A\Rightarrow J = (a) = A$.
+\end{itemize}
+\end{proof}
+
+\begin{lema}\label{lema:correspondenciabijectivaideals}\label{esal21}
+Sigui $A$ un anell, $I$ un ideal de $A$. Aleshores existeix una correspondència bijectiva entre el conjunt dels ideals de $A/I$ i el conjunt dels ideals de $A$ que contenen $I$.
+\end{lema}
+\begin{proof}
+Considerem el morfisme de pas al quocient $\pi:A\rightarrow A/I$. Als elements de $A/I$ els escriuré amb una barra a sobre.
+    
+    Si $\overline{J}$ és ideal de $A/I$, aleshores $\pi^{-1}(\overline{J})$ és ideal de $A$. En efecte $a,b\in \pi^{-1}(\overline{J})\Rightarrow\pi(a),\pi(b)\in\overline{J}\Rightarrow \pi(a+b) = \pi(a)+\pi(b)\in \overline{J}\Rightarrow a+b\in \pi^{-1}(J)$. D'altra banda, 
+    $a\in A,\;b\in\pi^{-1}(\overline{J})\Rightarrow\pi(b)\in \overline{J}\Rightarrow \pi(ab) = \pi(a)\pi(b)\in\overline{J}\Rightarrow ab\in \pi^{-1}(\overline{J})$. Clarament $\pi^{-1}(\overline{J})$ conté $I = \pi^{-1}(0)$. Hem obtingut doncs que $\overline{J}\mapsto \pi^{-1}(\overline{J})$ defineix una aplicació del conjunt dels ideals de $A/I$ en el conjunt dels ideals de $A$ que contenen $I$.
+    
+    Si ara $J$ és ideal de $A$, $\pi(J)$ és ideal de $A/I$. En efecte, si $a',b'\in\pi(J)$, tenim $a' = \pi(a)$ i $b' = \pi(b)$, per $a,b\in J$ i $a'b' = \pi(a)+\pi(b) = \pi(a+b)\in \pi(J)$, ja que $a+b\in J$. Ara, si $a'\in A/I$, $b'\in\pi(J)$, tenim $a'=\pi(a)$, per un cert $a\in A$, ja que $\pi$ és exhaustiva, $b'=\pi(b)$, amb $b\in J$, i $a'b'=\pi(a)\pi(b) = \pi(ab)\in \pi(J)$, ja que $ab\in J$. Hem obtingut doncs, que $J\mapsto\pi(J)$ defineix una aplicació del conjunt dels ideals de $A$ que contenen $I$ en el conjunt dels ideals de $A/I$.
+    
+    Si $J$ és ideal de $A$ contenint $I$, volem veure que $\pi^{-1}(\pi(J)) = J$. Clarament $J\subset\pi^{-1}(\pi(J))$. Ara, si $a\in\pi^{-1}(\pi(J))$, tenim $\pi(a)\in\pi(J)$, per tant, $\pi(a)=\pi(b)$, per a un cert $b\in J$. Tenim doncs $a = b+c$, amb $c\in\ker\pi = I$. Com $I\subset J$, tenim $c\in J$ i $a = b+c\in J$.
+    
+    Ara, si $\overline{J}$ és ideal de $A/I$, es compleix que $\pi(\pi^{-1}(\overline{J})) = \overline{J}$ per ser $\pi$ aplicació exhaustiva.
+\end{proof}
+
+\begin{nota}\label{nota:maximalimplicaprimer}
+    Sigui $A$ un anell i $I$ un ideal de $A$. Aleshores, $I$ maximal implica $I$ primer. La implicació recíproca no és sempre certa.
+\end{nota}
+\begin{proof}
+És un cas particular de la proposició (\ref{prop:idealsaescos}).
+\end{proof}
+
+\begin{ej}
+Els ideals maximals de l'anell $\mathbb{Z}$ són exactament els ideals $(p)$ amb $p$ primer.
+\end{ej}
+
+Volem veure ara que tot anell té ideals maximals. Per provar-ho, necessitem el lema de Zorn. Abans d'enunciar-lo, donem algunes definicions sobre conceptes relacionats amb conjunts ordenats. Això no cal, només és per poder comprendre el lema de Zorn.
+
+Sigui $S$ un conjunt ordenat (és a dir, existeix una relació $\leq$ d'ordre, etc.) Un element $a$ de $S$ diem que és \textit{mínim} si es compleix $a\leq x$, $\forall x\in S$. Anàlogament un element $b$ de $S$ diem que és \textit{màxim}, si es compleix $x\leq b$ per a tot $x\in S$. Clarament, si $S$ té mínim (resp. màxim), aquest és únic. Un element $m$ de $S$ diem que és \textit{minimal} si es compleix que $x\in S$ i $x\leq m$ implica $x=m$. Un element $m$ de $S$ diem que és \textit{maximal} si es compleix que $x\in S$ i $x\geq m$ implica $x=m$.
+
+Sigui $S$ un conjunt ordenat i $T$ un subconjunt. Una \textit{cota superior} de $T$ en $S$ és un element $b$ de $S$ tal que $x\leq b$ per a tot $x\in T$. Diem que $S$ està ordenat \textit{inductivament} si tot subconjunt de $S$ totalment ordenat té cota superior.
+
+\begin{lema}
+[Lema de Zorn]\label{lema:lemadezorn}\index{Lema de Zorn} Sigui $X$ un conjunt no buit ordenat inductivament. Aleshores existeix un element maximal a $X$.
+\end{lema}
+
+Ara ja podem enunciar i demostrar el nostre teorema:
+\begin{ter}
+\label{ter:totanellteunmaximal} Tot anell $A\not=(0)$ té sempre al menys un ideal maximal.
+\end{ter}
+\begin{proof}
+Sigui $X = \{I$ ideal de $A$ tal que $I\not=A\}$. La relació ``inclusió'' és d'ordre. Hem de veure que $X$ té un element maximal. Per això utilitzem el lema de Zorn i hem de veure que tota cadena té cota superior. Sigui $I_0\subseteq\cdots\subseteq I_n$ una cadena d'ideals (no té per què ser finita). Sigui $I:=\bigcup_{n\in\mathbb{N}} I_n$. Aleshores $I$ és la cota superior. Com $I$ és ideal\footnote{Vegem que $I$ és ideal de $A$. Si $a_1,a_2\in I$, tenim $a_1\in I_1$, $a_2\in I_2$ per certs $I_1,I_2\in X$. Com $X$ està totalment ordenat, tenim $I_1\subset I_2$ o bé $I_2\subset I_1$. Considerem, sense pèrdua de generalitat, $I_1\subset I_2$. Aleshores $a_1,a_2\in I_2$, que implica $a_1-a_2\in I$. Si prenem $I_2\subset I_1$, aleshores $a_1,a_2\in I_1$ i igualment implica $a_1,a_2\in I$. En qualsevol cas $a_1,a_2\in I$. Si $a\in I$, $b\in A$, aleshores $a\in J$, per un cert $J\in X$. Per tant, $ba\in J\subset I\Rightarrow ba\in I$ i amb això $I$ és un ideal, com volíem veure.}, aleshores $A$ té ideals maximals (és perquè $X$ té elements maximals, pel lema de Zorn).
+\end{proof}
+
+
+\setcounter{exercici}{21}
+\begin{exercici}
+\begin{enumerate}[(a)]
+    \item Demostreu que la contracció d'un ideal primer és un ideal primer.
+    \item Considerem la injecció de $\mathbb{Z}$ en $\mathbb{Z}[i]$. Proveu que l'extensió de l'ideal $(2)$ no és un ideal primer.
+    \item Siguin $A$ un anell i $\mathfrak{p}$ un ideal primer. Proveu que l'extensió de $\mathfrak{p}$ en $A[X]$ és un ideal primer.
+\end{enumerate}
+\end{exercici}
+\begin{sol}
+\begin{enumerate}[(a)]
+    \item $J$ és un ideal primer i considerem la seva contracció $J^c=f^{-1}(J)$. Anem a veure que és ideal primer. Per veure que és ideal provem les dues condicions: $\forall a,b\in J^c,\;f(a),f(b)\in J\Rightarrow f(a)+f(b)\in J \Rightarrow f(a+b)\in J\Rightarrow a+b\in J^c$ i $x\in J^c\Rightarrow f(x)\in J$ i $\lambda\in A\Rightarrow f(\lambda)\in B$, aleshores, $f(\lambda)(f(x) = f(\lambda x)\in J\Rightarrow \lambda x\in J^c$. Per tant $J$ és ideal. 
+    
+    Suposem que $J$ és ideal primer. Vull veure que $J^c$ és primer, és a dir, si $xy\in J^c$, o bé $x\in J^c$, o bé $y\in J^c$. Siguin $x,y\in A$ tals que $xy\in J^c$.
+        \begin{equation}
+            \notag
+            xy\in J^c\Leftrightarrow xy\in J\underset{morf.}{\Longleftrightarrow} f(x)f(y)\in J\underset{J\;prim.}{\Longleftrightarrow}\left\{
+            \begin{array}{ll}
+                f(x)\in J\Leftrightarrow x\in J^c\\
+                \qquad \text{o bé}\\
+                f(y)\in J\Leftrightarrow y\in J^c
+            \end{array}
+            \right.
+        \end{equation}
+        Per tant, $J^c$ és ideal primer.
+    
+    
+    \item Considerem el morfisme inclusió
+    \begin{equation}
+        \notag
+        \iota:\mathbb{Z}\longrightarrow\mathbb{Z}[i]
+    \end{equation}
+    on $\mathbb{Z}[i] = \{a+bi\;:\;a,b\in\mathbb{Z},\;i^2=-1\}$. L'ideal $(2)$ és l'ideal
+    \begin{equation}
+        \notag
+        (2) = 2\mathbb{Z} = \{2x\;:\;x\in\mathbb{Z}\}.
+    \end{equation}
+    Bàsicament, el conjunt dels nombres enters parells. Per tant,
+    \begin{equation}
+        \notag
+        \begin{array}{rl}
+            \iota:\mathbb{Z} & \longrightarrow\mathbb{Z}[i] \\
+            (2) & 2\mathbb{Z}[i] = \{2m+2ni,\;m,n\in\mathbb{Z}\}.
+        \end{array}
+    \end{equation}
+    Veiem que $\iota((2)) = (2)^{e}$ no és primer perquè $\exists x,y\not\in (2)^{e}$ tal que $xy\in (2)^{e}$. Prenent $x = 1+i$ i $y=3+i$, $x,y\not\in (2)^{e}$, però $(1+i)(3+i) = 2+4i\in (2)^{e}$. Per tant $(2)^{e}$ no és primer.
+    
+    
+    
+    
+    \item Per l'exercici \ref{esal20} tenim que el morfisme inclusió 
+    \begin{equation}
+        \notag
+        \iota:A\longrightarrow A[X]
+    \end{equation}
+    compleix que per a un ideal $I$, $I^{e} = I[X]$. Al nostre cas seria $\mathfrak{p}^{e} = \mathfrak{p}[X]$ és l'extensió de $\mathfrak{p}$ en $A[X]$. A més, per l'exercici 18, tenim
+    \begin{equation}
+        \notag
+        \frac{A[X]}{\mathfrak{p}[X]}\cong \frac{A}{\mathfrak{p}}[X],
+    \end{equation}
+    i com $\mathfrak{p}$ és primer, aleshores $A/\mathfrak{p}$ és domini d'integritat. Anem a demostrar que $A/\mathfrak{p}$ és domini d'integritat implica que $(A/\mathfrak{p})[X]$ ho és. Siguin $f,g\in (A/\mathfrak{p})[X],\;f,g\not=[0]$. 
+    \begin{equation}
+        \notag
+        \left\{
+        \begin{array}{ll}
+            f = [a_0]+[a_1]X+\cdots+[a_n]X^n \\
+            g = [b_0]+[b_1]X+\cdots+[b_m]X^m
+        \end{array}
+        \right\}\in \frac{A}{\mathfrak{p}}[X],\quad [a_n],[b_m]\not=[0].
+    \end{equation}
+    $f,g\in A/\mathfrak{p}$ DI $\Rightarrow [a_n][b_m]\not=0\Rightarrow fg\not=0\Rightarrow (A/\mathfrak{p})[X]$ DI. Com $(A/\mathfrak{p})[X]$ és DI, aleshores $A[X]/\mathfrak{p}[X]$ també és DI i aleshores $\mathfrak{p}[X]$ és primer.
+\end{enumerate}
+\end{sol}
+
+\setcounter{exercici}{25}
+\begin{exercici}
+\label{esal26}
+Sigui $A$ un anell. Utilitzeu l'axioma de Zorn per a demostrar que el conjunt d'ideals primers de $A$ admet elements minimals.
+\end{exercici}
+\begin{sol}
+Sigui $\Sigma = \{I_1,\ldots,I_n\}$ el conjunt d'ideals primers de $A$ complint
+\begin{equation}
+    \notag
+    I_1\subseteq I_2\subseteq \cdots \subseteq I_n\subseteq A.
+\end{equation}
+Aleshores, afirmo que $I:=\bigcap_{i=1}^n I_i$ és ideal primer. En efecte, sigui $x\in I$. Aleshores $x\in I_i,\;\forall i=1,\ldots,n$. Per tant,
+\begin{itemize}
+    \item $x,y\in I\Rightarrow x,y\in I_i,\;\forall i=1,\ldots,n$. Com $\forall i$, $I_i$ ideals, aleshores $x+y\in I_i\Rightarrow x+y\in I$.
+    \item $x\in I$, $a\in A$. Si $x\in I$, aleshores $x\in I_i,\;\forall i=1,\ldots,n$. Com $I_i$ són ideals, $\forall i=1,\ldots,n$ es té $ax\in I_i\Rightarrow ax\in I$
+\end{itemize}
+Aleshores $I = \cup I_i$ és ideal. Veiem que és primer, és a dir, que $\forall a,b\in A$, $ab\in I\Rightarrow a\in I$ o bé $b\in I$. En efecte, si $a,b\in A$ són tals que $ab\in I$, aleshores $ab\in I_i,\;\forall i=1,\ldots,n$. Com $I_i$ és ideal això implica que $a\in I_i$ o bé $b\in I_i$, és a dir, que $a\in I$ o bé $b\in I$. Per tant $I$ és primer.
+
+Vist que $I = \bigcap_{i=1}^n I_i$ és ideal primer, podem dir doncs que $\Sigma$ és un conjunt totalment ordenat amb cota superior i inferior i aleshores, pel lema de Zorn, podem afirmar que existeixen elements maximals. Si prenem la relació d'ordre al revés, descendent, aleshores l'element maximal es tradueix en l'element minimal. Aquest és $I$ perquè $I$ està contingut en tots els ideals de $\Sigma$ i per tant és el minimal.
+\end{sol}
+
+
+\setcounter{exercici}{29}
+\begin{exercici}
+\label{esal30} Sigui $A$ un anell commutatiu.
+\begin{enumerate}[(a)]
+    \item Demostreu que $A\setminus A^*$ (complementari de les unitats) és un ideal si, i només si, $A$ té un únic ideal maximal.
+    \item Demostreu que $A$ té un únic ideal primer si, i només si, tot element de $A$ és invertible o nilpotent.
+\end{enumerate}
+\end{exercici}
+\begin{sol}
+\begin{enumerate}[(a)]
+    \item Recordem les definicions.
+    \begin{itemize}
+        \item Un ideal $I$ de $A$ es diu maximal si és ideal propi i $\not\exists J$ ideal de $A$ tal que $I\varsubsetneq J\varsubsetneq A$.
+        \item Sigui $M$ un ideal maximal d'un anell $A$. Aleshores $M\cap A^* = \emptyset$; en altres paraules, $M$ no conté cap unitat. En altres paraules, si $u\in A^*$, $u\in M$, aleshores $M=A$.
+    \end{itemize}
+    
+    \begin{enumerate}[($\Rightarrow$)]
+        \item Suposem que $A\setminus A^*$ és un ideal. Volem demostrar que $A$ té un únic ideal maximal. Si això és cert, ha de ser $A\setminus A^*$, perquè sinó, qualsevol ideal maximal estaria contingut en $A\setminus A^*$. Anem a demostrar, doncs, que $A\setminus A^*$ és ideal maximal. Que és ideal ja ho sabem per hipòtesis. Veiem que és maximal.
+        
+        Suposem que $A\setminus A^*$ no és maximal, és a dir, $\exists x\in A\setminus A^*$ tal que 
+        \begin{equation}
+            \notag
+            A\setminus A^*\varsubsetneq A\setminus A^*+(x)\varsubsetneq A.
+        \end{equation}
+        Observem que, si $x\not\in A\setminus A^*$. Ja hem vist que si $I\subset A$ és un ideal, si existeix $u\in A^*,u\in I\Rightarrow I=A$; per tant, com que hem vist que $x\in A^*$ i tenim un ideal que conté $(A\setminus A^*+(x))\Rightarrow A\setminus A^*+(x) = A$. Arribem doncs a una contradicció. Fins aquí hem demostrat que és un ideal maximal.
+        
+        Veiem ara que n'és l'únic. Sigui $B$ un altre ideal maximal. Demostraré que $B = A\setminus A^*$.
+        \begin{itemize}
+            \item \fbox{$\subseteq$} Com $B$ és maximal, per la proposició que he enunciat inicialment, $\not\exists u$ tal que $u\in A^*$ i $u=B$. Com $B$ és maximal, no pot contenir unitats: $x\in B\Rightarrow x$ no unitat $\Rightarrow x\in A\setminus A^*\Rightarrow B\subseteq A\setminus A^*$. Ara, com $B$ i $A\setminus A^*$ són maximals $\Longrightarrow B = A\setminus A^*$. 
+            \item No és necessari fer l'altra inclusió.
+        \end{itemize}
+    \end{enumerate}
+    \begin{enumerate}[($\Leftarrow$)]
+        \item Suposem que $M$ és l'únic ideal maximal de $A$. Vull demostrar que $A\setminus A^*$ és ideal. Si $A\setminus A^*$ és ideal ha de ser maximal, per la proposició. Aleshores, només cal demostrar que $M = A\setminus A^*$.
+        \begin{itemize}
+            \item \fbox{$\subseteq$} Ja hem vist que per tot ideal $I\not=A\Rightarrow I\cap A^* = \emptyset$ per la proposició. Per tant, $M\subseteq A\setminus A^*$ ($M\cap A^*=\emptyset$).
+            \item \fbox{$\supseteq$} Si $a\in A\setminus A^*\Rightarrow a\in M$ perquè suposem que $M$ és l'únic ideal maximal i tot element no invertible està en algun ideal maximal.
+        \end{itemize}
+    \end{enumerate}
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    \item \begin{enumerate}[($\Rightarrow$)]
+        \item Sabem, de l'exercici 25, que l'ideal dels elements nilpotents és la intersecció de tots els ideals primers, és a dir,
+        \begin{equation}
+            \notag
+            \eta(A) = \bigcap_{\mathfrak{p}\text{ ideal primer}}\mathfrak{p}
+        \end{equation}
+        Si només tenim un ideal primer, tenim
+        \begin{itemize}
+            \item De la teoria sabem que SEMPRE existeix al menys un ideal maximal en un anell $A\not=(0)$.
+            \item Sabem de la teoria que si $I$ és maximal $\Rightarrow I$ és primer.
+        \end{itemize}
+        Per tant, tenim un únic ideal maximal i primer, que és el mateix. Aleshores, sigui $I$ aquest ideal, tenim que, com és maximal, no pot tenir unitats. Com n'és l'únic $\Rightarrow I = A\setminus A^*$. Per tant, $\eta(A) = A\setminus A^*$.
+    \end{enumerate}
+    \begin{enumerate}[($\Leftarrow$)]
+        \item Suposem que tot element de $A$ és invertible o nilpotent. Siguin $\mathfrak{p},\mathfrak{q}$ dos ideals primers de $A$. Sigui $a\in \mathfrak{p}$. Aleshores, sabem
+        \begin{equation}
+            \notag
+            \eta(A) = \bigcap_{\mathfrak{p}\text{ ideal primer}}\mathfrak{p}
+        \end{equation}
+        Si $a\in\mathfrak{p}\Rightarrow a\in \eta(A)\Rightarrow a\not\in A^*$ i $a\in\mathfrak{q}\Rightarrow \mathfrak{p}\subseteq\mathfrak{q}$. De la mateixa forma, $a\in\mathfrak{q}\Rightarrow \cdots \Rightarrow a\in \mathfrak{p}\Rightarrow \mathfrak{q} = \mathfrak{p}$.
+    \end{enumerate}
+\end{enumerate}
+\end{sol}
+
+
+
+\end{document}

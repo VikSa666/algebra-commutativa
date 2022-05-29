@@ -1,0 +1,471 @@
+\documentclass[../../../main.tex]{subfiles}
+
+
+
+\begin{document}
+
+
+
+
+
+
+
+\section{Producte tensorial}
+
+
+\begin{defi}[Bilineal]
+$A$ anell i $M,N$ $A$-mòduls. Sigui $f:M\times N\to P$ on $P$ és un $A$-mòdul també. Aleshores $f$ es diu que és bilineal si
+\begin{enumerate}[(i)]
+    \item $\forall m\in M$, $f_m:N\to P$ que envia $n\mapsto f(m,n)$ és $A$-lineal, i
+    \item $\forall n\in N$, $f_n:M\to P$ que envia $m\mapsto f(m,n)$ és $A$-lineal.
+\end{enumerate}
+Equivalentment, 
+\begin{equation}
+    \notag
+    f(\lambda_1m_1+\lambda_2m_2,\mu_1n_1+\mu_2n_2) = \lambda_1\mu_1f(m_1,n_1)+\lambda_1\mu_2f(m_1,n_2)+\lambda_2\mu_1f(m_2,n_1)+\lambda_2\mu_2f(m_2,n_2)
+\end{equation}
+\end{defi}
+
+A continuació, anem a construir el producte tensorial de $A$-mòduls.
+
+\begin{defi}
+[Construcció del producte tensorial]\label{def:construccioProducteTensorial}\index{Construcció del Producte Tensorial}\index{Producte Tensorial} Siguin $M$ i $N$ dos $A$-mòduls i considerem el següent $A$-mòdul
+\begin{equation}
+    \notag
+    C:=\bigoplus_{\#(M\times N)}A = A^{(\#(M\times N))}
+\end{equation}
+que és $A$-mòdul lliure, tal que per cada element $(m,n)\in M\times N$, existeix un element $e_{(m,n)}$ de la base canònica. Per tant, els elements de $C$ són de la forma
+\begin{equation}
+    \notag
+    \sum_{(m_i,n_i)\in M\times N}\lambda_i\cdotp e_{(m_i,n_i)}
+\end{equation}
+on $\lambda_i\in A$. A partir d'aquí, utilitzarem per simplificar la següent notació: $\overline{(m,n)} = e_{(m,n)}$. Sigui ara $D\subseteq C$ el submòdul generat per tots els elements de la forma
+\begin{equation}
+    \notag
+    \left\{
+    \begin{array}{ll}
+        \overline{(m+m',n)}-\overline{(m,n)}-\overline{(m',n)}\\
+        \overline{(m,n+n')}-\overline{(m,n)}-\overline{(m,n')}\\
+        \overline{(\lambda m,n)}-\lambda\overline{(m,n)}\\
+        \overline{(m,\mu n)}-\mu\overline{(m,n)}
+    \end{array}
+    \right.
+\end{equation}
+on $m,m'\in M$, $n,n'\in N$ i $\lambda,\mu\in A$. Llavors considerarem el $A$-mòdul quocient $C/D$ i aquest serà el nostre producte tensorial. És a dir, definim el \textit{producte tensorial} com
+\begin{equation}
+    \notag
+    M\otimes_AN = C/D
+\end{equation}
+Denotarem la classe $\overline{(m,n)}$ per $m\otimes n$.
+\end{defi}
+
+
+\begin{nota}
+Observem que tots els elements de $M\otimes_AN$ són de la forma
+\begin{equation}
+    \notag
+    \sum_{i\in I}(m_i\otimes n_i)\lambda_i
+\end{equation}
+per $m_i\in M$, $n_i\in N$ i $\lambda_i\in A$. També podem considerar l'aplicació canònica
+\begin{equation}
+    \notag
+    \begin{array}{rl}
+        \iota:M\times N & \longrightarrow M\otimes_AN \\
+        (m,n) & \longmapsto m\otimes n
+    \end{array}
+\end{equation}
+que és bilineal.
+\end{nota}
+
+
+
+\begin{nota}
+$M,N\not=0$ no implica que $M\otimes_AN\not=0$. Puta merda... Per exemple, $\mathbb{Z}_2\otimes_\mathbb{Z}\mathbb{Z}_3$ és zero, on $\mathbb{Z}_n = \mathbb{Z}/n\mathbb{Z}$. Aleshores veiem que, per tot $a\in\mathbb{Z}_2$ i per tot $b\in\mathbb{Z}_3$,
+\begin{equation}
+    \notag
+    a\otimes b = 3a\otimes b = 3(a\otimes b)=a\otimes 3b = a\otimes 0
+\end{equation}
+i la mateixa cosa passa si fem $a\otimes b = a\otimes (-2)b$ i tal. 
+\end{nota}
+
+
+\begin{prop}
+[Propietat universal del producte tensorial]\index{Propietat universal del producte tensorial}\label{prop:propietatuniversalproductetensorial} Sigui $f:M\times N\to L$ una morfisme $A$-bilineal de $A$-mòduls. Aleshores, existeix una única $\overline{f}:M\otimes_AN\to L$ $A$-lineal de forma que $f = \overline{f}\circ\iota$. És a dir, que fa commutatiu el diagrama següent
+\begin{equation}
+    \notag
+    \xymatrix{
+    M\times N\ar[r]^f\ar[d]_\iota & L \\
+    M\otimes_AN\ar@{-->}[ur]_{\exists!\overline{f}} & 
+    }
+\end{equation}
+A més, $M\otimes_AN$ és únic tret d'isomorfisme amb aquesta propietat.
+\end{prop}
+\begin{proof}
+Ha de ser 
+\begin{equation}
+    \notag
+    \overline{f}(m\otimes n) =\overline{f}(\iota((m,n))) = f(m,n)
+\end{equation}
+Llavors, és clar que és commutatiu el tema, però cal veure que està ben definida la $\overline{f}$. Com $C$ és lliure, prenem 
+\begin{equation}
+    \notag
+    \begin{array}{rl}
+        \Tilde{f}:C & \longrightarrow L \\
+        \Tilde{(m,n)} & \longmapsto f(m,n)
+    \end{array}
+\end{equation}
+que està ben definida. Aleshores, ´és clar que per ser $f$ bilineal, $\Tilde{f}(D) = 0$, ja que justament $D$ està generat per les relacions de la bilinealitat. Per tant si aplico $\Tilde{f}$ em donarà justament 0. Per tant, per la definició de quocient, existeix $\overline{f}:C/D\to L$ $A$-lineal de forma que $\overline{f}(m\otimes n) = f(m,n)$. Llavors, per la pròpia construcció,és clar que $\overline{f}\circ \iota = f$. 
+
+Per què és única $\overline{f}$? Perquè, sobre els generadors, si ha de commutar ha de ser de la manera que hem vist, i.e. qualsevol altra morfisme $g$ tal que $g\circ\iota = f$ ha de verificar que $g(m\otimes n) = f(m,n)$ però $m\otimes n$ genera, i per tant $g = \overline{f}$.
+
+Finalment, suposem que tinc $T$ un $A$-mòdul i $h:M\times N\to T$ una aplicació $A$-bilineal tal que per tot $f:M\times N\to L$ bilineal, existeix una única $\overline{\overline{f}}:T\to L$ tal que $\overline{\overline{f}}\circ h = f$. Llavors, existeix una única $\overline{h}:T\to M\otimes_AN$ de forma que $\overline{h}$ és tal que $h = \overline{h}\circ \iota$. La qüestió és que tenim dues aplicacions que fan la mateixa funció i la mateixa propietat de commutativitat i tal.
+\begin{equation}
+    \notag
+    \xymatrix{
+    M\otimes_AN\ar[r]^\iota\ar[dr]_\iota & M\otimes_AN\\
+    & M\otimes_AN\ar@{-->}[u]_{\mathrm{id}_{M\otimes_AN} = \overline{h}\circ\overline{\iota}}
+    }
+\end{equation}
+on $\overline{\iota}$ és un isomorfisme que no sé d'on surt.
+\end{proof}
+
+Veiem quatre propietats bàsiques, de les quals podem deduir moltes més.
+
+\begin{nota}
+La mateixa construcció es pot fer per una família finita de $A$-mòduls $\{M_1,\ldots,M_n\}$ definint de forma natural el que és una aplicació multilineal i després construint de la mateixa forma l'objecte universal que fa lineal l'aplicació multilineal, és a dir, $M_1\otimes_A\cdots\otimes_AM_n$.
+
+Per tant, si tenim una aplicació $h:M_1\times\cdots\times M_n\to P$ multilineal, aleshores existeix una única aplicació $\overline{h};M_1\otimes_A\cdots\otimes_AM_n\to P$ tal que $\overline{h}\circ\iota = h$, on 
+\begin{equation}
+    \notag
+    \iota:M_1\times\cdots\times M_n\longrightarrow M_1\otimes_A\cdots\otimes_AM_n
+\end{equation}
+és l'aplicació inclusió.
+\end{nota}
+
+A continuació posaré una sèrie de propietats del producte tensorial en forma de problema (i per això estan en castellà, perquè els vaig haver d'entregar).
+
+
+\setcounter{exercici}{38}
+\begin{exercici}
+Prueba las siguientes propiedades del producto tensorial (todos son $A$-módulos y el producto tensorial es sobre $A$):
+\begin{enumerate}[(i)]
+    \item $M\otimes N\cong N\otimes M$.
+    \item $M\otimes(N\otimes P)\cong (M\otimes N)\otimes P$.
+    \item $M\otimes (\bigoplus_{i\in I}M_i)\cong \bigoplus_{i\in I}(M\otimes M_i)$.
+    \item $A\otimes M\cong M$.
+    \item $M\otimes A/I\cong M/IM$, para todo ideal $I$ de $A$.
+\end{enumerate}
+\end{exercici}
+\begin{sol}
+\begin{enumerate}[(i)]
+    \item Definimos el morfismo
+    \begin{equation}
+        \notag
+        f:A\times B\to B\otimes A
+        \begin{array}{rl}
+            f:A\times B & \longrightarrow B\otimes A \\
+            (a,b) & \longmapsto b\otimes a
+        \end{array}
+    \end{equation}
+    que es claramente bilineal por las relaciones del producto tensorial, así que por la propiedad universal del producto tensorial, existe un único morfismo $\overline{f}:A\otimes B\to B\otimes A$ definido en los generadores como $\overline{f}(a\otimes b)=b\otimes a$. De forma idéntica obtenemos un morfismo $\overline{g}:B\otimes A\to A\otimes B$ definido en los generadores como $\overline{g}(b\otimes a) = a\otimes b$. Observamos que la composición $\overline{f}\circ\overline{g}$ es la identidad y también la composición al revés, $\overline{g}\circ\overline{f}$ y por tanto tenemos que son inversas la una de la otra, ergo son isomorfismos. 
+    
+    \item Para la asociatividad ya es más difícil. No sé si habré logrado hacerlo bien.
+    
+    Empezamos fijando un $x\in X$ y definimos la aplicación 
+    \begin{equation}
+        \notag
+        \begin{array}{rl}
+            f:Y\times Z & \longrightarrow (X\otimes Y)\otimes Z \\
+            (y,z) & \longmapsto (x\otimes y)\otimes z
+        \end{array}
+    \end{equation}
+    que podemos ver que es bilineal. Entonces, por la propiedad universal, existirá una única aplicación $A$-lineal $\overline{f}:Y\otimes Z\to (X\otimes Y)\otimes Z$.
+    
+    Construimos ahora el siguiente morfismo $A$-bilineal:
+    \begin{equation}
+        \notag
+        \begin{array}{rl}
+            g:X\times (Y\otimes Z) & \longrightarrow (X\otimes Y)\otimes Z \\
+            \left(x,\sum_{i=1}^n(y_i\otimes z_i)\right) & \longmapsto \overline{f}\left(\sum_{i=1}^n(y_i\otimes z_i)\right)
+        \end{array}
+    \end{equation}
+    que es bilineal por el hecho de que $\overline{f}$ es $A$-lineal. Entonces, de nuevo por la propiedad universal tenemos que existe una única aplicación $A$-lineal $\overline{g}:X\otimes(Y\otimes Z)\to (X\otimes Y)\otimes Z$. 
+    
+    Ahora no sé muy bien cómo ver que es isomorfismo. Está claro que si tomamos bases $\{e_i\}_{i\in I}$ de $X$, $\{f_j\}_{j\in J}$ de $Y$ y $\{g_k\}_{k\in K}$ de $Z$, entonces la $\overline{g}$ establece una biyección entre los elementos $e_i\otimes(f_j\otimes g_k)$ y los elementos $(e_i\otimes f_j)\otimes g_k$, para $i\in I$, $j\in J$, $k\in K$. Otra cosa que se podría hacer es repetir este argumento pero fijando $z\in Z$ y haciéndolo ``al revés''. De esta manera conseguiríamos un morfismo $\overline{h}:(X\otimes Y)\otimes Z\to X\otimes (Y\otimes Z)$ que junto con $\overline{g}$ serían inversos el uno del otro, pero no sé demostrar esto último. 
+    
+    \item Definimos primero la siguiente aplicación:
+    \begin{equation}
+        \notag
+        \begin{array}{rl}
+            M\times\left(\bigoplus_{i\in I}M_i\right) & \longrightarrow \bigoplus_i(M\otimes M_i) \\
+            (m,(m_i)_i) & \longmapsto (m\otimes m_i)_i
+        \end{array}
+    \end{equation}
+    que es claramente bilineal y también bien definida. Luego, por la propiedad universal, podemos definir la aplicación $A$-lineal $\overline{f}:M\otimes(\bigoplus_iM_i)\to \bigoplus_i(M\otimes M_i)$ que es única salvo isomorfismo y está definida por $\overline{f}(m\otimes (m_i)_i) = (m_i\otimes m)_i$.
+    
+    Considero ahora los morfismos inyectivos ``canónicos'' de la suma directa $\delta_i:M_i\to \bigoplus_iM_i$ definidos como $\delta_i(m_i) = (m_j)_j$ que es 0 si $i\not=j$ y $m_j$ si $i = j$. Con esto definimos la aplicación
+    \begin{equation}
+        \notag
+        \begin{array}{rl}
+            g_i:M\times M_i & \longrightarrow M\otimes(\bigoplus_iM_i) \\
+            (n,m_i) & \longmapsto n\otimes\delta_i(m_i)
+        \end{array}
+    \end{equation}
+    que es bilineal y por la propiedad universal induce $\overline{g}_i:M\otimes M_i\to M\otimes(\bigoplus_iM_i)$ definida por $\overline{g}_i(n\otimes m_i) = m\otimes \delta_i(m_i)$. Ahora definimos
+    \begin{equation}
+        \notag
+        \begin{array}{rl}
+            \varphi:\bigoplus_i(N\otimes M_i) & \longrightarrow M\otimes(\bigoplus_iM_i) \\
+            (m\otimes m_i)_i & \longmapsto \sum_i \overline{g}_i(m\otimes m_i)
+        \end{array}
+    \end{equation}
+    Faltaría ver que $\varphi$ es una aplicación bien definida y que $\varphi$ y $\overline{f}$ son inversas la una de la otra.
+    
+    No sé muy bien cómo demostrar que esta aplicación está bien definida, ya que la suma podría ser infinita y no sé cómo argumentar entonces. 
+    
+    En cuanto al isomorfismo es fácil. Se toma
+    \begin{equation}
+        \notag
+        \varphi(\overline{f}(m\otimes(m_i)_i)) = \varphi((m\otimes m_i)_i) = \sum_i\overline{g}_i(m\otimes m_i) = \sum_im\otimes \delta_i(m_i) = m\otimes (m_i)_i
+    \end{equation}
+    donde la última igualdad se da porque $\delta_i(m_i)$ sólo es $m_i$ en el índice $i$ y por tanto el resto de sumandos se van. Por otro lado tendríamos
+    \begin{equation}
+        \notag
+        \overline{f}(\varphi((m\otimes n_i)_i)) = \overline{f}\left(\sum_im\otimes \delta_i(m_i)\right) = \sum_i\overline{f}(m\otimes\delta_i(m_i)) = (m\otimes m_i)_i
+    \end{equation}
+    que completa la prueba.
+    
+    
+    
+    
+    \item Definimos la aplicación
+    \begin{equation}
+        \notag
+        \begin{array}{rl}
+            f:A\times M & \longrightarrow M \\
+            (a,m) & \longmapsto a\cdotp m
+        \end{array}
+    \end{equation}
+    que es claramente bilineal y por lo tanto, por la propiedad universal del producto tensorial, existe una única aplicación $\overline{f}:A\otimes M\to M$ definida como $\overline{f}(a\otimes m) = am$.
+    
+    Ahora podemos considerar $g:M\to A\otimes M$ definida por $m\mapsto 1\otimes m$ que es claramente $A$-lineal y se ve fácilmente que $\overline{f}\circ g = \mathrm{id}_M$ y $g\circ\overline{f} = \mathrm{id}_{A\otimes M}$. Por tanto $\overline{f}$ es isomorfismo.
+    
+    
+    
+    \item Por último, similar al anterior, consideramos la aplicación
+    \begin{equation}
+        \notag
+        \begin{array}{rl}
+            f:M\times \frac{A}{I} & \longrightarrow \frac{M}{IM} \\
+            (m,\overline{a}) & \longmapsto \overline{a}m
+        \end{array}
+    \end{equation}
+    Está bien definida y también es bilineal trivialmente, por lo tanto podemos usar la propiedad universal para afirmar que tenemos una única aplicación $A$-lineal $\overline{f}:M\otimes A/I\to M/IM$ tal que $f(m\otimes\overline{a}) = \overline{a}m$. Igual que antes, podemos considerar la inversa $g:M/IM\to M\otimes A/I$ definida como $g(m) = m\otimes \overline{1}$ y es $A$-lineal y bien definida y cumple que $\overline{f}\circ g = \mathrm{id}_{M\otimes A/I}$ y $g\circ\overline{f} = \mathrm{id}_{M/IM}$.
+\end{enumerate}
+\end{sol}
+
+
+\begin{coro}
+Siguin $m,n\in\mathbb{Z}$ tals que $\gcd(m,n) = 1$. Aleshores
+\begin{equation}
+    \notag
+    \mathbb{Z}_m\otimes_\mathbb{Z}\mathbb{Z}_n = 0
+\end{equation}
+\end{coro}
+\begin{proof}
+Per la proposició anterior, apartat (4),  $\mathbb{Z}_m\otimes\mathbb{Z}_n\cong\mathbb{Z}_m/(n)\mathbb{Z}_n = \mathbb{Z}_m/\mathbb{Z}_m = 0$.
+\end{proof}
+
+Totes aquestes propietats es poden combinar i obtenir-ne de noves i més específiques.
+
+\begin{defi}
+[Aplicació producte tensorial]\label{def:aplicacioProducteTensorial}\index{Producte tensorial d'aplicacions}\index{Aplicació producte tensorial}\index{$f\otimes g$} Si $f:M\to N$ i $g:M'\to N'$ són morfismes de $A$-mòduls i $A$-lineals, aleshores podem definir
+\begin{equation}
+    \notag
+    \begin{array}{rl}
+        f\otimes g:M\otimes_AM' & \longrightarrow N\otimes_AN' \\
+        m\otimes m' & \longmapsto f(m)\otimes g(m')
+    \end{array}
+\end{equation}
+\end{defi}
+
+\begin{prop}
+L'aplicació $f\otimes g$ aquí definida, està ben definida i és $A$-bilineal.
+\end{prop}
+\begin{proof}
+Per demostrar que està ben definit, podem utilitzar l'aplicació $f\times G:M\times M'\to N\otimes_AN'$ definida com $(m,m')\mapsto f(m)\otimes_Ag(m')$ i veure que és $A$-bilineal i, aleshores, indueix de forma natural el morfisme $f\otimes g$.
+
+Veiem també que és compatible amb la composició. Suposem que tenim $f_1:M_1\to N_1$, $f_2:N_1\to L_1$, $g_1:M_1'\to N_1'$ i $g_2:N_1'\to L_1'$. Aleshores tenim
+\begin{equation}
+    \notag
+    (f_2\circ f_1)\otimes (g_2\circ g_1) = (f_2\otimes g_2)\circ (f_1\otimes g_1)
+\end{equation}
+La demostració és directa perquè són iguals sobre els generadors $m_i\otimes n_j$. En particular, si $f,g$ són isomorfismes, aleshores $f\otimes g$ és isomorfisme amb inversa $(f\otimes g)^{-1} = f^{-1}\otimes g^{-1}$. A més $\mathrm{id}_M\otimes \mathrm{id}_N = \mathrm{id}_{M\otimes N}$.
+\end{proof}
+
+
+
+\begin{defi}
+[Restricció d'escalars]\label{def:restriccioDescalars}\index{Restricció d'escalars} Sigui $f:A\to B$ un morfisme d'anells. Aleshores, a tot $B$-mòdul $N$ li podem dotar d'una estructura com $A$-mòdul de la forma següent: $\lambda\cdotp n = f(\lambda)n$. Aquesta operació sobre $N$ s'anomena la \textit{restricció d'escalars} de $B$ a $A$ per $f$.
+\end{defi}
+
+\begin{defi}
+[Extensió d'escalars]\label{def:extensioEscalars}\index{Extensió d'escalars} Sigui $f:A\to B$ un morfisme d'anells. Podem considerar $B$ com $A$-mòdul per restricció d'escalars de $B$ a $A$ per $f$. Sigui $M$ un $A$-mòdul i prenem $M\otimes_AB$, que és un $A$-mòdul. Aleshores, $M\otimes_AB$ té una estructura com a $B$-mòdul que ve donada sobre els generadors per $\gamma\cdotp(m\otimes\gamma')=m\otimes\gamma\gamma'$. Aquesta operació sobre $M$ s'anomena l'\textit{extensió d'escalars de $A$ a $B$ per $f$}.
+\end{defi}
+
+Les propietats d'aquestes operacions acabades de definir s'han vist a classe de problemes. A continuació inseriré un altre problema, que recull tot un treball sobre extensions d'escalars, que vaig haver d'entregar. És un llarg problema i no ho refaré perquè em fa mandra. A més està en castellà un altre cop. També recull la propietat universal de l'extensió d'escalars. Atenció perquè hi ha un munt de demostracions que estan malament, que no les he corregit per falta de temps. O sigui que només ens hem de quedar amb els enunciats.
+
+\setcounter{exercici}{49}
+\begin{exercici}
+[Extensión de escalares]\label{exercici:extensioEscalars}\index{Propietat universal de l'extensió d'escalars}\label{propietatUniversalExtensioEscalars} Sea $f:A\to B$ un morfismo de anillos, $M$ un $A$-módulo. Consideremos $B$ como $A$-módulo por restricción de escalares de $B$ a $A$ por $f$.
+\begin{enumerate}[(i)]
+    \item Probar que $M\otimes_AB$ es un $B$-módulo, con el producto definido sobre los elementos de la forma $x\otimes b$ como $b'(x\otimes b ) = x\otimes b'b$.
+    \item Probar que si $g:M\to N$ es un morfismo de $A$-módulos, $g\otimes \id_B:M\otimes_AB\to N\otimes_AB$ es un morfismo de $B$-módulos.
+    \item Probar que la estructura natural de $M\otimes_AB$ como $A$-módulo es la misma que la obtenida por la restricción de escalares de $B$ a $A$ por $f$. Y que el morfismo natural $\iota:M\to M\otimes_AB$ dado por $\iota(m) = m\otimes 1_B $ es morfismo de $A$-módulos.
+    \item Probar que $M\otimes_AB$ verifica la siguiente propiedad universal: dado un $B$-módulo $N$ y un morfismo $g:M\to N$ como $A$-módulos (donde vemos $N$ como $A$-módulo por la restricción de escalares de $B$ a $A$ por $f$), existe un único morfismo de $B$-módulos $\overline{g}:M\otimes_AB\to N$ tal que $\overline{g}\iota = g$:
+    \begin{equation}
+        \notag
+        \xymatrix{
+        M\ar[r]^g\ar[d]_\iota & N\\
+        M\otimes_AB\ar[ur]_{\exists!\overline{g}}
+        }
+    \end{equation}
+    \item Probar que en las condiciones del apartado anterior, 
+    \begin{equation}
+        \notag
+        \Hom_A(M,N)\cong \Hom_B(M\otimes_AB,N)
+    \end{equation}
+    como $B$-módulos. Describir explícitamente este isomorfismo y razonar que su existencia es equivalente a la propiedad universal anterior.
+    \item Probar que el par $(M\otimes_AB,\iota)$ es único, excepto isomorfismos, satisfaciendo la propiedad universal anterior. (Unicidad en el sentido que ya hemos considerado para otras construcciones como producto o coproducto).
+\end{enumerate}
+Esta operación se denomina extensión de escalares de $A$ a $B$ por $f$. Comprobad que la extensión de escalares de $A$ a $B$ por $f$ de $B$ es el propio $B$.
+\end{exercici}
+\begin{sol}
+\begin{enumerate}[(i)]
+    \item Empecemos por ver que está bien definida, es decir, que no depende del representante del elemento de $M\otimes_AB$ que escojamos. Notamos que, para cualquier $b'\in B$, tenemos que los elementos
+    \begin{equation}
+        \notag
+        \overline{(m,b'(b_1+b_2))}-\overline{(m,b'b_1)}-\overline{(m,b'b_2)}
+    \end{equation}
+    \begin{equation}
+        \notag
+        \overline{(m+m',b'b)}-\overline{(m,b'b)}-\overline{(m',b'b)}
+    \end{equation}
+    \begin{equation}
+        \notag
+        \overline{(m,b'(\lambda b))}-\lambda\overline{(m,b'b)}
+    \end{equation}
+    \begin{equation}
+        \notag
+        \overline{(\mu m,b'b)}-\mu\overline{(m,b'b)}
+    \end{equation}
+    son del tipo de los generadores del submódulo $D$ (definido en los apuntes del Campus Virtual, Definición 0.1.3) y por tanto pertenecen a $D$. Entonces, está claro que para cada elemento $\sum_{i\in I}(m_i\otimes b_i)$ de $D$, también $\sum_{i\in I}(m_i,b'b_i)$ es de $D$.
+    
+    Tomamos ahora dos elementos $\sum_i m_i\otimes b_i = \sum_im_i'\otimes b_i'$ representantes de la misma clase de $M\otimes_AB$. Entonces su resta es un elemento de $D$ y por lo que hemos visto ahora mismo, para cualquier $b\in B$ tenemos que el elemento
+    \begin{equation}
+        \notag
+        \sum_i (m_i, bb_i) - \sum_i(m_i', bb_i')
+    \end{equation}
+    es también de $D$. Entonces, por las relaciones que generan $D$ tenemos que en $M\otimes_AB$ se da $\sum_i m_i\otimes bb_i = \sum_im_i'\otimes bb_i'$ y así tenemos lo que queríamos. Por tanto está bien definida.
+    
+    Para ver que es, en efecto, un $B$-módulo, sólo hay que ver las propiedades directamente. Voy a hacer la primera y las demás son análogas.
+    \begin{align}
+        \notag
+        (b+b')(m_i\otimes b_i) &= \\
+        &= m_i\otimes((b+b')b_i) \\
+        &= m_i\otimes(bb_i+b'b_i) \\
+        &= m_i\otimes bb_i + m_i\otimes b'b_i \\
+        &= b(m_i\otimes b_i) + b'(m_i\otimes b_i)
+    \end{align}
+    donde (11) es por la definición, (13) por la primera relación de la definición del producto tensorial y (14) es por la definición ``al revés''. De esta manera obtenemos el $B$-módulo por ``extensión de escalares'' de $A$ a $B$ por $f$.
+    
+    \item Consideramos ahora $g:M\to N$ un morfismo de $A$-módulos y sea $g\otimes\id_B:M\otimes_AB\to N\otimes_BB$. Vemos que es morfismo de $B$-módulos.
+    
+    Ver que es morfismo de grupos es evidente, ya que $g$ es morfismo de $A$-módulos y por tanto tenemos que $g\otimes\id_B(1_M\otimes 1_B) = 1_M\otimes_B1_B = 1_{N\otimes_BB}$ y para la suma es trivial utilizando las relaciones de los generadores que nos definen el producto tensorial:
+    \begin{equation}
+        \notag
+        (g\otimes\id_B)(m_1\otimes b_1 + m_2\otimes b_2) = (g\otimes \id_B)((m_1+m_2)\otimes (b_1+b_2)) = 
+    \end{equation}
+    \begin{equation}
+        \notag
+        = g(m_1+m_2)\otimes_B(b_1+b_2) = (g(m_1)+g(m_2))\otimes (b_1+b_2)
+    \end{equation}
+    y ahora de nuevo usando las relaciones obtenemos lo que queremos.
+    
+    Por último, si $\lambda\in B$ entonces
+    \begin{equation}
+        \notag
+        (g\otimes\id_B)(\lambda(m\otimes b))=(g\otimes\id_B)((\lambda m)\otimes b) = g(\lambda m)\otimes b = 
+    \end{equation}
+    \begin{equation}
+        \notag
+         = \lambda g(m)\otimes b = \lambda(g\otimes\id_B)(m\otimes b)
+    \end{equation}
+    
+    \item La primera parte no la he sabido resolver.
+    
+    Definimos $\iota:M\to M\otimes_AB$ por $\iota(m) = m\otimes 1_B$. Veamos que es un morfismo de $A$-módulos. Está claro que es una aplicación bien definida, puesto que en realidad se definiría como sigue: primero mandamos $m\in M$ a $(m,1)$ en el módulo llamado $C$ en los apuntes y luego pasamos al cociente $C/D$ tomando la clase $m\otimes_A1$. Luego veamos que cumple las demás propiedades. En efecto, pues se cumple que 
+    \begin{equation}
+        \notag
+        \lambda m\otimes 1_B = \lambda(m\otimes 1_B) = m\otimes \lambda
+    \end{equation}
+    por las relaciones que definen el módulo $D$ y por tanto las propiedades de morfismo de módulos se cumplen de forma directa.
+    
+    \item Dado un $B$-módulo $N$ y un morfismo $g:M\to N$ como $A$-módulos, considerando $N$ un $A$-módulo por la restricción de escalares de $B$ a $A$ por $f$. Definimos el siguiente morfismo:
+    \begin{equation}
+        \notag
+        \begin{array}{rl}
+            h:M\times B & \longrightarrow N \\
+            (m,b) & \longmapsto bg(m)
+        \end{array}
+    \end{equation}
+    y vemos que está bien definido, pues $N$ es un $B$-módulo y $g(m)\in N$ por definición. También es $A$-bilineal, pues aprovechamos que $g$ es un morfismo de módulos:
+    \begin{equation}
+        \notag
+        \begin{array}{rl}
+            &h(\lambda_1m_1+\lambda_2m_2,\mu_1b_1+\mu_2b_2) = \\
+            &= (\mu_1b_1+\mu_2b_2)g(\lambda_1m_1+\lambda_2m_2) = \\
+            &= (\mu_1b_1+\mu_2b_2)(\lambda_1g(m_1)+\lambda_2g(m_2))= \\
+            &= \lambda_1\mu_1b_1g(m_1)+\lambda_1\mu_2b_2g(m_1) + \lambda_1\mu_1b_1g(m_2)+\lambda_2\mu_2b_2g(m_2) = \\
+            &=\lambda_1\mu_1h(m_1,b_1)+\lambda_1\mu_2h(m_1,b_2)+\lambda_2\mu_1h(m_2,b_1)+\lambda_2\mu_2h(m_2,b_2).
+        \end{array}
+    \end{equation}
+    para $\lambda_1,\lambda_2,\mu_1,\mu_2\in A$ y $b_1,b_2\in B$, $m_1,m_2\in M$.
+    Por lo tanto podemos utilizar la propiedad universal del producto tensorial para decir que existe una única $\overline{h}$ que hace el siguiente diagrama conmutativo:
+    \begin{equation}
+        \notag
+        \xymatrix{
+        M\times B\ar[r]^h\ar[d] & N \\
+        M\otimes_AB\ar@{-->}[ur]_{\exists!\overline{h}} & 
+        }
+    \end{equation}
+    Entonces podemos definir $\kappa:M\to M\times B$ como $\kappa(m) = (m,1_B)$ y así pues si defino $\eta:M\times B\to M\otimes_AB$ como $\eta(m,b) = m\otimes b$ y así pues es claro que $\iota = \eta\circ \kappa$. Entonces, tenemos lo que queríamos puesto que tenemos el siguiente diagrama conmutativo:
+    \begin{equation}
+        \notag
+        \xymatrix{
+        M \ar[r]^{\kappa} \ar@{-->}[dr]_{\iota} \ar@/^2pc/[rr]^g & M\times B\ar[d]^\eta\ar[r]^h & N\\
+        & M\otimes_AB\ar@{-->}[ur]_{\overline{h}}
+        }
+    \end{equation}
+    y así pues $\overline{h}\circ \iota = g$ y tenemos que $\overline{h}$ es la $\overline{g}$ que buscábamos. 
+    
+    \item Teniendo en cuenta el apartado anterior, podemos definir el siguiente morfismo de módulos:
+    \begin{equation}
+        \notag
+        \begin{array}{rl}
+            \varphi:\Hom_A(M,N) & \longrightarrow \Hom_B(M\otimes_AB,N) \\
+            g & \longmapsto \overline{g}
+        \end{array}
+    \end{equation}
+    donde $g:M\to N$ es un morfismo de $A$-módulos cualquiera y $\overline{g}$ es el (único) que le corresponde, por la propiedad universal del apartado anterior. Esto significa que la aplicación está bien definida. Veamos que es morfismo de $B$-módulos y que está bien definida. Fijémonos que podríamos definir $\varphi(g) = g\circ\iota^{-1}$ y que ambos son morfismos de $B$-módulos, así pues tenemos que la composición de morfismos de $B$-módulos nos da también un morfismo de $B$-módulos. 
+    
+    Veamos por último que es isomorfismo. Está claro que es una biyección, por el hecho de que para cada $g:M\to N$ existe (inyectividad) una única (exhaustividad) $\overline{g}:M\otimes_AB\to N$ por la propiedad universal del apartado anterior. Por tanto, la existencia de este isomorfismo es equivalente a la propiedad universal anterior. 
+\end{enumerate}
+\end{sol}
+
+
+
+
+
+
+\end{document}

@@ -1,0 +1,400 @@
+\documentclass[../main.tex]{subfiles}
+
+
+\begin{document}
+
+
+
+\section{Morfismes d'anells}
+
+Fem ara un repàs del concepte de morfismes d'anells, per tenir present algunes de les nocions bàsiques que anirem necessitant al llarg del curs i que no estarem tota l'estona explicant, així les deixo explicades aquí. Veurem la definició de morfisme d'anells, operacions i propietats dels morfismes i també esmentarem els teoremes d'Isomorfia. 
+
+\begin{defi}
+[Morfisme d'anells]\index{Morfisme d'anells}\label{def:morfismedanells} Si $A_1,A_2$ són anells, una aplicació $f:A_1\rightarrow A_2$ es diu \textit{morfisme d'anells} si compleix:
+\begin{enumerate}[(i)]
+    \item És morfisme de grups de $(A_1,+_1)$ en $(A_2,+_2)$.
+    \item Compleix $f(a\cdotp_1 b) = f(a)\cdotp_2 f(b)$.
+    \item Compleix $f(1_{A_1}) = 1_{A_2}$.
+\end{enumerate}
+\end{defi}
+
+
+La ximpleria dels subíndexs a les operacions la faig per evidenciar que el producte (o la suma) en un anell no té per què ser el mateix (la mateixa) que a l'altre. Ara, però, ja som grandets, per tant ho obviaré.
+
+
+Si $f:A\rightarrow A'$ és morfisme d'anells, el nucli de $f$ és
+\begin{equation}
+    \notag
+    \ker f = \{a\in A:f(a) = 0_{A'}\},
+\end{equation}
+és a dir, el nucli de $f$ com a morfisme de grups. Tenim doncs, $f$ morfisme injectiu si i només si $\ker f = \{0_A\}$. Definim també la imatge de $f$ com $\mathrm{im} f = \{a'\in A'\;:\;\exists a\in A\;:\;f(a) = a'\}$. Es donen les següents propietats: $\ker f$ és un ideal de $A$ i $\mathrm{im}f$ un subanell de $A'$, però no té per què ser un ideal.
+
+\begin{ej}
+\label{def:pasquocient}\index{Morfisme de pas al quocient} El típic exemple de morfisme és el del \textit{pas al quocient}. Si $A$ és un anell i $I$ un ideal, considerem l'anell quocient $A/I$ i aleshores $\pi:A\rightarrow A/I$ és el morfisme de pas al quocient que envia cada element a la seva classe $\pi(a) = [a]$, per $a\in A$. És trivial veure que és un morfisme i també que és exhaustiu, ergo és epimorfisme. També és trivial demostrar que $\ker\pi = I$
+\end{ej}
+
+\begin{prop}
+Sigui $A$ un anell. Aleshores $I\subseteq A$ és un ideal de $A$ si i només si existeix un anell $B$ i un morfisme $f:A\rightarrow B$ tal que $I = \ker f$. És a dir, un subanell és ideal si, i només si, existeix un morfisme d'anells per al qual el nucli és aquest subanell.
+\end{prop}
+
+\begin{ter}[Teorema d'Isomorfia]
+\label{ter:teoremaisomorfia}\index{Teorema d'Isomorfia d'anells} Siguin $A$, $A'$ anells i $f:A\to A'$ un morfisme. Aleshores el següent diagrama és commutatiu:
+\begin{equation}
+    \notag
+    \xymatrix{
+    A\ar[r]^f \ar[d]^\pi & A'\\
+    A/\ker f \ar[r]^{\Tilde{f}} & \mathrm{im}f\ar[u]^{i}
+    }
+\end{equation}
+on $\pi$ és el morfisme de pas al quocient (exhaustiu), $i$ és la inclusió $i:\mathrm{im}f\hookrightarrow A'$ de subanells i $\Tilde{f}$ és un isomorfisme d'anells. És a dir, tenim l'isomorfisme $A/\ker f\cong\mathrm{im}f$. Si $f$ fos exhaustiva, aleshores $i$ seria la identitat i l'isomorfisme seria $A/\ker f\cong A'$.
+\end{ter}
+
+Aquest teorema és molt útil per demostrar isomorfismes entre un quocient i un anell aleatori. Només cal trobar una $f$ que sigui exhaustiva i demostrar tota la resta d'hipòtesis del teorema i ja ho tenim.
+
+A continuació, en forma d'exercici, veiem les definicions d'extensió i contracció d'ideals.
+
+\setcounter{exercici}{18}
+\begin{exercici}\label{esal19}\index{$I^c$}\index{$I^{e}$}\index{Ideal extensió}\index{Ideal contracció}
+Siguin $f:A\longrightarrow B$ un morfisme d'anells, $I$ un ideal de $A$ i $J$ un ideal de $B$.
+\begin{enumerate}[(a)]
+    \item Demostreu que $J^c:=f^{-1}(J)$ és un ideal de $A$. L'anomenarem la \textit{contracció} de $J$ en $A$.
+    \item Proveu amb un exemple que, en general, $f(I)$ no és un ideal de $B$. Definim l'\textit{extensió} de $I$ en $B$, que denotarem per $I^{e}$, com l'ideal de $B$ generat per $f(I)$.
+    \item Demostreu que $I\subseteq (I^{e})^c$ i que $J\supseteq (J^c)^{e}$.
+    \item Demostreu que $I^{e} = I^{ece}$ i que $J^c = J^{cec}$.
+    \item Deduïu que existeix una bijecció entre el conjunt dels ideals contrets de $A$ i el conjunt d'ideals extensos de $B$.
+\end{enumerate}
+\end{exercici}
+\begin{sol}
+\begin{enumerate}[(a)]
+    \item Sigui $J^c = f^{-1}(J)$. Prenem $x,y\in J^c $ i vull veure que
+    \begin{itemize}
+        \item \underline{$x+y\in J^c$}: $x,y\in J^c\Rightarrow f(x),f(y)\in J$. Com $J$ és ideal $f(x)+f(y)\in J$. Com $f$ és morfisme d'anells, $f(x)+f(y) = f(x+y) \Rightarrow f(x+y)\in J \Rightarrow x+y\in f^{-1}(J) =J^c$.
+        \item \underline{$xa\in I,\forall x\in I,\forall a\in A$}: Prenem $x\in J^c\Rightarrow f(x)\in J$. Prenem $a\in A$. Com $J$ és ideal, $f(x)f(a)\in J$. Com $f$ és morfisme d'anells, $f(x)f(a) = f(xa)\Rightarrow f(xa)\in J\Rightarrow xa\in f^{-1}(J) = J^c$.
+    \end{itemize}
+    Per tant, $J^c$ és ideal.
+    
+    \item L'exemple més trivial és el morfisme inclusió dels enters en els racionals, és a dir,
+    \begin{equation}
+        \notag
+        \begin{array}{rl}
+            \iota:\mathbb{Z} & \hookrightarrow\mathbb{Q} \\
+            a & \mapsto \frac{a}{1}
+        \end{array}
+    \end{equation}
+    Aleshores, si prenem l'ideal $(2)\subset \mathbb{Z}$ de $\mathbb{Z}$, al aplicar-li el morfisme inclusió obtenim
+    \begin{equation}
+        \notag
+        \iota((2)) = \iota(2\mathbb{Z}) = 2\mathbb{Z}
+    \end{equation}
+    perquè el que fa és passar els nombres parells a ells mateixos (dividits per 1). Per tant, la $\iota$ no fa res a $(2)$. El que passa és que $\iota((2))$ no és ideal de $\mathbb{Q}$. Veiem per què:
+    \begin{itemize}
+        \item $x,y\in (2)\Rightarrow x=2n,\;y=2m,\;n,m\in\mathbb{Z}$. Aleshores $x+y = 2n+2m = 2(n+m)\in (2)$. Aquesta propietat es compleix sense problema.
+        \item $x\in (2)$, $y\in \mathbb{Q}$, $xy\in (2)$ no té per què, perquè si $y\not\in\mathbb{Z}$ (que, de fet, seria el més probable), aleshores $xy\not\in \mathbb{Z}$ i, en particular, $xy\not\in (2)$.
+    \end{itemize}
+    Per tant, $\iota((2))$ no és un ideal de $\mathbb{Q}$. Una altra manera de veure-ho és saben que $\mathbb{Q}$ només té l'ideal $(0)$ i $\mathbb{Q}$ (per tant $\mathbb{Q}$ és cos).
+    
+    
+    \item \begin{itemize}
+        \item \fbox{$I\subseteq (I^{e})^c$} $x\in I\Rightarrow f(x)\in f(I)\Rightarrow f(x)\in I^{e}$ perquè $I^{e}$ és l'ideal generat per $f(I)$, per tant, $\forall x\in f(I)\Rightarrow x\in I^{e}$ (pertany al conjunt de generadors i per tant pertany al conjunt que generen). Ara, per definició, $J^c=f^{-1}(J)$. Si apliquem $f^{-1}$ a ambdues bandes de $f(x)\in I^{e}$, obtenim
+        \begin{equation}
+            \notag
+            f^{-1}(f(x))\in f^{-1}(I^{e})\Longleftrightarrow x\in (I^{e})^c
+        \end{equation}
+        Per tant, $x\in I\Rightarrow x\in (I^{e})^c\Rightarrow I\subseteq (I^{e})^c$, com volíem veure.
+        
+        \item \fbox{$(J^c)^{e}\subseteq J$} $(J^c)^{e}$ és l'ideal generat per $f(J^c)$, és a dir, és ideal de $B$ (l'anell de sortida del morfisme $f:A\rightarrow B$). Per definició $J^c = f^{-1}(J)$, per tant, $(J^c)^{e}$ és l'ideal generat per $f(f^{-1}(J))$ que està contingut (atenció perquè no són iguals) a $J$, per tant, com l'ideal generat per un ideal és ell mateix, aleshores l'ideal generat per $J$ (al qual està contingut el $(J^c)^{e}$) és l'ideal $J$ i amb això $(J^c)^{e}\subseteq J$, com volíem veure. 
+    \end{itemize}
+    
+    
+    \item Abans de resoldre l'exercici, hem de tenir en compte els següents resultats:
+    \begin{enumerate}[(1)]
+        \item Si $I,I'$ són dos ideals de $A$ i $f:A\rightarrow B$ és un morfisme d'anells, aleshores $I\subseteq I'\Rightarrow I^{e}\subseteq (I')^{e}$.
+        \begin{proof}
+        $I^{e}$ és l'ideal generat per $f(I)$ i $(I')^{e}$ el mateix per $f(I')$. Si $I\subseteq I'$, aleshores $f(I)\subseteq f(I')$ (com a conjunts) perquè $f$ és morfisme. En efecte, sigui $x\in I$, aleshores $f(x)\in f(I)$. Com $I\subseteq I'$, $x\in I\Rightarrow x\in I'\Rightarrow f(x)\in f(I')$. Ara, l'ideal generat per $f(I)$, denotat $(f(I))$ estarà contingut a $(f(I'))$.
+        \end{proof}
+        \item Si $J,J'$ són dos ideals de $B$ i $f:A\rightarrow B$ un morfisme d'anells, $J\subseteq J'\Rightarrow J^c\subseteq (J')^c$.
+        \begin{proof}
+            $J^c= f^{-1}(J)$, per definició. Per tant, $J\subset J'\Rightarrow f^{-1}(J)\subset f^{-1}(J')$.
+        \end{proof}
+    \end{enumerate}
+    Amb això vist, demostrem l'enunciat.
+    \begin{itemize}
+        \item \fbox{$I^{e}=I^{ece}$} De (c) tenim $I\subseteq I^{ec}\overset{(1)}{\Longrightarrow} I^{e}\subseteq I^{ece}$. Queda veure la inclusió contrària. Per (c) tenim $(J^c)^{e}\subseteq J$. Si prenem $J=I^{e}$ ja ho tenim. 
+        \item \fbox{$J^c=J^{cec}$} Per (c) tenim $J^{ce}\subseteq J\overset{(2)}{\Longrightarrow} J^{cec}\subseteq J^c$. Queda veure la inclusió contrària. Per (c) tenim $I\subseteq I^{ec}$. Prenent $I=J^c$ ja ho tenim.
+    \end{itemize}
+\end{enumerate}
+\end{sol}
+
+
+\begin{exercici}
+\label{esal20}
+\begin{enumerate}[(a)]
+    \item Sigui $J$ un ideal de $A$ i $\pi:A\rightarrow A/J$ el morfisme de pas al quocient. Proveu que $I^{e} = (I+J)/J$, per a $I$ ideal de $A$.
+    \item Considerem el morfisme d'inclusió $i:A\rightarrow A[X]$. Proveu que $I^{e} = I[X]$ i que
+    \begin{equation}
+        \notag
+        \frac{A[X]}{I[X]}\cong \frac{A}{I}[X]
+    \end{equation}
+\end{enumerate}
+\end{exercici}
+\begin{sol}
+\begin{enumerate}[(a)]
+    \item Donat el morfisme d'anells $\pi:A\rightarrow A/J$, $a\mapsto [a] = a+J$ que envia els elements de $A$ a la seva classe mòdul $J$. Agafem $I$ ideal de $A$ i definim $I^{e}$ com l'extensió de $I$ en (en aquest cas) $A/J$, és a dir, 
+    \begin{equation}
+        \notag
+        \begin{array}{rl}
+            \pi:A &  \longrightarrow A/J\\
+            I & \longmapsto \pi(I)
+        \end{array}
+    \end{equation}
+    $\pi(I)$ no té per què ser un ideal (mirar l'exercici anterior) de $A/J$, però en pot generar un, que anomenem $I^{e}$. Així doncs, $I^{e}$ és l'ideal generat per $\pi(I)$ de $A/J$. Té els elements de la forma següent:
+    \begin{equation}
+        \notag
+        I^{e} = (\pi(I)) = \left\{\sum_{i=1}^n\sum_{j=1}^m a_ib_j\;:\;a_i\in \pi(I),\;b_j\in A/I\right\}.
+    \end{equation}
+    Sabem que $\pi(I) = \{a+J\;:\;a\in I\} = (I+J)/J$. Aleshores, si demostrem que $\pi(I)$ és un ideal, obtindrem que $\pi(I) = I^{e}$, ja que $I^{e}$ és l'ideal generat per $\pi(I)$. Aleshores, un ideal generat per un ideal és el mateix ideal. Per tant, queda demostrar que $\pi(I)$ és ideal.
+    \begin{enumerate}[(i)]
+        \item \underline{Tancat per la suma}. Com hem vist abans, $\pi(I) = (I+J)/J$. Ara, per l'enunciat, $I,J\subseteq A$ ideals, aleshores $I+J\subseteq A \Rightarrow (I+J)/J\subseteq A/J$. Prenem $a,b\in I$, $(a+J),(b+J)\in (I+J)/J$, per la definició de suma de classes:
+        \begin{equation}
+            \notag
+            (a+J) + (b+J) = (a+b)+J
+        \end{equation}
+        Com $a,b\in I$ ($I$ ideal), aleshores $a+b\in I\Rightarrow (a+b)+J\in (I+J)/J$, com volíem veure.
+        
+        \item \underline{$\forall [x]\in \pi(I),\;\forall [\lambda]\in A/J,\;[\lambda][x]\in\pi(I)$}. \textcolor{gray}{He utilitzat la notació de parèntesis quadrats per estalviar-me temps i espai, però és el mateix.} $[x]\in\pi(I)\Rightarrow x\in I$, $I$ ideal. $[\lambda]\in A/J\Rightarrow\lambda A$, $A$ anell. Aleshores $\lambda x\in I$ per la segona propietat dels ideals. Ara apliquem $\pi$:
+        \begin{equation}
+            \notag
+            \pi(\lambda x) = [\lambda x]=[\lambda][x]
+        \end{equation}
+        i com $\pi(\lambda x)\in \pi(I)$, aleshores $[\lambda][x]\in \pi(I)$.
+    \end{enumerate}
+    Per tant, $\pi(I)$ és un ideal de $A/J$ i així $I^{e}=\pi(I) = (I+J)/J$.
+    
+    
+    
+    
+    
+    \item Considerem el monomorfisme $i:A\longrightarrow A[X]$ inclusió. Volem demostrar que, donat un ideal de $A$, $I^{e}=I[X]$. 
+    
+    Per la definició d'extensió, $I^{e} = i(I) A[X]$, que és el mateix que dir $I^{e} = (i(I))$, és a dir, l'ideal generat per $i(I)$. Això no és més que una forma de representar-ho. És
+    \begin{equation}
+        \notag 
+        I^{e}=(i(I)) = i(I)A[X] = \left\{\sum_{i=1}^n a_ib_i\;:\;a_i\in i(I),\;b_i\in A[X]\right\}.
+    \end{equation}
+    Estudiem bé aquest monomorfisme. Si considerem els elements de $A$ com polinomis de grau 0 (només terme independent) amb coeficients en $A$, aleshores, clarament $A\subseteq A[X]$ i el morfisme $i$ és la ``identitat'' (no ho és perquè la identitat és bijectiva, i la $i$ no és exhaustiva). Per tant $i(I) = I$. Amb això, $I^{e} = I\cdotp A[X]$. Només queda veure que $I\cdotp A[X] = I[X]$. Farem la demostració de cada inclusió.
+    \begin{itemize}
+        \item \fbox{$\subseteq$} Un element $\alpha\in I\cdotp A[X]$ és una cosa com
+        \begin{equation}
+            \notag
+            \alpha = \sum_{j=1}^n\xi_jb_j
+        \end{equation}
+        amb $\xi_j\in I$, i $b_j\in A[X]$. Com $b_j\in A[X]$, aleshores és un polinomi, és a dir,
+        \begin{equation}
+            \notag
+            b_j = \sum_{i=1}^n\beta_{i,j}X^{i}\Rightarrow \alpha = \sum_{j=1}^m\sum_{i=1}^n\beta_{i,j}X^{i}
+        \end{equation}
+        i com que $\xi_j\in I$ i $\beta_{i,j}\in A$, $\forall i,j$, aleshores $\xi_j\beta_{i,j}\in I$ i per tant $\alpha\in I[X]\Rightarrow IA[X]\subseteq I[X]$.
+        \item \fbox{$\supseteq$} Un element $\alpha\in I[X]$ és un polinomi $\alpha(X)$ de la forma
+        \begin{equation}
+            \notag
+            \alpha(X) = \sum_{i=1}^na_iX^{i},\quad a_i\in I,\quad X^{i}\in A[X]
+        \end{equation}
+        i amb això ja tenim que $\alpha(X)\in IA[X]\Rightarrow I[X] \subseteq IA[X]$.
+    \end{itemize}
+    Per tant, $I[X] = I^{e}$.
+    
+    Comprovem ara que $A[X]/I[X]\cong (A/I)[X]$. Ho faré aplicant el primer teorema d'isomorfia. Considerem el següent morfisme d'anells:
+    \begin{equation}
+        \notag
+        \begin{array}{rl}
+            f:A[X] & \longrightarrow \frac{A}{I}[X] \\
+            \displaystyle\sum_{i=1}^n a_iX^{i} & \longmapsto \displaystyle\sum_{i=1}^n(a_i+I)X^{i}.
+        \end{array}
+    \end{equation}
+    on $(a_i+I)$ representa la classe de $a_i$ en $A/I$. Tenim el següent diagrama:
+    \begin{equation}
+        \notag
+        \xymatrix{
+        A[X] \ar[d]_{\pi} \ar[r]^f & \dfrac{A}{I}[X] \\
+        \dfrac{A[X]}{I[X]} \ar[ru]_{\Tilde{f}}
+        }
+    \end{equation}
+    on $\pi:A[X]\rightarrow A[X]/I[X]$ és el morfisme de pas al quocient. Demostrem:
+    \begin{enumerate}[(i)]
+        \item \underline{$f$ morfisme d'anells}. Comprovem les tres propietats.
+        \begin{itemize}
+            \item \underline{$f(a+b) = f(a)+f(b)$}. $a,b\in A[X]$, $a=\sum_i a_iX^{i}$, $b=\sum_ib_iX^{i}$,
+            \begin{equation}
+                \notag
+                f(a+b) = f\left(\sum_i a_iX^{i}+\sum_ib_iX^{i}\right) = f\left(\sum_i(a_i+b_i)X^{i}\right) = \sum_i((a_i+b_i)+I) =
+            \end{equation}
+            \begin{equation}
+                \notag
+                = \sum_i((a_i+I)+(b_i+I))X^{i} = \sum_i(a+I)X^{i}+\sum_i(b_i+I)X^{i} = 
+            \end{equation}
+            \begin{equation}
+                \notag
+                =f\left(\sum_ia_iX^{i}\right)+f\left(\sum_ia_iX^{i}\right) = f(a)+f(b)
+            \end{equation}
+            
+            \item \underline{$f(ab) = f(a)f(b)$} Amb els mateixos polinomis d'abans,
+            \begin{equation}
+                \notag
+                f(ab) = f\left(\sum_j\left(\sum_i(a_ib_j)X^{i}\right)X^j\right) = \sum_j\sum_i((a_ib:i+I)X^{i})X^j = 
+            \end{equation}
+            \begin{equation}
+                \notag
+                = \sum_j\sum_i(a_i+I)(b_j+I)X^{i}X^j =
+            \end{equation}
+            \begin{equation}
+                \notag
+                \left(\sum_i(a_i+I)X^{i}\right)\left(\sum_j(b_j+I)X^j\right) = f\left(\sum_ia_iX^{i}\right)f\left(\sum_jb_jX^j\right) = f(a)f(b).
+            \end{equation}
+            
+            \item \underline{$f(1) = 1+I$}. Es compleix per definició. $1\in A[X]$ és el polinomi de grau zero amb terme independent 1. Per definició de classes $[1] = 1+I$ és el neutre de $A/I$.
+        \end{itemize}
+        Notem que he utilitzat els polinomis amb el mateix grau quan, en realitat, no tenen per què ser del mateix grau. Això és perquè, si per exemple $a$ és de grau $n$ i $b$ és de grau $m$, amb $n<m$, aleshores, al fer la suma, quedaran termes de $b$ penjats que, al fer el quocient ja quedaran com toca. Així doncs no ens afecta realment. Fins aquí hem provat que sigui morfisme d'anells
+        
+        \item \underline{$f$ exhaustiu}. Prenem un element $a$ de $(A/I)[X]$. Aleshores és un polinomi amb coeficients de $A/I$. És a dir,
+        \begin{equation}
+            \notag
+            a = \sum_i a_iX^{i},\quad a_i\in A/I
+        \end{equation}
+        o sigui, que en realitat les $a_i$ són classes, és a dir, $a_i = \alpha_+I$, $\alpha_i\in A$. Per tant, 
+        \begin{equation}
+            \notag
+            a = \sum_i (\alpha_i+I)X^{i}
+        \end{equation}
+        Per tot $i$ se satisfà
+        \begin{equation}
+            \notag
+            f\left(\sum\alpha_iX^{i}\right) = \sum_i(\alpha_i+I)X^{i}
+        \end{equation}
+        i per tant $f$ és exhaustiva.
+        
+        
+        
+        \item \underline{$\ker f = I[X]$}. Observem que
+        \begin{equation}
+            \notag
+            \ker f = \left\{\sum_i a_iX^{i}\in A[X]\;:\;f\left(\sum_ia_iX^{i}\right) = 0+I\right\} = 
+        \end{equation}
+        \begin{equation}
+            \notag
+            =\left\{\sum_ia_iX^{i}\in A[X]\;:\;\sum_i(a_i+I)X^{i} = 0+I\right\} = 
+        \end{equation}
+        \begin{equation}
+            \notag
+            =\left\{\sum_ia_iX^{i}\in A[X]\;:\;a_i+I = 0+I,\;\forall i\right\} =
+        \end{equation}
+        \begin{equation}
+            \notag
+             = \left\{\sum_ia_iX^{i}\in A[X]\;:\; a_i\in I,\;\forall i\right\} = I[X].
+        \end{equation}
+    \end{enumerate}
+    Aleshores, pel Primer Teorema d'Isomorfia en anells, hem provat que
+    \begin{equation}
+        \notag
+        \frac{A[X]}{I[X]}\cong \frac{A}{I}[X].
+    \end{equation}
+    
+    
+\end{enumerate}
+\end{sol}
+
+
+\begin{defi}
+[Grup de morfismes]\label{def:grupmorfismes}\index{$\mathrm{Hom}(G,G')$} Siguin $G$ i $G'$ dos grups. Aleshores podem considerar $\mathrm{Hom}_g(G,G')$ com el conjunt de tots els morfismes de grups $f:G\rightarrow G'$. De forma anàloga es pot definir $\mathrm{Hom}_a(A,A')$ amb anells.
+\end{defi}
+
+
+\setcounter{exercici}{22}
+\begin{exercici}
+\label{esal23} 
+Siguin $r,s$ nombres enters $\geq 1$ i sigui $d = mcd(r,s)$.
+\begin{enumerate}[(a)]
+\item Proveu que $\hom_{grups}(\mathbb{Z}/r\mathbb{Z},\mathbb{Z}/s\mathbb{Z})\cong\mathbb{Z}/d\mathbb{Z}$.
+\item Què és $\hom_{anells}(\mathbb{Z}/r\mathbb{Z},\mathbb{Z}/s\mathbb{Z})$?
+\end{enumerate}
+\end{exercici}
+\begin{sol}
+\begin{enumerate}[(a)]
+    \item Estudiem $G = \hom_{grups}(\mathbb{Z}/r\mathbb{Z},\mathbb{Z}/s\mathbb{Z})$. Li anomeno $G$ per anar més ràpid.
+    \begin{equation}
+        \notag
+        G = \{f:\mathbb{Z}/r\mathbb{Z}\rightarrow \mathbb{Z}/s\mathbb{Z}\;:\;\text{$f$ és un morfisme de grups}\}
+    \end{equation}
+    Considerem el següent morfisme de grups:
+    \begin{equation}
+        \notag
+        \begin{array}{rl}
+            \psi:\mathbb{Z} & \longrightarrow G \\
+            n & \longmapsto f_n
+        \end{array}
+    \end{equation}
+    on
+    \begin{equation}
+        \notag
+        \begin{array}{rl}
+            \Tilde{f_n}:\mathbb{Z} & \longrightarrow \mathbb{Z}/s\mathbb{Z} \\
+            a & \longmapsto \dfrac{\overline{s}}{d}\cdotp\overline{a}\cdotp\overline{n}.
+        \end{array}
+    \end{equation}
+    és una aplicació que envia l'1 a on vulgui i $a$ segons la imatge de l'1. És a dir, $a = 1+1+\cdots+1$ $a$ vegades i, aleshores $\Tilde{f_n}(a) = \Tilde{f_n}(1+\cdots+1) = \Tilde{f_n}(1) + \cdots + \Tilde{f_n}(1) = a\Tilde{f_n}(1)$. Això és cert només si $\Tilde{f}_n$ és un morfisme d'anells (en particular de grups) que ara ho comprovarem.
+    
+    Primer de tot caldria veure que $\psi$ està ben definit. És a dir, que per a cada $n\in\mathbb{Z}$ hi ha un únic $f_n$. Veurem, però, que les $\Tilde{f}_n$ són morfismes de grups i utilitzarem el primer teorema d'isomorfia de grups per veure que són únics per a cada $n$ i així provarem que $\psi$ està ben definit.
+    
+    Veiem que:
+    \begin{itemize}
+        \item $\Tilde{f_n}$ és morfisme de grups. En efecte, 
+        \begin{equation}
+            \notag
+            \Tilde{f_n}(a+b) = \frac{\overline{s}}{d}\cdotp\overline{a+b}\cdotp\overline{n} = \frac{\overline{s}}{d}\cdotp\overline{a}\cdotp\overline{n}+\frac{\overline{s}}{d}\cdotp\overline{b}\cdotp\overline{n} = \Tilde{f_n}(a)+\Tilde{f_n}(b)
+        \end{equation}
+        per la suma de classes de grups quocients. Aleshores $\Tilde{f_n}$ és morfisme de grups.
+        
+        \item El nucli és $r\mathbb{Z}$. En efecte,
+        \begin{equation}
+            \notag\ker\Tilde{f_n} = \{a\in\mathbb{Z}\;:\;\frac{\overline{s}}{d}\cdotp\overline{a}\cdotp\overline{n} = \overline{s}\} = \{a\in\mathbb{Z}\;:\;\frac{\overline{a}}{d}\cdotp\overline{n} = \overline{1}\} = r\mathbb{Z}
+        \end{equation}
+        perquè $\overline{n}$ és fixe. Aleshores $\frac{\overline{a}\cdotp\overline{n}}{d} = \overline{1}$ si, i només si, $a$ és múltiple de $r$.
+    \end{itemize}
+    Aleshores podem aplicar el primer teorema d'isomorfia de grups i afirmar que existeix un únic 
+    \begin{equation}
+        \notag
+        f_n:\mathbb{Z}/r\mathbb{Z}\longrightarrow \mathbb{Z}/s\mathbb{Z}
+    \end{equation}
+    per a cada $n$, és a dir, $\psi$ està ben definida.
+    
+    Ara volem aplicar el primer teorema d'isomorfia amb el morfisme (millor dit, aplicació, perquè encara no hem provat que sigui morfisme) de grups $\psi$. Si demostrem que $\psi$ és morfisme de grups exhaustiu i que $\ker\psi =d\mathbb{Z}$ ja tindrem el resultat que volem.
+    \begin{equation}
+        \notag
+        \xymatrix{
+        \mathbb{Z} \ar[d]_{\pi} \ar[r]^\psi & G \\
+        \dfrac{\mathbb{Z}}{d\mathbb{Z}} \ar[ru]_{\varphi}
+        }
+    \end{equation}
+    Veiem que $\psi$ compleix tot això.
+    \begin{itemize}
+        \item \underline{$\psi$ és morfisme de grups}. Trivialment, ja que $\psi(m+n) = f_{m+n}$ i $f_{m+n}(a) = \frac{\overline{s}}{d}\cdotp\overline{a}\cdotp\overline{m+n} = \frac{\overline{s}}{d}\cdotp\overline{a}\cdotp\overline{m}+\frac{\overline{s}}{d}\cdotp\overline{a}\cdotp\overline{n} =f_m(a)+f_n(a)$. Per tant, $\psi(m+n) = f_{m+n} = f_m+f_n = \psi(m)+\psi(n)$.
+        
+        \item \underline{$\psi$ exhaustiu.} $g\in G$, $g:\mathbb{Z}/r\mathbb{Z}\longrightarrow \mathbb{Z}/s\mathbb{Z}$ és morfisme de grups (ho hem provat abans) tal que $g(\overline{a}) = g(\overline{1})+\cdots+g(\overline{1}) = ag(\overline{1})$. Per tant, els morfismes de $G$ queden determinats per la seva imatge del 1. Aleshores
+        \begin{equation}
+            \notag
+            \Tilde{g}:\mathbb{Z}\overset{\pi}{\longrightarrow}\mathbb{Z}/r\mathbb{Z}\overset{g}{\longrightarrow}\mathbb{Z}/s\mathbb{Z},\quad \Tilde{g} = g\circ\pi.
+        \end{equation}
+    \end{itemize}
+    $\Tilde{g}(r)\in s\mathbb{Z}\Rightarrow r\Tilde{g}(1)\in s\mathbb{Z}\Rightarrow s|r\Tilde{g}(1)\Rightarrow\frac{s}{d}|\Tilde{g}(1)\Rightarrow \exists n\;:\;\Tilde{g}(1) = \frac{s}{d}n$. Aleshores $\Tilde{g} = \psi(n)$.
+    
+    
+    \item Què és $A = \hom_{anells}(\mathbb{Z}/r\mathbb{Z},\mathbb{Z}/s\mathbb{Z})$? Com hem vist a l'apartat (a), $g\in G$ queda determinat per $g(\Tilde{1})$. Ara, hem d'exigir als morfismes d'anells que preservin la unitat, aleshores $g(\Tilde{1}) = \Tilde{1}$. Aleshores hi ha només un morfisme d'anells en $A$. És a dir, $A = \{*\}$ i aquest asterisc és, de fet, $\pi$ (el morfisme de pas al quocient. Es té
+    \begin{equation}
+        \notag
+        \hom_{anells}(\mathbb{Z}/r\mathbb{Z},\mathbb{Z}/s\mathbb{Z})\cong\hom_{anells}(\mathbb{Z}/r\mathbb{Z},\mathbb{Z}/d\mathbb{Z}) = \{\pi\}.
+    \end{equation}
+\end{enumerate}
+\end{sol}
+
+
+
+\end{document}

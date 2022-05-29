@@ -1,0 +1,87 @@
+\documentclass[../../../main.tex]{subfiles}
+
+
+
+\begin{document}
+
+
+\section{Extensió i contracció d'ideals en anells de fraccions}
+
+
+\begin{defi}
+[Morfisme d'inclusió en l'anell de fraccions]\label{def:morfismeInclusioAnellFraccions} Sigui $A$ un anell i $S\subseteq A$ un SMT. Utilitzarem molt sovint el morfisme $\iota:A\to S^{-1}A$ inclusió, és a dir, $\iota(a) = \frac{a}{1}$.
+\end{defi}
+
+Aleshores, podem fer $S^{-1}I$. En efecte, hem de pensar en $I$ com un $A$-mòdul i aleshores fem el mòdul de fraccions de $I$ i com és pla, aleshores $S^{-1}I\hookrightarrow S^{-1}A$ i que $S^{-1}I$ és ideal. Per construcció
+\begin{equation}
+    \notag
+    S^{-1}I
+\end{equation}\index{$S^{-1}I$}
+i és fàcil comprovar a pic i pala que és ideal, però no cal ja que $S^{-1}$ és pla.
+
+\begin{defi}
+[Ideal estès]\label{def:idealExtensio}\index{Ideal estès}\index{Ideal extensió} En el context anterior hem definit $S^{-1}I$ i l'anomenarem \textit{ideal estès de $I$} per $S$.
+\end{defi}
+
+\begin{prop}
+L'ideal extensió amb la ``definició vella'' i aquest ideal estès de $I$ coincideixen. És a dir, $I^{e} = S^{-1}I$.
+\end{prop}
+\begin{proof}
+Clarament $S^{-1}I\subseteq I^{e}$ ja que $\frac{a}{s}=\frac{1}{s}\cdotp\frac{a}{1}$ i $\frac{a}{1}\in I^{e}$. Ara,
+\begin{equation}
+    \notag
+    I^{e} = \left\langle \frac{a}{1}\;:\;a\in I\right\rangle
+\end{equation}
+però $\frac{a}{1}\in S^{-1}I$ per tot $a$, ergo $I^{e}\subseteq S^{-1}I$.
+\end{proof}
+
+
+\begin{prop}
+\label{prop:totIdealDeSAEsEstes} Tot ideal de $S^{-1}A$ és estès, és a dir, per tot $J$ ideal de $S^{-1}A$ existeix $I$ ideal de $A$ tal que $S^{-1}I = J$.
+\end{prop}
+\begin{proof}
+Prenem $J$ qualsevol i aleshores defineixo $I = J^c = \langle a\in A\;:\;\frac{a}{1}\in J\rangle = \langle a\in A\;:\;\exists s\in S,\;\frac{a}{s}\in J\rangle$ que ja el vam definir en l'apèndix. Aleshores, aquesta igualtat és immediata ja que si $\frac{a}{s}\in J$ aleshores $\frac{s}{1}\frac{a}{s} = \frac{a}{1}\in J$ i per tant $a\in J^c$. Així doncs, $J = (J^c)^{e} = S^{-1}J^c$ i així es verifica la proposició.
+\end{proof}
+
+
+\begin{prop}
+\label{prop:caracteritzacioExtensioIdeals} Per tot $I$ ideal de $A$, tenim 
+\begin{enumerate}[(a)]
+    \item $(I^{e})^c = \bigcup_{s\in S}(I:_As)$
+    \item $I = J^c$ si i només si $S\cap \mathcal{Z}_A(A/I)=\emptyset$.
+\end{enumerate}
+\end{prop}
+\begin{proof}
+\begin{enumerate}[(a)]
+    \item $x\in (I^{e})^c\Longleftrightarrow \frac{x}{1}\in I^{e}\Longleftrightarrow \frac{x}{1}\in S^{-1}I\Longleftrightarrow \frac{x}{1} = \frac{a}{s}$, $a\in I$, $s\in S$, ergo per la definició $\Longleftrightarrow \exists t\in S$ tal que $t(sx-a) = 0 \Longleftrightarrow \exists t,s\in S$ tal que $tsx = a\Longleftrightarrow x\in (I:_Ats)\Longleftrightarrow x\in\bigcup_{s\in S}(I:_As)$.
+    \item $I$ és contracció si i només si $I = (I^{e})^c\Longleftrightarrow I =\bigcup_{s\in S}(I:_As)\Longleftrightarrow S\cap (\mathcal{Z}_A(A/I)) = \emptyset$. $(I:_As) = \{a\in A\;:\;as\in I\} = \{\overline{a}\in A/I\;:\;s\overline{a} = 0\}\not=I$ $\Longleftrightarrow$ $s\in\mathcal{Z}_A(A/I)$. Aleshores tirant cap enrere ho tenim.
+\end{enumerate}
+\end{proof}
+
+
+
+\begin{ter}
+[Correspondència bijectiva]\label{ter:correspondenciaBijectivaContraccioExtensio} Existeix una bijecció entre els primers $\mathfrak{p}\in\spec(A)$ tals que $\mathfrak{p}\cap S = \emptyset$ i els $\mathfrak{q}\in \spec(S^{-1}A)$.
+\begin{equation}
+    \notag
+    \begin{array}{rcl}
+        \{\mathfrak{p}\in\spec(A)\;:\;\mathfrak{p}\cap S = \emptyset\} & \longleftrightarrow & \{\mathfrak{q}\in\spec(S^{-1}A\} \\
+        p & \longmapsto & S^{-1}\mathfrak{p} \\
+        \mathfrak{q} & \longmapsfrom & \mathfrak{q}
+    \end{array}
+\end{equation}
+\end{ter}
+\begin{proof}
+Si $\mathfrak{q}$ és un ideal primer de $S^{-1}A$, aleshores $\mathfrak{q}^c$ és un ideal primer de $A$ ja que $\mathfrak{q}^c = \iota^{-1}(\mathfrak{q})$ i per tant és l'antiimatge per un morfisme. Si $\mathfrak{p}$ és un ideal primer de $A$, aleshores $A/\mathfrak{p}$ és un domini d'integritat i tenim
+\begin{equation}
+    \notag
+    (S^{-1}A)/\mathfrak{p}^{e} = (S^{-1}A)/(S^{-1}\mathfrak{p})\cong S^{-1}(A/\mathfrak{p})\cong\overline{S}^{-1}(A/\mathfrak{p})
+\end{equation}
+on $\overline{S}^{-1}$ és la imatge de $S$ en $A/\mathfrak{p}$. Per tant, $\overline{S}^{-1}(A/\mathfrak{p})$ és o bé 0 o sinó està contingut dins del cos de fraccions de $A/\mathfrak{p}$ i per tant és un domini d'integritat, que implica que o bé $S^{-1}\mathfrak{p}$ és primer o bé és el total, cosa que passa només si $S\cap \mathfrak{p}\not =\emptyset$.
+
+Una assignació és la inversa de l'altra ja que per tot $\mathfrak{q}\in\spec(S^{-1}A)$ tenim $\mathfrak{q}^{ce} = \mathfrak{q}$ i per tot $\mathfrak{p}\in\spec(A)$ tenim $\mathfrak{p}^{ec} = \mathfrak{p}$ ja que $S\cap \mathfrak{p}$ implica $S\cap\mathcal{Z}(A/\mathfrak{p}) = \emptyset$.
+\end{proof}
+
+
+
+\end{document}

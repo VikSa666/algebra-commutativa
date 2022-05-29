@@ -1,0 +1,105 @@
+\documentclass[../../../main.tex]{subfiles}
+
+
+
+\begin{document}
+
+
+
+\section{Producte directe i suma directa de mòduls}
+
+
+\begin{defi}
+[Producte directe de mòduls]\label{def:producteDirecteModuls}\index{Producte directe de mòduls} Sigui $\{M_i\}_{i\in I}$ una família de $A$-mòduls. Aleshores $\prod_{i\in I}M_i$ és un $A$-mòdul amb l'operació $a(m_i)_{i\in I} = (am_i)_{i\in I}$ que s'anomena \textit{producte directe de $\{M_i\}_{i\in I}$}.
+\end{defi}
+
+\begin{prop}
+[Propietat universal del producte directe]\label{prop:propietatUniversalProducteDirecte} Sigui $\{M_i\}_{i\in I}$ una família de $A$-mòduls i $\pi_i:\prod_{i\in I}M_i\to M_i$ morfismes de $A$-mòduls (anomenats ``projeccions'') per tot $i\in I$. Aleshores, per tot $A$-mòdul i família de morfismes $M\to M_i$ existeix un únic morfisme $f:M\to \prod_{i\in I}M_i$ tal que $\pi_i\circ f = f_i$ per tot $i\in I$. És a dir, per tot $i\in I$ es verifica el següent diagrama commutatiu.
+\begin{equation}
+    \notag
+    \xymatrix{
+    \displaystyle\prod_{i\in I}M_i\ar[r]^{\pi_i} & M_i \\
+    M\ar[u]^f\ar[ur]_{f_i} &
+    }
+\end{equation}
+\end{prop}
+
+\begin{nota}
+La definició de producte directe compleix la propietat universal ja que si hi ha morfismes $f_i:M\to M_i$ aleshores agafem el morfisme $f:M\to \prod_{i\in I}M_i$ tal que $f(m) = (f_i(m))_{i\in I}$. Aquest és únic ja que està unívocament determinat per les seves components.
+\end{nota}
+
+
+\begin{defi}
+[Suma directa de mòduls]\label{def:sumaDirectaModuls}\index{Suma directa de mòduls} Sigui $\{M_i\}_{i\in I}$ una família de $A$-mòduls. Aleshores, anomenem suma directa de $\{M_i\}_{i\in I}$ al $A$-mòdul 
+\begin{equation}
+    \notag
+    \bigoplus_{i\in I}M_i =\left\{(m_i)_{i\in I}\in\prod_{i\in I}M_i\;:\;m_i = 0\;\text{excepte un nombre finit de $i$}\right\}
+\end{equation}
+En particular, és un $A$-submòdul de $\pi_{i\in I}M_i$. També se l'anomena \textit{coproducte}\index{Coproducte de mòduls}.
+\end{defi}
+
+
+\begin{prop}
+[Propietat universal de la suma directa]\label{prop:propietatUniversalSumaDirecta}\index{Propietat universal de la suma directa} Sigui $\{M_i\}_{i\in I}$ una família de $A$-mòduls i $\delta_i:M_i\to \bigoplus_{i\in I}M_i$ morfismes. Aleshores, tot $A$-mòdul $M$ i família de morfismes $f_i:M_i\to M$ existeix un únic morfisme $f:\bigoplus_{i\in I}M_i\to M$ tal que $f\circ\delta_i = f_i$ per tot $i\in I$. En altres paraules, per tot $i\in I$ es verifica el següent diagrama:
+\begin{equation}
+    \notag
+    \xymatrix{
+    M_i\ar[d]_{f_i}\ar[r]^{\delta_i}\bigoplus_{i\in I}&M_i \ar[dl]_f\\
+    M & 
+    }
+\end{equation}
+\end{prop}
+
+\begin{nota}
+La definició de suma directa compleix la propietat universal ja que si hi ha morfismes $f_i:M_i\to M$ podem definir $f:\bigoplus_{i\in I}M_i\to M$ tal que $f((m_i)_{i\in I}) = \sum_{i\in I}f_i(m_i)$ per tot $(m_i)_{i\in I}\in \bigoplus_{i\in I}M_i$. El morfisme és únic ja que està unívocament definit per cada component de $\bigoplus_{i\in I}M_i$.
+\end{nota}
+
+
+\begin{nota}
+Si $\#I<\infty$, aleshores $\bigoplus_{i\in I}M_i = \prod_{i\in I}M_i$. També podem observar que si $\{M_i\}_{i\in I}$ és un conjunt de $A$-submòduls de $M$ aleshores $\sum_{i\in I}M_i\subseteq M$ i tenim els morfismes d'inclusió $j_i:M_i\to \sum_{i\in I}M_i$ per tant existeix un únic morfisme $j:\bigoplus_{i\in I}M_i\to \sum_{i\in I}M_i$ tal que $j\circ \delta_i = j_i$.
+\end{nota}
+
+\begin{defi}[Suma directa]\label{def:sumaDirecta}
+Diem que els $A$-submòduls $\{M_i\}_{i\in I}$ estan en \textit{suma directa}\index{Suma directa} si $j$ és un isomorfisme. Si, a més, $\sum_{i\in I}M_i= M$ direm que $M$ és suma directa dels $M_i$.
+\end{defi}
+
+\begin{defi}
+[Sistemes d'elements linealment independents]\label{def:sistemesdelementslinealmentindependnets}\index{Sistema d'elements linealment independent} Si tenim $\{m_i\}_{i\in I}$, aleshores diem que és un sistema linealment independent si $\sum_{i\in I}\lambda_im_i=0$ implica que $\lambda_i = 0$ per tota $i\in I$.
+\end{defi}
+
+
+\begin{defi}
+[Suma directa]\label{def:sumadirect}\index{Suma directa} Sigui $M$ un $A$-mòdul i $\{M_i\}_{i\in I}$ $A$-mòduls. Diem que estan en suma directa si 
+\begin{enumerate}[(1)]
+    \item $\sum_{i\in I} M_i = M$ i
+    \item $M_i\cap \sum_{j\not=i}M_j = \{0\}$.  
+\end{enumerate}
+\end{defi}
+
+\begin{prop}
+\label{prop:sumadirecta}
+Equivalentment podem tenir les següents propietats per dir que uns submòduls estan en suma directa:
+\begin{enumerate}[(1)]
+    \item $M = \sum_{i\in I}M_i$ i
+    \item $\exists \sigma:M\overset{\sim}{\to}\bigoplus_{i\in I} M_i$ tal que $\sigma_{|M_i} = \delta_i$ per tot $i$.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+Hem de provar que la definició implica aquestes propietats i que aquestes propietats impliquen la definició.
+
+Prenem $j_i:M_i\hookrightarrow M$ i per la propietat universal de la suma directa tenim que existeix una única $\delta:\bigoplus_{i\in I} M_i\to M$ tal que $\delta\circ\delta_i = j_i$. $\delta$ és isomorfisme, ja que la condició 1 em garanteix l'exhaustivitat i la condició 2 la injectivitat.
+
+Per veure l'altra implicació, qualsevol element $m$ es pot escriure com
+\begin{equation}
+    \notag
+    m = \sum_{i\in I}\pi_i\sigma(m) 
+\end{equation}
+i cada $\pi_i\sigma(m)$ és de $M_i$, cosa que ens dona doncs que $M = \sum_{i\in I}M_i$. Per la condició 2, per $\sigma$, sabent que això ocorre en la suma directa.
+\end{proof}
+
+
+
+
+
+\end{document}

@@ -1,0 +1,397 @@
+\documentclass[../main.tex]{subfiles}
+
+
+
+
+\begin{document}
+
+\section{Operacions amb ideals}
+
+Anem a veure ara com poden interactuar els ideals entre ells. Veurem operacions que es poden fer amb ideals, com la suma d'ideals, el producte d'ideals, la intersecció d'ideals... També veurem que hi ha operacions, com la unió conjuntística d'ideals, que no té per què donar un ideal com a resultat. També veurem conceptes com l'ideal radical o l'arrel d'un ideal. També veurem un concepte molt important que és l'anell quocient.
+
+
+\begin{defi}
+[Suma d'ideals]\label{def:suma}\index{Suma d'ideals} Siguin $I$, $J$ ideals d'un anell $A$. Definim la suma d'ideals com
+\begin{equation}
+    \notag
+    I+J = \{a+b\;:\;a\in I,\;b\in J\}.
+\end{equation}
+És a dir, es defineix $I+J$ com el menor ideal que conté $I\cup J$. Més en general, donat un conjunt arbitrari d'ideals $\{I_i\}_{i\in\mathcal{I}}$, podem definir la suma arbitrària d'ideals com 
+\begin{equation}
+    \notag
+    \sum_{i\in\mathcal{I}} I_i = \{a_1+\cdots+a_k\;:\;k\in\mathbb{Z}_{\geq 0},\;a_i\in I_{j_i},\;j_1,\ldots,j_k\in \mathcal{I},\;1\leq i\leq k\}
+\end{equation}
+Es pot demostrar que la suma d'ideals és un ideal.
+\end{defi}
+
+\begin{defi}
+[Producte d'ideals]\index{Producte d'ideals}\label{def:producteideals} Siguin $I$ i $J$ dos ideals de $A$. Podem definir el producte d'ideals com
+\begin{equation}
+    \notag
+    IJ = \{a_1b_1+\cdots+a_kb_k\;:\;k\in\mathbb{Z}_{\geq 0},\;a_i\in I,\;b_i\in J,\;1\leq i\leq k\}
+\end{equation}
+i la definició es pot estendre al cas general com abans.
+\end{defi}
+
+Observem que $I\cup J$ no sempre és un ideal, però en canvi $I\cap J$ sí que ho és. Ara veiem també que $I+J$ és el menor ideal que conté a $I\cup J$, mentre que $IJ\subseteq I\cap J$. Per denotar el producte d'un ideal per si mateix $k$ vegades podem denotar $I^k$, però atenció perquè no vol dir que $I^k$ sigui l'ideal de tots els elements de $I$ elevats a la potència $k$, sinó que vol dir $I\cdots I$ amb la definició donada.\index{$I^k$}\index{$I+J$}\index{$IJ$}\index{$I\cap J$}. Abans de continuar veiem algunes combinacions que es poden fer amb aquestes operacions en un exercici donat.
+
+\setcounter{exercici}{8}
+\begin{exercici}\label{esal9}
+Siguin $I$, $J_1$, $J_2$ ideals d'un anell $A$. Proveu que
+\begin{enumerate}[(a)]
+    \item $I+(J_1\cap J_2) \subseteq (I+J_1)\cap(I+J_2)$. Si $I\subseteq J_1$ o bé $I\subseteq J_2$ llavors tenim igualtat.
+    \item $I\cap(J_1+J_2)\supseteq (I\cap J_1)+(I\cap J_2)$. Si $I \supseteq J_1$ o bé $I\supseteq J_2$ llavors hi ha igualtat.
+    \item $I(J_1+J_2)=(IJ_1)+(IJ_2)$.
+    \item $(J_1+J_2)(J_1\cap J_2) \subseteq J_1J_2$.
+\end{enumerate}
+\end{exercici}
+\begin{sol}
+\begin{enumerate}[(a)]
+    \item Sigui $x\in I+(J_1\cap J_2)$, aleshores $x=a+b$ amb $a\in I$ i $b\in J_1\cap J_2$, és a dir, $b\in J_1$ i $b\in J_2$. Aleshores, $x \in I+J_1$ i a la vegada $x\in I+J_2$. Amb la qual cosa $x\in (I+J_1)\cap(I+J_2)$ com voliem.
+    
+    Veiem ara que si $I\subseteq J_1$ o bé $I\subseteq J_2$ aleshores tenim igualtat. Considerem $x \in (I+J_1)\cap(I+J_2)$. Aleshores $x\in J_1 \cap (I+J_2)$. Per tant, $x\in I+(J_1\cap J_2)$ com voliem. 
+    
+    \item Sigui ara $x\in (I\cap J_1)+(I\cap J_2)$. Aleshores $x=a+b$, amb $a\in I$ i $a\in J_1$ i per altra banda $b\in I$ i $b\in J_2$. És a dir, $x\in I$ i $x=a+b$ amb $a\in J_1$ i $b\in J_2$. Per tant, $x\in I\cap (J_1+J_2)$ com volíem.
+    
+    \item Com és una igualtat, demostrem la doble inclusió
+    \begin{itemize}
+        \item \fbox{$\subseteq$} Sigui $x\in I(J_1+J_2)$. Aleshores $x=ab$, amb $a\in I$ i $b\in J_1+J_2$. És a dir, $a\in I$, $b=c+d$ amb $c\in J_1$ i $d\in J_2$. Per tant, $x=a(c+d)=ac+ad$, amb $c\in J_1$ i $d\in J_2$. Com el producte a un anell és distributiu respecte la suma hem pogut fer aquest últim pas, i això implica que $ac\in IJ_1$ i $ad \in IJ_2$. És a dir, $x\in (IJ_1)+(IJ_2)$.
+        \item \fbox{$\supseteq$} Sigui $x\in IJ_1+IJ_2$, aleshores $x=\alpha + \beta$, on $\alpha \in IJ_1$ i $\beta \in IJ_2$. Per tant, $\alpha =ab$, amb $a\in I$ i $b\in J_1$; $\beta =dc$, amb $d\in I$ i $c \in J_2$. Podem agafar $d=a$. Aleshores, $x=ab+ac=a(b+c)$ per la propietat distributiva dels anells. I això implica que $x\in I(J_1+J_2)$
+    \end{itemize}
+    
+    \item Podem fer aquesta demostració de dues maneres.
+    \begin{enumerate}[(1)]
+        \item Amb conjunts:
+        \begin{equation}
+            \notag
+            (J_1+J_2)(J_1\cap J_2) \subseteq J_1(J_1\cap J_2)+J_2(J_1\cap J_2) = J_1J_2+J_1J_2=J_1J_2
+        \end{equation}
+        \item Amb elements, com els altres apartats: Sigui $x\in (J_1+J_2)(J_1 \cap J_2)$.
+        \begin{equation}
+            \notag =(j_1+j_2)j=j_1j+j_2j=j_1j+jj_2 \in J_1J_2
+        \end{equation}
+        on $j\in J_1\cap J_2$ per tant $j\in J_1$ i $j\in J_2$.
+    \end{enumerate}
+\end{enumerate}
+\end{sol}
+
+\begin{ej}
+Si l'anell és $\mathbb{Z}$ tenim els següents resultats. Donat que $\mathbb{Z}$ és un domini d'ideals principals, tot ideal és de la forma $I = (a)$ amb algun $a\in \mathbb{Z}$. Aleshores
+\begin{enumerate}[(1)]
+    \item $(a_1)+\cdots+(a_n) = (\gcd(a_1,\ldots,a_n))$,
+    \item $(a_1)\cap\cdots\cap (a_n)  = (\mathrm{lcm}(a_1,\ldots,a_n))$,
+    \item $(a_1)\cdots(a_n) = (a_1\cdots a_n).$
+\end{enumerate}
+\end{ej}
+
+De la mateixa manera podem intentar de dotar d'una estructura d'anells al producte cartesià de dos anells, que no cal que siguin ideals. Això ho veurem en el següent exercici.
+
+\setcounter{exercici}{13}
+\begin{exercici}\label{esal14}
+Siguin $A$, $B$ anells. En el producte cartesià $A\times B$ definim les operacions
+\begin{equation}
+        \notag
+        (a,b)+(c,d)=(a+c,b+d), \quad (a,b)\cdotp (c,d) = (a\cdotp c, b\cdotp d).
+\end{equation}
+\begin{enumerate}[(a)]
+        \item Proveu que $(A\times B,+,\cdotp )$ és un anell. Aquest anell s'anomena \textit{producte directe dels anells A i B}.
+        \item Determina quan $A\times B$ és un domini d'integritat.
+        \item Proveu que si $I\subseteq A$, $J\subseteq B$ són ideals, llavors $I\times J$ és un ideal de $A\times B$ i que
+        \begin{equation}
+            \notag
+            (A\times B)/(I\times J) \cong (A/I)\times (B/J).
+        \end{equation}
+        \item Proveu que tot ideal de $A\times B$ és de la forma $I\times J$.
+        \item Proveu que els únics ideals primers de $A\times B$ són els de la forma $I\times B$, amb $I\subseteq A$ primer, o bé els de la forma $A\times J$, amb $J\subseteq B$ primer.
+        \item Demostreu el resultat que s'obté de $(e)$ en substituir "primer" per "maximal".
+\end{enumerate}
+\end{exercici}
+\begin{sol}
+\begin{enumerate}[(a)]
+    \item Demostració que $(A\times B,+,\cdotp)$ és anell.
+    \begin{enumerate}[(i)]
+        \item $(A\times B,+)$ és grup. Si $(A,+,\cdotp )$ és anell, aleshores $(A,+)$ és grup i el mateix amb $(B,+)$. Per tant, el producte cartesià de grups és grup i aleshores $(A\times B,+)$ és grup.
+        \item $(A\times B,\cdotp)$ associatiu. Considerem $(a,b),(c,d),(e,f)\in A\times B$ i amb el producte definit abans:
+        \begin{equation}
+            \notag
+            [(a,b)(c,d)](e,f)=(ac,bd)(e,f)=((ac)e,(bd)f)
+        \end{equation}
+        i com el producte en $A$ i en $B$ separats és associatiu per ser aquests anells, aleshores
+        \begin{equation}
+            \notag
+            ((ac)e,(bd)f)=(a(ce),b(df))=(a,b)(ce,df)=(a,b)[(c,d)(e,f)]
+        \end{equation}
+        
+        \item $(A\times B,+,\cdotp)$ producte distributiu amb la suma. Siguin, igual que abans, $(a,b),(c,d),(e,f)\in A\times B$, 
+        \begin{equation}
+            \notag
+            ((a,b)+(c,d))(e,f)=(a+c,b+d)(e,f)=((a+c)e,(b+d)f),
+        \end{equation}
+        i com que $A$ i $B$ són anells, el producte és distributiu respecte la suma en cada cas i aleshores, 
+        \begin{equation}
+            \notag
+            ((a+c)e,(b+d)f) = (ae+ce,bf+df)=(ae,bf)+(ce,df)=(a,b)(e,f)+(c,d)(e,f).
+        \end{equation}
+        
+        \item Veguem ara si és commutatiu respecte el producte (respecte la suma ho serà si el grup $A\times B$ és abelià, que és si $A$ i $B$ ho són alhora). Ho serà si $A$ i $B$ ho són independentment:
+        \begin{equation}
+            \notag
+            (a,b)(c,d)=(ac,bd)=(ca,db)=(c,d)(a,b)
+        \end{equation}
+        \item Per últim, estudiem si és unitari. De nou ho serà si els anells $A$ i $B$ ho són. Siguin $1_A\in A$ i $1_B\in B$ elements neutres pel producte de $A$ i $B$ respectivament. Aleshores, 
+        \begin{equation}
+            \notag
+            (1_A,1_B)(a,b)=(1_Aa,1_Bb)=(a,b),\qquad \forall (a,b)\in A\times B.
+        \end{equation}
+        Per tant la unitat de $(A\times B, \cdotp )$ és l'element $(1_A,1_B)$
+    \end{enumerate}
+    
+    Per tant, queda explícitament demostrat que $(A\times B,+,\cdotp)$ és anell, i que és abelià i unitari si $A$ i $B$ ho són per separat.
+    
+    \item Estudiem quan és D.I. Cal diferenciar els casos en que $A$ i $B$ són tots dos Dominis d'Integritat i el cas en que algun d'ells no ho és (o els dos a la vegada).
+    \begin{enumerate}[(i)]
+        \item Cas en que $A$ o $B$ o els dos a la vegada no són $D.I.$. Aleshores, sense pèrdua de generalitat, podem considerar que $A$ no és $D.I.$. Només que un falli ja tenim prou per demostrar que $A\times B$ no serà $D.I$ amb el producte que hem definit. Sigui $a\in A$ i $a'\in A$, $a,a'\not=0_A$ tals que $aa'=0_A$, és a dir, que són divisors de zero.
+        \begin{equation}
+            \notag
+            (a,b)(a',b') = (aa',bb')=(0,0)
+        \end{equation}
+        on $b=0_B$ o $b'=0_B$, o cap dels dos són zero, i aleshores $B$ tampoc és $D.I.$. Dona igual, perquè en qualsevol cas $A\times B$ no és $D.I.$. Per tant hem conclòs que 
+        \begin{equation}
+            \notag
+            A\text{ no } D.I. \quad o \quad B\text{ no }D.I. \quad \Longrightarrow A\times B \text{ no } D.I.
+        \end{equation}
+        
+        \item Cas en que $A$ i $B$ són tots dos $D.I.$ Aleshores, no existeixen divisors de zero en $A$ ni en $B$, però si considerem que $A\times B$ si que n'hi ha de divisors de zero, aleshores
+        \begin{equation}
+            \notag
+            (a,b)(\alpha,\beta)=(0,0) \Longleftrightarrow 
+            \left\{
+            \begin{array}{ll}
+                 a \not= 0, \alpha=0, b=0,\beta\not=0 \\
+                 a=0,\alpha \not=0, b\not=0,\beta=0
+            \end{array}
+            \right.
+        \end{equation}
+        és a dir, els casos:
+        \begin{equation}
+            \notag
+            (a,0)(0,\beta)=(0,0),
+        \end{equation}
+        \begin{equation}
+            \notag
+            (0,b)(\alpha,0)=(0,0).
+        \end{equation}
+        
+        Per tant, concluïm que els divisors de zero a $A\times B$ són de la forma $(\lambda,0), \lambda \not=0$ i $(0,\mu),\mu\not=0$, és a dir, els que tenen una de les dues components nul·la i l'altra no nul·la.
+    \end{enumerate}
+    
+    \item Demostrem que, si $I$ ideal de $A$ i $J$ ideal de $B$, aleshores $I\times J$ és ideal de $A\times B$:
+    \begin{enumerate}[(i)]
+        \item $(I\times J,+)\subseteq (A\times B, +)$ subgrup.
+        \begin{itemize}
+            \item Veguem que és subconjunt:
+            \begin{equation}
+                \notag
+                \left.
+                \begin{array}{ll}
+                     \forall i\in I, i\in A \text{ perquè } I\subseteq A \\
+                     \forall j\in J, j\in B\text{ perquè } J\subseteq B \\
+                \end{array}
+                \right\}\Rightarrow \forall(i,j)\in I\times J, (i,j)\in A\times B\Rightarrow(I\times J)\subseteq (A\times B).
+            \end{equation}
+            \item La associativitat és trivial, ja que $I$ i $J$ són ideals de $A$ i $B$ respectivament. Passo de fer-ho.
+            \item L'element neutre de $I\times J$ és $(0_A,0_B)$. Passo de demostrar-ho.
+            \item $\forall(i,j)$ l'element simètric és $-(i,j):=(-i,-j)$, on $-i$ és el simètric de $i$ en $I$ i el mateix per $J$. Aleshores $(i,j)+(-i,-j) = (i+(-i),j+(-j))=(0_I,0_J)=(0_A,0_B)$.
+        \end{itemize}
+        \item Veiem que el producte és tancat:
+        \begin{equation}
+            \notag
+            \forall(a,b)\in A\times B,\forall(i,j)\in I\times J,\quad (a,b)(i,j)=(ai,bj)\left\{
+            \begin{array}{ll}
+                 ai \in I, \text{ per ser $I$ ideal}, \\
+                 bj \in J, \text{ per ser $J$ ideal}.
+            \end{array}
+        \right.
+        \end{equation}
+        Aleshores, $(ai,bj)\in I\times J$.
+    \end{enumerate}
+    Vist això, queda explícitament demostrat que $(I\times J)$ és ideal de $(A\times B)$ si $I$ i $J$ són, respectivament, ideals de $A$ i $B$. Vegem ara que hi ha un isomorfisme entre els conjunts $\dfrac{A\times B}{I\times J}$ i $\dfrac{A}{I} \times \dfrac{B}{J}$. Si dibuixem el següent diagrama
+    \begin{equation}
+        \notag
+        \xymatrix{
+        A\times B \ar[d]_{\pi} \ar[r]^f & \dfrac{A}{I}\times \dfrac{B}{J} \\
+        \dfrac{A\times B}{I\times J} \ar[ru]_{\Tilde{f}}
+        }
+    \end{equation}
+    on $\pi:A\times B \longrightarrow \dfrac{A\times B}{I\times J}$ és el morfisme de pas al quocient. Volem, doncs, veure que $\Tilde{f}$ és un isomorfisme d'anells. Per veure això cal verificar:
+    \begin{enumerate}[(i)]
+        \item Que $f:A\times B\longrightarrow A/I\times B/J$ és un epimorfisme d'anells (morfisme i exhaustiva). \textcolor{gray}{Sigui $(a,b)\in A\times B$, aleshores $f(a,b)=([a],[b])$.} Considerem $(a,b),(c,d)\in A\times B$. Volem veure que $f((a,b)+(c,d))=f((a,b))+f((c,d))$.
+        \begin{equation}
+            \notag
+            f((a,b)+(c,d))=f((a+c,b+d))=([a+c]_I,[b+d]_J)=([a]_I+[c]_I,[b]_J+[d]_J)=
+        \end{equation}
+        \begin{equation}
+            \notag
+            =([a]_I,[b]_J)+([c]_I,[d]_J) = f((a,b))+f((c,d)).
+        \end{equation}
+         que confirma que és un morfisme d'anells. Volem veure ara que és un epimorfisme, és a dir, que $Im(f)=A/I\times B/J$. Ràpidament es pot observar que qualsevol element de l'anell $A$ té la seva classe (encara que no sigui el representant) i el mateix passa amb $B$. Per tant es confirma que és epimorfisme
+        \item Que $ker(f)=I\times J$. Calculem el núcli analíticament:
+        \begin{equation}
+            \notag
+            ker(f)=\{(a,b)\in A\times B: f(a,b)=([0]_I,[0]_J)\}=\{(a,b)\in A\times B: ([a]_I,[b]_J)=([0]_I,[0]_J)\}.
+        \end{equation}
+        Observem que $[a]_I = [0]_I \Longleftrightarrow a\in I$. Per tant
+        \begin{equation}
+            \notag
+            ker(f)=\{(a,b)\in A\times B: a\in I, b\in J\} = I\times J.
+        \end{equation}
+    \end{enumerate}
+    
+    Finalment, ja tenim totes les condicions necessàries per poder afirmar que segons el \textit{Primer Teorema d'Isomorfia} $\Tilde{f}$ és un isomorfisme com volíem.
+    
+    \item Busquem tots els ideals de $A\times B$. Per començar, sabem que $I$ ideal de $A$ i $J$ ideal de $B$ implica que $I\times J$ és ideal de $A\times B$. Aleshores hem de demostrar que per a qualsevol ideal $K$ de $A\times B$, $K$ és de la forma $I\times J$, és a dir, $\exists I\subseteq A$ ideal i $\exists J\subseteq B$ ideal tals que $K=I\times J$.
+    \begin{equation}
+        \notag
+        \begin{tikzpicture}[x=.20cm,y=.15cm]
+            \draw (-4,0) -- (10,0);
+            \draw (0,-4) -- (0,10);
+            \draw[dashed] (3,-2) -- (3,10);
+            \draw[dashed] (8,-2) -- (8,10);
+            \draw[dashed] (-2,3) -- (10,3);
+            \draw[dashed] (-2,6) -- (10,6);
+            \node at (5.5,4.5) {$I\times J$};
+            \node at (5.5,-2) {$I$};
+            \node at (-2,4.5) {$J$};
+        \end{tikzpicture}
+    \end{equation}
+    Segons aquest dibuixet, l'ideal té forma rectangular. Representa que es cumpleix l'enunciat. Anem a suposar que no té forma rectangular i arribar a una contradicció.
+    
+    Els candidats són $I=\rho_1(K)$ i $J=\rho_2(K)$, on 
+    \begin{equation}
+        \notag
+        \rho_1:A\times B \longrightarrow A, \qquad \rho_2:A\times B\longrightarrow B.
+    \end{equation}
+    són projeccions (morfismes d'anells exhaustius). \textcolor{gray}{Si agafem $K$ com l'àrea del dibuix anterior, aleshores les projeccions de $K$ sobre $A$ (l'eix de les $X$) és la part que he dibuixat com $I$ i el mateix per la projecció de $K$ sobre $B$ (eix de les $Y$).} Amb això podem afirmar que tant $I$ com $J$ \textcolor{gray}{(Recordem, $I=\rho_1(K)$ és la projecció de $K$ sobre $A$ i anàlog per $J$.)} són ideals ja que
+    \begin{itemize}
+        \item La imatge d'un subgrup és un subgrup i, a més, 
+        \item $\rho_i$ són morfismes d'anells exhaustius (caldria provar-ho). Per tant, la imatge d'un ideal és ideal.
+    \end{itemize}
+    Per tant només queda veure que $K=I\times J$, és a dir, $K=\rho_1(K)\times \rho_2(K)$. Vegem la doble inclusió
+    \begin{itemize}
+        \item \fbox{$\subseteq$} Si $(x,y)\in K$ aleshores $x\in \rho_1(K)$ i $y\in \rho_2(K)$ per definició de les projeccions. Aleshores $(x,y)\in I\times J$.
+        \item \fbox{$\supseteq$} Si $(x,y)\in I\times J$. Aleshores $x\in I = \rho_1(K)$ i $y\in J=\rho_2(K)$.
+        \begin{equation}
+            \notag
+            \begin{array}{ll}
+                 x\in \rho_1(K) \Rightarrow \exists (x,y')\in K\text{ tq. } (x,y')(1,0)=(x,0)\in K\text{ (ideal) } \\
+                 y\in \rho_2(K) \Rightarrow \exists (x',y)\in K\text{ tq. } (x',y)(0,1)=(0,y)\in K\text{ (ideal) } \\
+            \end{array}
+        \end{equation}
+        Finalment si tant $(x,0)$ com $(0,y)$ són a $K$, com aquest és ideal, 
+        \begin{equation}
+            \notag
+            (x,0)+(0,y)=(x,y)\in K
+        \end{equation}
+        I d'aquesta manera concluïm la demostració que $K=I\times J$.
+    \end{itemize}
+    
+    \item Tenim una manera ràpida de veure això. $I\times J$ primer si i només si $\dfrac{A\times B}{I\times J}$ és Domini d'Integritat (apunts). Aleshores $\dfrac{A\times B}{I\times J}$ és isomorf a $\dfrac{A}{I}\times \dfrac{B}{J}$ com hem vist a l'apartat $(b)$ i si són isomorfs, només cal veure que un és D.I. per verificar que l'altre ho és. Per tant hem de veure quan $\dfrac{A}{I}\times \dfrac{B}{J}$ és Domini d'Integritat. 
+    
+    Per l'apartat $(b)$ podem concluir que el producte cartesià de dos anells és domini d'integritat si un d'ells és l'anell $\theta  = \{0\}$. Per tant
+    \begin{equation}
+        \notag
+        \dfrac{A}{I}\times\dfrac{B}{J}\quad D.I. \Longleftrightarrow \left\{
+        \begin{array}{ll}
+             A/I = \theta & \Rightarrow A=I \\
+                    & \text{o bé} \\
+            B/J = \theta & \Rightarrow B=J
+        \end{array}
+        \right.
+    \end{equation}
+    
+    $I\times J$ maximal $\Longleftrightarrow \dfrac{A\times B}{I\times J}$ és cos. Com hem vist abans que $\dfrac{A\times B}{I\times J} \cong \dfrac{A}{I}\times \dfrac{B}{J}$, si el primer és cos, el segon també. 
+    \begin{equation}
+        \notag
+        \dfrac{A}{I}\times \dfrac{B}{J} \text{ cos } \Longleftrightarrow\left\{
+        \begin{array}{ll}
+             A/I = \theta, & i \quad B/J \text{ és cos} \\
+                        &\text{o bé} \\
+             A/I \text{ és cos }, & i \quad B/J=\theta.
+        \end{array}
+        \right.
+    \end{equation}
+    i això es compleix si, i només si $K=I\times B$ o $K=A\times J$, on $I$ i $J$ són ideals maximals.
+\end{enumerate}
+\end{sol}
+
+Per entendre bé alguns apartats d'aquest últim exercici cal tenir present la noció de morfisme, que es dona en la següent secció, però és bastant bàsica i se suposa que això és un repàs, o sigui que tampoc cal gaire cosa.
+
+Definim ara l'anell quocient, una eina molt important en l'estudi de qualsevol cosa que tingui a veure amb anells.
+
+\begin{defi}
+[Anell quocient]\index{Anell quocient}\label{def:anellquocient} Si $A$ és un anell i $I$ un ideal, podem dotar $A/I$ d'estructura d'anell. Definim la suma de classes com $[a]+[b] = [a+b]$ i el producte de classes $[a][b] = [ab]$ i es pot demostrar que estan ben definits (i.e. no depenen dels representants escollits). Aleshores $A/I$ amb aquestes operacions, el neutre $1 = [1_A]$ i $0 = [0_A]$ és un anell. S'anomena \textit{anell quocient} i els seus objectes són classes que denotarem amb els claudàtors com $[a]$, on $a$ és un representant de la classe. Molts cops també es pot represenetar una classe per $a+I$. Si $[a] = [0]$, aleshores $a\in I$.
+\end{defi}
+
+
+\begin{defi}[Radical d'un anell]\label{def:radical}\index{Radical d'un anell}
+Siguin $A$ un anell, $I\subseteq A$ un ideal. Es defineix el \textit{radical}\index{Radical}\label{def:idealradical} de $I$, $\rad(I)$, com el conjunt d'elements $x\in A$ tals que existeix $n\in \mathbb{Z}_{\geq 0}$ tal que $x^n\in I$.
+\end{defi}
+
+\setcounter{exercici}{10}
+\begin{exercici}\label{esal11}
+ Proveu que si $I$, $J$ són ideals de $A$, llavors
+\begin{enumerate}[(a)]
+    \item $\rad(I)$ és un ideal de $A$.
+    \item Direm que $I$ és un \textit{ideal radical} si $\rad(I)=I$. Proveu que $\rad(I)$ és un ideal radical.
+    \item $\rad(IJ)=\rad(I\cap J)=\rad(I)\cap \rad(J)$.
+    \item $\rad(I+J)=\rad(\rad(I)+\rad(J))$.
+\end{enumerate}
+\end{exercici}
+\begin{sol}
+Pel que diu l'enunciat, podem escriure la definició de \textit{radical}:
+\begin{equation}
+    \notag
+    rad(I)=\{x\in A: \exists n\in \mathbb{N}\quad tq \quad x^n\in I\}
+\end{equation}
+
+\begin{enumerate}[(a)]
+    \item Demostrem que $\rad(I)$ és un ideal de $A$. Sigui $x\in \rad(I)$. Aleshores $\exists n \in \mathbb{N}$ tal que $x^n\in I$. Considerem $a\in A$. 
+        \begin{equation}
+            \notag
+            (ax)^n=a^nx^n\in I \Rightarrow ax\in \rad(I)
+        \end{equation}
+        Això últim demostra que el producte es manté tancat a l'ideal (suposat ideal).
+        
+        Siguin ara $x,y\in \rad(I)$. Aleshores $\exists n,m\in \mathbb{N}$ tals que $x^n,y^m\in I$. Volem veure que $x+y\in \rad(I)$.
+        \begin{equation}
+            \notag
+            (x+y)^{n+m-1}=\displaystyle\sum_{k=0}^{n+m-1}\binom{n+m-1}{k}x^ky^{n+m-1-k}
+        \end{equation}
+        Aquí, forçosament no podem tenir alhora $k<m$ i $m+n-1-k<m$. Ha de ser $k \geq n$ o $m+n-1-m\geq m$. Aleshores el producte és de $I$, per tant tots els sumands són de $I$ i això implica que la suma és de $I$ com volíem.
+    
+    \item Provem que $\rad(I)=\rad(\rad(I))$ amb doble inclusió
+        Per l'apartat $(a)$, tot ideal està inclòs en el seu radical. Per la inclusió contrària, suposem $x\in \rad(\rad(I))$ i veurem que $x\in \rad(I)$.
+        \begin{equation}
+            \notag
+            x\in \rad(\rad(I)) \Rightarrow \exists n\in \mathbb{N} \quad x^n\in \rad(I) \Rightarrow \exists m\in \mathbb{N} \quad (x^n)^m \in I
+        \end{equation}
+        i com $(x^n)^m=x^{nm}$ i $n,m\in \mathbb{N}\Rightarrow nm\in \mathbb{N}$, aleshores $x\in \rad(I)$.
+    
+    \item Provem que $\rad(IJ)=\rad(I\cap J)=\rad(I)\cap \rad(J)$ amb doble inclusió. Per definició $I\subseteq J\longrightarrow \rad(I)\subseteq \rad(J)$. D'altra banda, $\rad(IJ)\subseteq \rad(I\cap J)$. Per la inclusió contrària, sigui $x\in \rad(I)\cap \rad(J)$. Aleshores, per la definició de radical, $\exists n,m\in \mathbb{N}$ tals que $x^n\in I$ i $x^m\in J$. Per tant $x^nx^m=x^{n+m}\in IJ$ i això prova la segona inclusió.
+    
+    \item Provem que $\rad(I+J)=\rad(\rad(I)+\rad(J))$ amb doble inclusió. Com $I\subseteq \rad(I)$ igual que $J\subseteq \rad(J)$ (vist abans), aleshores, $I+J \subseteq \rad(I)+\rad(J)$. Si apliquem el radical a ambdós costats obtenim
+        \begin{equation}
+            \notag
+            \rad(I+J)\subseteq \rad(\rad(I)+\rad(J))
+        \end{equation}
+        Per a la inclusió contrària, trivialment $\rad(I) \subseteq \rad(I+J)$ igual que $\rad(J)\subseteq \rad(I+J)$. Aleshores $\rad(I)+\rad(J) \subseteq \rad(I+J)$, i, un cop més, aplicant radical als dos costats ens queda
+        \begin{equation}
+            \notag
+            \rad(\rad(I)+\rad(J))\subseteq \rad(\rad(I+J))=\rad(I+J)
+        \end{equation}
+\end{enumerate}
+\end{sol}
+
+
+
+\end{document}

@@ -1,0 +1,149 @@
+\documentclass[../../../main.tex]{subfiles}
+
+
+
+
+
+\begin{document}
+
+
+
+
+\section{Definicions i exemples}
+
+\begin{defi}
+[Mòdul]\label{def:modul}\index{Mòdul} Sigui $A$ un anell commutatiu, un $A$-mòdul és un conjunt $M$ que és grup abelià amb una operació externa $A\times M\to M$ que envia $(\lambda,m)\mapsto \lambda m$ tal que
+\begin{enumerate}[(1)]
+    \item $(\lambda_1+\lambda_2)m = \lambda_1m+\lambda_2m$,
+    \item $(\lambda_1\lambda_2)m = \lambda_1(\lambda_2m)$,
+    \item $\lambda(m_1+m_2)=\lambda m_1+\lambda m_2$
+    \item $1_Am = m$.
+\end{enumerate}
+\end{defi}
+
+\begin{ej}
+Alguns exemples són els següents.
+\begin{enumerate}[(i)]
+    \item Si $k$ és un cos, aleshores un $k$-espai vectorial és el mateix que un $k$-mòdul.
+    \item Si $A = \mathbb{Z}$ aleshores els $\mathbb{Z}$-mòduls són grups abelians.
+    \item Si $A$ és un anell i $I$ un ideal, aleshores $A/I$ és un $A$-mòdul amb l'operació definida $\lambda\overline{a} = \overline{\lambda a}$.
+    \item Si $k$ és un cos i considerem $k[x]$ i $E$ un $k$-espai vectorial i sigui $\varphi\in \mathrm{End}(E)$, aleshores podem definir en $E$ una estructura de $k[x]$-mòdul de la següent manera: sigui $v\in E$ i $\lambda\in k$, aleshores definim $\lambda\cdotp v = \lambda v$; d'altra banda, si $x\in k[x]$ tindrem que $x \cdotp v = \varphi(v)$. Aquesta definició es pot estendre per linealitat, és a dir, que si tenim $p(x) = \sum_{i=0}^n \lambda_ix^{i}\in k[x]$ llavors $p(x)\cdotp v = \sum_{i=0}^n\lambda_i\varphi^{i}(v)$, on $\varphi^{i}$ és $\varphi\circ\cdots\circ\varphi$ $i$ vegades. Per tant $E$ és un $k[x]$-mòdul.
+    
+    Si ara suposem que $E$ és un $k[x]$-mòdul, podem considerar $\varphi\in\mathrm{End}_k(E)$ tal que $\varphi(v) = x\cdotp v$ per $v\in E$, aleshores obtenim que tota estructura de $E$ com a $k[x]$-mòdul prové d'un $\mathrm{End}_k(E)$ i viceversa.
+    
+    \item Si $k$ és un cos i $G$ un grup abelià, podem definir l'\textit{anell de grup}\index{Anell de grup}\index{$k[G]$} $k[G]$ on els elements són ``combinacions lineals'' dels elements de $G$, és a dir
+    \begin{equation}
+        \notag
+        \sum_{g\in G}\lambda_gg,\quad \lambda_g\in k
+    \end{equation}
+    i $\lambda_g = 0$ excepte un nombre finit. Les operacions quede definides de la següent manera:
+    \begin{equation}
+        \notag
+        \sum_{g\in G}\lambda_gg + \sum_{g\in G}\mu_gg = \sum_{g\in G}(\lambda_g+\mu_g)g
+    \end{equation}
+    \begin{equation}
+        \notag
+        \left(\sum_{g\in G}\lambda_gg\right)\left(\sum_{g\in G}\mu_gg\right) = \sum_{g,g'\in G}(\lambda_g\mu_{g'})g\cdotp g' = \sum_{h\in G}\left(\sum_{g\in G}\lambda_g\mu_{g^{-1}h}\right)h
+    \end{equation}
+    Aleshores $k[G]$ és un anell i el 0 és $0_k1_G$ i $1$ és $1_k1_G$. 
+    
+    Llavors, sigui $E$ un $k[G]$-mòpdul, per tant $E$ és un $k$-espai vectorial i podem fer el mateix argument que l'apartat anterior i obtindrem l'equivalència entre estructures de $E$ com a $k[G]$-mòduls i $\psi:k[G]\to \mathrm{Aut}_k(E)$ morfismes de grups, que és la base de la teoria de representacions.
+\end{enumerate}  
+\end{ej}
+
+\begin{defi}
+[Morfisme de mòduls]\index{Morfisme de mòduls}\label{def:morfismemoduls} Siguin $M_1$ i $M_2$ mòduls sobre $A$. Una aplicació
+\begin{equation}
+    \notag
+    f:M_1\longrightarrow M_2
+\end{equation}
+es diu que és un \textit{morfisme de $A$-mòduls} si compleix que és $A$-lineal, és a dir, 
+\begin{enumerate}[(1)]
+    \item$f(x+y) = f(x)+f(y)$ per a tot $x,y\in M_1$ i
+    \item $f(\lambda x) = \lambda  f(x)$ per tot $\lambda\in A$ i tot $x\in M_1$.
+\end{enumerate}
+\end{defi}
+
+\begin{ej}
+\begin{enumerate}
+    \item La identitat és un morfisme. Això és rellevant per estudiar els mòduls des de la perspectiva de les categories.
+    \item Per tot $\lambda\in A$, el morfisme definit per $M\to M$, $m\mapsto\lambda m$, anomenat \textit{homotècia}\index{Homotècia de mòduls} és morfisme. 
+    \item El pas al quocient $\pi:A\to A/I$ és un altre exemple.
+\end{enumerate}
+\end{ej}
+
+
+\begin{prop}
+\label{prop:propietatsmorfismes} Algunes propietats de morfismes són
+\begin{enumerate}[(1)]
+    \item La composició de morfismes és morfisme.
+    \item $\mathrm{Hom}_A(M,N)$ és $A$-mòdul i 
+    \begin{itemize}
+        \item $(f+g)(x) = f(x)+g(x)$
+        \item $(\lambda f)(x) = \lambda f(x) = f(\lambda x)$
+    \end{itemize}
+    \item $\mathrm{Hom}_A(M,M) = \mathrm{End}_A(M)$ i atenció perquè $\mathrm{End}_A(A)\not= \mathrm{End}(A)$ com anell.
+    \item Les definicions de \textit{monomorfisme}\index{Monomorfisme de mòduls}, \textit{epimorfisme}\index{Epimorfisme de mòduls} i \textit{isomorfisme}\index{Isomorfisme de mòduls} es mantenen anàlogues. 
+    \item Un isomorfisme molt útil és, donat un $A$-mòdul $M$, definim
+    \begin{equation}
+        \notag
+        \begin{array}{rl}
+            M & \longrightarrow \mathrm{Hom}_A(A,M) \\
+            m & \longmapsto \begin{array}{rl}
+                f:A & \rightarrow M \\
+                1 & \mapsto m
+            \end{array}
+        \end{array}
+    \end{equation}
+    que consisteix a identificar $m\in M$ amb les imatges de $1$ per $f:A\to M$.
+\end{enumerate}
+\end{prop}
+
+
+Suposem ara que tinc $A$-mòduls $M$, $N_1$ i $N_2$. Tenim el següent $A$-morfisme $g:N_1\to N_2$ i considero el morfisme
+\begin{equation}
+    \notag
+    \begin{array}{rl}
+        \mathrm{Hom}_A(M,N_1) & \overset{\overline{g}}{\longrightarrow} \mathrm{Hom}_A(M,N_2) \\
+        f & \longmapsto g\circ f = \overline{g}(f)
+    \end{array}
+\end{equation}
+I aleshores tenim el següent diagrama commutatiu
+\begin{equation}
+    \notag
+    \xymatrix{
+    N_1\ar[r]^g & N_2\\
+    M\ar[u]^f\ar[ur]_{g\circ f}
+    }
+\end{equation}
+i és clar que $\overline{g}$ és morfisme. És una mena de pas al dual. Es diu \textit{covariant}\index{Covariant}
+
+De la mateixa manera, si $M_1$, $M_2$ i $N$ són mòduls i $f:M_1\to M_2$ són $A$-morfismes, aleshores tenim
+\begin{equation}
+    \notag
+    \begin{array}{rl}
+        \mathrm{Hom}_A(M_2,N) & \overset{\Tilde{f}}{\longrightarrow} \mathrm{Hom}_A(M_1,N) \\
+        g & \longmapsto g\circ f
+    \end{array}
+\end{equation}
+és també un morfisme i és anàleg a l'anterior. Es diu \textit{contravariant}\index{Contravariant}. El següent diagrama és commutatiu
+\begin{equation}
+    \notag
+    \xymatrix{
+    M_1\ar[r]^f\ar[d]_{g\circ f} & M_2\ar[dl]^g\\
+    N
+    }
+\end{equation}
+
+Ajuntant-ho tot tenim un super diagrama commutatiu que intentaré dibuixar aquí
+\begin{equation}
+    \notag
+    \xymatrix{
+    \mathrm{Hom}_A(M,N_1)\ar[r]^{\overline{g}_{M_1}} & \mathrm{Hom}_A(M,N_2)\\
+    \mathrm{Hom}_A(M_2,N)\ar[u]^{\Tilde{f}_{N_1}}\ar[r]_{\overline{g}_{M_2}} & \mathrm{Hom}_A(M_1,N)\ar[u]_{\Tilde{f}_{N_2}}
+    }
+\end{equation}
+
+
+
+\end{document}

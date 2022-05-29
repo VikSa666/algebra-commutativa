@@ -1,0 +1,113 @@
+\documentclass[../../../main.tex]{subfiles}
+
+
+
+\begin{document}
+
+
+\section{Noetherianitat en dimensió 1}
+
+
+\begin{lema}
+\label{lema:noetheriaDimensio1} Sigui $A$ un domini d'integritat, noetherià i de dimensió 1. Sigui $K$ el seu cos de fraccions i sigui $M$ un $A$-mòdul lliure de torsió, de rang $r<\infty$, aleshores per tot $a\neq 0$, $a\in A$ tindrem que $\lambda_A(M/aM)\leq r\lambda_A(A/aA)$.
+\end{lema}
+\begin{proof}
+Aquesta demostració la farem per casos. 
+
+El primer cas suposarem que $M$ és un $A$-mòdul finitament generat. Com que $M$ és lliure de torsió, aleshores podem considerar el $A$-mòdul $E$ lliure de rang $r$ tal que $E\subseteq M$. Sigui $C = M/E$, aleshores $C$ és un $A$-mòdul de torsió finitament generat. Això ho obtenim gràcies a la següent successió exacta
+\begin{equation}
+    \notag
+    0\longrightarrow E\longrightarrow M\longrightarrow M/E\longrightarrow 0
+\end{equation}
+Aleshores obtenim la següent successió exacta, ja que $K$ és $A$-pla
+\begin{equation}
+    \notag
+    0\longrightarrow E\otimes_AK\longrightarrow M\otimes_AK\longrightarrow (M/E)\otimes_AK\longrightarrow 0
+\end{equation}
+Com que $E$ i $M$ tenen el mateix rang, es desprèn que $E\otimes_AK\cong M\otimes_AK$ i per tant 
+\begin{equation}
+    \notag
+    S^{-1}(M/E)\cong (M/E)\otimes_AK = 0
+\end{equation}
+cosa que implica que la inclusió $i:M/E\hookrightarrow S^{-1}(M/E) = 0$ on $S^{-1} = A\setminus\{0\}$ ja que és un domini. Sabem que $\ker(i)$ és un $A$-mòdul de torsió i per tant $M/E$ és de torsió. Aleshores tenim que existeix un $t\in A$ diferent de $0$ tal que $tC = 0$. Per una altra banda, aplicant la proposició \ref{prop:noetheriaCadenaSubmoduls}, sabem que existeix la següent cadena
+\begin{equation}
+    \notag
+    C = C_0\supseteq C_1\supseteq \cdots\supseteq C_m=0
+\end{equation}
+tal que $C_i/C_{i+1}\cong A/\p_i$ per algun $\p_i\in\spec{A}$. Com que $tC = 0$, tindrem que $tC_i = 0$ per tot $i$ i per tant $t(A/\p_i)=0$ per tota $i$ que implica $t\in \p_i$. D'aquí extraiem que $\p_i\neq 0$ oper tot $i$ (això no tenia per què passar ja que $0\in\spec{A}$) i com que $\dim(A) = 1$, vol dir que $\p_i$ és maximal i per tant $A/\p_i$ és un cos i per tant de longitud finita com a $A$-mòdul i aleshores $\lambda_A(C) = m<\infty$.
+
+Sigui $a\in A$ diferent de 0, primer tenim la següent successió exacta
+\begin{equation}
+    \notag
+    0\longrightarrow E\longrightarrow M\longrightarrow C\longrightarrow 0
+\end{equation}
+i ara tensorialitzant per $A/(a^n)$ obtenim la següent successió exacta
+\begin{equation}
+    \notag
+    E\otimes_AA/(a^n)\longrightarrow M\otimes_AA(a^n)\longrightarrow C\otimes_AA/(a^n)\longrightarrow 0
+\end{equation}
+és a dir
+\begin{equation}
+    \notag
+    E/a^nE\longrightarrow M/a^nM\longrightarrow C/a^nC\longrightarrow 0
+\end{equation}
+Com que $E\cong A^r$ aleshores $E/a^nE\cong (A/a^nA)^r$ i per tant obtenim que
+\begin{equation}
+    \notag
+    \lambda_A(E/a^nE) = \lambda_A((A/a^nA)^r) = r\lambda_A(A/a^nA)<\infty
+\end{equation}
+ja que $\lambda_A$ és una funció additiva i la finitud ve donada per la proposició \ref{prop:4410}. Gràcies a què $\lambda_A(C)<\infty$ tenim que $\lambda_A(C/a^nC)<\infty$ i per la successió exacta anterior tenim $\lambda_A(M/a^nM)<\infty$ a més tindrem la següent desigualtat
+\begin{equation}
+    \notag
+    \lambda_A(M/a^nM)\leq \lambda_A(C/a^nC)+\lambda_A(E/a^nE)
+\end{equation}
+Per una altra part, com que $M$ és lliure de torsió, podem considerar el següent diagrama commutatiu
+\begin{equation}
+    \notag
+    \xymatrix{
+    a^{j+1}M\ar[r]^{\cdotp a} \ar[d]^{i} & a^{j+2}M\ar[d]^{i} \\
+    a^jM\ar[r]^{\cdotp a} & a^{j+1}M
+    }
+\end{equation}
+de forma que $a^{j+2}M/a^{j+1}M\cong a^jM/a^{j+1}M$ i iterant aquest procés obtenim... no sé però sincerament, no crec que mai torni a llegir això.
+\end{proof}
+
+
+Faig aquest últim teorema i després aniré a l'estació de trens a tirar-me a les víes.
+
+\begin{ter}
+[Krull-Akizuki]\label{ter:krullAkizuki}\index{Teorema de Krull-Akizuki} Sigui $A$ un domini d'integritat noetherià i de dimensió 1. Sigui $K$ el seu cos de fraccions i $K\subseteq L$ una extensió finita de $K$. Sigui $B$ un anell tal que $A\subseteq B\subseteq L$, aleshores $B$ és noetherià de dimensió 1 i a més per tot $J\subseteq B$ ideal diferent de zero, tenim $B/J$ que és un $A$-mòdul de longitud finita.
+\end{ter}
+\begin{proof}
+Podem suposar que $L$ és el cos de fraccions de $B$ i sigui $r = [L:K]$, aleshores $B$ és un $A$-mòdul lliure de torsió de rang $r$ i gràcies al lema anterior hem provat que per tot $a\in A\setminus\{0\}$, aleshores $\lambda_A(B/aB)<\infty$. Sigui $J\subseteq B$ un ideal diferent de 0, sigui $b\in J$, $b\neq 0$, aleshores satisfà la següent equació algebraica de la forma
+\begin{equation}
+    \notag
+    a_mb^m+\cdots+a_1b+a_0 = 0
+\end{equation}
+per tot $a_i\in A$ i com que $B$ és domini d'integritat, podem suposar que $a_0\neq0$, aleshores $a_0\in J\cap A$ de forma que $\lambda_A(B/J)\leq \lambda_A(B/a_0B)<\infty$.
+
+Per una altra banda tenim que
+\begin{equation}
+    \notag
+    \lambda_B(J/a_0B)\leq \lambda_A(J/a_0B)\leq \lambda_A(B/a_0B)<\infty
+\end{equation}
+per tant $J/a_0B$ és un $B$-mòdul finitament generat, com que $a_0B$ també ho és tenim que $J$ és un $B$-mòdul finitament generat, equivalentment $B$ és noetherià.
+
+Finalment, sigui $\p\in \spec{B}$ i $\p\neq 0$, aleshores
+\begin{equation}
+    \notag
+    \lambda_A(B/\p)<\infty\Longrightarrow \lambda_B(B/\p)<\infty
+\end{equation}
+és a dir que $B/\p$ és un cos i per tant $\p$ és maximal, aleshores $\dim(B) = 1$.
+\end{proof}
+
+
+
+\begin{nota}
+Aquest teorema no es pot estendre a dimensions superiors, tot i això és un resultat molt general ja que no hi ha cap restricció de separabilitat sobre la extensió de cossos $K\subseteq L$.
+\end{nota}
+
+
+
+
+\end{document}

@@ -1,0 +1,85 @@
+\documentclass[../../../main.tex]{subfiles}
+
+
+\begin{document}
+
+
+
+
+
+\section{Introducció i definicions bàsiques}
+
+
+Comencem amb algunes definicions bàsiques que ens serviran al llarg del curs. Són conceptes molt bàsics i potser alguns d'ells ja s'han vist en assignatures prèvies. Es dona per sabuda la teoria d'anells que es fa a l'assignatura d'Estructures Algebraiques. Tanmateix, per qui vulgui recordar-la, he afegit a l'apèndix un \textit{copy-paste} dels meus apunts d'Estructures Algebraiques.
+
+Posarem $A$ com un anell commutatiu i unitari, a menys que s'indiqui el contrari. La unitat la denotarem amb el símbol 1. 
+
+\begin{defi}
+[Sistema multiplicativament tancat]\label{def:sistemamultiplicativamenttancat}\index{Sistema multiplicativament tancat} Sigui $A$ un anell, direm que $S$ és un \textit{sistema multiplicativament tancat} si $1\in S$ i si $a,b\in S$ aleshores $ab\in S$.
+\end{defi}
+
+\begin{ej}
+\begin{enumerate}[(1)]
+    \item $A^*$ és un sistema multiplicativament tancat, doncs el producte de dues unitats és una unitat.
+    \item Més en general, $A\setminus\mathcal{Z}(A)$, on $\mathcal{Z}(A)$ és el conjunt dels divisors de zero, també és un sistema multiplicativament tancat.
+    \item Si $A$ és un domini d'integritat, $A\setminus\{0\}$ és un sistema multiplicativament tancat.
+    \item Si $\mathfrak{p}\subseteq A$ és un ideal primer, $A\setminus \mathfrak{p}$ és un sistema multiplicativament tancat.
+    \item Si $a\in A$, prenem el conjunt $\{a^n\}_{n\geq 0}$ i suposant que $a^0 = 1$, tenim que aquest conjunt és un sistema multiplicativament tancat. Ningú ens diu que no hi pugui estar el zero en ell. De fet, si $a$ fos nilpotent, contindria el zero.
+\end{enumerate}
+\end{ej}
+
+\begin{ter}
+\label{ter:sistemamultiplicativamenttancat} Sigui $A$ un anell i $S$ un sistema multiplicativament tancat d'$A$. Sigui $I$ un ideal tal que $I\cap S = \emptyset$. Aleshores, existeix un ideal $\mathfrak{m}$ tal que $\mathfrak{m}\cap S$ és buit, $I\subseteq\mathfrak{m}$ i a més $\mathfrak{m}$ és maximal respecte aquesta propietat. En particular, $\mathfrak{m}$ és primer.
+\end{ter}
+\begin{proof}
+Definim
+\begin{equation}
+    \notag
+    \Omega = \{J\subseteq A\;:\;I\subseteq J,\;J\cap S = \emptyset\}
+\end{equation}
+i aleshores està clar que $\Omega\not=\emptyset$, ja que $I\in\Omega$. Aquest $\Omega$ està inductivament ordenat. Aleshores, pel Lema de Zorn, existeix un ideal $\mathfrak{m}\in\Omega$ maximal en $\Omega$, és a dir, el que nosaltres volem.
+
+Ara hem de veure que aquest ideal és primer. Per veure-ho, utilitzarem el mètode del contrarrecíproc. Suposem que $x,y\not\in\mathfrak{m}$ i aleshores provarem que $xy\not\in\mathfrak{m}$. Sigui $J = \mathfrak{m}+(x)$ i $K = \mathfrak{m}+(y)$. Aleshores $\mathfrak{m}$ està contingut tant en $J$ com en $K$ donat que ni $x$ ni $y$ estan en $\mathfrak{m}$. Però aleshores $J\cap S\not=\emptyset$ i $K\cap S\not=\emptyset$. Per tant, $\exists \lambda$ tal que $p+\lambda x\in S$ i $\exists\mu$ tal que $q+\mu y\in S$, on $p,q\in\mathfrak{m}$. Aleshores, per ser multiplicativament tancat, $(p+\lambda x)(q+\mu y)\in S$ i desfent els parèntesis obtenim
+\begin{equation}
+    \notag
+    pq+q\lambda x+p\mu y+\lambda\mu xy\in S
+\end{equation}
+però $pq\in\mathfrak{m}$, $q\lambda x,p\mu y\in\mathfrak{m}$ i per tant com tot no pot pertànyer a $\mathfrak{m}$ per hipòtesis, ha de ser forçosament $xy\not\in \mathfrak{m}$ que ens dona el que volíem.
+\end{proof}
+
+En particular, si prenem $S = A^*$, el teorema ens dona l'existència dels ideals maximals en la definició ``general'' o ``tradicional''.
+
+\begin{defi}[Radical de Jacobson]
+\label{def:radicaldejacobson}\index{Radical de Jacobson} Sigui $A$ un anell. Definim el \textit{radical de Jacobson} com
+\begin{equation}
+    \notag
+    J(A):=\bigcap_{\substack{\mathfrak{m}\subseteq A\\\mathfrak{m}\;\text{maximal}}} \mathfrak{m}\subseteq A
+\end{equation}
+\end{defi}
+
+Notem que és fàcil veure que $J(A)$ és un ideal de $A$. Es té que $\eta(A)\subseteq J(A)$ i en general la inclusió contrària no és certa. En un domini local que no sigui cos, tenim $\eta(A) = 0$ i $J(A) = \mathfrak{m}$ maximal. Veiem una caracterització a continuació d'aquest radical de Jacobson.
+
+\begin{prop}
+\label{prop:radicaljacobson} Sigui $A$ un anell commutatiu i unitari. Aleshores $x\in J(A)$ si, i només si, $1-xy\in A^*$ per tot $y\in A$.
+\end{prop}
+\begin{proof}
+Si $1-xy\not\in A^*$, aleshores existeix $\mathfrak{m}$ maximal tal que $1-xy\not\in\mathfrak{m}$, però aleshores $1\in\mathfrak{m}$ ja que $xy\in\mathfrak{m}$ per estar $x\in J(A)$, ergo tenim contradicció.
+
+Recíprocament, si $x\not\in J(A)$, aleshores existeix $\mathfrak{m}$ maximal tal que $x\not\in\mathfrak{m}$ i per tant $\mathfrak{m}+(x) = A$ per ser $\mathfrak{m}$ maximal. Aleshores, podem escriure $1 = p+xy$ per $y\in A$ i $p\in\mathfrak{m}$. Així podem escriure $1-xy = p$ que pertany a $\mathfrak{m}$, ergo no apareix en $A^*$ cosa que contradiu la hipòtesi.
+\end{proof}
+
+
+\begin{defi}
+[Espectre d'un anell]\label{def:espectre}\index{Espectre d'un anell} Definim $\spec{A}:=\{\mathfrak{p}\subseteq A\;:\;\mathfrak{p}$ és primer$\}$. També definim de forma anàloga $\max(A) = \{\mathfrak{m}\subseteq A\;:\;\mathfrak{m}$ és maximal$\}$.
+\end{defi}
+
+
+
+
+
+
+
+
+
+
+\end{document}

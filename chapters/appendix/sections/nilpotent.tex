@@ -1,0 +1,260 @@
+\documentclass[../main.tex]{subfiles}
+
+
+\begin{document}
+
+
+
+\section{Elements nilpotents i nilradical}
+
+Per acabar el repàs d'Estructures Algebraiques parlarem sobre els elements nilpotents i el nilradical, que ara veurem què és. Posaré exercicis referents a aquests conceptes i també algun exercici proposat que ho utilitza, per veure algun exemple.
+
+\begin{defi}
+[Nilpotent]\label{def:nilpotent}\index{Nilpotent} Sigui $A$ un anell. Es diu que $a\in A$ és \textit{nilpotent} si $x^n = 0$ per algun nombre enter $n$ positiu.
+\end{defi}
+
+\begin{ej}
+Vegem algun exemple d'elements nilpotents. 
+\begin{itemize}
+    \item En $\mathbb{Z}/4\mathbb{Z}$ el $\overline{2}$ és nilpotent, ja que $\overline{2}^2\equiv 0$ mòdul 4.
+    \item En  $M(n,\mathbb{K})$ on $\mathbb{K}$ és un cos, les matrius de la forma
+    \begin{equation}
+        \notag
+        M = 
+        \begin{pmatrix}
+            0 & 0 & \cdots & 0  \\
+            1 & 0 & \cdots & 0  \\
+            \vdots & \ddots & \ddots  & \vdots \\
+            0 &  \cdots & 1 & 0
+        \end{pmatrix}
+    \end{equation}
+    són nilpotents.
+\end{itemize}
+\end{ej}
+
+Segons la definició, hi ha un element que és trivialment nilpotent, el nul. Veiem un exercici que ens dona propietats dels elements nilpotents.
+
+\setcounter{exercici}{26}
+
+\begin{exercici}
+\label{esal27}
+Sigui $A$ un anell. Proveu que
+\begin{enumerate}[(a)]
+    \item Si $x$ és nilpotent, aleshores $1+x$ és invertible.
+    \item Si $x$ és nilpotent i $u$ és invertible, aleshores $u+x$ és invertible.
+    \item El conjunt d'elements nilpotents de $A$ és un ideal radical, que notem $\eta(A)$ i s'anomena nilradical de $A$.
+    \item $\eta(A)$ està contingut dins de tots els ideals primers de $A$.
+    \item $\eta(A)$ és la intersecció de tots els ideals primers de $A$. (\textit{Indicació}: Sigui $y\not\in\eta(A)$ i definim $\Sigma$ com el conjunt d'ideals $K\subseteq A$ tals que $y^n\not\in K$ per a tot $n>0$. Vegeu que $\Sigma$ té un element maximal i que aquest és un ideal primer.)
+\end{enumerate}
+\end{exercici}
+\begin{sol}
+\begin{enumerate}[(a)]
+    \item $x$ nilpotent $\Rightarrow \exists n\in\mathbb{N}$ tal que $x^n = 0$. Al drive fan desenvolupament de taylor. Jo ho faig a la meva manera.
+    
+    Estudiem els possibles casos de $1+x$ sabent que $x^n = 0$. Si $x^n = 0$ vol dir que $xx^{n-1} = 0$. Aleshores, o bé $x$ és un divisor de zero, o bé $x = 0$ o $x^{n-1} = 0$. 
+    \begin{itemize}
+        \item  Si $x$ és un divisor de zero. Aleshores, $\exists y\in A$ tal que $xy = 0$ amb $y\not=0$. Aleshores, 
+        \begin{equation}
+            \notag
+            (1+x)y = y+xy = y \Longrightarrow (1+x)y = y \Longrightarrow 1+x\in A^*
+        \end{equation}
+        que és el que volíem.
+        \item Si $x = 0$. Aleshores, $1+x = 1\in A^*$ que és el que volíem.
+        \item Si $x^{n-1} = 0$. Aleshores
+        \begin{equation}
+            \notag
+            x^{n-1} = xx^{n-2} = 0 \overset{x\not=0}{\Longrightarrow} x^{n-2} = 0 \Rightarrow \cdots \Rightarrow xx = 0\Rightarrow x= 0
+        \end{equation}
+        que és una contradicció. Per tant, aquesta opció no es pot donar.
+    \end{itemize}
+    Així doncs, hem vist que a tots els casos factibles obtenim $1+x\in A^*$.
+    
+    
+    \item Ara es fa el mateix argument per a $1+x$. 
+    \begin{itemize}
+        \item Si $x$ és un divisor de zero. Aleshores $\exists y\in A$ amb $y\not=0$ tal que $xy = 0$. Per tant,
+        \begin{equation}
+            \notag
+            (u+x)y = uy+xy = uy \Rightarrow (u+x)\in A^*
+        \end{equation}
+        \item Si $x = 0$, aleshores $u+x = u\in A^*$.
+        \item Si $x^{n-1} = 0$ fem el mateix argument d'abans. 
+        \begin{equation}
+            \notag
+            x^{n-1} = 0\Rightarrow xx^{n-2} = 0\overset{x\not=0}{\Longrightarrow} x^{n-2}= 0 \Rightarrow \cdots \Rightarrow x= 0
+        \end{equation}
+        que és una contradicció i per tant aquesta opció mai es pot donar.
+    \end{itemize}
+    Així doncs, hem vist que a tots els casos factibles obtenim $u+x\in A^*$.
+    
+    
+    \item Sigui $I$ un ideal de $A$. A l'exercici 10 es defineix el radical de $I$, i s'escriu com $\rad(I)$, com el conjunt d'elements $x\in A$ tals que $\exists n\in\mathbb{N}$ tal que $x^n\in I$. Aleshores,
+    \begin{equation}
+        \notag
+        \eta(A) = \{x\in A\;:\;\exists n\in\mathbb{N}\;:\;x^n=0\}
+    \end{equation}
+    Sigui $x\in \eta(A)$ i $m\in \mathbb{N}$ tal que $x^m = 0$ i sigui $y\in \eta(A)$ i $n\in \mathbb{N}$ tal que $y^n = 0$. Tenim doncs,
+    \begin{equation}
+        \notag
+        x^m=y^n=0 \Longrightarrow (x+y)^{m+n-1} = \sum_{i=1}^{n+m-1}\binom{m+n-1}{i}x^{i}y^{m+n-1-i}
+    \end{equation}
+    dóna tots els termes nuls, si fem el desenvolupament del binomi de Newton. Per tant, $x+y\in\eta(A)$. De la mateixa manera, està clar que $ax\in \eta(A)$, per $a\in A$ i $x\in \eta(A)$ ja que $(ax)^m =a^mx^m = a^m0 = 0$. Per tant $\eta(A)$ és un ideal.
+    
+    
+    
+    
+    \item Sigui $\mathfrak{p}$ un ideal primer. Sigui $x\in \eta(A)$ i $m\in \mathbb{N}$ tal que $x^m = 0$. En altres paraules, $x\cdotp x\cdotp \cdots\cdotp x$ $m$ vegades dona zero. Clarament $0\in\mathfrak{p}$ per tant $x\cdots x\in \mathfrak{p}$ i per la definició d'ideal primer, això implica que algun dels factors pertany a $\mathfrak{p}\Rightarrow x\in\mathfrak{p}$.
+    
+    
+    \item Volem demostrar que $\eta(A) = I:= \bigcap_{\mathfrak{p}\text{ ideal primer}}\mathfrak{p}$. La inclusió $\eta(A)\subseteq I$ ja és l'apartat (d). Anem a demostrar que $I\subseteq \eta(A)$. 
+    
+    Sigui $s\not\in \eta(A)$, és a dir, $s$ no és nilpotent. Denotem
+    \begin{equation}
+        \notag
+        \Sigma = \{I \text{ ideal de }A\;:\;I\text{ no conté cap potència de }s\}
+    \end{equation}
+    Anem a veure que a $\Sigma$ hi ha un element (un ideal) maximal. La inclusió és una relació d'ordre inductiu sobre $\Sigma$. També és important remarcar que $\Sigma$ no és el buit perquè conté l'ideal $(0)$ (aquí és on utilitzem la no nilpotència de $s$). Aleshores, pel lema de Zorn, $\Sigma$ admet doncs un element maximal. Sigui $\mathfrak{p}$ aquest ideal maximal.
+    
+    Veiem ara que aquest $\mathfrak{p}$ és primer. Ho raonarem pel contrarrecíproc. Si $\mathfrak{p}$ és primer, aleshores es compleix que, per $x,y\in A$, si $xy\in\mathfrak{p}$ aleshores $x\in\mathfrak{p}$ o bé $y\in\mathfrak{p}$. Ara considerarem la negació d'això, és a dir, agafem $x,y\in A$ tal que $x\not\in \mathfrak{p}$ i $y\not\in\mathfrak{p}$. Aleshores volem veure que $xy\not\in\mathfrak{p}$.
+    
+    $x\not\in\mathfrak{p}\Rightarrow \mathfrak{p}\subset \mathfrak{p}+(x)$. Com hem vist que a $\Sigma$ $\mathfrak{p}$ és maximal, això implica que $\mathfrak{p}+(x)$ no pot pertànyer a $\Sigma$. En altres paraules, $\mathfrak{p}+(x)$ conté alguna potència de $s$. Existeix, doncs, $p\in\mathfrak{p}$, $a\in A$ i $k\in\mathbb{N}$ tals que
+    \begin{equation}
+        \notag
+        s^k = ax+p \qquad (\Rightarrow s^k\in (x)+\mathfrak{p})
+    \end{equation}
+    i existeixen $q\in\mathfrak{p}$, $b\in A$ i $\ell\in\mathbb{N}$ tals que
+    \begin{equation}
+        \notag
+        s^\ell = by+q \qquad (\Rightarrow s^\ell\in (x)+\mathfrak{p})
+    \end{equation}
+    i, aleshores
+    \begin{equation}
+        \notag
+        s^{k+\ell} = (p+ax)(q+by) = `q+(ax)q+(by)p+(ab)(xy)
+    \end{equation}
+    on $pq+(ax)q+(by)p\in\mathfrak{p}$ i com $s^{k+\ell}$ no pot pertànyer a $\mathfrak{p}$, perquè $\mathfrak{p}\in \Sigma$ no pot contenir potències de $s$, aleshores, si $pq+(ax)q+(by)p\in\mathfrak{p}$ ha de ser $(ab)(xy)\not\in\mathfrak{p}$ per a que $s^{k+\ell}\not\in\mathfrak{p}$ i així obtenim que $xy\not\in\mathfrak{p}$. Aleshores hem provat que $\mathfrak{p}$ és un ideal primer pel contrarrecíproc.
+\end{enumerate}
+\end{sol}
+
+\begin{exercici}
+\label{esal28} Sigui $A[X]$ l'anell de polinomis en una indeterminada sobre l'anell $A$. Prenem $f=a_0+a_1X+\cdots+a_nX^n\in A[X]$ un polinomi de grau $n$ amb $a_0,\ldots,a_k\in A$. Demostreu que 
+\begin{enumerate}[(a)]
+    \item $f$ és una unitat en $A[X]$ si, i només si, $a_0$ és una unitat i $a_1,\ldots,a_n$ són nilpotents (\textit{Indicació:} Si $b_0+b_1X+\cdots+b_mX^m$ és l'invers de $f$, proveu per inducció respecte de $r$ que $a_n^{r+1}b_{m-r} = 0$ i d'aquí deduïu que $a_n$ és nilpotent).
+    \item $f$ és nilpotent si, i només si, $a_0,a_1,\ldots,a_n$ són nilpotents.
+    \item $f$ és divisor de zero en $A[X]$ si, i només si, existeix $a\in A\setminus\{0\}$ tal que $af = 0$ (\textit{Indicació:} es pot començar per prendre un polinomi $g$ de grau mínim per al qual se satisfaci que $fg= 0$).
+\end{enumerate}
+\end{exercici}
+\begin{sol}
+Aquest exercici està molt ben fet al drive, així que m'inspiraré en ell.
+\begin{enumerate}[(a)]
+    \item \begin{enumerate}[($\Rightarrow$)]
+        \item Primer demostrem que $a_0\in A^*$. Suposem que $f$ és una unitat en $A[X]$. Aleshores existeix un polinomi $g = b_0+b_1X+\cdots+b_mX^m\in A[X]$ tal que $fg=1$. Per tant,
+        \begin{equation}
+            \notag
+            fg = a_0b_0+h(X) = 1
+        \end{equation}
+        on $h(X)\in A[X]$ és un polinomi de grau $m+n$ i tal que el monomi de grau més baix té, com a mínim, grau 1. (Resultat de fer la distributiva del producte en la multiplicació de $(a_0+a_1X+\cdots+a_nX^n)(b_0+b_1X+\cdots+b_mX^m)-a_0b_0$).
+        
+        Aleshores, com dos polinomis són iguals si i només si ho són coeficient a coeficient, tenim $a_0b_0 = 1\Rightarrow a_0\in A^*$.
+        
+        Demostrarem ara que $a_1,\ldots,a_n$ són nilpotents. Sigui $\mathfrak{p}$ un ideal primer de $A$. Pel que hem vist a teoria, $A/\mathfrak{p}$ és domini d'integritat. Per no sé quin exercici anterior, això implica que $((A/\mathfrak{p})[X])^* = (A/\mathfrak{p})^*$. Agafem la classe de $f$:
+        \begin{equation}
+            \notag
+            \overline{f} = \overline{a_0}+\overline{a_1}X+ \cdots +\overline{a_n}X^n\in ((A/\mathfrak{p})[X])^* = (A/\mathfrak{p})^*
+        \end{equation}
+        Aleshores, per força ha de ser
+        \begin{equation}
+            \notag
+            \overline{a_0}\in (A/\mathfrak{p})^*\qquad i \qquad \overline{a_1},\ldots,\overline{a_n} = \overline{0},
+        \end{equation}
+        perquè en $(A/\mathfrak{p})^*$ no hi ha termes en $X$. Això vol dir, per la definició d'anell quocient, que $a_1,\ldots,a_n\in\mathfrak{p}$. Per l'exercici anterior, $\eta(A) = \bigcap_{\mathfrak{p}\text{ primer}}\mathfrak{p}$ i això implica que $a_1,\ldots,a_n\in\eta(A)$.
+    \end{enumerate}
+    \begin{enumerate}[($\Leftarrow$)]
+        \item Suposem que $a_0\in A$ és una unitat de $A$ i que $a_1,\ldots,a_n$ són nilpotents, és a dir, 
+        \begin{equation}
+            \notag
+            a_0\in A^*,\qquad a_1,\ldots,a_n\in\eta(A).
+        \end{equation}
+        Tenim, $\forall i = 1,\ldots,n$, $a_iX^{i}\in\eta(A[X])$ ja que si $a_i\in\eta(A)\Rightarrow \exists k\in\mathbb{N}$ tal que $a_i^k=0$ i, per tant, $(a_iX^{i})^k = a_i^kX^{ik} = 0\cdotp X^{ik} = 0\Rightarrow a_iX^{i}\in \eta(A[X])$. Per ser $\eta(A[X])$ l'ideal dels elements nilpotents de $A[X]$, la suma d'elements nilpotents de $A[X]$ és un element nilpotent de $A[X]$. Per tant,
+        \begin{equation}
+            \notag
+            h(X) = a_1X+\cdots+a_nX^n
+        \end{equation}
+        és nilpotent, és a dir, $h\in \eta(A[X])$. A més, $f = a_0+h$ és la suma d'una unitat de $A$ i per tant de $A[X]$, més un element nilpotent de $A[X]$. Aleshores, per l'exercici 25 (a), $f$ és una unitat. Observem que he passat bastant de la indicació perquè no l'entenc.
+    \end{enumerate}
+    
+    
+    \item \begin{enumerate}[($\Rightarrow$)]
+        \item Ho demostrarem per inducció sobre $n$. Si $n = 0$, $f = a_0$ és nilpotent. Si es compleix la propietat per $n-1$, volem veure que es compleix per $n$. És a dir, suposem que $a_0,\ldots,a_{n-1}$ són nilpotents i volem veure que aleshores $a_n$ ho és. Per hipòtesi (de l'enunciat, no d'inducció) sabem que $f$ és nilpotent. És a dir, $\exists r\geq 1$ tal que $f^r = 0$. Tenim doncs,
+        \begin{equation}
+            \notag
+            f^r = 0\Rightarrow (a_0+a_1X+\cdots+a_nX^n)^r = 0 \Rightarrow a_0^r+(\text{termes en $X$})+_n^rS^{nr} = 0
+        \end{equation}
+        En concret, $a_n^r = 0$ i així obtenim que $a_n$ és nilpotent.
+    \end{enumerate}
+    \begin{enumerate}[($\Leftarrow$)]
+        \item Usant el mateix argument que en (a) obtenim que, com $a_0$ també és nilpotent, tenim que $f$ és la suma d'elements nilpotents. En deduïm que $f$ és nilpotent.
+    \end{enumerate}
+    
+    
+    \item \begin{enumerate}[($\Rightarrow$)]
+        \item Suposem que $f$ és divisor de zero en $A[X]$. Aleshores existeix un polinomi
+        \begin{equation}
+            \notag
+            b_0+b_1X+b_2X^2+\cdots + b_mX^m\in A[X]
+        \end{equation}
+        tal que
+        \begin{equation}
+            \notag
+            f\cdotp g = 0
+        \end{equation}
+        Prenem el polinomi $g$ de grau mínim que compleixi això. Al producte tenim
+        \begin{equation}
+            \notag
+            fg = a_0b_0+(\text{termes en $X$})+a_nb_mX^{n+m} = 0
+        \end{equation}
+        i, per tant, en particular, $a_nb_mX^{n+m} = 0$. D'aquí veiem que $gr(a_ng)<m$, on
+        \begin{equation}
+            \notag
+            a_ng = a_nb_0+a_nb_1X+a_nb_2X^2+\cdots+\cancel{a_nb_mX^m}
+        \end{equation}
+        Si $a_ng\not=0$, aleshores $a_ng$ és un polinomi diferent no nul de grau menor que $g$ i que compleix que $f(a_ng) = a_n(fg)=a_n0=0$. Contradicció perquè hem posat que $g$ era el polinomi de grau mínim que complia $fg = 0$. Per tant, ha de ser $a_ng=0$. Ara, l'únic terme de grau $n-1+m$ de $fg$ és $a_{n-1}b_m^{n+m-1}$ i ha de ser zero. Es repeteix l'argument d'abans
+        \begin{equation}
+            \notag
+            a_{n-1}g = a_{n-1}b_0 + a_{n-1}b_1X+\cdots+a_{n-1}b_{m-1}X^{m-1}+ \cancel{a_{n-1}b_mX^m}
+        \end{equation}
+        Seguim així fins que tots els $a_i$ compleixen
+        \begin{equation}
+            \notag
+            a_ig=0,\quad \forall i=0,\ldots,n.
+        \end{equation}
+        Mirem d'entendre aquest resultat:
+        \begin{equation}
+            \notag
+            \forall i=0,\ldots,n,\quad a_ig = 0\Rightarrow \sum_{j=1}^m a_ib_jX^{j} = 0\Rightarrow\left\{
+            \begin{array}{ll}
+                a_ib_0 = 0 \\
+                a_ib_1 = 0 \\
+                \vdots \\
+                a_ib_m = 0
+            \end{array}
+            \right.
+        \end{equation}
+        \begin{equation}
+            \notag
+            \Longrightarrow \forall i=0,\ldots, j,\;\forall j=0,\ldots m,\quad a_ib_j = 0
+        \end{equation}
+        En particular, $b_mf = 0$ (és el cas $j=m$). Com que el grau de $g$ és $m$, l'únic coeficient de $g$ que sabrem que és no nul és $b_m$ (en cas contrari $g$ seria de grau menor a $m$ i seria una contradicció). En deduïm que $\exists a\in A\setminus\{0\}$ tal que $af = 0$ i com $a\in A[X]\Rightarrow f$ és divisor de zero.
+    \end{enumerate}
+    \begin{enumerate}[($\Leftarrow$)]
+        \item Suposem $\exists a\in A\setminus\{0\}$ tal que $af = 0$. Aleshores, com $a\in A\Rightarrow a\in A[X]$ per definició i $f$ és divisor de zero.
+    \end{enumerate}
+\end{enumerate}
+\end{sol}
+
+
+
+
+
+
+\end{document}

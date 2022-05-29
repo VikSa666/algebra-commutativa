@@ -1,0 +1,198 @@
+\documentclass[../../../main.tex]{subfiles}
+
+
+
+
+\begin{document}
+
+
+
+\section{Submòduls i quocients}
+
+
+\begin{defi}
+[Submòdul]\label{def:submodul}\index{Submòdul}
+Sigui $A$ un anell i $M$ un $A$-mòdul. Direm que $N\subseteq M$ és un $A$-\textit{submòdul} de $M$ si
+\begin{enumerate}[(1)]
+    \item $N$ subgrup de $M$ i
+    \item $\forall \lambda\in A$ i $\forall a\in N$, $\lambda n\in N$.
+\end{enumerate}
+Equivalentment, diem que $N$ és $A$-submòdul si $N$ és $A$-mòdul i el morfisme inclusió $i:N\hookrightarrow M$ és morfisme de mòduls.
+\end{defi}
+
+\begin{ej}
+\begin{enumerate}[(1)]
+    \item Els $A$-submòduls de $A$ són els ideals.
+    \item $M$ mòdul i $m\in M$, podem considerar $\langle m\rangle = \{\lambda m,\;\lambda\in A\}\subseteq M$ i aleshores és $A$-submòdul generat per $m$.\index{Submòdul generat per un element}.
+    \item Es pot estendre l'anterior a si $M$ és un mòdul i $\{m_i\}_{i\in I}$ un conjunt d'elements de $M$. Aleshores definim 
+    \begin{equation}
+        \notag
+        \langle m_i\rangle_{i\in I} = \left\{\sum_{i\in I}\lambda_im_i\;:\;\lambda_i\in A\;\text{finits}\right\}
+    \end{equation}
+    que és el submòdul generat per $\{m_i\}_{i\in I}$.\index{Submòdul generat per un conjunt} És el més petit $A$-submòdul que conté a $\{m_i\}_{i\in I}$. Si existeix $\{m_i\}_{i\in I}$ tal que $\#I<\infty$, aleshores $M = \langle m_i\rangle_{i\in I}$ es diu que $M$ és finitament generat\index{Finitament generat}.
+\end{enumerate}
+\end{ej}
+
+
+
+El nostre objectiu serà poder provar el següent teorema, conegut com a \textit{Nullstellenstatz}\index{Nullstellenstatz}. Ara, però, no tenim suficients èines encara. 
+
+\begin{ter}
+[Teorema de la base de Hilbert]\index{Teorema de la base de Hilbert}\label{ter:teoremabasehilbert} En $k[X_1,\ldots,X_n]$, $k$ cos, tots els ideals són finitament generats, per tant $k[X_1,\ldots,X_n]$ és noetherià.
+\end{ter}
+
+Definim a continuació el concepte de \textit{quocient} i veurem una propietat universal. Tot seguit veurem propietats universals de més coses. Aquest apartat s'hauria d'haver dit ``propietats universals de coses''.
+
+\begin{defi}
+[Quocient]\label{def:quocientModuls}\index{Quocient de mòduls} Sigui $A$ un anell i $M$ un $A$-mòdul amb $N\subseteq M$ un $A$-submòdul. Aleshores $M/N$, definit per $\lambda\cdotp\overline{m} = \overline{\lambda\cdotp m}$, és el \textit{quocient}.
+\end{defi}
+
+No ho faré, però s'hauria de verificar que és un $A$-mòdul. 
+
+\begin{prop}
+[Propietat universal del quocient]\label{prop:propietatUniversalQuocient}\index{Propietat universal del quocient} Sigui $M$ un $A$-mòdul i $N\subseteq M$ un $A$-submòdul. Aleshores, per tot $f:M\to L$ morfisme de $A$-mòduls tal que $f(N) = 0$, existeix un únic $\overline{f}:M/N\to L$ tal que $\overline{f}(\overline{m}) = f(m)$. En altres paraules, existeix un únic $\overline{f}$ que fa commutatiu el següent diagrama:
+\begin{equation}
+    \notag
+    \xymatrix{
+    M \ar[r]^f\ar[d]_\pi & L \\
+    M/N \ar@{-->}[ur]_{\exists!\overline{f}}
+    }
+\end{equation}
+\end{prop}
+
+\begin{defi}
+[Conúcli]\label{def:conucli}\index{Conúcli}\index{$\mathrm{coker}$} Si $f:M\to N$ és un morfisme $A$-lineal de mòduls, definim $\mathrm{coker}f := N/\mathrm{Im}f$.
+\end{defi}
+
+\begin{nota}
+Tenim la següent successió
+\begin{equation}
+    \notag
+    \ker f\overset{i}{\hookrightarrow} M\overset{\overline{f}}{\twoheadrightarrow}\mathrm{Im}f\overset{j}{\hookrightarrow} N \overset{\pi}{\longrightarrow}\mathrm{Coker}f
+\end{equation}
+i llavors tenim $f$ monomorfisme si, i només si $\ker f = 0$, $f$ epimorfisme si i només si $\mathrm{coker}f = 0$. És clar que $i$ i $j$ són monomorfismes i $\overline{f}$ i $\pi$ són epimorfismes. 
+\end{nota}
+
+
+\begin{prop}[Propietat universal del nucli]\label{prop:propietatUniversalNucli}\index{Propietat universal del nucli} Si tenim $f:M\to N$ $A$-lineal i un morfisme $g:L\to M$ també $A$-lineal tal que $f\circ g = 0$. Aleshores, això factoritza de la següent manera: existeix un únic morfisme $\overline{g}:L\to \ker f$ $A$-lineal tal que $g = i\circ \overline{g}$, on $i$ és $i:\ker f\hookrightarrow M$. Això és perquè $g(L)\subseteq\ker f$. En altres paraules, el següent diagrama és commutatiu:
+\begin{equation}
+    \notag
+    \xymatrix{
+    L\ar[r]^g\ar[dr]_{\overline{g}} & M\ar[r]^f & N\\
+    & \ker f \ar[u]^{i} & 
+    }
+\end{equation}
+\end{prop}
+
+
+\begin{prop}[Propietat universal del conucli]\label{prop:propietatUniversalConucli}\index{Propietat universal del conucli} Siguin $f:M\to N$ i $g:N\to L$ morfismes $A$-lineals tal que $g\circ f = 0$, aleshores existeix un únic $\overline{g}:\mathrm{coker}f\to L$ tal que $g = \overline{g}\circ\pi$, on $\pi$ és el d'abans $\pi:N\rightarrow\coker f$. Tenim el següent diagrama commutatiu
+\begin{equation}
+    \notag
+    \xymatrix{
+    M\ar[r]^f & N\ar[d]_\pi \ar[r]^g & L \\
+     & \coker f \ar[ur]_{\overline{g}}
+    }
+\end{equation}
+\end{prop}
+
+
+\begin{ter}
+[Primer Teorema d'Isomorfia]\index{Primer Teorema d'Isomorfia}\label{ter:primerteoremadisomorfia} Sigui $f:M\to N$ $A$-lineal. Aleshores, existeix un isomorfisme $\overline{f}:M/\ker f\to\im f$ de forma que $\pi\circ\overline{f} = f$. És a dir, tenim el següent diagrama commutatiu
+\begin{equation}
+    \notag
+    \xymatrix{
+    M\ar[r]^f\ar[dr]_\pi & \im f\ar[r] & N\\
+    & N/\ker f\ar[u]_{\overline{f}}
+    }
+\end{equation}
+\end{ter}
+\begin{proof}
+Per la propietat universal del quocient \ref{prop:propietatUniversalQuocient} tenim el següent diagrama commutatiu:
+\begin{equation}
+    \notag
+    \xymatrix{
+    M\ar[r]^f \ar[d]_\pi & N\\
+    M/\ker(f)\ar@{-->}[ur]_{\overline{f}}
+    }
+\end{equation}
+com que tenim $\overline{f}(M/\ker f) = f(M)$ aleshores $\overline{f}:M/\ker f\to f(M)$ és un isomorfisme ja que és injectiu i exhaustiu.
+\end{proof}
+
+\begin{ter}
+[Tercer teorema d'Isomorfia]\label{ter:tercerteoremaisomorfia}\index{Tercer Teorema d'Isomorfia} Siguin $M,N,L$ mòduls tal que $L\subseteq N\subseteq M$, aleshores
+\begin{equation}
+    \notag
+    \frac{M}{N}\cong \frac{M/L}{N/L}
+\end{equation}
+\end{ter}
+\begin{proof}
+Primer de tot tenim la cadena de morfismes següent
+\begin{equation}
+    \notag
+    M\overset{\pi}{\longrightarrow} M/L\overset{\pi}{\longrightarrow} \frac{M/L}{N/L}
+\end{equation}
+ja que $N/L\subseteq M/L$ és un submòdul. Aleshores, observem que l'aplicació $f$ resultant de la composició de les projeccions és tal que $\ker(f) = N$. Aplicant el primer teorema d'isomorfia tenim $M/N = M/\ker f\cong \frac{M/L}{N/L}$.
+\end{proof}
+
+\begin{ter}
+[Segon teorema d'isomorfia]\index{Segon teorema d'isomorfia}\label{ter:segonTeoremaIsomorfia} Sigui $M$ un $A$-mòdul i $L\subseteq M$, $H\subseteq M$ submòduls. Aleshores $L/(L\cap H)\cong (L+H)/H$. 
+\end{ter}
+\begin{proof}
+Primer de tot observem la següent composició de morfismes
+\begin{equation}
+    \notag
+    \rho:L\overset{i}{\longrightarrow}L+H\overset{\pi}{\longrightarrow} (L+H)/H
+\end{equation}
+Provem que és epimorfisme. Sigui $y = x+z\in L+H$, aleshores $\rho(x) = \overline{x}=\overline{y}$. Per tant, és exhaustiva. Ara només hem d'observar que si $\rho(x) = 0$, aleshores $x\in H$, però teníem que $x\in L$, per tant $x\in L\cap H$ i per tant $\ker\rho = L\cap H$. Gràcies al primer teorema d'isomorfia obtenim $L/(L\cap H)\cong (L+J)/H$.
+\end{proof}
+
+\begin{defi}
+[Transportador]\label{def:transportadormoduls}\index{Transportador de mòduls} Si $L,N$ són $A$-submòduls d'un $A$-mòdul $M$, aleshores
+\begin{equation}
+    \notag
+    (L:_AN) := \{x\in A\;:\;xN\subseteq L\}\subseteq A
+\end{equation}
+és un ideal de l'anell $A$ i se l'anomena \textit{transportador de $N$ en $L$}.
+\end{defi}
+
+\begin{defi}
+[Anul·lador]\label{def:anuladorModuls}\index{Anul·lador per mòduls}També podem definir $(0:_AN) = \{x\in A\;:\;xN = 0\}$ que s'anomena \textit{anul·lador} de $N$. Es pot escriure com $\ann_A(N)$.
+\end{defi}
+
+Si $I\subseteq A$ és un ideal d'$A$, aleshores podem definir
+\begin{equation}
+    \notag
+    IM:=\left\{\sum_{\substack{a_i\in I\\m_i\in M}}a_im_i,\;\text{finita}\right\}
+\end{equation}
+que és un $A$-submòdul de $M$. 
+
+\begin{defi}
+[Fidel]\label{def:fidel}\index{Fidel} Sigui $N\subseteq M$ un $A$-submòdul. Aleshores diem que $N$ és \textit{fidel} si $\ann_A(N) = 0$.
+\end{defi}
+
+\begin{prop}
+\label{prop:anulador} Sigui $M$ un $A$-mòdul. Aleshores, té una estructura natural com $A/(0:_AM)$-mòdul.
+\end{prop}
+\begin{proof}
+Definim un producte en $\ann_A(M)$. Podem definir-ho així: $\dot:M\to M$ tal que $(\overline{\lambda},m)\mapsto\overline{\lambda}m:=\lambda m$. Ara hem de demostrar que està ben definida. Si $\overline{\lambda}_1 = \overline{\lambda}_2$, aleshores $\overline{\lambda}_1m = \lambda_1m$ i $\overline{\lambda}_2m = \lambda_2m$ i aleshores $\lambda_1m-\lambda_2m = (\lambda_1-\lambda_2)m = 0$ perquè com $\lambda_1-\lambda_2\in (0:_AM)$, en classe és zero. Per tant tenim el que volíem.
+\end{proof}
+
+\begin{nota}
+$M$ és $A/\ann_A(M)$-mòdul fidel. $\overline{\lambda}M = 0 \Longleftrightarrow \lambda M = 0\Longleftrightarrow \lambda\in \ann_A(M)\Longleftrightarrow \overline{\lambda} = 0$.
+\end{nota}
+
+\begin{prop}
+\label{prop:propietatsAnuladorModul} Algunes propietats de l'anul·lador són
+\begin{enumerate}[(1)]
+    \item $\ann_A(\sum_{i\in I}L_i = \cap_{i\in I}\ann_A(L_i)$.
+    \item $L_1\subseteq L_2$ implica que $\ann_A(L_2)\subseteq \ann_A(L_1)$.
+    \item $(N:_AL) = \ann_A((N+L)/N)$
+    \item $\cap_{i\in I}\ann_A(L_i)\subseteq \ann_A(\cap_{i\in I}L_i)$.
+\end{enumerate}
+\end{prop}
+
+
+
+
+
+\end{document}

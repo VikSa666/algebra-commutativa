@@ -1,0 +1,230 @@
+\documentclass[../../../main.tex]{subfiles}
+
+
+
+
+\begin{document}
+
+
+
+\section{Producte tensorial i exactitud}
+
+
+
+\begin{prop}
+\label{prop:producteTensorialHom}
+Siguin $M,N,P$ tres $A$-mòduls qualssevol. Aleshores, tenim el següent isomorfisme:
+\begin{equation}
+    \notag
+    \hom_A(M\otimes_AN,P)\cong \hom_A(M,\hom_A(N,P))
+\end{equation}
+donat per l'aplicació
+\begin{equation}
+    \notag
+    \Hom_A(M\otimes_AN,P)\cong \Hom_A(M,\Hom_A(N,P))
+\end{equation}
+amb el morfisme definit por 
+\begin{equation}
+    \notag
+    \begin{array}{rl}
+        \Hom_A(M\otimes_AN,P) & \longrightarrow\Hom_A(M,\Hom_A(N,P)) \\
+        f & \longmapsto\left(\begin{array}{rl}
+            g_f:M & \longrightarrow \Hom_A(N,P) \\
+            m & \longmapsto \left(\begin{array}{rl}
+                g_f(m):N & \rightarrow P \\
+                n & \mapsto f(m\otimes n)
+            \end{array}\right)
+        \end{array}\right)
+    \end{array}
+\end{equation}
+\end{prop}
+\begin{proof}
+Sigui $f:M\times N\to P$ una aplicació $A$-bilineal. Aleshores, de forma natural indueix un morfisme $A$-lineal $g_f:M\to \hom_A(N,P)$ tal que $g_f(x) = f_x$, on $f_x:N\to P$, $y\mapsto f(x,y)$. És $A$-lineal ja que $g_f(\lambda x) = f_{\lambda x} = \lambda f_x$.
+
+Inversament, donada una aplicació $A$-lineal $g:M\to \hom_A(N,P)$ podem definir una aplicació $A$-bilineal $f_g:M\times N\to P$ tal que $f_g(x,y) = g(x)(y)$. 
+
+Està clar que hem definit una correspondència bijectiva i una aplicació és la inversa de l'altra, per tant ja tenim la bijecció. Notem que si $f:M\otimes N\to P$ podem definir similarment $g_f;M\to \hom_A(N,P)$ tal que $g_f(x) = f_x$ on $f_x(y) = (x\otimes y)$. Aquesta assignació és $A$-bilineal i respecta les operacions, ja que $g_{\lambda f} = \lambda g_f$ i per tant és un isomorfisme.
+\end{proof}
+
+\begin{prop}
+\label{prop:producteTensorialExacte} Siguin $M,M_1,M_2$ i $M_3$ quatre $A$-mòduls tals uque la sucessió
+\begin{equation}
+    \notag
+    M_1\overset{f}{\longrightarrow}M_2\overset{g}{\longrightarrow}M_3\longrightarrow 0
+\end{equation}
+és exacta. Aleshores, la següent successió
+\begin{equation}
+    \notag
+    M_1\otimes_AM\overset{f\otimes\id_M}{\longrightarrow}M_2\otimes_AM\overset{g\otimes\id_M}{\longrightarrow}M_3\otimes_AM\longrightarrow 0
+\end{equation}
+també és exacta. Es diu que el producte tensorial és exacte a la dreta.
+\end{prop}
+\begin{proof}
+És trivial ja que per \ref{prop:successioHomEsquerra} la successió passant a homeomorfismes és exacta a l'esquerra, és a dir, la successió de $\hom_A(\bullet,\hom_A(M,P))$ és exacta a l'esquerra, i després utilitzem la proposició anterior \ref{prop:producteTensorialHom} i obtenim la cadena de $\hom_A(\bullet\otimes_AM,P)$ exacta a l'esquerra. Finalment tornem a utilitzar la proposició \ref{prop:successioHomEsquerra} per obtenir la cadena exacta que volem.
+\end{proof}
+
+
+
+
+\begin{nota}
+L'exactitud per la dreta no sempre és certa. Per exemple,
+\begin{equation}
+    \notag
+    0\to\mathbb{Z}\overset{\cdotp 2}{\to}\mathbb{Z}
+\end{equation}
+és exacta, però
+\begin{equation}
+    \notag
+    0\to \mathbb{Z}\otimes_\mathbb{Z}\mathbb{Z}/(2)\overset{\cdotp 2\otimes \id_2}{\longrightarrow}\mathbb{Z}\otimes_\mathbb{Z}\mathbb{Z}/\mathbb{Z}/(2)    
+\end{equation}
+no és exacta, doncs aquesta successió és
+\begin{equation}
+    \notag
+    0\to \mathbb{Z}/(2)\to\mathbb{Z}(2)
+\end{equation}
+i tenim
+\begin{equation}
+    \notag
+    \cdotp2\otimes\id_{\mathbb{Z}/(2)}(a\otimes\overline{b}) = 2a\otimes\overline{b} = a\otimes2\overline{b} = a\otimes 0 = 0.
+\end{equation}
+\end{nota}
+
+Llavors, en general, pel simple fet que els escalars poden passar d'un costat a un altre en el producte tensorial, no serà injectiva.
+
+Per acabar aquesta secció parlarem de mòduls plans. Em sap greu dir que aquesta part la copiaré dels apunts que el nostre bon company Guillem Sedó va penjar al Drive comunitari, ja que no em vaig enterar de res i la vida va començar a estar complicada. 
+
+\begin{defi}
+[Pla]\label{def:modulPla}\index{Mòdul $A$-pla} Un $A$-mòdul $M$ és $A$-pla si per tota successió exacta de $A$-mòduls
+\begin{equation}
+    \notag
+    M_1\overset{f}{\longrightarrow}M_2\overset{g}{\longrightarrow}M_3
+\end{equation}
+la següent successió també és exacta
+\begin{equation}
+    \notag
+    M_1\otimes_AM\overset{f\otimes\id_M}{\longrightarrow}M_2\otimes_AM\overset{g\otimes\id_M}{\longrightarrow}M_3\otimes_AM
+\end{equation}
+\end{defi}
+
+
+\begin{ej}
+Si $M = A^(n) = \bigoplus_{i=1}^n A$ és a dir un $A$-mòdul lliure de rang $n$, aleshores $M$ és $A$-pla. En efecte, primer notem que per tot $A$-mòdul $N$ tenim $N\otimes_A\cong M$ i per tant, aplicant la tercera propietat de la proposició \ref{prop:propietatuniversalproductetensorial} tenim
+\begin{equation}
+    \notag
+    N\otimes_AM = N\otimes_A\bigoplus_{i=1}^nA\cong\bigoplus_{i=1}^n(N\otimes_AA)\cong\bigoplus_{i=1}^nN
+\end{equation}
+Aleshores, sigui
+\begin{equation}
+    \notag
+    M_1\overset{f}{\longrightarrow}M_2\overset{g}{\longrightarrow}M_3
+\end{equation}
+una successió exacta de $A$-mòduls, aleshores $M_j\otimes_AM\cong\bigoplus_{i=1}^nM_j$ per $j = 1,2,3$. Per tant, que la següent successió sigui exacta
+\begin{equation}
+    \notag
+    M_1\otimes_AM\overset{f\otimes\id_M}{\longrightarrow}M_2\otimes_AM\overset{g\otimes\id_M}{\longrightarrow}M_3\otimes_AM
+\end{equation}
+és equivalent a que la següent successió ho sigui, ja que tenim isomorfismes
+\begin{equation}
+    \notag
+    \bigoplus_{i=1}^nM_1\overset{\oplus f}{\longrightarrow}\bigoplus_{i=1}^nM_2\overset{\oplus g}{\longrightarrow}\bigoplus_{i=1}^nM_3
+\end{equation}
+on $(\oplus f)(x_i)_i = (f(x_i))_i$. Com que cada component és exacta, aleshores la successió és exacta.
+\end{ej}
+
+\begin{lema}
+\label{lema:tensorialFinitamentGenerats} Siguin $N,M$ $A$-mòduls i $\alpha= \sum_{i=0}^km_i\otimes n_i\in M\otimes_AN$ tal que $\alpha = 0$. Aleshores, existeixen $M_0\subseteq M$ i $N_0\subseteq N$ $A$-mòduls finitament generats, tals que $\alpha\in M_0\otimes_A N_0$ i $\alpha = 0$ també com element de $M_0\otimes_AN_0$.
+\end{lema}
+
+\begin{ter}
+\label{ter:equivalentPlaExacte}
+Siguin $M$ un $A$-mòdul i $M_1,M_2,M_3$ $A$-mòduls. Són equivalents:
+\begin{enumerate}[(1)]
+    \item $M$ és $A$-pla
+    \item Per tota successió de $A$-mòduls
+    \begin{equation}
+        \notag
+        0\to M_1\app{f}M_2\app{g}M_3\to 0
+    \end{equation}
+    exacta, aleshores la següent successió
+    \begin{equation}
+        \notag
+        0\longrightarrow M_1\otimes_AM\longapp{f\otimes \id_M}M_2\otimes_AM\longapp{g\otimes\id_M}M_3\otimes_AM\longrightarrow 0
+    \end{equation}
+    també és exacta
+    \item Per tota successió exacta
+    \begin{equation}
+        \notag
+        0\to M_1\app{f}M_2
+    \end{equation}
+    la següent successió
+    \begin{equation}
+        \notag
+        0\longrightarrow M_1\otimes_AM\longapp{f\otimes\id_M}M_2\otimes_AM
+    \end{equation}
+    també és exacta.
+    \item Per tota successió exacta de $A$-mòduls finitament generats
+    \begin{equation}
+        \notag
+        0\to M_1\app{f}M_2
+    \end{equation}
+    aleshores la següent
+    \begin{equation}
+        \notag
+        0\longrightarrow M_1\otimes_AM\longapp{f\otimes\id_M}M_2\otimes_AM
+    \end{equation}
+    també és exacta.
+\end{enumerate}
+\end{ter}
+\begin{proof}
+La implicació de (1) a (2) és immediata. Mirem la de (2) a (1). Per veure-ho considerem el següent diagrama de successións exactes. Sigui $M_1\app{f}M_2\app{g}M_3$ una successió exacta. Aleshores, tenim les successions exactes ``trivials'' següents
+\begin{equation}
+    \notag
+    0\to\ker f\app{i}M_1\app{f}f(M_1)\cong M_1/\ker f\to 0
+\end{equation}
+\begin{equation}
+    \notag
+    0\to f(M_1)\app{i}M_2\app{g}g(M_2)\to 0
+\end{equation}
+\begin{equation}
+    \notag
+    0\to g(M_2)\app{i}M_3\app{\pi}\mathrm{coker}(g)\to 0
+\end{equation}
+i com que suposem cert (2), amb aquestes successions tenim que totes les successions verticals i diagonals són exactes:
+\begin{equation}
+    \notag
+    \xymatrix{
+    & 0\ar[d] & & 0\ar[d]& 0 \\
+    & \ker(f)\otimes_AM\ar[d]_{i\otimes\id_M} & & g(M_2)\otimes_AM\ar[d]^{i\otimes\id_M}\ar[ur] &  \\
+     & M_1\otimes_AM\ar[d]_{f\otimes\id_M}\ar[r]^{f\otimes\id_M} & M_2\otimes_AM\ar[ur]^{g\otimes\id_M}\ar[r]^{g\otimes\id_M} & M_3\otimes_AM\ar[d]^{\pi\otimes\id_M} & \\
+      & f(M_1)\otimes_AM\ar[d]\ar[ur]_{i\otimes\id_M} & & \mathrm{coker}(g)\otimes_AM\ar[d] & \\
+      0\ar[ur] & 0 & & 0 & 
+    }
+\end{equation}
+A més a més, és un diagrama commutatiu i per tant, tenim
+\begin{equation}
+    \notag
+    (f\otimes\id_M)(M_1\otimes_AM) = (i\otimes\id_M)(f(M_1)\otimes_AM)=\im(i\otimes\id_M) = \ker(g\otimes\id_M)
+\end{equation}
+
+La implicació (2) a (3) és immediata i (3) a (2) quasi també, ja que hem provat anteriorment l'exactitud per la dreta i gràcies a (3) tenim la de l'esquerra i per tant ja tenim l'exactitud complerta. 
+
+Per (3) implica (4) també és trivial. Veiem (4) implica (3) utilitzant el lema anterior (només queda provar que $f\otimes\id_M$és injectiva si $f:M_1\to M_2$ és injectiva). Sigui $\alpha\in M_1\otimes_AM$, aleshores podem agafar $A$-mòduls finits $M_1'$ i $M_2'$ tals que $\alpha\in M_1'$ i $f(\alpha)\in M_2'$. Ara considerem $\overline{f} = f_{|M_1'}$ per tant si $(f\otimes\id_M)(\alpha) = 0$, gràcies al lema anterior, aleshores $(\overline{f}\otimes\id_M)(\alpha) = 0$ i per hipòtesis tenim que $\alpha = 0$ en $M_1'\otimes_AM$, però això implica automàticament que $\alpha = 0$ en $M_1\otimes_AM$ i per tant $f\otimes\id_M$ és injectiva.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

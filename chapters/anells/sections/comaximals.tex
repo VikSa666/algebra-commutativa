@@ -1,0 +1,80 @@
+\documentclass[../../../main.tex]{subfiles}
+
+
+
+\begin{document}
+
+
+
+\section{Ideals comaximals i teorema xinès del residu}
+
+
+\begin{defi}
+[Ideals comaximals]\label{def:idealscomaximals}\index{Ideals comaximals} Sigui $A$ un anell i $I,J\subseteq A$ ideals. Direm que són comaximals si $I+J = A$ i $I,J\not=A$.
+\end{defi}
+
+\begin{ej}
+Si agafem $A = \mathbb{Q}[X,Y]$, aleshores $(X,Y)$ i $(X-1)$ són comaximals.
+\end{ej}
+
+\begin{prop}
+\label{prop:comaximals} Sigui $A$ un anell i $I$, $J$ ideals comaximals. Aleshores $I\cdotp J ) I\cap J$.
+\end{prop}
+\begin{proof}
+Primer notem que la inclusió ``$\subseteq$'' és immediata, ja que $I\cdotp J$ està generat per productes d'elements de $I$ i de $J$ i tots aquests productes pertanyen a $I\cap J$. Per veure l'altra inclusió, tenim que existeixen $a\in I$ i $b\in J$ tals que $1 = a+b$, per tant $c\in I\cap J$ es pot expressar de manera $c = ca+cb\in I\cdotp J$ ja que $ca\in J\cdotp I$ i $cb\in I\cdotp J$.
+\end{proof}
+
+Aquesta última proposició es pot generalitzar. En particular, si tinc dos maximals $\mathfrak{m}_1$ i $\mathfrak{m}_2$ diferents, aleshores sempre seran comaximals, i.e., $\mathfrak{m}_1\mathfrak{m}_2 = \mathfrak{m}_1\cap\mathfrak{m}_2$.
+
+A continuació, donada una família finita $\{A_1,\ldots,A_n\}$ d'anells, anem a intentar construir el producte cartesià d'anells $A_1\times\cdots\times A_n$. Això és un anell en el qual el producte ve donat per
+\begin{equation}
+    \notag
+    (a_1,\ldots,a_n)(b_1,\ldots,b_n) = (a_1b_1,\ldots,a_nb_n)
+\end{equation}
+i la suma també anàlogament
+\begin{equation}
+    \notag
+    (a_1,\ldots,a_n)+(b_1,\ldots,b_n) = (a_1+b_1,\ldots,a_n+b_n).
+\end{equation}
+La unitat és doncs $(1_{A_1},\ldots,1_{A_n})$, on $1_{A_i}$ representa la unitat en $A_i$.
+
+\begin{ter}
+[Teorema xinès del residu]\label{ter:teoremaXinesResidu}\index{Teorema xinès del residu} Sigui $A$ un anell i $I_1,\ldots,I_n$ ideals. Suposem que són comaximals dos a dos (no conjuntament). Aleshores existeix un isomorfisme
+\begin{equation}
+    \notag
+    A\left/\bigcap_{i=1}^nI_i\right.\cong \bigtimes_{i=1}^n A/I_i
+\end{equation}
+\end{ter}
+\begin{proof}
+La idea de la demostració està en definir el morfisme
+\begin{equation}
+    \notag
+    \varphi:A\longrightarrow \bigtimes_{i\in \mathcal{I}}A/I_i
+\end{equation}
+que envia $a\mapsto (\overline{a}^{i})_{i\in \mathcal{I}}$, on $\overline{a}^{i}$ representa la classe de $a$ en $A/I_i$.
+
+Tenim
+\begin{equation}
+    \notag
+    \begin{array}{rl}
+        \varphi:A & \longrightarrow A/I_1\times\cdots\times A/I_n \\
+        a & \longmapsto (\overline{a}^1,\ldots,\overline{a}^n)
+    \end{array}
+\end{equation}
+que clarament és epimorfisme. És suficient provar que per cada $e_i = (0,\ldots,\underset{1}{i)},\ldots,0)$ existeix una antiimatge. Vegem que $e_1$ té una antiimatge. Es dona per hipòtesis que $I_1+I_j = A$ per tota $j\not=1$. Aleshores $\exists x_j\in I_1$ i $y_j\in I_j$ tals que $x_j+y_j = 1$ i definim així
+\begin{equation}
+    \notag
+    x:=\prod_{j=2}^n(1-x_j)= \prod_{j=2}^n y_j\in A
+\end{equation}
+i fem la imatge per $\varphi(x) = e_1$ si i només si $x-1\in I_1$ i $x\in I_j$ per la resta de $j\not=1$. Això passa si i només si $x = 0$ en $I_j$ i per tant $x\cong 1$ en $I_1$ i $x\cong 0$ en $I_j$ per $j\not=1$. Aleshores $\forall a\in A$, $ax = a$ en $I_1$ i $ax\cong 0$ en $I_j$ per $j\neq 0$. Això demostra que $\varphi(ax) = (\Tilde{a},0,\ldots,0)$. El mateix es pot fer per qualsevol $i = 1,\ldots,n$ en general. Finalment obtenim doncs
+\begin{equation}
+    \notag
+    (\Tilde{a}_1,\ldots,\Tilde{a}_n)\varphi\left(\sum_{i=1}^na_ix_i\right) = (\Tilde{a}_1,\ldots,\Tilde{a}_n)
+\end{equation}
+\end{proof}
+
+
+
+
+
+\end{document}

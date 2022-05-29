@@ -1,0 +1,121 @@
+\documentclass[../../../main.tex]{subfiles}
+
+
+\begin{document}
+
+
+
+\section{Transportador d'ideals i anul·ladors}
+
+
+\begin{defi}[Transportador d'ideals]\index{Transportador d'ideals}\index{Colon ideals}
+Sigui $A$ un anell i $I,J$ dos ideals. Es defineix el \textit{transportador} de $I$ en $J$ com
+\begin{equation}
+    \notag
+    (J:_AI):=\{x\in A\;:\;xI\subseteq J\}
+\end{equation}
+\end{defi}
+
+\begin{defi}
+[Anul·lador]\label{def:anulador}\index{Anul·lador}\index{$\ann_A(I)$} Es defineix l'\textit{anul·lador} d'un ideal $I\subseteq A$ a
+\begin{equation}
+    \notag
+    \ann_A(I) := (0:_AI) = \{x\in A\;:\;x\cdotp I = 0\}
+\end{equation}
+\end{defi}
+
+\begin{nota}
+Veiem que si $J = 0$, aleshores $(0:I)$ és l'anul·lador de $I$. 
+\end{nota}
+
+\begin{nota}
+Si anomenem $\mathcal{Z}(A)$ al conjunt de divisors de zero de $A$, aleshores 
+\begin{equation}
+    \notag
+    \mathcal{Z}(A) = \bigcup_{x\not = 0}(x:0)
+\end{equation}
+En general $\mathcal{Z}(A)$ no és ideal, però per aquesta propietat el podem escriure com la unió d'ideals.
+\end{nota}
+
+\begin{ej}
+$A$ domini d'ideals principals, $I = (a)$ i $J = (b)$, aleshores
+\begin{equation}
+    \notag
+    (J:_AI) = ((b):_A(a)) = (b/\gcd(a,b))
+\end{equation}
+\end{ej}
+
+
+\begin{prop}
+\label{prop:propietatsTransportador}\label{exercici12} Algunes propietats del transportador són les següents. Sigui $A$ un anell i $I,J,K\subseteq A$ ideals. 
+\begin{enumerate}[(i)]
+    \item $I\subseteq (I:J)$.
+    \item $(I:J)J\subseteq I$.
+    \item $((I:J):K) = (I:JK)=((I:K):J)$.
+    \item $\left(\bigcap_iI_i:J\right) = \bigcap_i(I_i:J)$.
+    \item $\left(I:\sum_iJ_i\right) = \bigcap_i(I:J_i)$.
+\end{enumerate}
+\end{prop}
+\begin{proof}
+\begin{enumerate}
+    \item Si $x\in I$, $xJ\subseteq I$ trivialment. La inclusió és estricta ja que si fos $(I:J)=A$ no tindríem la inclusió contrària.
+    \item Si $x\in (I:J)J$ aleshores $\exists y_i\in (I:J)$ i $\exists z_i\in J$ tals que $x = \sum_{i=1}^ny_iz_i$ i si ho demostrem per a cada $y_iz_i$ ja ho tenim. Llavors, $y_iJ\subseteq I$ és a dir, $y_iz_i\in I$ ergo $x = \sum_{i=1}^ny_iz_i\in I$.
+    \item Tenim $x\in ((I:J):K)$ si i només si $xK\subseteq (I:J)$ si i només si $xKJ\subseteq I$ si i només si $x\in (I:JK)$.
+    \item $x\in (\cup_i I_i:J)$ si i només si $xJ\subseteq \cup_i I_i$ si i només si $\forall i$, $xJ\subseteq I_i$ si i només si $\forall i x\in (I_i:J)$ si i només si $x\in\cup_i(I_i:J)$.
+    \item $x\in (I:\sum_iJ_i)$ si i només si $x(\sum_iJ_i)\subseteq I$ si i només si $\forall i$, $xJ_i\subseteq I$ si i només si $x(\cap_i J_i)\subseteq I$ si i només si $\forall i$ $x\in (I:J_i)$ si i només si $x\in \cap_i(I:J_i)$.
+\end{enumerate} 
+\end{proof}
+
+
+
+Ja havíem definit què era el radical d'un ideal, que era
+\begin{equation}
+    \notag
+    \rad(I) = \bigcap_{\substack{\mathfrak{p}\in\mathrm{Spec}(A)\\I\subseteq\mathfrak{p}}} = \{x\in A\;:\;x^n\in I,\;n\geq 1\} 
+\end{equation}
+En l'exercici \ref{esal11} estan demostrades algunes propietats interessants. Aleshores, el nilradical de $A/\rad(I)$ es correspon amb la intersecció de tots els ideals de $A/\rad(I)$ però per la correspondència bijectiva, això es correspon a la intersecció dels ideals de $A$ que contenen a $\rad(I)$, però per la pròpia definició de $\rad(I)$ això és zero.
+
+\begin{defi}
+[Radical d'un conjunt]\index{Radical d'un conjunt}
+Definim ara, donat un conjunt $E$ subconjunt d'un anell $A$, es defineix el radical de $E$ com
+\begin{equation}
+    \notag
+    \rad(E) = \{x\in A\;:\;\exists n\geq 1,\;x^n\in E\},
+\end{equation}
+que en general no és un ideal.
+\end{defi}
+
+Es pot demostrar que es dona la següent propietat:
+\begin{equation}
+    \notag
+    r\left(\bigcup_\alpha E_\alpha\right) = \bigcup_\alpha \rad(E_\alpha)
+\end{equation}
+i també la següent proposició.
+
+\begin{prop}
+\label{prop:elementradical} Es dona que el conjunt de zeros d'un anell $A$ és igual a la unió de radicals d'anul·ladors d'elements de $x$. En altres paraules
+\begin{equation}
+    \notag
+    \mathcal{Z}(A) = \bigcup_{x\neq0}r(\mathrm{An}_A(x)) = r\left(\bigcup_{x\neq 0}\mathrm{An}_A(x)\right)
+\end{equation}
+\end{prop}
+\begin{proof}
+Veiem que $\mathcal{Z}(A)$ és radical. En efecte, doncs si $x^n\in \mathcal{Z}(A)$, aleshores $\exists y\not=0$ tal que $x^ny = 0$. Sigui $n = \min\{k\;:\;x^k\in\mathcal{Z}(A)\}$, aleshores $x^ny = xx^{n-1}y = 0$ però $x^{n-1}y\not=0$, ergo $x\in\mathcal{Z}(A)$. Amb això podem veure que $\mathcal{Z}(A) = r(\mathcal{Z}(A))$ que dona el que volíem.
+\end{proof}
+
+\begin{prop}
+Si $I,J$ són ideals de $A$, es té que si $r(I)$ i $r(J)$ són comaximals, aleshores $I$ i $J$ també són comaximals.
+\end{prop}
+\begin{proof}
+Ja es va demostrar en \ref{esal11} que $r(I+J) = r(r(I)+r(J))$. Aleshores, per hipòtesi, $r(I)+r(J) = A$ (comaximals), ergo $r(I+J) = r(A) = A$, cosa que implica que $I+J = A$. 
+\end{proof}
+
+
+
+
+
+
+
+
+
+\end{document}

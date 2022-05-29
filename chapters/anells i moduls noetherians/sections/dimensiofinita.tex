@@ -1,0 +1,125 @@
+\documentclass[../../../main.tex]{subfiles}
+
+
+
+\begin{document}
+
+
+\section{Mòduls de longitud finita}
+
+
+\begin{defi}
+[Mòdul de dimensió finita]\label{def:modulDimensioFinita}\index{Mòdul de dimensió finita} Sigui $A$ un anell commutatiu i $M$ un $A$-mòdul. Direm que $M$ és de longitud finita si admet una sèrie de composició finita, és a dir, 
+\begin{equation}
+    \notag
+    0 = M_r\subseteq M_{r-1}\subseteq\cdots\subseteq M_1\subseteq M_0 = M
+\end{equation}
+tal que $M_i/M_{i+1}$ és simple per tot $i$. Denotem per $\lambda_A(M) = \min\{$longitud d'una sèrie de composició $\}<\infty$.
+\end{defi}
+
+\begin{ej}
+Si $G$ és un grup abelià finit aleshores és un $\mathbb{Z}$-mòdul de longitud finita. Si $A$ és un domini d'ideals principals i $a\in A\setminus \{0\}$, aleshores $\lambda_A(A/(a))<\infty$.
+\end{ej}
+
+\begin{prop}
+\label{prop:modulDimensioFinita} Sigui $M$ un $A$-mòdul tal que $\lambda_A(M) = r<\infty$, aleshores
+\begin{enumerate}[(i)]
+    \item Si $N\subseteq M$ un $A$-submòdul, aleshores $\lambda_A(N)\leq r$ i $\lambda_A(N) = \lambda_A(M)$ si i només si $N = M$.
+    \item Totes les sèries de composició tenen la mateixa longitud.
+\end{enumerate}
+\end{prop}
+\begin{proof}
+Sigui $M = M_0\supseteq M_1\supseteq \cdots\supseteq M_r = 0$ una sèrie de composició tal que $\lambda_A(M) = r$.
+\begin{enumerate}[(i)]
+    \item Tenim que $N\subseteq M$ i considerem $N_i = N\cap M_i$, aleshores
+    \begin{equation}
+        \notag
+        N = N_0\supseteq N_1\supseteq N_2\supseteq \cdots\supseteq N_r = 0
+    \end{equation}
+    A més, $N_i/N_{i+1}\subseteq M_i/M_{i+1}$ per tota $i$, per tant $N_i/N_{i+1} = 0$ o bé $M_i/M_{i+1}$ ja que hem suposat que $M_i/M_{i+1}$ són simples. Ara només cal eliminar els termes consecutius sobrants (és a dir, $N_i = N_{i+1}$) i obtenim una sèrie de composició de $N$ de longitud més petita que $r$, és a dir $\lambda_A(N)\leq \lambda_A(M)<\infty$.
+    
+    Ara, si $\lambda_A(N) = \lambda_A(M)$ per tot $i$ aleshores $N_i/N_{i+1} = M_i/M_{i+1}$ per tot $i$ i fent inducció sobre $r$ obtenim que $M_0 = N_0$, és a dir $M = N$.
+    
+    \item Sigui $M = M_0'\supseteq M_1'\supseteq \cdots\supseteq M_s' = \{0\}$ una cadena de submòduls, aleshores tenim que $\lambda(M_0')>\lambda(M_1')>\cdots>\lambda(M_s')$ i per tant $r\geq s$. Si això ho apliquem a una cadena de composició obtenim que per definició si $r\geq s$ aleshores $r = s$
+\end{enumerate}
+\end{proof}
+
+
+
+\begin{coro}
+\label{coro:cadenaSubmodulsRefinament} Si $\lambda_A(M) = r<\infty$ aleshores tota cadena de submòduls es pot refinar fins a tenir una sèrie de composició. 
+\end{coro}
+\begin{proof}
+Sigui $M = M_0\subseteq M_1\subseteq\cdots\subseteq M_s = 0$ una cadena qualsevol de submòduls, de la proposició d'abans sabem que $s\leq r = \lambda_A(M)$ i si $s<r$ aleshores no pot ser una sèrie de composició. Per tant, en algun punt podem incloure un nou submòdul i podem arribar a $r$ i obtindrem una sèrie de composició ja que mesurarà $r$.
+\end{proof}
+
+
+\begin{prop}
+\label{prop:funcioLambdaAdditiva} La funció $\lambda_A$ és additiva, és a dir, si tenim la següent successió exacta
+\begin{equation}
+    \notag
+    0\longrightarrow M_1\longapp{f}M_2\longapp{g}M_3\longrightarrow 0
+\end{equation}                          
+aleshores $\lambda_A(M_2)<\infty$ si, i només si, $\lambda_A(M_1)$ i $\lambda_A(M_3)$ són finites. I si ho són, tenim 
+\begin{equation}
+    \notag
+    \lambda_A(M_2) = \lambda_A(M_1)+\lambda_A(M_3)
+\end{equation}
+\end{prop}
+\begin{proof}
+Si $\lambda_A(M_2)<\infty$ aleshores $f(M_1)\subseteq M_2$ i com que és injectiva podem pensar $M_1$ com un submòdul de $M_2$ i per tant $\lambda_A(M_1)<\infty$. El mateix passa amb $M_3= g(M_2)$ que tindrem $\lambda_A(M_3)<\infty$ ja que puc passar qualsevol sèrie de composició a $M_3$ a través de $g$ que és exhaustiva.
+
+Per la implicació recíproca es fa similar, ja que $M_2/\im(f) = M_2/\ker(g)\cong M_3$ per tant si tenim $\lambda_A(M_3),\lambda_A(M_1)<\infty$ aleshores $\lambda_A(M_2)<\infty$.
+
+Per últim, sigui $M_1 = N_0\supseteq N_1\supseteq \cdots\supseteq N_s = 0$ una sèrie de composició de $M_1$ aleshores la podem refinar a una sèrie de composició de $M_2$ de la següent manera
+\begin{equation}
+    \notag
+    M_2 = N_0'\supseteq N_1'\supseteq\cdots\supseteq N_t' = f(M_1) = f(N_0)\supseteq f(N_1)\supseteq\cdots\supseteq f(N_s) = 0
+\end{equation}
+Ara bé, aleshores tenim la següent sèrie de composició
+\begin{equation}
+    \notag
+    M_3\cong M_2/\ker(g) = N_0'/f(M_1)\supseteq N_1'/f(M_1)\supseteq N_t'/f(M_1) = 0
+\end{equation}
+és una sèrie de composició de $M_3$ a més $r = \lambda_A(M_2) = t+s = \lambda_A(M_1)+\lambda_A(M_3)$.
+\end{proof}
+
+
+\begin{prop}
+\label{prop:4410} Sigui $A$ un domini noetherià tal que per tot ideal primer no nul és maximal ($\dim A = 1$). Sigui $a\not=0$. Aleshores $\lambda_A(A/aA)<\infty$.
+\end{prop}
+\begin{proof}
+Podem suposar que $A/aA\neq 0$ i com que és un $A$-mòdul finitament generat, aleshores existeix una cadena
+\begin{equation}
+    \notag
+    A/aA = M_0\supseteq M_1\supseteq \cdots \supseteq M_s = 0
+\end{equation}
+de $A$-submòduls tals que $M_i/M_{i+1}\cong A/\p_i$ amb $\p_i\in \spec{A}$. Com que $a(A/aA) = 0$ aleshores $a(M_i/M_{i+1})=0$ per tota $i$ aleshores $a\in\p_i$ per tot $i$, com que $\p_i \neq 0$ aleshores $\p_i$ són maximals i $A/\p_i$ són cossos. Utilitzant la proposició anterior, veiem que cada $M_i/M_{i+1}\cong A/\p_i$ és de longitud finita i per inducció a través de les successions exactes $$0\to M_{i+1}\to M_i\to M_i/M_{i+1}\to 0$$ obtenim que $\lambda_A(A/aA)<\infty$. 
+\end{proof}
+
+
+
+
+\begin{nota}
+Sigui $f:A\to B$ un morfisme d'anells, $M$ un $B$-mòdul. Aleshores, si $\lambda_A(M)<\infty$ aleshores $\lambda_B(M)<\infty$ i a més $\lambda_B(M)\leq \lambda_A(M)$.
+\end{nota}
+
+\begin{prop}
+\label{prop:4412} Sigui $M$ un $A$-mòdul tal que per tot $N\subseteq M$ $A$-mòdul finitament generat compleix que $\lambda_A(N)\leq r$. Aleshores $M$ és un $A$-mòdul finitament generat i $\lambda_A(M)\leq r$.
+\end{prop}
+\begin{proof}
+Si $M$ no és $A$-mòdul finitament generat, podem trobar una cadena estrictament creixent de $A$-mòduls finitament generats de la forma
+\begin{equation}
+    \notag
+    0\subseteq M_0\varsubsetneq M_1\varsubsetneq \cdots\varsubsetneq M_k
+\end{equation}
+per $k>r$, com que tots aquests $A$-mòduls són de longitud finita tindríem $\lambda_A(M_k)\geq k>r$, cosa contradictòria. Es desprèn que $M$ és finitament generat i per tant $\lambda_A(M)\leq r$. 
+\end{proof}
+
+\begin{nota}
+Aquest argument també serveix per provar que tot mòdul de longitud finita és noetherià. En particular, tot anell de dimensió finita és noetherià.
+\end{nota}
+
+
+
+\end{document}

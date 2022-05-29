@@ -1,0 +1,167 @@
+\documentclass[../../../main.tex]{subfiles}
+
+
+
+
+\begin{document}
+
+
+
+
+
+
+
+
+
+\section{Ideals fraccionaris}
+
+
+\begin{defi}
+[Dimensió de Krull]\label{def:dimensioDeKrull}\index{Dimensió de Krull} Sigui $A$ un anell. Aleshores la dimensió de Krull de $A$ és
+\begin{equation}
+    \notag
+    \dim(A) = \sup\{n\;:\;\p_0\varsubsetneq \p_1\varsubsetneq\cdots\varsubsetneq\p_n\;:\;\p_i\in\spec{A}\}
+\end{equation}
+\end{defi}
+
+\begin{ej}
+\begin{enumerate}[(1)]
+    \item $\dim(K) = 0$ vol dir que $K$ és un cos.
+    \item $\dim(\mathbb{Z}) = 1$
+    \item Si $k$ és un cos aleshores $\dim(k[X]) = 1$
+    \item Si $A$ és domini d'ideals principals, aleshores $\dim(A) = 1$. Això generalitza el cas de $\mathbb{Z}$.
+    \item $\dim(k[X_n]_{n\geq 1}) = 2$
+    \item $\dim(k[X_1,\ldots,X_n]) = n$. Aquest es coneix com a teorema de la dimensió i és molt important.
+    \item Un resultat conegut com a teorema de Krull diu que si $A$ és localment noetherià, aleshores $\dim(A) <\infty$.
+\end{enumerate}
+\end{ej}
+
+
+\begin{defi}
+[Domini de Dedekind]\label{def:dominiDeDededkind}\index{Domini de Dedekind} Sigui $A$ un anell, aleshores direm que és \textit{domini de Dedekind} si
+\begin{enumerate}[(1)]
+    \item És domini d'integritat
+    \item És noetherià
+    \item És íntegrament tancat
+    \item $\dim(A) = 1$.
+\end{enumerate}
+\end{defi}
+
+\begin{ej}
+\begin{enumerate}[(i)0]
+    \item Si $A$ és un domini d'ideals principals, aleshores és un domini de Dedekind.
+    \item Sigui $A$ un domini de Dedekind i $K$ el seu cos de fraccions. Sigui $K\subseteq L$ una extensió de cossos finita i $B$ la clausura entera de $A$ en $L$. Aleshores, $B$ és anell de Dedekind gràcies a tot el que hem demostrat anteriorment.
+    \item Si $A$ és un domini noetherià de dimensió 1 i $K$ el seu cos de fraccions, aleshores $\overline{A}^K$ és domini de Dedekind.
+    \item No tot domini de Dedekind és principal. Per exemple, $A = \mathbb{Z}[\sqrt{-5}] = \overline{\mathbb{Z}}^{\mathbb{Q}[\sqrt{-5}]}$, aleshores $A$ és de Dedekind però no és DIP ja que no és factorial: $6 = 2\cdotp 3 = (1+\sqrt{-5})(1-\sqrt{-5})$.
+\end{enumerate}
+\end{ej}
+
+\begin{defi}
+[Ideal fraccionari]\label{def:idealFraccionari}\index{Ideal fraccionari} Sigui $A$ un domini d'integritat i $K$ el seu cos de fraccions. Sigui $M\subseteq K$ un $A$-mòdul diferent de 0. Direm que $M$ és un \textit{ideal fraccionari} si existeix un $a\in A\setminus\{0\}$ tal que $aM\subseteq A$. 
+\end{defi}
+
+\begin{defi}
+[Ideal enter]És clar que si $M\subseteq A$ aleshores això és simplement un ideal de $A$ ($a=1$). En aquest context els ideals de $A$ es denominen \textit{ideals enters}\index{Ideal enter}\label{def:idealEnter}, així si $M$ és un ideal fraccionari aleshores $aM$ és un ideal enter.
+\end{defi}
+
+
+
+\begin{defi}
+[Ideal fraccionari principal]\label{def:idealFraccionariPrincipal}\index{Ideal fraccionari principal} Observem també que per tot $b\in K$, aleshores $bA$ és un ideal fraccionari ja que $b = \frac{a}{s}$ per tant $sbA = aA\subseteq A$. Aquest tipus d'ideals fraccionaris s'anomenen \textit{principals}.
+\end{defi}
+
+Observem que si $M$ és un ideal fraccionari de $A$ aleshores existeix $a\in A$ tal que $aM\subseteq A$, és a dir, que $(A:_AM)\neq 0$.
+
+\begin{prop}
+Siguin $M_1,M_2$ ideals fraccionaris. Aleshores
+\begin{enumerate}[(i)]
+    \item $M_1+M_2$ és un ideal fraccionari.
+    \item $M_1\cap M_2$ és un ideal fraccionari.
+    \item $M_1M_2 = \left\{\sum_{i\in I}a_ib_i\;:\;a_i\in M_1,\;b_i\in M_2\right\}$ és un ideal fraccionari.
+\end{enumerate}
+\end{prop}
+
+\begin{defi}
+[Invers de $M$]\label{def:inversM}\index{$M^{-1}$} Sigui $M$ un ideal fraccionari de $A$. Es defineix
+\begin{equation}
+    \notag
+    M^{-1}:=\{x\in K\;:\;xM\subseteq A
+\end{equation}
+on $K$ dedueixo que és el cos de fraccions, doncs no ho diu a cap lloc.
+\end{defi}
+
+Com que $M$ és fraccionari tindrem que $M^{-1}\neq 0$. A més, $M^{-1}$ és també un ideal fraccionari. En efecte, doncs si $y\in A\cap M$, $y\neq 0$, aleshores $yM^{-1}\subseteq A$ ja que $y\in M$.
+
+\begin{prop}
+Sigui $M$ un ideal fraccionari. Aleshores
+\begin{enumerate}[(1)]
+    \item $MM^{-1}\subseteq A$
+    \item Si $M$ és un ideal principal (i.e., $M = bA$) aleshores $M^{-1} = b^{-1}A$.
+    \item Si $M_1\subseteq M_2$ ideals fraccionaris, aleshores $M_1^{-1}\supseteq M_2^{-1}$.
+\end{enumerate}
+\end{prop}
+\begin{proof}
+És immediat a partir de la definició de $M^{-1}$.
+\end{proof}
+
+\begin{defi}
+[Ideal fraccionari invertible]\label{def:idealFraccionariInvertible}\index{Ideal fraccionari invertible} Direm que un ideal fraccionari és invertible si $M\cdotp M^{-1} = A$
+\end{defi}
+
+\begin{nota}
+Observem que si $M$ és principal, aleshores és invertible i $M^{-1} = a^{-1}A$.
+\end{nota}
+\begin{proof}
+    Es comprova fàcilment. Sabem que $a^{-1}A\subseteq M^{-1}$ i l'altra inclusió és perquè si $x\in M^{-1}$ aleshores $xbA\subseteq A$ i aleshores $x\in b^{-1}A$.
+\end{proof}
+
+
+\begin{prop}
+\label{prop:idealFraccionariInversUnic} Si $M$ és un ideal fraccionari tal que existeix $N$ tal que $NM = A$, aleshores $N=M^{-1}$.
+\end{prop}
+\begin{proof}
+Per definició de $M^{-1}$ tenim $N\subseteq M^{-1}$ aleshores $A = NM\subseteq M^{-1}M\subseteq A$, és a dir, que $M^{-1}M = A$ i per tant $M$ és invertible. Finalment veiem que
+\begin{equation}
+        \notag
+        NM = A\Longrightarrow NMM^{-1} = M^{-1}\Longrightarrow N=M^{-1}
+\end{equation}
+\end{proof}
+
+
+D'aquesta manera veiem que l'invers està ben definit i aleshores el conjunt d'ideals fraccionaris forma el que es diu un \textit{monoide}. El grup de les unitats és el conjunt d'invertibles. 
+
+\begin{prop}
+\label{prop:fraccionariFinitamentGenerat}
+\begin{enumerate}[(1)]
+    \item Sigui $M\subseteq k$ un $A$-mòdul finitament generat. Aleshores $M$ és fraccionari.
+    \item Sigui $M$ un $A$-mòdul fraccionari invertible. Aleshores $M$ és un $A$-mòdul finitament generat.
+\end{enumerate}
+\end{prop}
+\begin{proof}
+\begin{enumerate}[(1)]
+    \item Sabem que $M = \sum_{i=1}^nAb_i$ amb $b_i=\frac{a_i}{s_i}$. Ara considerem $s = s_1\cdots s_n\not=0$ i notem que $sM\subseteq A$.
+    \item Suposem que $MM^{-1} = A$. Aleshores, $1 = \sum_{i=1}^nb_ic_i$ amb $b_i\in M$ i $c_i\in M^{-1}$ i per tant, per tot $x\in M$ obtenim $x = \sum_{i=1}^nb_1(c_ix)$, però $c_ix\in A$ i aleshores $M =\sum_{i=1}^nAb_i$.
+\end{enumerate}
+\end{proof}
+
+\begin{defi}
+[Mòduls divisors]\label{def:modulsDivisors}\index{Divisor (mòdul)}\index{Mòduls divisors} Donats ideals fraccionaris $M$ i $N$, diem que \textit{$M$ és un divisor de $N$} si existeix un ideal enter $J$ tal que $N = JM$. En particular, com que $M$ és un $A$-mòdul, tindrem que $N\subseteq M$.
+\end{defi}
+
+
+\begin{prop}
+\label{prop:fraccionarisInvertibleDivisors} Siguin $M,N$ ideals fraccionaris tals que $N\subseteq M$ i $M$ invertible. Aleshores $M$ és un divisor de $N$.
+\end{prop}
+\begin{proof}
+Sabem que $A = MM^{-1}\supseteq NM^{-1}$ i per tant $NM^{-1}$ és un ideal enter i òbviament $N = NM^{-1}M$.
+\end{proof}
+
+
+
+
+
+
+
+
+
+\end{document}

@@ -1,0 +1,149 @@
+\documentclass[../../../main.tex]{subfiles}
+
+
+\begin{document}
+
+
+
+
+
+
+
+\section{Mòduls finitament generats i lema de Nakayama}
+
+Si $M$ és un $A$-mòdul finitament generat, és a dir, que existeix un conjunt finit $\{m_i\}_{i\in I}$ de generadors, aleshores podem considerar els morfismes $f_i:A\to M$ tals que $f(a) = a\cdotp m_i$ i, gràcies a la propietat universal de la suma directa \ref{prop:propietatUniversalSumaDirecta} tenim un morfisme $f:\bigoplus_{i\in I}A_i = A^{(I)}\to M$ de $A$-mòduls. És un epimorfisme i sabem que $\ker f\subseteq A^{(I)}$. A més, $A^{(I)}/\ker f\cong M$ i a més si $M\cong A^{(I)}/N$ on $N\subseteq A^{(I)}$, aleshores $M$ és finitament generat, és a dir, $M = \langle \overline{e}_1,\ldots,\overline{e}_n\rangle$, per tant si $M$ és finitament generat, aleshores existeix un sistema minimal de generadors finit.
+
+\begin{defi}
+Mantenint la notació de l'observació anterior, aleshores $\ker f$ s'anomenen relacions dels $\{m_i\}_{i\in I}$, aleshores el mòdul $M$ es pot definir només donant generadors $\{e_1,\ldots,e_n\}$ i $\ker f$, que són les relacions d'aquests generadors. 
+\end{defi}
+
+
+\begin{prop}
+[Truc determinantal]\label{prop:trucDeterminantal}\index{Truc determinantal} Sigui $M$ un $A$-mòdul finitament generat, $I\subseteq A$ un ideal i $\phi\in\mathrm{End}_A(M)$ tal que $\phi(M)\subseteq IM$. Aleshores $\phi$ satisfà una equació de la següent forma
+\begin{equation}
+    \notag
+    \phi^n+\alpha_{n-1}\phi^{n-1}+\cdots+\alpha_1\phi+\alpha_0 = 0
+\end{equation}
+amb $\alpha_i\in I$ i $n$ és el nombre d'elements que té un sistema de generadors de $M$.
+\end{prop}
+\begin{proof}
+Sigui $\{x_1,\ldots,x_n\}$ un sistema de generadors. Aleshores, $\phi(x_i) = \sum_{j=1}^na_{ij}x_j$ amb $a_{ij}\in I$ per tant
+\begin{equation}
+    \notag
+    B = (a_{ij})_{\substack{1\leq i\leq n\\1\leq j\leq n}} =
+    \begin{pmatrix}
+    a_{11} & \cdots & a_{1n}\\
+    \vdots & \ddots & \vdots \\
+    a_{n1} & \cdots & a_{nn}
+    \end{pmatrix}
+    \Longrightarrow B\cdotp
+    \begin{pmatrix}
+    x_1\\
+    \vdots\\
+    x_n
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+    \phi(x_1)\\
+    \vdots \\
+    \phi(x_n)
+    \end{pmatrix}
+\end{equation}
+Sabem que $A[\phi]\subseteq \mathrm{End}_A(M)$ té una estructura d'anell commutatiu, ara podem considerar la matriu
+\begin{equation}
+    \notag
+    (\delta_{ij}\phi)_{\substack{1\leq i\leq n\\1\leq j\leq n}} = 
+    \begin{pmatrix}
+    \phi & 0 & \cdots & 0 \\
+    0 & \phi & \cdots & 0 \\
+    \vdots & \vdots & \ddots & \vdots \\
+    0 & 0 & \cdots & \phi
+    \end{pmatrix}
+\end{equation}
+Sabem que la matriu $(\delta_{ij}\phi)-B$ té els coeficients a $A[\phi]$, aleshores
+\begin{equation}
+    \notag
+    ((\delta_{ij}\phi)-B)\cdotp
+    \begin{pmatrix}
+    x_1\\\vdots\\x_n
+    \end{pmatrix}
+    = (0)
+\end{equation}
+Sabem que si multipliquem l'adjunta de la transposada de la matriu ens surt una matriu diagonal amb el determinant de la matriu, per tant,
+\begin{equation}
+    \notag
+    (((\delta_{ij}\phi)-B)^t)^*((\delta_{ij}\phi)-B) = (\delta_{ij}\det(\delta_{ij}\phi-B)) = 
+    \begin{pmatrix}
+    \det(\delta_{ij}\phi-B) & \cdots & 0 \\
+    \vdots & \ddots & \vdots \\
+    0 & \cdots & \det(\delta_{ij}\phi-B)
+    \end{pmatrix}
+\end{equation}
+Aleshores $(\delta_{ij}\det(\delta_{ij}\phi-B))\cdotp (x_1,\ldots,x_n)^t = (0)$ i per tant $\det(\delta_{ij}\phi-B)x_i = 0$ per tot $i$, aleshores $\det(\delta_{ij}-B) = 0$ ja que $\{x_1,\ldots,x_n\}$ és un sistema de generadors. Per tant obtenim
+\begin{equation}
+    \notag
+    \begin{vmatrix}
+    \phi-a_{11} & -a_{12} & \cdots & -a_{1n} \\
+    -a_{21} & \phi-a_{22} & \cdots & -a_{2n} \\
+    \vdots & \vdots & \ddots & \vdots \\
+    -a_{n1} & -a_{n2} & \cdots & \phi-a_{nn}
+    \end{vmatrix}
+    = \phi^n+\alpha_{n-1}\phi^{n-1}+\cdots+\alpha_1\phi+\alpha_0 = 0
+\end{equation}
+\end{proof}
+
+
+\begin{coro}
+Sigui $M$ un $A$-mòdul finitament generat i $I\subseteq A$ un ideal tal que $IM = M$. Aleshores existeix un $x$ tal que $x\equiv 1$ mod $I$ i que $xM = 0$.
+\end{coro}
+\begin{proof}
+Apliquem el truc determinantal \ref{prop:trucDeterminantal} per $\phi = \id$. Tenim que $\phi(M) = M = IM$ i per tant existeixen $a_i\in I$ tals que
+\begin{equation}
+    \notag\id^n+a_{n-1}\id^{n-1}+\cdots+a_1\id+a_0 = 0
+\end{equation}
+per tota $m\in M$ tindrem que $(1+a_{n-1}+\cdots+a_0)m = 0$ però $a_i\in I$ per tota $i$ per tant $1+a_{n-1}+\cdots+a_1+a_0\equiv 1$ mòdul $I$.
+\end{proof}
+
+
+
+
+Una altra conseqüència és el Lema de Nakayama que anunciaré aquí a continuació.
+
+\begin{coro}
+[Lema de Nakayama]\label{coro:lemaNakayama}\index{Lema de Nakayama} Sigui $M$ un $A$-mòdul finitament generat i $I\subseteq A$ tal que $I\subseteq J(A)$. Aleshores si $IM =M$ tindrem que $M = 0$.
+\end{coro}
+\begin{proof}
+Apliquem la proposició del truc determinantal \ref{prop:trucDeterminantal} i aleshores existeix un $x\in I$ tal que $(1+x)M = 0$, com que $x\in I\subseteq J(A)$ aleshores $1+x\in A^*$ i per tant tenim que $M = 0$.
+\end{proof}
+
+Una aplicació d'aquest lema és el següent corol·lari:
+
+\begin{coro}
+Sigui $M$ un $A$-mòdul finitament generat, $N\subseteq M$ tal que $M = IM+N$ i $I\subseteq J(A)$, aleshores $M = N$.
+\end{coro}
+\begin{proof}
+Si agafem $M/N$, aleshores $I(M/N) = IM/N = (IM+N)/N = M/N$ per tant podem aplicar el lema de Nakayama \ref{coro:lemaNakayama} a $M/N$ i obtindrem que $M/N = 0$ i per tant $M = N$.
+\end{proof}
+
+
+Finalment, la proposició de les correspondències bijectives.
+
+\begin{prop}
+\label{prop:correspondenciesBijectivesSistemesMinimals} Sigui $(A,\mathfrak{m},k)$ un anell local, on $A$ és l'anell, $\mathfrak{m}$ l'únic ideal maximal i $k = A/\mathfrak{m}$. Aleshores, existeix una bijecció entre els sistemes minimals de generadors de $M$ i les bases de $M/\mathfrak{m}M$ com a $k$-espais vectorials. En particular, el cardinal d'un sistema minimal de generadors és igual a $\dim_k(M/\mathfrak{m}M) = \mu(M)$
+\end{prop}
+\begin{proof}
+Sigui $\{x_1,\ldots,x_n\}$ un sistema minimal de generadors. Hem de veure que $\{\overline{x}_1,\ldots,\overline{x}_n\}$ és una $k$-base de $M/\mathfrak{m}M$. Sabem que aquest conjunt genera $M/\mathfrak{m}M$. Només falta veure que són linealment independents. Suposem que $\overline{x}_1,\ldots,\overline{x}_n$ són linealment dependents. Aleshores $\overline{x}_1\in\langle \overline{x}_2,\ldots,\overline{x}_n\rangle$ i per tant $M/\mathfrak{m}M = \langle \overline{x}_2,\ldots,\overline{x}_n$ i tindrem aleshores $M = \langle x_2,\ldots,x_n\rangle + \mathfrak{m}M$ amb $\mathfrak{m} = J(A)$, aplicant el corol·lari anterior tenim que $M = \langle x_2,\ldots,x_n\rangle$ cosa contradictòria i per tant el conjunt era linealment independent.
+
+Per veure que qualsevol $k$-base $\{\overline{x}_1,\ldots,\overline{x}_n\}$ dóna un sistema minimal de generadors, hem d'aplicar el corol·lari anterior ja que tindrem $M = \langle x_1,\ldots,x_n\rangle + \mathfrak{m}M$ i per tant $M = \langle x_1,\ldots,x_n\rangle$ és minimal ja que si no ho fos voldria dir que existeix un subsistema minimal de generadors més petit, que donaria una base més petita, cosa contradictòria.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+\end{document}

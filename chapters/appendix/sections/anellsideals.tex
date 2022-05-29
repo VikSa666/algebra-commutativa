@@ -1,0 +1,107 @@
+\documentclass[../main.tex]{subfiles}
+
+
+
+
+\begin{document}
+
+
+
+
+
+\section{Anells i ideals}
+
+Comencem per les definicions més bàsiques: anell, subanell, ideall, etc.
+
+\begin{defi}
+[Anell]\index{Anell}\label{def:anell} Un \textit{anell} és un conjunt $A$ dotat de
+\begin{enumerate}[(1)]
+    \item Una operació binària interna que anomenem suma i indiquem per $+$ tal que $(A,+)$ és un grup abelià;
+    \item Una operació binària interna que anomenem producte (denotat per $\cdotp$ o res) que compleix:
+    \begin{enumerate}[(a)]
+        \item és associatiu: $(ab)c = a(bc)$, $\forall a,b,c\in A$,
+        \item és distributiu respecte de la suma: $a(b+c) = ab+ac$ i $(b+c)a = ba+ca$, $\forall a,b,c\in A$.
+    \end{enumerate}
+\end{enumerate}
+\end{defi}
+
+\begin{defi}
+[Anell commutatiu]\index{Anell commutatiu}\label{def:anellcommutatiu} Si $A$ és un anell tal que el producte és commutatiu, és a dir $ab=ba,\;\forall a,b\in A$, aleshores diem que $A$ és un \textit{anell commutatiu}.
+\end{defi}
+
+\begin{defi}
+[Anell unitari]\index{Anell unitari}\label{def:anellideal} Si existeix un element neutre pel producte de l'anell $A$, és a dir un element $u\in A$ tal que $ua = au = a$ per tot $a\in A$, diem que $A$ és un \textit{anell unitari}.
+\end{defi}
+
+Normalment, excepte si s'especifica el contrari, en aquesta assignatura sempre treballarem amb anells commutatius i unitaris. Això vol dir que ens estalviarem de dir cada cop que $A$ és un anell commutatiu i unitari, simplement ho assumirem si no ens diuen el contrari. 
+
+Per denotar l'element neutre d'$A$ respecte la suma pel $0$ o bé pel $0_A$ si s'ha de diferenciar d'un altre element neutre. De la mateixa manera, l'element neutre pel producte, que també anomenem unitat, el denotarem per $1$ o bé $1_A$ per desambiguar. Notem que si $A$ és un anell, aleshores sempre se satisfà que $a0 = 0a$ per tot $a\in A$.
+
+\begin{defi}
+[Divisors de zero]\index{Divisor de zero}\label{def:divisorzero} Si $A$ és un anell i $a\in A$ un element no nul, aleshores es diu \textit{divisor de zero} si existeix un element $b\in A$ no nul tal que $ab = 0$
+\end{defi}
+
+\begin{defi}
+[Domini d'integritat]\index{Domini d'integritat}\label{def:dominidintegritat} Un anell $A$ es diu \textit{domini d'integritat} si no té divisors de zero. Equivalentment, si, per a $a,b\in A$, $ab = 0\Rightarrow a=0$, o bé $b=0$. Equivalentment si, per a $a,b\in A$ $a\not=0,\;b\not=0\Rightarrow ab\not=0$.
+\end{defi}
+
+\begin{defi}
+[Invertible o unitat]\index{Element invertible}\index{Unitat}\label{def:invertibleounitat} Un element $a$ d'un anell unitari $A$ es diu \textit{invertible} o \textit{unitat} si existeix un element $b\in A$, tal que $ab = ba = 1$. Diem que $b$ és l'invers de $a$. Designem per $A^*$ el conjunt d'elements invertibles de l'anell unitari $A$.
+\end{defi}
+
+Observem ara que si $A$ és un anell unitari, aleshores $A^*$ amb el producte és un grup. Se li'n diu \textit{grup multiplicatiu d'$A$}\label{def:grupmultiplicatiu}\index{Grup multiplicatiu d'un anell}.
+
+\begin{defi}
+[Cos]\label{def:cos}\index{Cos} Un \textit{cos} és un anell no trivial en què tot element no nul és invertible. Com a exemples de cosos infinit tenim $\mathbb{Q}$, $\mathbb{R}$, $\mathbb{C}$, i com a cosos finits, els més coneguts són $\mathbb{Z}/p\mathbb{Z}$, per $p$ primer (sinó no és un cos), que sovint denotarem per $\mathbb{Z}_p$ o per $\mathbb{F}_p$.
+\end{defi}
+
+
+Comentem ara per sobre què és un ideal. Els ideals seran els objectes més útils en aquesta assignatura, així com en alguna altra d'àlgebra commutativa, així que ens convé aprendre a controlar-los bé.
+
+\begin{defi}
+[Subanell]\index{Subanell}\label{def:subanell} Donat un anell $A$, un \textit{subanell} de $A$ és un subconjunt $B$ de $A$ tal que
+\begin{enumerate}[(1)]
+    \item $(B,+)$ és subgrup de $(A,+)$;
+    \item $B$ és tancat pel producte de l'anell $A$, és a dir, $b,b'\in G\Longrightarrow bb'\in B$.
+\end{enumerate}
+\end{defi}
+
+\begin{defi}
+[Ideal]\index{Ideal}\label{def:ideal} Donat un anell $A$, un \textit{ideal} de $A$ és un subconjunt $I$ de $A$ tal que
+\begin{enumerate}[(i)]
+    \item $(I,+)$ és subgrup de $(A,+)$;
+    \item $ax\in I$, per a tot parell d'elements $a\in A$ i $x\in I$.
+\end{enumerate}
+\end{defi}
+
+\begin{ej}
+Vegem alguns exemples d'ideals.
+\begin{enumerate}[(1)]
+    \item Sigui $A$ un anell, sempre tindrem els ideals $\{0\}$ i $A$, que s'anomenen l'\textit{ideal trivial}\index{Ideal trivial} i l'\textit{ideal total}\index{Ideal total} respectivament. No són gaire interessants d'estudiar, i en conseqüència anomenarem \textit{ideal propi}\index{Ideal propi} a qualsevol ideal $I$ d'un anell $A$ diferent del total o el trivial. Sovint ens referirem als ideals total i trivial com simplement ``ideal trivial``.
+    \item Sigui $A$ un anell i $a\in A$ un element. Aleshores es defineix $(a):=\{ba\;:\;b\in A\}$ com l'\textit{ideal principal generat per $a$}\index{Ideal principal} de $A$. Notem que si $A$ no fos commutatiu, hi hauria dues definicions: l'ideal principal per la dreta i per l'esquerra, que no tindríem per què ser el mateix. Molts cops, es denota $(a)$ com $aI$ (o $Ia$ en cas que sigui per la dreta). Llavors, un ideal $I$ l'anomenarem \textit{principal} si podem trobar $a\in A$ de forma que $I = (a)$. Els ideals trivial i total $(0) = \{1\}$ i $(1) = A$ són principals.
+    
+    Un cas particular d'aquests ideals que és interessant d'estudiar és l'anell $\mathbb{Z}$ i els seus ideals. Es pot demostrar (no ho faré ara) que tot ideal $I$ de $\mathbb{Z}$ és igual a $(m)$ per algun enter $m$, és a dir, tot ideal $\mathbb{Z}$ és principal. D'això se'n diu un \textit{anell d'ideals principals}. Més tard donaré la definició formal.
+    
+    \item De la mateixa manera que amb un element podem generar un ideal, també ho podem fer amb un conjunt finit d'elements. Siguin $a_1,\ldots,a_r\in A$ elements d'un anell $A$ i aleshores podem definir $(a_1,\ldots,a_r) = \{b_1a_1+\cdots+b_ra_r\;:\;b_j\in A\}$ i resulta ser un ideal. S'anomena \textit{ideal generat pel conjunt $\{a_1,\ldots a_r\}$}\index{Ideal generat per un conjunt}.
+\end{enumerate}
+\end{ej}
+
+A l'exemple 2 hem fet un comentari que deia que a l'anell $\mathbb{Z}$ tot ideal era principal. Això té un nom i és bastant important i ara ho definiré.
+
+
+\begin{defi}
+[Domini d'ideals principals]\index{Domini d'ideals principals}\index{DIP}\label{def:dominiidealsprincipals} Un \textit{anell d'ideals principals} és un anell tal que tots els seus ideals són principals. Un \textit{domini d'ideals principals} (DIP) és un anell d'ideals principals que és domini d'integritat.
+\end{defi}
+
+
+
+Llavors veiem doncs que $\mathbb{Z}$ és un domini d'ideals principals. Si $k$ és un cos, l'anell $k[X]$ també és un domini d'ideals principals.
+
+
+
+
+
+
+
+
+\end{document}

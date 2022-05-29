@@ -1,0 +1,219 @@
+\documentclass[titlepage, main=catalan, 11pt]{book}
+\renewcommand{\baselinestretch}{1.2}
+\usepackage[utf8]{inputenc}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{color}
+\usepackage{biblatex}
+\usepackage{graphicx}
+\usepackage{vmargin}
+\usepackage{enumerate}
+\usepackage{cancel}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[catalan]{babel}
+\usepackage{mathrsfs}
+\usepackage[colorlinks=true,linkcolor=blue]{hyperref}
+\usepackage{float}
+\usepackage{lscape}
+\usepackage{multirow}
+\usepackage[all]{xy}
+\usepackage{makeidx}
+\usepackage{lipsum}
+%\usepackage[T1]{fontenc}
+\usepackage{comment}
+\usepackage{transparent}
+\usepackage{textcomp} %podem escriure ``o'' amb la comanda \textdegree també € amb \texteuro
+\usepackage[gen]{eurosym} %tb official en lloc de ``gen''
+\usepackage[section]{placeins} %Evita que les figures saltin de secció
+\usepackage{fancyref}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{mathtools}
+\usepackage{commath}
+
+\usepackage{scrextend}%Indentar un bloc sencer
+%\usepackage{tgpagella} % Para la letra guay
+\usepackage{dtk-logos}
+\addbibresource{AAbibliografia.bibtex}
+
+\usepackage{blindtext}
+\usepackage{multicol}
+
+\usepackage{subfiles} % Best loaded last in the preamble
+\usepackage{pst-all}
+\usepackage{qtree}
+\usepackage[final]{pdfpages}
+\usepackage{stmaryrd}
+
+
+
+
+
+
+%   MÁRGENES
+\setmargins
+{1.5cm}                     % margen izquierdo
+{1cm}                     % margen superior
+{18cm}                    % anchura del texto
+{25cm}                   % altura del texto
+{8pt}                      % altura de los encabezados
+{0.8cm}                       % espacio entre el texto y los encabezados
+{0pt}                       % altura del pie de página
+{2cm}                       % espacio entre el texto y el pie de página
+
+
+
+
+
+
+%   Para enumerar las definiciones y demás ponemos 
+%   \newtheorem{abreviatura}{Nombre}[chapter]. Donde:
+%       abreviatura es el nombre que le damos al entorno
+%       Nombre es la palabra que aparecerá en negrita, junto con el número
+%       Chapter si queremos que haga la numeración rollo 1.4 y eso
+%   https://www.emis.de/journals/RCE/IntroLatex/Curso%20LaTeX%208.pdf
+
+\theoremstyle{definition}
+    \newtheorem{defi}{Definició}[section] %   DEFINICIONES
+
+    \newtheorem{ej}[defi]{Exemple}   %   EJEMPLOS    quiero que la numeración sea independiente
+    \newtheorem{alg}{Agorisme}
+
+    
+\theoremstyle{plain}
+    \newtheorem{prop}[defi]{Proposició}   %   PROPOSICIONES para que la numeración sea correlativa a la de defi, ponemos [defi]
+    \newtheorem{lema}[defi]{Lema}
+    \newtheorem{coro}[defi]{Corol·lari}
+    \newtheorem{ter}[defi]{Teorema}
+    \newtheorem{exercici}{Exercici}
+    \newtheorem*{rnd}{Continuació}
+    \newtheorem{nota}[defi]{Observació}    %   NOTAS
+    \newtheorem{rec}[defi]{Recordatori}     %   RECORDATORIS
+
+\theoremstyle{remark}
+    \newtheorem*{sol}{Solució}
+    
+    
+    
+    
+\newcommand{\mcd}{\text{mcd}}
+\newcommand{\mcm}{\text{mcm}}
+\newcommand{\gr}{\text{gr}\;}
+\newcommand{\Irr}{\text{Irr}}
+\renewcommand{\Im}{\text{Im}}
+\newcommand{\Gal}{\text{Gal}}
+\newcommand{\Aut}{\text{Aut}}
+\newcommand{\F}[1]{\mathbb{F}_{#1}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\elevadoam}[1]{#1^{\mathcal{M}}}
+\newcommand{\sust}[2]{\left(\begin{smallmatrix}#1\\#2\end{smallmatrix}\right)}
+\newcommand{\ob}[1]{\mathrm{Ob}(\mathcal{#1})}
+%\newcommand{\hom}[1]{\mathrm{Hom}_{\mathcal{#1}}}
+
+\newcommand{\interpretami}[2]{#1^{\mathcal{M}_{#2}}}
+\newcommand{\spec}[1]{\mathrm{Spec}(#1)}
+\newcommand{\app}[1]{\overset{#1}{\to}}
+\newcommand{\longapp}[1]{\overset{#1}{\longrightarrow}}
+\newcommand{\p}{\mathfrak{p}}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\localized}{S^{-1}}
+\newcommand{\colonideal}[3]{(#1:_{#2}#3)}
+
+\DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\ann}{Ann}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\id}{Id}
+\DeclareMathOperator{\im}{Im}
+\DeclareMathOperator{\rad}{\mathrm{rad}}
+\DeclareMathOperator{\ass}{Ass}
+\DeclareMathOperator{\supp}{Supp}
+    
+
+
+
+
+
+
+    
+    
+    
+
+
+
+
+
+\title{Lógica proposicional}
+\author{Víctor Santiago Blanco}
+\date{Tardor 2018}
+
+\setpapersize{A4}
+\makeindex
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\pgfplotsset{compat=1.15}
+\begin{document}    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%55
+
+
+
+
+
+\begin{titlepage}
+    \centering
+    {\bfseries\LARGE Universitat de Barcelona \par}
+    \vspace{1cm}
+    {\scshape\Large Facultat de Matemàtiques \par}
+    \vspace{3cm}
+    {\scshape\Huge Àlgebra Commutativa \par}
+    \vspace{3cm}
+    {\itshape\Large Apunts de teoria y exercicis \par}
+    \vfill
+    {\Large Autor: \par}
+    {\Large Víctor Santiago Blanco \par}
+    \vfill
+    {\Large Semestre primavera 2022 \par}
+    \end{titlepage}
+
+\newpage
+
+
+
+\tableofcontents
+\newpage
+
+
+\subfile{chapters/main.tex}
+
+
+\printindex
+
+
+
+
+
+
+
+\end{document}

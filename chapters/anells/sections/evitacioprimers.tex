@@ -1,0 +1,44 @@
+\documentclass[../../../main.tex]{subfiles}
+
+
+
+
+
+\begin{document}
+
+
+\section{Lema d'evitació de primers}
+
+
+\begin{lema}
+[Evitació de primers (unió)]\label{lema:evitacioPrimersUnio}\index{Lema d'evitació de primers (unió)} Sigui $I\subseteq A$ un ideal no trivial, i siguin $J,K,\mathfrak{p}_1,\ldots\mathfrak{p}_n$ ideals amb $\mathfrak{p}_i$ primer per tot $i=1,\ldots,n$. Suposem que $I\subseteq J\cup K\cup\mathfrak{p}_1\cup\cdots\cup \mathfrak{p}_n$. Aleshores $I\subseteq J$ o bé $I\subseteq K$ o bé existeix un $i\in\{1,\ldots,n\}$ tal que $I\subseteq\mathfrak{p}_i$.
+\end{lema}
+\begin{proof}
+Fem inducció sobre $n$.
+\begin{enumerate}
+    \item Si $n = 0$, tenim un sol $I\subseteq J\cup K$ i volem veure que $I\subseteq J$ o bé $I\subseteq K$.
+    
+    Si $I\subseteq J\cup K$ aleshores $I\subseteq (I\cap J)\cup(I\cap K)$. Aleshores, suposem que $I\not\subseteq J$ i $I\not\subseteq K$ per separat. Aleshores $I\cap J\not\subseteq K$ i $I\cap K\not\subseteq J$. Per tant, existeix $x\in I\cap J$, $x\not\in K$, i existeix $y\in I\cap K$, $y\not\in J$. D'aquesta manera tenim $x+y \in I$ però $x+y\not\in J$ i $x+y\not in K$, per tant $I\not\in J\cup K$ que pel contrarrecíproc ens dona el que volíem.
+\end{enumerate}
+\end{proof}
+
+
+\begin{lema}
+[Evitació de primers (intersecció)]\label{lema:evitacioPrimersInterseccio}\index{Lema d'evitació de primers (intersecció)}Siguin $I_1,\ldots,I_n\subseteq A$ ideals i $\mathfrak{p}$ primer. Aleshores si $\cap_{i=1}^n I_i\subseteq \mathfrak{p}$, existeix $i$ tal que $I_i\subseteq \mathfrak{p}$.
+\end{lema}
+\begin{proof}
+Suposem el contrari. Si $I_i\not\subseteq\mathfrak{p}$ per tot $i$, aleshores $\exists a_i\in I_i\setminus \mathfrak{p}$ de forma que 
+\begin{equation}
+    \notag
+    a = \prod_{i=1}^n a_i\in\prod_{i=1}^n I_i\subseteq \bigcap_{i=1}^n I_i
+\end{equation}
+cosa que implica que $a\not\in\mathfrak{p}$ amb $\mathfrak{p}$ primer.
+\end{proof}
+
+Aleshores, si la hipòtesi és igualtat, també és el resultat una igualtat. O sigui, si $\bigcap_{i=1}^n I_i = \mathfrak{p}$, aleshores existeix $i$ de forma que $I_i = \mathfrak{p}$.
+
+
+
+
+
+\end{document}

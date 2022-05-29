@@ -1,0 +1,126 @@
+\documentclass[../../../main.tex]{subfiles}
+
+
+
+\begin{document}
+
+
+\section{Anells noetherians}
+
+\begin{defi}
+[Anell noetherià]\label{def:anellNoetheria}\index{Anell noetherià} Sigui $A$ un anell. Direm que és \textit{noetherià} si ho és com a $A$-mòdul, és a dir, si verifica les tres condicions equivalents següents:
+\begin{enumerate}[(1)]
+    \item Tot ideal de $A$ és finitament generat.
+    \item Tota cadena ascendent d'ideals s'estabilitza.
+    \item Tota família no buida d'ideals té un element maximal.
+\end{enumerate}
+\end{defi}
+
+\begin{ej}
+\begin{enumerate}[(1)]
+    \item Si $k$ és un cos, aleshores és noetherià.
+    \item Si $A$ és un domini d'ideals principals és noetherià.
+    \item L'anell de polinomis $k[X_n]_{n\geq 1}$ no és noetherià.
+\end{enumerate}
+\end{ej}
+
+
+\begin{prop}
+\label{prop:modulAnellNoetheriaEsNoetheria} Si $A$ és un anell noetherià, aleshores tot $A$-mòdul finitament generat és noetherià com a $A$-mòdul.
+\end{prop}
+\begin{proof}
+Si $M$ és un $A$-mòdul finitament generat, implica que existeix $n\in\mathbb{N}$ tal que l'aplicació $i:A^n\hookrightarrow M$ és exhaustiva. Ara només falta observar que la següent successió és exacta
+\begin{equation}
+    \notag
+    0\longrightarrow \ker(i)\longrightarrow A^n\longapp{i}M\longrightarrow 0
+\end{equation}
+Com que $A^n = \bigoplus_{i=1}^nA$ que és noetherià (per \ref{coro:noetheriaSumaDirecta}) tenim que $M$ és noetherià, per \ref{prop:noetheriaSuccessioExacta}.
+\end{proof}
+
+
+\begin{prop}
+\label{prop:noetheriaAnellQuocient} Sigui $A$ noetherià i $I\subseteq A$ un ideal qualsevol. Aleshores, $A/I$ és un anell noetherià.
+\end{prop}
+\begin{proof}
+Per la proposició \ref{prop:noetheriaSuccessioExacta} sabem que a partir de la següent successió exacta
+\begin{equation}
+    \notag
+    0\longrightarrow I\longapp{i}A\longapp{\pi}A/I\longrightarrow 0
+\end{equation}
+tenim que $A/I$ és un $A$-mòdul noetherià i per tant és un $(A/I)$-mòdul noetherià.
+\end{proof}
+
+
+\begin{prop}
+\label{prop:anellNoetheriaMorfismes} Siguin $A$ i $B$ anells tals que $A$ és noetherià. Aleshores:
+\begin{enumerate}[(i)]
+    \item Si $f:A\to B$ és un epimorfisme, tindrem que $B$ és noetherià. 
+    \item Si $f:A\to B$ és un morfisme i $B$ és $A$-mòdul per restricció d'escalars finitament generat, aleshores $B$ és noetherià.
+    \item Per tot $S\subseteq A$ SMT tenim que $S^{-1}A$ és noetherià.
+\end{enumerate}
+\end{prop}
+\begin{proof}
+\begin{enumerate}[(i)]
+    \item Sabem que $B\cong A/\ker f$ i per la proposició anterior tenim que $B$ és noetherià.
+    \item Si $B$ és un $A$-mòdul finitament generat, aleshores és un $A$-mòdul noetherià. Com que els ideals de $B$ són $A$-submòduls per la restricció d'escalars, aleshores són $A$-finitament generats i per tant també són $B$-finitament generats, ergo $B$ és noetherià.
+    \item Hem d'observar que si $J\subseteq S^{-1}A$ és un ideal, aleshores sabem que existeix un ideal $I\subseteq A$ tal que $J = S^{-1}I$. Com que $I$ és finitament generat, aleshores $J = S^{-1}I$ també és finitament generat.
+\end{enumerate}
+\end{proof}
+
+
+\begin{coro}
+Sigui $A$ un anell i $\mathfrak{p}\in\spec{A}$. Si $A$ és noetherià, aleshores $A_\mathfrak{p}$ també ho és.
+\end{coro}
+
+\begin{nota}
+El recíproc d'aquest corol·lari no és cert. Considerem $A = \prod_{n\in \mathbb{N}}K_n$ sent $K_n = k$ un cos. Aleshores els ideals primers de $A$ són de la forma
+\begin{equation}
+    \notag
+    \prod_{\substack{m\in\mathbb{N}\\m\neq n}}K_m
+\end{equation}
+i aquests són maximals. Aleshores $A_\mathfrak{p}$ és un anell local amb un únic ideal primer, per tant és un cos que implica que és noetherià. En canvi, $A$ no és noetherià ja que 
+\begin{equation}
+    \notag
+    \bigoplus_{n\in\mathbb{N}}K_n\varsubsetneq \prod_{n\in\mathbb{N}}K_n
+\end{equation}
+i és un ideal no finitament generat.
+\end{nota}
+
+\begin{ter}
+[Teorema de la base de Hilbert]\label{ter:baseHilbert}\index{Teorema de la base de Hilbert} Si $A$ és un anell noetherià, aleshores $A[X]$ és un anell noetherià.
+\end{ter}
+\begin{proof}
+Sigui $J\subseteq A[X]$ un ideal. Aleshores considerem
+\begin{equation}
+    \notag
+    I = \{a\in A\;:\;\exists f\in J,\;f=a_nX^n+g,\;g\in A[X],\deg(g)<n\}
+\end{equation}
+És clar que $I$ és un ideal de $A$ finitament generat. Posem $I = \langle a_1,\ldots,a_m\rangle$ i aleshores, en particular, tenim que per tot $j = 1,\ldots,m$ existeix un $f_j = a_jX^{r_j}+g_j$ amb $g_j\in A[X]$ i $\deg(g_j)<r_j$ i $f_j\in J$. Sigui $r = \max_j\{r_j\}$ i considerem
+\begin{equation}
+    \notag
+    J' = \langle f_1,\ldots,f_m\rangle\subseteq J
+\end{equation}
+Aleshores, si $f\in J$ serà de la forma $f = a_nX^n+g$ amb $\deg(g)<n$ i $g\in A[X]$ i si a més $n\geq r$ aleshores $a_n = \sum_{j=1}^mc_ja_j$ i podem definir el següent polinomi
+\begin{equation}
+    \notag
+    \ell = \langle_{j=1}^mc_jf_jX^{n-r_j}\in J'\subseteq J
+\end{equation}
+per tant $f = \ell+(f-\ell)$ onn $\ell\in J'$ i $f-\ell\in J$ amb $\deg(f-\ell)<\deg(f)$. Aquest procés el podem anar reiterant i arribarem finalment a què $f = \ell+h$ amb $\ell\in J'$, $h\in J$ i $\deg(h)<r$. Sigui $M = A+AX+\cdots+AX^{r-1}\subseteq A[X]$ que és un $A$-mòdul finitament generat, aleshores hem provat que
+\begin{equation}
+    \notag
+    J = J'+(M\cap J)
+\end{equation}
+Com que $J'$ és un $A[X]$-submòdul finitament generat i $J\cap M$ també, obtenim que $J$ també ho és, tal com volíem.
+\end{proof}
+
+\begin{coro}
+Sigui $A$ un anell noetherià. Aleshores $A[X_1,\ldots,X_n]$ és noetherià i en particular també és cert si $A = k$ un cos.
+\end{coro}
+
+\begin{coro}
+Sigui $A$ un anell noetherià. Aleshores per tot ideal $I\subseteq A[X_1,\ldots,X_n]$ i $S$ un SMT de $A[X_1,\ldots,X_n]/I$ aleshores $S^{-1}(A[X_1,\ldots,X_n]/I)$ és un anell noetherià.
+\end{coro}
+
+
+
+\end{document}
